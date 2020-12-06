@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <title>
+        ffmpeg |
+        
+        Firefly
+    </title>
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true},"style":{"primary_color":"#0066CC","avatar":"images/avatar.png","favicon":"images/logo.svg","img_position":"left","left_side_width":"260px","content_max_width":"900px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":false,"description":"Welcome"}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"version":"3.0.3"};
+    KEEP.language = {"search":"Search...","prev":"Prev","next":"Next","prev_posts":"Prev posts","next_posts":"Next posts","page":"Page %d","recent_posts":"Recent Posts","share":"Share","powered_by":"Powered by %s","theme":"Theme","rss_feed":"RSS Feed","category":"Category","categories":"Categories","tag":"Tag","tags":"Tags","tagcloud":"Tag Cloud","comment":"Comment","home":"Home","archive":"Archive","archives":"Archives","about":"About","site_uv":"Visitor Count","site_pv":"Totalview","links":"Links","link":"Link","top":"TOP","read_more":"Read more","wordcount":"Words","min2read":"Mins","changelog":"Changelog","copyright":{"author":"Post author","title":"Post title","link":"Post link","create_time":"Create time","license_title":"Copyright Notice","license_content":"All articles in this blog are licensed under %s unless stating additionally."},"ago":{"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days age","week":"%s weeks age","month":"%s months age","year":"%s years age"}};
+  </script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+<div class="page-container">
+
+    
+
+    <header class="page-header">
+        <div class="header-progress"></div>
+    </header>
+
+    <main class="page-main">
+
+        <div class="page-main-content">
+
+            <div class="page-main-content-top">
+                <header class="header-wrapper">
+
+    <div class="header-content">
+        <a class="logo-title" href="/">
+            Firefly
+        </a>
+
+        <ul class="menu-list">
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/"
+                    >
+                        HOME
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/archives"
+                    >
+                        ARCHIVES
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/categories"
+                    >
+                        CATEGORIES
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/links"
+                    >
+                        LINKS
+                    </a>
+                </li>
+            
+        </ul>
+
+        <div class="menu-bar">
+            <div class="menu-bar-middle"></div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">CATEGORIES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">LINKS</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+            </div>
+
+            <div class="page-main-content-middle">
+
+                <main class="main-content normal-code-theme">
+
+                    
+                        <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">ffmpeg</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span>Firefly</span>
+                        <span class="level">Lv5</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-calendar"></i> 2019-10-22 00:00:00
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a>
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i> <span>2.8k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i> <span>11 Mins</span>
+        </span>
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="ffmpeg"><a href="#ffmpeg" class="headerlink" title="ffmpeg"></a>ffmpeg</h1><p>转载</p>
+<p>ffmpeg的使用方式：<br>ffmpeg [options] [[infile options] -i infile]… {[outfile options] outfile}…</p>
+<p><strong>常用参数说明：</strong><br>主要参数：<br>-i 设定输入流<br>-f 设定输出格式<br>-ss 开始时间</p>
+<a id="more"></a>
+<p><strong>视频参数：</strong><br>-b 设定视频流量，默认为200Kbit/s<br>-r 设定帧速率，默认为25<br>-s 设定画面的宽与高<br>-aspect 设定画面的比例<br>-vn 不处理视频<br>-vcodec 设定视频编解码器，未设定时则使用与输入流相同的编解码器</p>
+<p><strong>音频参数：</strong><br>-ar 设定采样率<br>-ac 设定声音的Channel数<br>-acodec 设定声音编解码器，未设定时则使用与输入流相同的编解码器<br>-an 不处理音频</p>
+<h3 id="1-视频格式转换"><a href="#1-视频格式转换" class="headerlink" title="1.视频格式转换"></a>1.视频格式转换</h3><p>（其实格式转换说法不太准确，但大家都这么叫，准确的说，应该是视频容器转换）<br>比如一个avi文件，想转为mp4，或者一个mp4想转为ts。<br>ffmpeg -i input.avi output.mp4<br>ffmpeg -i input.mp4 output.ts<br>我目测这个已经能满足很多人的需求了。</p>
+<h3 id="2-提取音频"><a href="#2-提取音频" class="headerlink" title="2.提取音频"></a>2.提取音频</h3><p>比如我有一个“晓松奇谈”，可是我不想看到他的脸，我只想听声音， 地铁上可以听，咋办？<br>ffmpeg -i 晓松奇谈.mp4 -acodec copy -vn output.aac<br>上面的命令，默认mp4的audio codec是aac，如果不是会出错，咱可以暴力一点，不管什么音频，都转为最常见的aac。<br>ffmpeg -i 晓松奇谈.mp4 -acodec aac -vn output.aac</p>
+<h3 id="3-提取视频"><a href="#3-提取视频" class="headerlink" title="3.提取视频"></a>3.提取视频</h3><p>我目测有些IT员工，特别是做嵌入式的，比如机顶盒，想debug一下，没有音频的情况下，播放一个视频几天几夜会不会crash，这时候你需要一个纯视频文件，可以这么干。<br>ffmpeg -i input.mp4 -vcodec copy -an output.mp4</p>
+<h3 id="4-视频剪切"><a href="#4-视频剪切" class="headerlink" title="4.视频剪切"></a>4.视频剪切</h3><p>经常要测试视频，但是只需要测几秒钟，可是视频却有几个G，咋办？切啊！<br>下面的命令，就可以从时间为00:00:15开始，截取5秒钟的视频。<br>ffmpeg -ss 00:00:15 -t 00:00:05 -i input.mp4 -vcodec copy -acodec copy output.mp4<br>-ss表示开始切割的时间，-t表示要切多少。上面就是从开始，切5秒钟出来。</p>
+<h3 id="5-码率控制"><a href="#5-码率控制" class="headerlink" title="5.码率控制"></a>5.码率控制</h3><p>码率控制对于在线视频比较重要。因为在线视频需要考虑其能提供的带宽。</p>
+<p>那么，什么是码率？很简单：<br>bitrate = file size / duration<br>比如一个文件20.8M，时长1分钟，那么，码率就是：<br>biterate = 20.8M bit/60s = 20.8<em>1024\</em>1024*8 bit/60s= 2831Kbps<br>一般音频的码率只有固定几种，比如是128Kbps，<br>那么，video的就是<br>video biterate = 2831Kbps -128Kbps = 2703Kbps。</p>
+<p>说完背景了。好了，来说ffmpeg如何控制码率。<br>ffmpg控制码率有3种选择，-minrate -b:v -maxrate<br>-b:v主要是控制平均码率。<br>比如一个视频源的码率太高了，有10Mbps，文件太大，想把文件弄小一点，但是又不破坏分辨率。<br>ffmpeg -i input.mp4 -b:v 2000k output.mp4<br>上面把码率从原码率转成2Mbps码率，这样其实也间接让文件变小了。目测接近一半。<br>不过，ffmpeg官方wiki比较建议，设置b:v时，同时加上 -bufsize<br>-bufsize 用于设置码率控制缓冲器的大小，设置的好处是，让整体的码率更趋近于希望的值，减少波动。（简单来说，比如1 2的平均值是1.5， 1.49 1.51 也是1.5, 当然是第二种比较好）<br>ffmpeg -i input.mp4 -b:v 2000k -bufsize 2000k output.mp4</p>
+<p>-minrate -maxrate就简单了，在线视频有时候，希望码率波动，不要超过一个阈值，可以设置maxrate。<br>ffmpeg -i input.mp4 -b:v 2000k -bufsize 2000k -maxrate 2500k output.mp4</p>
+<h3 id="6-视频编码格式转换"><a href="#6-视频编码格式转换" class="headerlink" title="6.视频编码格式转换"></a>6.视频编码格式转换</h3><p>比如一个视频的编码是MPEG4，想用H264编码，咋办？<br>ffmpeg -i input.mp4 -vcodec h264 output.mp4<br>相反也一样<br>ffmpeg -i input.mp4 -vcodec mpeg4 output.mp4</p>
+<p>当然了，如果ffmpeg当时编译时，添加了外部的x265或者X264，那也可以用外部的编码器来编码。（不知道什么是X265，可以Google一下，简单的说，就是她不包含在ffmpeg的源码里，是独立的一个开源代码，用于编码HEVC，ffmpeg编码时可以调用它。当然了，ffmpeg自己也有编码器）<br>ffmpeg -i input.mp4 -c:v libx265 output.mp4<br>ffmpeg -i input.mp4 -c:v libx264 output.mp4</p>
+<h3 id="7-只提取视频ES数据"><a href="#7-只提取视频ES数据" class="headerlink" title="7.只提取视频ES数据"></a>7.只提取视频ES数据</h3><p>这个可能做开发的人会用到，顺便提一下吧。<br>ffmpeg –i input.mp4 –vcodec copy –an –f m4v output.h264</p>
+<h3 id="8-过滤器的使用"><a href="#8-过滤器的使用" class="headerlink" title="8.过滤器的使用"></a>8.过滤器的使用</h3><p>这个我在另一篇博客提到了，这里贴一下吧。</p>
+<h4 id="8-1-将输入的1920x1080缩小到960x540输出"><a href="#8-1-将输入的1920x1080缩小到960x540输出" class="headerlink" title="8.1 将输入的1920x1080缩小到960x540输出:"></a>8.1 将输入的1920x1080缩小到960x540输出:</h4><p>ffmpeg -i input.mp4 -vf scale=960:540 output.mp4<br>//ps: 如果540不写，写成-1，即scale=960:-1, 那也是可以的，ffmpeg会通知缩放滤镜在输出时保持原始的宽高比。</p>
+<h4 id="8-2-为视频添加logo"><a href="#8-2-为视频添加logo" class="headerlink" title="8.2 为视频添加logo"></a>8.2 为视频添加logo</h4><p>比如，我有这么一个图片</p>
+<p>想要贴到一个视频上，那可以用如下命令：<br>./ffmpeg -i input.mp4 -i iQIYI_logo.png -filter_complex overlay output.mp4<br>结果如下所示：</p>
+<p>要贴到其他地方？看下面：<br>右上角：<br>./ffmpeg -i input.mp4 -i logo.png -filter_complex overlay=W-w output.mp4<br>左下角：<br>./ffmpeg -i input.mp4 -i logo.png -filter_complex overlay=0:H-h output.mp4<br>右下角：<br>./ffmpeg -i input.mp4 -i logo.png -filter_complex overlay=W-w:H-h output.mp4</p>
+<h4 id="8-3-去掉视频的logo"><a href="#8-3-去掉视频的logo" class="headerlink" title="8.3 去掉视频的logo"></a>8.3 去掉视频的logo</h4><p>有时候，下载了某个网站的视频，但是有logo很烦，咋办？有办法，用ffmpeg的delogo过滤器。<br>语法：-vf delogo=x:y:w:h[:t[:show]]<br>x:y 离左上角的坐标<br>w:h logo的宽和高<br>t: 矩形边缘的厚度默认值4<br>show：若设置为1有一个绿色的矩形，默认值0。</p>
+<p>ffmpeg -i input.mp4 -vf delogo=0:0:220:90:100:1 output.mp4<br>结果如下所示：</p>
+<h3 id="9-抓取视频的一些帧，存为jpeg图片"><a href="#9-抓取视频的一些帧，存为jpeg图片" class="headerlink" title="9.抓取视频的一些帧，存为jpeg图片"></a>9.抓取视频的一些帧，存为jpeg图片</h3><p>比如，一个视频，我想提取一些帧，存为图片，咋办？<br>ffmpeg -i input.mp4 -r 1 -q:v 2 -f image2 pic-%03d.jpeg<br>-r 表示每一秒几帧<br>-q:v表示存储jpeg的图像质量，一般2是高质量。<br>如此，ffmpeg会把input.mp4，每隔一秒，存一张图片下来。假设有60s，那会有60张。</p>
+<p>60张？什么？这么多？不要不要。。。。。不要咋办？？<br>可以设置开始的时间，和你想要截取的时间呀。<br>ffmpeg -i input.mp4 -ss 00:00:20 -t 10 -r 1 -q:v 2 -f image2 pic-%03d.jpeg<br>-ss 表示开始时间<br>-t表示共要多少时间。<br>如此，ffmpeg会从input.mp4的第20s时间开始，往下10s，即20~30s这10秒钟之间，每隔1s就抓一帧，总共会抓10帧。</p>
+<p>怎么样，好用吧。^^</p>
+<h3 id="其他小众的用法"><a href="#其他小众的用法" class="headerlink" title="其他小众的用法"></a><strong>其他小众的用法</strong></h3><p>1.输出YUV420原始数据<br>对于一下做底层编解码的人来说，有时候常要提取视频的YUV原始数据。<br>怎么坐？很简答：<br>ffmpeg -i input.mp4 output.yuv<br>怎么样，是不是太简单啦？！！！哈哈</p>
+<p>如果你想问yuv的数据，如何播放，我不会告诉你，RawPlayer挺好用的！！</p>
+<p>那如果我只想要抽取某一帧YUV呢？<br>简单，你先用上面的方法，先抽出jpeg图片，然后把jpeg转为YUV。<br>比如：<br>你先抽取10帧图片。<br>ffmpeg -i input.mp4 -ss 00:00:20 -t 10 -r 1 -q:v 2 -f image2 pic-%03d.jpeg<br>结果：</p>
+<p><code>-rw-rw-r-- 1 chenxf chenxf    296254  7月 20 16:08 pic-001.jpeg</code><br><code>-rw-rw-r-- 1 chenxf chenxf    300975  7月 20 16:08 pic-002.jpeg</code><br><code>-rw-rw-r-- 1 chenxf chenxf    310130  7月 20 16:08 pic-003.jpeg</code><br><code>-rw-rw-r-- 1 chenxf chenxf    268694  7月 20 16:08 pic-004.jpeg</code><br><code>-rw-rw-r-- 1 chenxf chenxf    301056  7月 20 16:08 pic-005.jpeg</code><br><code>-rw-rw-r-- 1 chenxf chenxf    293927  7月 20 16:08 pic-006.jpeg</code><br><code>-rw-rw-r-- 1 chenxf chenxf    340295  7月 20 16:08 pic-007.jpeg</code><br><code>-rw-rw-r-- 1 chenxf chenxf    430787  7月 20 16:08 pic-008.jpeg</code><br><code>-rw-rw-r-- 1 chenxf chenxf    404552  7月 20 16:08 pic-009.jpeg</code><br><code>-rw-rw-r-- 1 chenxf chenxf    412691  7月 20 16:08 pic-010.jpeg</code></p>
+<p>然后，你就随便挑一张，转为YUV:<br>ffmpeg -i pic-001.jpeg -s 1440x1440 -pix_fmt yuv420p xxx3.yuv<br>如果-s参数不写，则输出大小与输入一样。</p>
+<p>当然了，YUV还有yuv422p啥的，你在-pix_fmt 换成yuv422p就行啦！</p>
+<ol start="2">
+<li>H264编码profile &amp; level控制<br>背景知识<br>先科普一下profile&amp;level吧，知道的请飘过。（这里讨论最常用的H264）<br>H.264有四种画质级别,分别是baseline, extended, main, high：<br>　　1、Baseline Profile：基本画质。支持I/P 帧，只支持无交错（Progressive）和CAVLC；<br>　　2、Extended profile：进阶画质。支持I/P/B/SP/SI 帧，只支持无交错（Progressive）和CAVLC；(用的少)<br>　　3、Main profile：主流画质。提供I/P/B 帧，支持无交错（Progressive）和交错（Interlaced），<br>　　　 也支持CAVLC 和CABAC 的支持；<br>　　4、High profile：高级画质。在main Profile 的基础上增加了8x8内部预测、自定义量化、 无损视频编码和更多的YUV 格式；<br>H.264 Baseline profile、Extended profile和Main profile都是针对8位样本数据、4:2:0格式(YUV)的视频序列。在相同配置情况下，High profile（HP）可以比Main profile（MP）降低10%的码率。<br>根据应用领域的不同，Baseline profile多应用于实时通信领域，Main profile多应用于流媒体领域，High profile则多应用于广电和存储领域。</li>
+</ol>
+<p>下图清楚的给出不同的profile&amp;level的性能区别。<br>profile</p>
+<p>level</p>
+<p>2.1 ffmpeg如何控制profile&amp;level<br>举3个例子吧<br>ffmpeg -i input.mp4 -profile:v baseline -level 3.0 output.mp4</p>
+<p>ffmpeg -i input.mp4 -profile:v main -level 4.2 output.mp4</p>
+<p>ffmpeg -i input.mp4 -profile:v high -level 5.1 output.mp4</p>
+<p>如果ffmpeg编译时加了external的libx264，那就这么写：<br>ffmpeg -i input.mp4 -c:v libx264 -x264-params “profile=high:level=3.0” output.mp4</p>
+<p>从压缩比例来说，baseline&lt; main &lt; high，对于带宽比较局限的在线视频，可能会选择high，但有些时候，做个小视频，希望所有的设备基本都能解码（有些低端设备或早期的设备只能解码baseline），那就牺牲文件大小吧，用baseline。自己取舍吧！</p>
+<p>苹果的设备对不同profile的支持。</p>
+<p>2.2. 编码效率和视频质量的取舍(preset, crf)<br>除了上面提到的，强行配置biterate，或者强行配置profile/level，还有2个参数可以控制编码效率。<br>一个是preset，一个是crf。<br>preset也挺粗暴，基本原则就是，如果你觉得编码太快或太慢了，想改改，可以用profile。<br>preset有如下参数可用：</p>
+<p>ultrafast, superfast, veryfast, faster, fast, medium, slow, slower, veryslow and placebo.<br>编码加快，意味着信息丢失越严重，输出图像质量越差。</p>
+<p>CRF(Constant Rate Factor): 范围 0-51: 0是编码毫无丢失信息, 23 is 默认, 51 是最差的情况。相对合理的区间是18-28.<br>值越大，压缩效率越高，但也意味着信息丢失越严重，输出图像质量越差。</p>
+<p>举个例子吧。<br>ffmpeg -i input -c:v libx264 -profile:v main -preset:v fast -level 3.1 -x264opts crf=18<br>(参考自：<a class="link"   target="_blank" rel="noopener" href="https://trac.ffmpeg.org/wiki/Encode/H.264" >https://trac.ffmpeg.org/wiki/Encode/H.264<i class="fas fa-external-link-alt"></i></a>)</p>
+<p>2.3. H265 (HEVC)编码tile&amp;level控制<br>背景知识<br>和H264的profile&amp;level一样，为了应对不同应用的需求，HEVC制定了“层级”(tier) 和“等级”(level)。<br>tier只有main和high。<br>level有13级，如下所示：</p>
+<p>不多说，直接给出怎么用。（supposed你用libx265编码）<br>ffmpeg -i input.mp4 -c:v libx265 -x265-params “profile=high:level=3.0” output.mp4</p>
+<p>原文链接：<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/newchenxf/article/details/51384360" >https://blog.csdn.net/newchenxf/article/details/51384360<i class="fas fa-external-link-alt"></i></a></p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2019/10/27/notepad/others/ssh%E9%85%8D%E7%BD%AE%E5%85%AC%E9%92%A5/"
+                        >
+                            <span class="left arrow-icon flex-center" >
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">ssh配置公钥</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2019/10/17/notepad/others/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">树莓派入坑之旅</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center" >
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                    
+                </main>
+
+            </div>
+
+            <div class="page-main-content-bottom">
+                <!--
+ * @Author: Firefly
+ * @Date: 2020-12-06 11:25:04
+ * @Descripttion: 
+ * @LastEditTime: 2020-12-06 14:08:56
+-->
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2017</span> -
+            
+            2020 <i class="fas fa-heart icon-animate"></i> <a href="/">Firefly</a>
+        </div>
+        
+        <!-- <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a> | Theme <a class="theme-version" target="_blank"></a>
+        </div> -->
+    </div>
+</footer>
+
+            </div>
+        </div>
+    </main>
+
+    <div class="sidebar-tools">
+        <div class="tools-container">
+    <ul class="tools-list">
+        
+            <li class="search popup-trigger">
+                <i class="fas fa-search"></i>
+            </li>
+        
+
+        
+
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+    </ul>
+</div>
+
+    </div>
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center">
+            <i class="fas fa-arrow-up"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="tools-ul-1">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+    </ul>
+</div>
+
+    </div>
+
+    <!-- page aside -->
+    <aside class="page-aside">
+        
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ffmpeg"><span class="nav-number">1.</span> <span class="nav-text">ffmpeg</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.视频格式转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%8F%90%E5%8F%96%E9%9F%B3%E9%A2%91"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.提取音频</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%8F%90%E5%8F%96%E8%A7%86%E9%A2%91"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.提取视频</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E8%A7%86%E9%A2%91%E5%89%AA%E5%88%87"><span class="nav-number">1.0.4.</span> <span class="nav-text">4.视频剪切</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E7%A0%81%E7%8E%87%E6%8E%A7%E5%88%B6"><span class="nav-number">1.0.5.</span> <span class="nav-text">5.码率控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E8%A7%86%E9%A2%91%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.0.6.</span> <span class="nav-text">6.视频编码格式转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E5%8F%AA%E6%8F%90%E5%8F%96%E8%A7%86%E9%A2%91ES%E6%95%B0%E6%8D%AE"><span class="nav-number">1.0.7.</span> <span class="nav-text">7.只提取视频ES数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E8%BF%87%E6%BB%A4%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">1.0.8.</span> <span class="nav-text">8.过滤器的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#8-1-%E5%B0%86%E8%BE%93%E5%85%A5%E7%9A%841920x1080%E7%BC%A9%E5%B0%8F%E5%88%B0960x540%E8%BE%93%E5%87%BA"><span class="nav-number">1.0.8.1.</span> <span class="nav-text">8.1 将输入的1920x1080缩小到960x540输出:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-2-%E4%B8%BA%E8%A7%86%E9%A2%91%E6%B7%BB%E5%8A%A0logo"><span class="nav-number">1.0.8.2.</span> <span class="nav-text">8.2 为视频添加logo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-3-%E5%8E%BB%E6%8E%89%E8%A7%86%E9%A2%91%E7%9A%84logo"><span class="nav-number">1.0.8.3.</span> <span class="nav-text">8.3 去掉视频的logo</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-%E6%8A%93%E5%8F%96%E8%A7%86%E9%A2%91%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%A7%EF%BC%8C%E5%AD%98%E4%B8%BAjpeg%E5%9B%BE%E7%89%87"><span class="nav-number">1.0.9.</span> <span class="nav-text">9.抓取视频的一些帧，存为jpeg图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%B0%8F%E4%BC%97%E7%9A%84%E7%94%A8%E6%B3%95"><span class="nav-number">1.0.10.</span> <span class="nav-text">其他小众的用法</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+        
+    </aside>
+
+    <!-- image viewer -->
+    <div class="image-viewer-container">
+    <div class="img-box">
+        <img src="">
+    </div>
+</div>
+
+
+</div>
+
+
+
+    <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-icon">
+            <i class="fas fa-search"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/local-search.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/left-side-toggle.js"></script>
+
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/code-copy.js"></script>
+    
+
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/toc.js"></script>
+    
+
+
+</body>
+</html>

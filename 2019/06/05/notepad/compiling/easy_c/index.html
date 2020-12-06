@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <title>
+        easy_c |
+        
+        Firefly
+    </title>
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true},"style":{"primary_color":"#0066CC","avatar":"images/avatar.png","favicon":"images/logo.svg","img_position":"left","left_side_width":"260px","content_max_width":"900px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":false,"description":"Welcome"}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"version":"3.0.3"};
+    KEEP.language = {"search":"Search...","prev":"Prev","next":"Next","prev_posts":"Prev posts","next_posts":"Next posts","page":"Page %d","recent_posts":"Recent Posts","share":"Share","powered_by":"Powered by %s","theme":"Theme","rss_feed":"RSS Feed","category":"Category","categories":"Categories","tag":"Tag","tags":"Tags","tagcloud":"Tag Cloud","comment":"Comment","home":"Home","archive":"Archive","archives":"Archives","about":"About","site_uv":"Visitor Count","site_pv":"Totalview","links":"Links","link":"Link","top":"TOP","read_more":"Read more","wordcount":"Words","min2read":"Mins","changelog":"Changelog","copyright":{"author":"Post author","title":"Post title","link":"Post link","create_time":"Create time","license_title":"Copyright Notice","license_content":"All articles in this blog are licensed under %s unless stating additionally."},"ago":{"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days age","week":"%s weeks age","month":"%s months age","year":"%s years age"}};
+  </script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+<div class="page-container">
+
+    
+
+    <header class="page-header">
+        <div class="header-progress"></div>
+    </header>
+
+    <main class="page-main">
+
+        <div class="page-main-content">
+
+            <div class="page-main-content-top">
+                <header class="header-wrapper">
+
+    <div class="header-content">
+        <a class="logo-title" href="/">
+            Firefly
+        </a>
+
+        <ul class="menu-list">
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/"
+                    >
+                        HOME
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/archives"
+                    >
+                        ARCHIVES
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/categories"
+                    >
+                        CATEGORIES
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/links"
+                    >
+                        LINKS
+                    </a>
+                </li>
+            
+        </ul>
+
+        <div class="menu-bar">
+            <div class="menu-bar-middle"></div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">CATEGORIES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">LINKS</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+            </div>
+
+            <div class="page-main-content-middle">
+
+                <main class="main-content normal-code-theme">
+
+                    
+                        <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">easy_c</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span>Firefly</span>
+                        <span class="level">Lv5</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-calendar"></i> 2019-06-05 00:00:00
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i> <span>2.6k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i> <span>10 Mins</span>
+        </span>
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="easy-c"><a href="#easy-c" class="headerlink" title="easy_c"></a><center>easy_c</center></h1><h2 id="实现目标"><a href="#实现目标" class="headerlink" title="实现目标"></a>实现目标</h2><p>实现一门基于 x86 平台的编译器， 链接基于GNU as， 功能实现加减乘除， 函数调用， if 语句和while循环，，输出整数值和字符串，不实现指针和数组。</p>
+<p>目的在于实现编译器的功能， 所以没有做很强大的语法功能， 自选了几个常用的作为实现， 虽然弱小，但五脏俱全！</p>
+<p>湖南大学编译原理实验1-8， 这里大概介绍实现的思路， 具体太多细节， 看原码： <a class="link"   target="_blank" rel="noopener" href="https://github.com/Fierygit/easy_c" >github<i class="fas fa-external-link-alt"></i></a></p>
+<p>开始实现时参考了 青木的自制编译器， 发现书中用到的语言是java，我打算使用c来实现， 发现有很多的不同， 书中前段使用了java的正则表达式等， 我想使用编译原理课上学过的知识来实现。</p>
+<h2 id="语法定义"><a href="#语法定义" class="headerlink" title="语法定义"></a>语法定义</h2><p>这一部分在开始的没有列全，好后悔好后悔！！！倒置项目在进行到最后的时候， 发现这也忘记考虑了， 那也忘记考虑了， 吸取经验： <strong>在写项目的时候， 一定先要有一个实现目标</strong>。 不然到最后突然发现， 输出字符串词法分析没有实现， 倒置到最后只能强前面几千方的代码， 也只能使用ID作为字符串输出ID的值。-_-</p>
+<h4 id="运算符："><a href="#运算符：" class="headerlink" title="运算符："></a>运算符：</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ - * /</span><br></pre></td></tr></table></figure>
+
+<h4 id="逻辑运算："><a href="#逻辑运算：" class="headerlink" title="逻辑运算："></a>逻辑运算：</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">== 	&lt;= 	&gt;=</span><br></pre></td></tr></table></figure>
+
+<h4 id="操作符："><a href="#操作符：" class="headerlink" title="操作符："></a>操作符：</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+= 	 -=	 /= 	*=</span><br></pre></td></tr></table></figure>
+
+<h4 id="变量："><a href="#变量：" class="headerlink" title="变量："></a>变量：</h4><p>变量使用前统一声明， 在函数开始时， 或者全局声明</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">max</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a;</span><br><span class="line">	a = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//函数里面的a会首先找函数体里面声明的变量， 然后再找全局变量里声明的符号</span></span><br></pre></td></tr></table></figure>
+
+<p>所有的大括号不能省略！</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(a == <span class="number">10</span>) <span class="keyword">return</span> a;  <span class="comment">// error!!!</span></span><br><span class="line"><span class="keyword">while</span>(<span class="literal">true</span>);           <span class="comment">//error!!!</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="输出："><a href="#输出：" class="headerlink" title="输出："></a>输出：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int a;</span><br><span class="line">a &#x3D; 10;</span><br><span class="line">print(a);</span><br><span class="line">&#x2F;&#x2F; &gt; 10</span><br><span class="line">print[a];</span><br><span class="line">&#x2F;&#x2F; &gt; a</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h2 id="词法分析"><a href="#词法分析" class="headerlink" title="词法分析"></a>词法分析</h2><h4 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h4><p> <strong>else  if  int  return  void  while</strong> <strong>print</strong></p>
+<h4 id="专用符号"><a href="#专用符号" class="headerlink" title="专用符号"></a>专用符号</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+ - * &#x2F; &lt;  &gt; &#x3D; ; , ( )  &#123; &#125; &#x2F;* *&#x2F;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="其他标记"><a href="#其他标记" class="headerlink" title="其他标记"></a>其他标记</h4><p>ID = letter letter*</p>
+<p>NUM = digit digit*</p>
+<h4 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x3D;&#x3D; &lt;&#x3D; &gt;&#x3D;</span><br></pre></td></tr></table></figure>
+
+<h4 id="操作数"><a href="#操作数" class="headerlink" title="操作数"></a>操作数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+&#x3D; 	-&#x3D;	  *&#x3D;	 &#x2F;&#x3D;</span><br></pre></td></tr></table></figure>
+
+<h4 id="实现方法："><a href="#实现方法：" class="headerlink" title="实现方法："></a>实现方法：</h4><p>使用状态机：</p>
+<p><img src="https://raw.githubusercontent.com/Fierygit/picbed/master/20200118150829.png"></p>
+<p><img src="https://raw.githubusercontent.com/Fierygit/picbed/master/tes"></p>
+<p>其它类似方法！！！</p>
+<p>每次读入一个字符就判断它去了那个状态， 简单的编译器使用这种方法是实现简单，但是当编译器大的时候， 这种情况就变的十分的庞大！</p>
+<h4 id="数据结构："><a href="#数据结构：" class="headerlink" title="数据结构："></a>数据结构：</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Token</span>&#123;</span></span><br><span class="line">  <span class="built_in">string</span> type;</span><br><span class="line">  <span class="built_in">string</span> value;</span><br><span class="line">  <span class="keyword">int</span> row;			<span class="comment">// 保留每个token的 行数</span></span><br><span class="line">  <span class="keyword">int</span> column;		<span class="comment">// 保留每个token的  列数</span></span><br><span class="line">  Token(<span class="built_in">string</span> type, <span class="built_in">string</span> value, <span class="keyword">int</span> row, <span class="keyword">int</span> column)&#123;</span><br><span class="line">      <span class="keyword">this</span>-&gt;type = type;</span><br><span class="line">      <span class="keyword">this</span>-&gt;value = value;</span><br><span class="line">      <span class="keyword">this</span>-&gt;row = row;</span><br><span class="line">      <span class="keyword">this</span>-&gt;column = column;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>保存每一个记号的 行数 和 列数</p>
+<p><img src="C:%5CUsers%5CFirefly%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200118195516438.png" alt="image-20200118195516438"></p>
+<p>上面图片是将每一个token存入 vector 中， 最后将其输出！</p>
+<h2 id="语法分析："><a href="#语法分析：" class="headerlink" title="语法分析："></a>语法分析：</h2><p>语法分析采用的是 LL（1） 的递归下降文法！ 向前看看一个字符， 首先转换为右递归文法！！</p>
+<p>LL（1）是。。。。。。</p>
+<h5 id="NFA文法：（提取自c-编译器）"><a href="#NFA文法：（提取自c-编译器）" class="headerlink" title="NFA文法：（提取自c-编译器）"></a>NFA文法：（提取自c-编译器）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">param -&gt;  INT</span><br><span class="line">param_list  -&gt;  param  |  param_list, param</span><br><span class="line">params -&gt; NULL |  param_list</span><br><span class="line">local_declaration  -&gt;   var-decaration  | NULL</span><br><span class="line">arg-list → arg-list , expression|expression</span><br><span class="line">args → arg - list | empty</span><br><span class="line">call →  ID (args)</span><br><span class="line">factor  -&gt;  ( expression ) | var | call | NUM</span><br><span class="line">term   -&gt; factor  op  term  | factor   右循环</span><br><span class="line">additive_expression   -&gt;    term  |   term op  additive_expression ;  op &#x3D; + | -</span><br><span class="line">simple_expression  -&gt;  additive_expression </span><br><span class="line">				|  additive_expression op additive_expression  (op &#x3D;&#x3D; &gt;&#x3D; &lt;&#x3D;)</span><br><span class="line">iteration_stmt    -&gt;   while(expression) &#123; statement_list &#125;</span><br><span class="line">expression    -&gt;   simple_expression  |  var &#x3D; expression</span><br><span class="line">expression_stmt   -&gt;   expression ; || ;</span><br><span class="line">statement -&gt;  iteration_stmt | selection_stmt | expression_stmt |</span><br><span class="line">				return_stmt | print_stmt</span><br><span class="line">statement_list   -&gt;   statement_list statement || NULL</span><br><span class="line">compound_stmt -&gt;  local_declaration &amp; statement_list</span><br><span class="line">declaration  -&gt; var-declare | fun-declare</span><br><span class="line">declaration_list   -&gt;  declaration |  declaration_list</span><br><span class="line">。。。。。</span><br><span class="line">参考parse.cpp</span><br></pre></td></tr></table></figure>
+
+<p>由此生成语法树！</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span> &#123;</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span> *<span class="title">child</span>[4];</span>  <span class="comment">//四个子节点</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span> *<span class="title">sibling</span>;</span>   <span class="comment">//存储兄弟节点</span></span><br><span class="line">  <span class="keyword">int</span> tokenIndex;             <span class="comment">//存储代码的位置, 可以获取到信息</span></span><br><span class="line">  NodeKind nodekind;          <span class="comment">//存储类型</span></span><br><span class="line">  <span class="built_in">string</span> value;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">bool</span> isVisit;  <span class="comment">// 中间代码生成的时候用</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>一个函数最多有四部分构成  int max （ ） ｛  ｝</p>
+<p>所以使用 四个子孩子就行了！</p>
+<h2 id="语义分析"><a href="#语义分析" class="headerlink" title="语义分析"></a>语义分析</h2><p>语义分析主要有两大部分：</p>
+<h4 id="一、变量声明"><a href="#一、变量声明" class="headerlink" title="一、变量声明"></a>一、变量声明</h4><p>当有一个变量声明， 把声明加入符号表， 之后要是用到了这个变量就查找符号表！</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">VariableInfo</span> &#123;</span></span><br><span class="line">  <span class="built_in">string</span> name;</span><br><span class="line">  <span class="keyword">int</span> lineNo;      <span class="comment">//所在的代码行数</span></span><br><span class="line">  <span class="keyword">int</span> location;    <span class="comment">// 在内存的位置</span></span><br><span class="line">  <span class="built_in">string</span> type;     <span class="comment">//变量的类型， 只有一个类型 INT</span></span><br><span class="line">  TreeNode *node;  <span class="comment">//记录声明的节点在哪里</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 记录 每一个变量声明的地方  &lt; 函数名字，  &lt; 变量名字， Variableinfo  &gt;</span></span><br><span class="line"><span class="keyword">extern</span> <span class="built_in">map</span>&lt;<span class="built_in">string</span>, <span class="built_in">vector</span>&lt;VariableInfo&gt; &gt; var_table</span><br></pre></td></tr></table></figure>
+
+<p>// 记录 每一个变量声明的地方  &lt; 函数名字，  &lt; 变量名字， Variableinfo  &gt;</p>
+<p>通过函数 变量名字找信息， 全局变量的 函数名字为 golbal， 在找一个id是否有定义的时候， 通过这个map找信息，  c语言是可以重复命名的， if 里面可以定义变量， 在一开始定义语言的时候， 想的是使用变量时必须函数一开始要定义， 没想到要在if里面也可以定义， 所以这里这个数据结构够用了， 如果要考虑作用域， 加多一个 scope 的变量， 标记同一个变量名的作用域， 作用域从小往大找， 找到global都没有就报错！</p>
+<h4 id="二、类型检查"><a href="#二、类型检查" class="headerlink" title="二、类型检查"></a>二、类型检查</h4><p>类型检查包括两大部分：</p>
+<h5 id="函数参数检查"><a href="#函数参数检查" class="headerlink" title="函数参数检查"></a>函数参数检查</h5><p>每当有一个函数声明， 记录函数的参数个数， 当调用的时候，检查类型和参数！</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; vstr;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">FunctionInfo</span> &#123;</span></span><br><span class="line">  <span class="keyword">int</span> param_num;       <span class="comment">// 参数的个数</span></span><br><span class="line">  vstr param_type;     <span class="comment">// 每个参数的类型</span></span><br><span class="line">  <span class="built_in">string</span> return_type;  <span class="comment">// 返回的类型</span></span><br><span class="line">  TreeNode *node;      <span class="comment">//记录声明的节点在哪里</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 记录每一个 函数的信息符号表, 全局变量也在这里</span></span><br><span class="line"><span class="keyword">extern</span> <span class="built_in">map</span>&lt;<span class="built_in">string</span>, FunctionInfo&gt; fun_table;</span><br></pre></td></tr></table></figure>
+
+<p>这个函数的作用是记录， 函数的信息， 每当有一个函数声明的时候加入这个数据结构， 当有函数调用的时候， 找这个表，检查参数的个数！</p>
+<h5 id="语句类型检查"><a href="#语句类型检查" class="headerlink" title="语句类型检查"></a>语句类型检查</h5><p>检查语句两边的参数是否正确， 不正确的话，输出错误！</p>
+<p>如果有一个语法树的节点为 + ， <strong>递归</strong>检查这个节点的两边是否都为整形！</p>
+<h2 id="中间代码生成"><a href="#中间代码生成" class="headerlink" title="中间代码生成"></a>中间代码生成</h2><p>前序遍历语法树， 把对应的节点生成 <strong>三地址码</strong>。</p>
+<p>这部分最主要的是设计数据结构， 由于一开始没有设计好数据结构， 发现后面写的很乱！！！！！</p>
+<p>提前想好程序是怎么跑的很重要！！</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">MidArgs</span> &#123;</span></span><br><span class="line">  <span class="comment">// type 分为 STR, ID， TMP,  NUM；</span></span><br><span class="line">  <span class="comment">// bool  用INT  0  1 表示</span></span><br><span class="line">  <span class="built_in">string</span> type;</span><br><span class="line">  <span class="built_in">string</span> value;</span><br><span class="line">  <span class="comment">// 代码有全局变量和非全局变量</span></span><br><span class="line">  <span class="comment">// 到符号表里面找， 全变量用伪标签</span></span><br><span class="line">  <span class="comment">// 堆： 自己创建的内存（不用）   栈： 函数临时变量   全局区：</span></span><br><span class="line">  <span class="comment">// 静态和全局变量区（伪标签实现） 字符串 属于全局区</span></span><br><span class="line">  <span class="keyword">bool</span> isGlobal;</span><br><span class="line">  <span class="keyword">int</span> offset;  <span class="comment">//栈中, type = tmp, id                  全局变量直接用！！！，</span></span><br><span class="line">               <span class="comment">//不用找</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 函数调用     call(10, a);</span></span><br><span class="line"><span class="comment">// op = param arg1 = a  arg2 = NULL   op = param  arg1 = 10  arg2 = NULL</span></span><br><span class="line"><span class="comment">// op = call  arg1 = id       op  = return arg1 = id or null</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">MidCodeItem</span> &#123;</span></span><br><span class="line">  <span class="built_in">string</span> dest;</span><br><span class="line">  <span class="built_in">string</span> op;</span><br><span class="line">  MidArgs *arg1;</span><br><span class="line">  MidArgs *arg2;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">MidCode</span> &#123;</span></span><br><span class="line">  <span class="built_in">string</span> funcName;</span><br><span class="line">  <span class="keyword">int</span> stackSize;  <span class="comment">// 只有整形的值， 只考虑4字节， 因此只需要偏移量, 动态变化</span></span><br><span class="line">  <span class="built_in">vector</span>&lt;MidCodeItem *&gt; item;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="built_in">vector</span>&lt;MidCode *&gt; midCode;</span><br><span class="line"><span class="comment">// 声明 ID 加入， value随机初始     TMP 生成一条语句加入 ， 或更改id，</span></span><br><span class="line"><span class="keyword">extern</span> <span class="built_in">map</span>&lt;<span class="built_in">pair</span>&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt;, MidArgs *&gt; stackInfo;  <span class="comment">// ID, TMP, 加入</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这一部分我写的最头疼一部分的时候， 太多变量要去考虑， 刚开始的时候每出现一个变量就去看看他的定义， 没办法， 每一个变量都要用到。</p>
+<p>每一个操作数的节点，+ - * / 都会生成一个临时变量， 函数调用也会。用一个全局变量递增临时变量， 加上双下划线作为前缀防止变量名冲突！！！</p>
+<p>（注意函数调用的三地址码）</p>
+<p>下面是其中一个代码的中间代码： </p>
+<p>dest                                             op                                                arg1                                                    arg2</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">FUNCTION: VAR_DECLARE	(stackSize: <span class="number">0</span>)</span><br><span class="line">	                    INT                 	[p, ID, <span class="number">0</span>, <span class="number">1</span>]                 NONE                          </span><br><span class="line">FUNCTION: test	(stackSize: <span class="number">4</span>)</span><br><span class="line">	__t1                +                   	[a, ARG, <span class="number">0</span>, <span class="number">0</span>]                [b, ARG, <span class="number">1</span>, <span class="number">0</span>]                </span><br><span class="line">	ans                 =                   	[__t1, TMP, <span class="number">1</span>, <span class="number">0</span>]             NONE                          </span><br><span class="line">	__t2                -                   	[ans, ID, <span class="number">0</span>, <span class="number">0</span>]               [<span class="number">1</span>, NUM, <span class="number">0</span>, <span class="number">0</span>]                </span><br><span class="line">	                    PRINT               	[__t2, TMP, <span class="number">2</span>, <span class="number">0</span>]             NONE                          </span><br><span class="line">	__t3                -                   	[a, ARG, <span class="number">0</span>, <span class="number">0</span>]                [<span class="number">1</span>, NUM, <span class="number">0</span>, <span class="number">0</span>]                </span><br><span class="line">	                    <span class="keyword">return</span>              	[__t3, TMP, <span class="number">3</span>, <span class="number">0</span>]             NONE                          </span><br><span class="line">FUNCTION: main	(stackSize: <span class="number">9</span>)</span><br><span class="line">	a                   =                   	[<span class="number">3</span>, NUM, <span class="number">0</span>, <span class="number">0</span>]                NONE                          </span><br><span class="line">	p                   =                   	[<span class="number">1</span>, NUM, <span class="number">0</span>, <span class="number">0</span>]                NONE                          </span><br><span class="line">	Label0:             LABEL               	NONE                          NONE                          </span><br><span class="line">	                    <span class="keyword">if</span>                  	[a, ID, <span class="number">0</span>, <span class="number">0</span>]                 NONE                          </span><br><span class="line">	                    <span class="keyword">goto</span>                	[Label1:, LABEL, <span class="number">1</span>, <span class="number">0</span>]        NONE                          </span><br><span class="line">	                    <span class="keyword">goto</span>                	[Label2:, LABEL, <span class="number">2</span>, <span class="number">0</span>]        NONE                          </span><br><span class="line">	Label1:             LABEL               	NONE                          NONE                          </span><br><span class="line">	__t3                =                   	[a, ID, <span class="number">0</span>, <span class="number">0</span>]                 NONE                          </span><br><span class="line">	__t4                =                   	[p, ID, <span class="number">0</span>, <span class="number">1</span>]                 NONE                          </span><br><span class="line">	                    ARG                 	[__t4, TMP, <span class="number">4</span>, <span class="number">0</span>]             NONE                          </span><br><span class="line">	                    ARG                 	[__t3, TMP, <span class="number">3</span>, <span class="number">0</span>]             NONE                          </span><br><span class="line">	__t5                CALL                	[test, CALL, <span class="number">0</span>, <span class="number">0</span>]            [<span class="number">8</span>, ARG_NUM, <span class="number">0</span>, <span class="number">0</span>]            </span><br><span class="line">	a                   =                   	[__t5, TMP, <span class="number">5</span>, <span class="number">0</span>]             NONE                          </span><br><span class="line">	                    <span class="keyword">goto</span>                	[Label0:, TMP, <span class="number">6</span>, <span class="number">0</span>]          NONE                          </span><br><span class="line">	Label2:             LABEL               	NONE                          NONE                          </span><br><span class="line">	                    PRINT               	[<span class="number">4</span>, STR, <span class="number">0</span>, <span class="number">1</span>]                NONE                          </span><br><span class="line">	                    PRINT               	[space, STR, <span class="number">0</span>, <span class="number">1</span>]            NONE                          </span><br><span class="line">	                    PRINT               	[<span class="number">5</span>, STR, <span class="number">0</span>, <span class="number">1</span>]                NONE                          </span><br><span class="line">	                    PRINT               	[<span class="built_in">endl</span>, STR, <span class="number">0</span>, <span class="number">1</span>]             NONE                          </span><br><span class="line">	                    <span class="keyword">if</span>                  	[<span class="number">1</span>, NUM, <span class="number">0</span>, <span class="number">0</span>]                NONE                          </span><br><span class="line">	                    <span class="keyword">goto</span>                	[Label3:, LABEL, <span class="number">7</span>, <span class="number">0</span>]        NONE                          </span><br><span class="line">	                    <span class="keyword">goto</span>                	[Label4:, LABEL, <span class="number">8</span>, <span class="number">0</span>]        NONE                          </span><br><span class="line">	Label3:             LABEL               	NONE                          NONE                          </span><br><span class="line">	p                   =                   	[<span class="number">2020</span>, NUM, <span class="number">0</span>, <span class="number">0</span>]             NONE                          </span><br><span class="line">	                    PRINT               	[p, ID, <span class="number">0</span>, <span class="number">1</span>]                 NONE                          </span><br><span class="line">	Label4:             LABEL               	NONE                          NONE                          </span><br><span class="line">	                    <span class="keyword">return</span>              	[<span class="number">0</span>, NUM, <span class="number">0</span>, <span class="number">0</span>]                NONE     </span><br></pre></td></tr></table></figure>
+
+<p>总结这一步分， 烦， 烦人！ 想吐</p>
+<p>到这一部分和前面感觉又分开了！！！^ _ ^，  我只需要遍历中间代码的数据结构， 生成对应的汇编， 首先还得学汇编，，， 于是另一篇博客产生， 总结汇编用到的指令</p>
+<h2 id="汇编代码生成"><a href="#汇编代码生成" class="headerlink" title="汇编代码生成"></a>汇编代码生成</h2><p>总思路：</p>
+<p>把字符串放到 rodata静态变量段</p>
+<p>全局变量通过 comm 放到 静态数据段</p>
+<p>所有的变量直接进行压栈处理</p>
+<p>函数一开始，先分配所有变量用到的空间大小</p>
+<p>当要函数调用时， 有多少个参数就扩大多少栈空间，在函数调用后返回值在eax， 再还原栈空间</p>
+<p>还有很多对应汇编知识和实现方式细节：</p>
+<p><a href="">blog</a></p>
+<h2 id="后端优化"><a href="#后端优化" class="headerlink" title="后端优化"></a>后端优化</h2><h4 id="优化一：活性分析"><a href="#优化一：活性分析" class="headerlink" title="优化一：活性分析"></a>优化一：活性分析</h4><p>按照之前的思路， 在生成汇编代码的时候， 有很多临时变量也压栈了， 但是大多数的临时变量其实只用了一次， 也就是说一次性用品， 按照上课的思路， 来一个活性分析， 当一个变量在后面没有再被引用的情况， 把这个变量在栈的空间赋给另一个变量使用！！！ 但是这个实现有点难， 老师也只讲了思路，有点复杂， 没有实现</p>
+<h4 id="优化二：常量折叠"><a href="#优化二：常量折叠" class="headerlink" title="优化二：常量折叠"></a>优化二：常量折叠</h4><p>当一个语法树节点为+ - 等， 而且左右子节点树都为常量， 提前计算好！！！这个遍历语法书就行了</p>
+<h4 id="优化三：提前条件判断"><a href="#优化三：提前条件判断" class="headerlink" title="优化三：提前条件判断"></a>优化三：提前条件判断</h4><p>if(0)  这种情况直接不要！！！！</p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2019/07/01/notepad/os/os/"
+                        >
+                            <span class="left arrow-icon flex-center" >
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">操作系统大纲</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2019/06/05/notepad/compiling/x86%20%E6%B1%87%E7%BC%96%E5%99%A8%E7%BC%96%E7%A8%8B/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">x86 汇编器编程</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center" >
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                    
+                </main>
+
+            </div>
+
+            <div class="page-main-content-bottom">
+                <!--
+ * @Author: Firefly
+ * @Date: 2020-12-06 11:25:04
+ * @Descripttion: 
+ * @LastEditTime: 2020-12-06 14:08:56
+-->
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2017</span> -
+            
+            2020 <i class="fas fa-heart icon-animate"></i> <a href="/">Firefly</a>
+        </div>
+        
+        <!-- <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a> | Theme <a class="theme-version" target="_blank"></a>
+        </div> -->
+    </div>
+</footer>
+
+            </div>
+        </div>
+    </main>
+
+    <div class="sidebar-tools">
+        <div class="tools-container">
+    <ul class="tools-list">
+        
+            <li class="search popup-trigger">
+                <i class="fas fa-search"></i>
+            </li>
+        
+
+        
+
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+    </ul>
+</div>
+
+    </div>
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center">
+            <i class="fas fa-arrow-up"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="tools-ul-1">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+    </ul>
+</div>
+
+    </div>
+
+    <!-- page aside -->
+    <aside class="page-aside">
+        
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#easy-c"><span class="nav-number">1.</span> <span class="nav-text">easy_c</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E7%9B%AE%E6%A0%87"><span class="nav-number">1.1.</span> <span class="nav-text">实现目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95%E5%AE%9A%E4%B9%89"><span class="nav-number">1.2.</span> <span class="nav-text">语法定义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%9A"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">运算符：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%EF%BC%9A"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">逻辑运算：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%AC%A6%EF%BC%9A"><span class="nav-number">1.2.0.3.</span> <span class="nav-text">操作符：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%EF%BC%9A"><span class="nav-number">1.2.0.4.</span> <span class="nav-text">变量：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%EF%BC%9A"><span class="nav-number">1.2.0.5.</span> <span class="nav-text">输出：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90"><span class="nav-number">1.3.</span> <span class="nav-text">词法分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">1.3.0.1.</span> <span class="nav-text">关键字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%93%E7%94%A8%E7%AC%A6%E5%8F%B7"><span class="nav-number">1.3.0.2.</span> <span class="nav-text">专用符号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E6%A0%87%E8%AE%B0"><span class="nav-number">1.3.0.3.</span> <span class="nav-text">其他标记</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97"><span class="nav-number">1.3.0.4.</span> <span class="nav-text">逻辑运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E6%95%B0"><span class="nav-number">1.3.0.5.</span> <span class="nav-text">操作数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="nav-number">1.3.0.6.</span> <span class="nav-text">实现方法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%9A"><span class="nav-number">1.3.0.7.</span> <span class="nav-text">数据结构：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90%EF%BC%9A"><span class="nav-number">1.4.</span> <span class="nav-text">语法分析：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#NFA%E6%96%87%E6%B3%95%EF%BC%9A%EF%BC%88%E6%8F%90%E5%8F%96%E8%87%AAc-%E7%BC%96%E8%AF%91%E5%99%A8%EF%BC%89"><span class="nav-number">1.4.0.0.1.</span> <span class="nav-text">NFA文法：（提取自c-编译器）</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90"><span class="nav-number">1.5.</span> <span class="nav-text">语义分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E"><span class="nav-number">1.5.0.1.</span> <span class="nav-text">一、变量声明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%9F%A5"><span class="nav-number">1.5.0.2.</span> <span class="nav-text">二、类型检查</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E6%A3%80%E6%9F%A5"><span class="nav-number">1.5.0.2.1.</span> <span class="nav-text">函数参数检查</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%AD%E5%8F%A5%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%9F%A5"><span class="nav-number">1.5.0.2.2.</span> <span class="nav-text">语句类型检查</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AD%E9%97%B4%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90"><span class="nav-number">1.6.</span> <span class="nav-text">中间代码生成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90"><span class="nav-number">1.7.</span> <span class="nav-text">汇编代码生成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E7%AB%AF%E4%BC%98%E5%8C%96"><span class="nav-number">1.8.</span> <span class="nav-text">后端优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E4%B8%80%EF%BC%9A%E6%B4%BB%E6%80%A7%E5%88%86%E6%9E%90"><span class="nav-number">1.8.0.1.</span> <span class="nav-text">优化一：活性分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E4%BA%8C%EF%BC%9A%E5%B8%B8%E9%87%8F%E6%8A%98%E5%8F%A0"><span class="nav-number">1.8.0.2.</span> <span class="nav-text">优化二：常量折叠</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E4%B8%89%EF%BC%9A%E6%8F%90%E5%89%8D%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD"><span class="nav-number">1.8.0.3.</span> <span class="nav-text">优化三：提前条件判断</span></a></li></ol></li></ol></li></ol></li></ol>
+    </div>
+</div>
+        
+    </aside>
+
+    <!-- image viewer -->
+    <div class="image-viewer-container">
+    <div class="img-box">
+        <img src="">
+    </div>
+</div>
+
+
+</div>
+
+
+
+    <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-icon">
+            <i class="fas fa-search"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/local-search.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/left-side-toggle.js"></script>
+
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/code-copy.js"></script>
+    
+
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/toc.js"></script>
+    
+
+
+</body>
+</html>

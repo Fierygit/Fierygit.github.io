@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <title>
+        git使用 |
+        
+        Firefly
+    </title>
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true},"style":{"primary_color":"#0066CC","avatar":"images/avatar.png","favicon":"images/logo.svg","img_position":"left","left_side_width":"260px","content_max_width":"900px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":false,"description":"Welcome"}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"version":"3.0.3"};
+    KEEP.language = {"search":"Search...","prev":"Prev","next":"Next","prev_posts":"Prev posts","next_posts":"Next posts","page":"Page %d","recent_posts":"Recent Posts","share":"Share","powered_by":"Powered by %s","theme":"Theme","rss_feed":"RSS Feed","category":"Category","categories":"Categories","tag":"Tag","tags":"Tags","tagcloud":"Tag Cloud","comment":"Comment","home":"Home","archive":"Archive","archives":"Archives","about":"About","site_uv":"Visitor Count","site_pv":"Totalview","links":"Links","link":"Link","top":"TOP","read_more":"Read more","wordcount":"Words","min2read":"Mins","changelog":"Changelog","copyright":{"author":"Post author","title":"Post title","link":"Post link","create_time":"Create time","license_title":"Copyright Notice","license_content":"All articles in this blog are licensed under %s unless stating additionally."},"ago":{"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days age","week":"%s weeks age","month":"%s months age","year":"%s years age"}};
+  </script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+<div class="page-container">
+
+    
+
+    <header class="page-header">
+        <div class="header-progress"></div>
+    </header>
+
+    <main class="page-main">
+
+        <div class="page-main-content">
+
+            <div class="page-main-content-top">
+                <header class="header-wrapper">
+
+    <div class="header-content">
+        <a class="logo-title" href="/">
+            Firefly
+        </a>
+
+        <ul class="menu-list">
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/"
+                    >
+                        HOME
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/archives"
+                    >
+                        ARCHIVES
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/categories"
+                    >
+                        CATEGORIES
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/links"
+                    >
+                        LINKS
+                    </a>
+                </li>
+            
+        </ul>
+
+        <div class="menu-bar">
+            <div class="menu-bar-middle"></div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">CATEGORIES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">LINKS</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+            </div>
+
+            <div class="page-main-content-middle">
+
+                <main class="main-content normal-code-theme">
+
+                    
+                        <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">git使用</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span>Firefly</span>
+                        <span class="level">Lv5</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-calendar"></i> 2019-09-28 00:00:00
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/tags/git/">git</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i> <span>1.3k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i> <span>5 Mins</span>
+        </span>
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>Git常用操作，一文打尽<br><img src="./../images/git_all_01.png"></p>
+<h3 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h3><ul>
+<li>git clone url 克隆远程版本库</li>
+<li>git init 初始化本地版本库</li>
+</ul>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><ul>
+<li>git config –global user.name ‘chengcp’ 配置global级别的用户名</li>
+<li>git config –global user.email ‘1326895569@qq.com’ 配置global级别的邮箱</li>
+<li>git config –global -l 查看global级别的配置列表</li>
+<li>git config –global –unset user.name 删除用户名</li>
+<li>git config –global alias.last ‘log -1 HEAD’ 配置last别名，使用git last将显示最近的一次提交记录</li>
+</ul>
+<h3 id="添加和删除文件"><a href="#添加和删除文件" class="headerlink" title="添加和删除文件"></a>添加和删除文件</h3><ul>
+<li>git add file1 file2 添加指定文件到暂存区</li>
+<li>git add dir 添加指定目录到暂存区</li>
+<li>git add . 添加当前目录的所有文件到暂存区</li>
+<li>git mv oldname newname 对一个已经追踪过的文件进行改名，同时加入暂存区</li>
+<li>git rm file1 file2 删除工作区文件，同时将这次删除放入暂存区</li>
+<li>git rm –cached file 停止追踪指定文件，但该文件会保留在工作区；tracked变成untracked</li>
+</ul>
+<h3 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h3><ul>
+<li>git commit file1 file 2 -m message 提交暂存区指定文件到本地仓库</li>
+<li>git commit -m message 提交暂存区所有文件到本地仓库</li>
+<li>git commit -a -m message 自动暂存所有已经追踪过的文件，且提交到本地仓库<br>git commit –amend -m message 使用一次新的提交，替代上次提交 </li>
+</ul>
+<h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><ul>
+<li>git branch 查看所有本地分支</li>
+<li>git branch –r 查看所有远程分支</li>
+<li>git branch –a 查看所有远程和本地分支</li>
+<li>git branch –v 查看本地所有分支最新一次提交信息</li>
+<li>git branch [branch] 新建分支</li>
+<li>git checkout –b [branch] 新建一个分支，并且切换过去</li>
+<li>git branch [branch] [commit] 基于某次提交，建立一个分支</li>
+<li>git branch –track [branch] [remote-branch] 建立一个分支，并且与远程分支建立追踪关系</li>
+<li>git branch –set-upstream [branch] [remote-branch] 在现有的本地分支和远程分支之间建立追踪关系</li>
+<li>git branch –m [old-branch] [new-branch] 重命名分支</li>
+<li>git merge [branch] 把指定分支合并到当前分支</li>
+<li>git chery-pick [commit] [commit] 选择提交，合并进当前分支</li>
+<li>git branch –d [branch] 删除本地分支</li>
+<li>git push origin –d [branch] 删除远程分支</li>
+<li>git checkout [branch] 切换分支</li>
+<li>git checkout - 切换到上一个最近使用过的分支</li>
+</ul>
+<h3 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h3><ul>
+<li>git tag 列出所有标签</li>
+<li>git show [tag] 查看指定标签信息</li>
+<li>git tag [tag] 给最近一次提交打一个标签</li>
+<li>git tag [tag] [commit] 在某次提交上打一个标签</li>
+<li>git tag –d [tag] 删除本地指定标签</li>
+<li>git push origin –d tag [tag] 删除远程的标签</li>
+<li>git push origin [tag] 推送指定标签</li>
+<li>git push origin –tags 推送所有标签</li>
+</ul>
+<h3 id="查看信息"><a href="#查看信息" class="headerlink" title="查看信息"></a>查看信息</h3><ul>
+<li>git status 查看文件状态</li>
+<li>git help [command] 获取帮助文档</li>
+<li>git [command] –help 获取帮助文档</li>
+<li>git log 查看当前分支的提交记录</li>
+<li>git log –all 查看所有分支的提交记录</li>
+<li>git log -5 –oneline –graph 查看最近5次提交记录，以单行、树状图形式显示</li>
+<li>git reflog 查看本地所有变更记录</li>
+<li>git diff 查看工作区和暂存区的差异</li>
+<li>git diff – file 某个文件在工作区和暂存区的差异</li>
+<li>git diff HEAD 工作区和最新一次提交的差异</li>
+<li>git diff –cached 暂存区和HEAD的差异</li>
+<li>git diff branch_a branch_b – file 某文件在两个分支间的差异</li>
+</ul>
+<h3 id="远程操作"><a href="#远程操作" class="headerlink" title="远程操作"></a>远程操作</h3><ul>
+<li>git remote -v 查看所有远程仓库</li>
+<li>git ls-remote origin 查看远程仓库引用列表</li>
+<li>git remote show origin 查看远程仓库信息</li>
+<li>git fetch origin 拉取远程仓库最新提交</li>
+<li>git pull origin master 拉取远程master，并且合并到本地当前分支</li>
+<li>git remote add upstream url 添加一个新的远程仓库，命名为upstream</li>
+<li>git push origin master 推送到远程origin的master分支</li>
+<li>git push origin –all 推送所有分支到远程仓库</li>
+<li>git remote prune origin 删除远程仓库中不存在的分支</li>
+</ul>
+<h3 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h3><ul>
+<li>git reset –soft HEAD 回滚到指定版本，保留工作区和暂存区</li>
+<li>git reset –mixed HEAD 回滚到指定版本，保留工作区，清空暂存区；–mixed是默认参数，即等同于git reset HEAD</li>
+<li>git reset –hard HEAD 回滚到指定版本，清空工作区和暂存区</li>
+<li>git reset HEAD – file 清空暂存区中某个文件的修改</li>
+<li>git checkout – file 检出暂存区的文件到工作目录</li>
+<li>git checkout . 检出暂存区的所有文件到工作目录</li>
+<li>git revert HEAD~ 2 回滚到2个祖先提交的版本，同时产生新的提交记录</li>
+<li>git revert –continue 冲突解决，且把修改提交到暂存区后执行回滚，生成一个新的提交</li>
+<li>git revert –abort 取消回滚，回到之前的状态</li>
+</ul>
+<h3 id="储藏"><a href="#储藏" class="headerlink" title="储藏"></a>储藏</h3><ul>
+<li>git stash 将工作区和暂存区的变更保存到储藏堆栈中，同时工作区和暂存区恢复到HEAD一样</li>
+<li>git stash list 查看储藏列表</li>
+<li>git stash pop 应用最近的一次储藏，并且从储藏栈中移除该条记录</li>
+<li>git stash apply stash@{0} 应用最近的一次储藏，不移除记录；等同于 git stash apply</li>
+<li>git stash pop –index 应用最近一次储藏，–index表示暂存区的变更也会更新，否则只更新工作区变更</li>
+<li>git stash drop stash@{0} 移除储藏记录</li>
+</ul>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2019/10/01/notepad/others/design_pattern/"
+                        >
+                            <span class="left arrow-icon flex-center" >
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Java设计模式</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2019/09/11/notepad/others/windows%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2%E5%90%8E%E7%AB%AF/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">windows的脚本命令一件部署后端服务</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center" >
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                    
+                </main>
+
+            </div>
+
+            <div class="page-main-content-bottom">
+                <!--
+ * @Author: Firefly
+ * @Date: 2020-12-06 11:25:04
+ * @Descripttion: 
+ * @LastEditTime: 2020-12-06 14:08:56
+-->
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2017</span> -
+            
+            2020 <i class="fas fa-heart icon-animate"></i> <a href="/">Firefly</a>
+        </div>
+        
+        <!-- <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a> | Theme <a class="theme-version" target="_blank"></a>
+        </div> -->
+    </div>
+</footer>
+
+            </div>
+        </div>
+    </main>
+
+    <div class="sidebar-tools">
+        <div class="tools-container">
+    <ul class="tools-list">
+        
+            <li class="search popup-trigger">
+                <i class="fas fa-search"></i>
+            </li>
+        
+
+        
+
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+    </ul>
+</div>
+
+    </div>
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center">
+            <i class="fas fa-arrow-up"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="tools-ul-1">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+    </ul>
+</div>
+
+    </div>
+
+    <!-- page aside -->
+    <aside class="page-aside">
+        
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%89%88%E6%9C%AC%E5%BA%93"><span class="nav-number">1.</span> <span class="nav-text">创建版本库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%92%8C%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">添加和删除文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%90%E4%BA%A4"><span class="nav-number">4.</span> <span class="nav-text">提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%94%AF"><span class="nav-number">5.</span> <span class="nav-text">分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE"><span class="nav-number">6.</span> <span class="nav-text">标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E4%BF%A1%E6%81%AF"><span class="nav-number">7.</span> <span class="nav-text">查看信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E6%93%8D%E4%BD%9C"><span class="nav-number">8.</span> <span class="nav-text">远程操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%92%A4%E9%94%80"><span class="nav-number">9.</span> <span class="nav-text">撤销</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%82%A8%E8%97%8F"><span class="nav-number">10.</span> <span class="nav-text">储藏</span></a></li></ol>
+    </div>
+</div>
+        
+    </aside>
+
+    <!-- image viewer -->
+    <div class="image-viewer-container">
+    <div class="img-box">
+        <img src="">
+    </div>
+</div>
+
+
+</div>
+
+
+
+    <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-icon">
+            <i class="fas fa-search"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/local-search.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/left-side-toggle.js"></script>
+
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/code-copy.js"></script>
+    
+
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/toc.js"></script>
+    
+
+
+</body>
+</html>
