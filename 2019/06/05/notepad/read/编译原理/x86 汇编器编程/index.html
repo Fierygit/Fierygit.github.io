@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <title>
+        x86 汇编器编程 |
+        
+        Firefly
+    </title>
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true},"style":{"primary_color":"#0066CC","avatar":"images/avatar.png","favicon":"images/logo.svg","img_position":"left","left_side_width":"260px","content_max_width":"900px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":false,"description":"Welcome"}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"version":"3.0.3"};
+    KEEP.language = {"search":"Search...","prev":"Prev","next":"Next","prev_posts":"Prev posts","next_posts":"Next posts","page":"Page %d","recent_posts":"Recent Posts","share":"Share","powered_by":"Powered by %s","theme":"Theme","rss_feed":"RSS Feed","category":"Category","categories":"Categories","tag":"Tag","tags":"Tags","tagcloud":"Tag Cloud","comment":"Comment","home":"Home","archive":"Archive","archives":"Archives","about":"About","site_uv":"Visitor Count","site_pv":"Totalview","links":"Links","link":"Link","top":"TOP","read_more":"Read more","wordcount":"Words","min2read":"Mins","changelog":"Changelog","copyright":{"author":"Post author","title":"Post title","link":"Post link","create_time":"Create time","license_title":"Copyright Notice","license_content":"All articles in this blog are licensed under %s unless stating additionally."},"ago":{"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days age","week":"%s weeks age","month":"%s months age","year":"%s years age"}};
+  </script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+<div class="page-container">
+
+    
+
+    <header class="page-header">
+        <div class="header-progress"></div>
+    </header>
+
+    <main class="page-main">
+
+        <div class="page-main-content">
+
+            <div class="page-main-content-top">
+                <header class="header-wrapper">
+
+    <div class="header-content">
+        <a class="logo-title" href="/">
+            Firefly
+        </a>
+
+        <ul class="menu-list">
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/"
+                    >
+                        HOME
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/archives"
+                    >
+                        ARCHIVES
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/categories"
+                    >
+                        CATEGORIES
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/links"
+                    >
+                        LINKS
+                    </a>
+                </li>
+            
+        </ul>
+
+        <div class="menu-bar">
+            <div class="menu-bar-middle"></div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">CATEGORIES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">LINKS</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+            </div>
+
+            <div class="page-main-content-middle">
+
+                <main class="main-content normal-code-theme">
+
+                    
+                        <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">x86 汇编器编程</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span>Firefly</span>
+                        <span class="level">Lv5</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-calendar"></i> 2019-06-05 00:00:00
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i> <span>1.7k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i> <span>6 Mins</span>
+        </span>
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h2 id="x86-汇编器编程"><a href="#x86-汇编器编程" class="headerlink" title="x86 汇编器编程"></a>x86 汇编器编程</h2><p>基于x86 实现编译器首先得了解x86 平台的指令调度， 以下是一些我在实现编译器过程中用到的基础知识！</p>
+<p>大部分内容参考了 青木的自制编译器，</p>
+<h3 id="基于GNU汇编器"><a href="#基于GNU汇编器" class="headerlink" title="基于GNU汇编器"></a>基于GNU汇编器</h3><p>c语言使用gcc 编译， 而gcc 编译器将c代码转化为汇编之后， 也是用的GNU as 的汇编器将汇编语言 .s 转化为.o，然后再连接， 因此如果自制编译器， 也是做到汇编这一步， 所以又得学x86 汇编器的使用方法！</p>
+<p>gcc 用的 GNU， 那我就直接使用gcc！</p>
+<h4 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h4><p>编译：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">as hello.s &#x2F;&#x2F;默认生成 a.out</span><br></pre></td></tr></table></figure>
+
+<p>也可以指定名字：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">as -o hello.o hello.s</span><br></pre></td></tr></table></figure>
+
+<p>生成目标文件后还要连接才可以执行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc hello.o -o hello</span><br></pre></td></tr></table></figure>
+
+<p>最后就是</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./hello</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><h4 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h4><p>指令包括  <strong>助记符</strong> 和 <strong>操作数</strong> 组成，比如 <code>movl %esp， %ebp</code> , movl 助记符， 后面两个为操作数， 操作数可以为多个！逗号分隔。</p>
+<p>这个是由cpu直接执行的指令</p>
+<h4 id="汇编伪操作"><a href="#汇编伪操作" class="headerlink" title="汇编伪操作"></a>汇编伪操作</h4><p>以点 “.” 开头的， 末尾没有冒号 “：” 的 <strong>行</strong> 都是汇编伪操作行。</p>
+<p>由汇编器执行，记录元数据和设定指令的属性。</p>
+<p>汇编的首行缩进是没有影响的</p>
+<h4 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h4><p>以冒号“：” 结尾的 <strong>行</strong> 都是标签行</p>
+<p>冒号是语法， 标签名为冒号前面的值。</p>
+<p>一般命名加上 . ，避免和代码里面的名字重复。</p>
+<h4 id="助记符后缀"><a href="#助记符后缀" class="headerlink" title="助记符后缀"></a>助记符后缀</h4><table>
+<thead>
+<tr>
+<th align="center">后缀</th>
+<th align="center">大小</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">b</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="center">w</td>
+<td align="center">16</td>
+</tr>
+<tr>
+<td align="center">l</td>
+<td align="center">32</td>
+</tr>
+</tbody></table>
+<h4 id="操作数"><a href="#操作数" class="headerlink" title="操作数"></a>操作数</h4><h5 id="立即数"><a href="#立即数" class="headerlink" title="立即数"></a>立即数</h5><p>使用$num 来标识， $1 表示 1</p>
+<h5 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h5><p>可以直接当做立即数， 使用 % 作为前缀， %eax = %EAX</p>
+<h5 id="直接内存引用"><a href="#直接内存引用" class="headerlink" title="直接内存引用"></a>直接内存引用</h5><p>直接访问固定内存</p>
+<h5 id="间接内存访问"><a href="#间接内存访问" class="headerlink" title="间接内存访问"></a>间接内存访问</h5><p>相当于使用c语言的数组</p>
+<p>例子：</p>
+<p><code>movl %ecx, %eax</code><br>最后，将ecx 寄存器中的数据作为地址访问内存，并将内存上的数据加载到eax 寄存器中<br>的写法如下所示。</p>
+<p><code>movl (%ecx), %eax</code><br>不习惯汇编的话会觉得%ecx 和(%ecx) 的区别难以理解，可以把它当作C 语言的指针。<br>指针变量ptr 自身的值等同于%ecx 的话，那么对指针的取值操作*ptr 就相当于(%ecx)。<br>另外，%ecx 是访问寄存器，而(%ecx) 则是利用寄存器访问内存。</p>
+<p>//todo important</p>
+<h3 id="指令-1"><a href="#指令-1" class="headerlink" title="指令"></a>指令</h3><h4 id="传输指令："><a href="#传输指令：" class="headerlink" title="传输指令："></a>传输指令：</h4><h5 id="movl"><a href="#movl" class="headerlink" title="movl"></a>movl</h5><p>mov 是在寄存器或内存之间传输数据，或者将立即数加载到寄存器或<br>内存的指令。mov 也是汇编语言中最常用的指令之一。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mov 立即数，寄存器</span><br><span class="line">mov 寄存器， 寄存器</span><br><span class="line">mov 内存，寄存器</span><br><span class="line">mov 立即数，内存</span><br><span class="line">mov 寄存器，内存</span><br><span class="line">mov 内存，内存</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="pop-and-push"><a href="#pop-and-push" class="headerlink" title="pop and push"></a>pop and push</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">push 立即数</span><br><span class="line">push 寄存器</span><br></pre></td></tr></table></figure>
+
+<p>push 指令将数据压栈。具体来说，<strong>将esp 寄存器减去压栈的数据的大小</strong>(注意会自己减去)，再将数据存储到<br>esp 寄存器所指向的地址。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pop 寄存器</span><br></pre></td></tr></table></figure>
+
+<p>pop 指令将数据出栈并写入寄存器。具体来说，将数据从esp 寄存器所指向的地址加载到<br>寄存器，再将esp 寄存器加上出栈的数据的大小。</p>
+<h5 id="leal"><a href="#leal" class="headerlink" title="leal"></a>leal</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lea 内存，寄存器</span><br></pre></td></tr></table></figure>
+
+<p>lea 指令将地址加载到寄存器。lea 是Load Effective Address（实效地址加载）的简称。<br>“lea 内存, 寄存器”将内存对应的地址加载到寄存器。</p>
+<p><strong>note:</strong></p>
+<p>mov 指令表示将ebx 寄存器加4 后的值作为内存地址进行访问，并将数据加载到eax 寄存器中。<br><code>movl 4(%ebx), %eax</code></p>
+<p>另一方面，将上述语句中的mov 指令替换为lea 指令，如下所示。该语句表示将ebx 寄存<br>器加上4 后的值保存到eax。</p>
+<p><code>leal 4(%ebx), %eax</code><br>同样是间接内存引用的语句，mov 指令取得的是内存地址所指向的内存上的数据，而lea<br>指令取得的是内存地址本身。</p>
+<p>//! important</p>
+<h4 id="运算指令："><a href="#运算指令：" class="headerlink" title="运算指令："></a>运算指令：</h4><h5 id="addl"><a href="#addl" class="headerlink" title="addl"></a>addl</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">add 立即数， 寄存器</span><br><span class="line">add 寄存器， 寄存器</span><br><span class="line">add 内存， 寄存器</span><br><span class="line">add 立即数， 内存</span><br><span class="line">add 寄存器， 内存</span><br></pre></td></tr></table></figure>
+
+<p>add 指令将第1 操作数和第2 操作数相加，并将结果写入第2 操作数。<br>请注意“将运算结果写入第2 操作数”这一点。</p>
+<p>例如add$1, %eax 表示将eax 寄存器的数据加1，并将结果保存到eax 寄存器。类似于C 语言中的+= 运算。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">addl $<span class="number">1</span>, %eax # 将eax 寄存器加<span class="number">1</span></span><br><span class="line">addl %ecx, %eax <span class="meta"># eax 寄存器和ecx 寄存器的数据相加后存放到eax 寄存器</span></span><br><span class="line">addl $<span class="number">4</span>, (%ebx) # 将ebx 寄存器所指向的内存中的数据加<span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>加减乘除差不多！！</p>
+<h3 id="流程控制指令："><a href="#流程控制指令：" class="headerlink" title="流程控制指令："></a><strong>流程控制指令：</strong></h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>jmp</td>
+<td>无条件跳转</td>
+</tr>
+<tr>
+<td>jz、jnz、je、jne</td>
+<td>条件跳转</td>
+</tr>
+<tr>
+<td>cmp</td>
+<td>数据的比较</td>
+</tr>
+<tr>
+<td>test</td>
+<td>数据的非0 检查</td>
+</tr>
+<tr>
+<td>sete、setne、setg、setge、setl、setle</td>
+<td>获取eflags 寄存器中的各个标志位</td>
+</tr>
+<tr>
+<td>call</td>
+<td>函数调用</td>
+</tr>
+<tr>
+<td>ret</td>
+<td>从子程序返回</td>
+</tr>
+</tbody></table>
+<p>其它指令类似！</p>
+<h3 id="汇编的功能"><a href="#汇编的功能" class="headerlink" title="汇编的功能"></a>汇编的功能</h3><table>
+<thead>
+<tr>
+<th>代码段</th>
+<th>功能</th>
+<th>对应汇编格式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>bss段</td>
+<td>BSS段通常是指用来存放程序中未初始化的全局变量的一块内存区域。BSS是英文BlockStartedby Symbol的简称。BSS段属于静态内存分配。</td>
+<td>.bss</td>
+</tr>
+<tr>
+<td>data段</td>
+<td>数据段通常是指用来存放程序中已初始化的全局变量的一块内存区域。数据段属于静态内存分配。</td>
+<td>.comm</td>
+</tr>
+<tr>
+<td>text段</td>
+<td>代码段通常是指用来存放程序执行代码的一块内存区域。这部分区域的大小在程序运行前就已经确定，并且内存区域通常属于只读,某些架构也允许代码段为可写，即允许修改程序。在代码段中，也有可能包含一些只读的常数变量，例如字符串常量等。</td>
+<td>.text</td>
+</tr>
+<tr>
+<td>rodata段</td>
+<td>存放C中的字符串和#define定义的常量</td>
+<td>.rodata</td>
+</tr>
+<tr>
+<td>stack栈</td>
+<td>用户存放程序临时创建的局部变量</td>
+<td>push和pop使用</td>
+</tr>
+</tbody></table>
+<h3 id="函数调用："><a href="#函数调用：" class="headerlink" title="函数调用："></a>函数调用：</h3><p>经过我无数次直接从gcc 生成汇编观察出， 调用函数， 首先是参数压栈处理然后， ebp 的值压栈， 接下来返回地址压栈， 用一个图表示：</p>
+<p><img src="https://raw.githubusercontent.com/Fierygit/picbed/master/20200130211927.png"></p>
+<p>当调用函数时， 先扩大栈空间， 把参数压栈， 然后在被调用函数里面使用参数记得是 ebp 加上 8， 中间有返回地址和旧ebp的值！</p>
+<h3 id="赋值语句实现："><a href="#赋值语句实现：" class="headerlink" title="赋值语句实现："></a>赋值语句实现：</h3><p>x86所有的寄存器是通用的， 想用那个就用哪个！</p>
+<p>截取自ecc</p>
+<pre><code># asign
+movl    8(%esp),%esi
+leal    12(%esp),%edi
+movl    %esi,(%edi)</code></pre>
+<p>其它类似。。。我用gcc 生成汇编，一步一步摸索出来的。。。</p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2019/06/05/notepad/read/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/easy_c/"
+                        >
+                            <span class="left arrow-icon flex-center" >
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">easy_c</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2019/05/18/notepad/read/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/tinhttpd/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">tinhttpd</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center" >
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                    
+                </main>
+
+            </div>
+
+            <div class="page-main-content-bottom">
+                <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2017</span> -
+            
+            2020 <i class="fas fa-heart icon-animate"></i> <a href="/">Firefly</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a> | Theme <a class="theme-version" target="_blank"></a>
+        </div>
+    </div>
+</footer>
+
+            </div>
+        </div>
+    </main>
+
+    <div class="sidebar-tools">
+        <div class="tools-container">
+    <ul class="tools-list">
+        
+            <li class="search popup-trigger">
+                <i class="fas fa-search"></i>
+            </li>
+        
+
+        
+
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+    </ul>
+</div>
+
+    </div>
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center">
+            <i class="fas fa-arrow-up"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="tools-ul-1">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+    </ul>
+</div>
+
+    </div>
+
+    <!-- page aside -->
+    <aside class="page-aside">
+        
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#x86-%E6%B1%87%E7%BC%96%E5%99%A8%E7%BC%96%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">x86 汇编器编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8EGNU%E6%B1%87%E7%BC%96%E5%99%A8"><span class="nav-number">1.1.</span> <span class="nav-text">基于GNU汇编器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-number">1.1.1.</span> <span class="nav-text">基本使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4"><span class="nav-number">1.2.1.</span> <span class="nav-text">指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B1%87%E7%BC%96%E4%BC%AA%E6%93%8D%E4%BD%9C"><span class="nav-number">1.2.2.</span> <span class="nav-text">汇编伪操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE"><span class="nav-number">1.2.3.</span> <span class="nav-text">标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A9%E8%AE%B0%E7%AC%A6%E5%90%8E%E7%BC%80"><span class="nav-number">1.2.4.</span> <span class="nav-text">助记符后缀</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E6%95%B0"><span class="nav-number">1.2.5.</span> <span class="nav-text">操作数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AB%8B%E5%8D%B3%E6%95%B0"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">立即数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8"><span class="nav-number">1.2.5.2.</span> <span class="nav-text">寄存器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E5%86%85%E5%AD%98%E5%BC%95%E7%94%A8"><span class="nav-number">1.2.5.3.</span> <span class="nav-text">直接内存引用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%97%B4%E6%8E%A5%E5%86%85%E5%AD%98%E8%AE%BF%E9%97%AE"><span class="nav-number">1.2.5.4.</span> <span class="nav-text">间接内存访问</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4-1"><span class="nav-number">1.3.</span> <span class="nav-text">指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%A0%E8%BE%93%E6%8C%87%E4%BB%A4%EF%BC%9A"><span class="nav-number">1.3.1.</span> <span class="nav-text">传输指令：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#movl"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">movl</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#pop-and-push"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">pop and push</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#leal"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">leal</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E6%8C%87%E4%BB%A4%EF%BC%9A"><span class="nav-number">1.3.2.</span> <span class="nav-text">运算指令：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#addl"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">addl</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E6%8C%87%E4%BB%A4%EF%BC%9A"><span class="nav-number">1.4.</span> <span class="nav-text">流程控制指令：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%87%E7%BC%96%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="nav-number">1.5.</span> <span class="nav-text">汇编的功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%EF%BC%9A"><span class="nav-number">1.6.</span> <span class="nav-text">函数调用：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B5%8B%E5%80%BC%E8%AF%AD%E5%8F%A5%E5%AE%9E%E7%8E%B0%EF%BC%9A"><span class="nav-number">1.7.</span> <span class="nav-text">赋值语句实现：</span></a></li></ol></li></ol>
+    </div>
+</div>
+        
+    </aside>
+
+    <!-- image viewer -->
+    <div class="image-viewer-container">
+    <div class="img-box">
+        <img src="">
+    </div>
+</div>
+
+
+</div>
+
+
+
+    <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-icon">
+            <i class="fas fa-search"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/local-search.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/left-side-toggle.js"></script>
+
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/code-copy.js"></script>
+    
+
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/toc.js"></script>
+    
+
+
+</body>
+</html>

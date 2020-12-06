@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <title>
+        Wolrd In C |
+        
+        Firefly
+    </title>
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true},"style":{"primary_color":"#0066CC","avatar":"images/avatar.png","favicon":"images/logo.svg","img_position":"left","left_side_width":"260px","content_max_width":"900px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":false,"description":"Welcome"}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"version":"3.0.3"};
+    KEEP.language = {"search":"Search...","prev":"Prev","next":"Next","prev_posts":"Prev posts","next_posts":"Next posts","page":"Page %d","recent_posts":"Recent Posts","share":"Share","powered_by":"Powered by %s","theme":"Theme","rss_feed":"RSS Feed","category":"Category","categories":"Categories","tag":"Tag","tags":"Tags","tagcloud":"Tag Cloud","comment":"Comment","home":"Home","archive":"Archive","archives":"Archives","about":"About","site_uv":"Visitor Count","site_pv":"Totalview","links":"Links","link":"Link","top":"TOP","read_more":"Read more","wordcount":"Words","min2read":"Mins","changelog":"Changelog","copyright":{"author":"Post author","title":"Post title","link":"Post link","create_time":"Create time","license_title":"Copyright Notice","license_content":"All articles in this blog are licensed under %s unless stating additionally."},"ago":{"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days age","week":"%s weeks age","month":"%s months age","year":"%s years age"}};
+  </script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+<div class="page-container">
+
+    
+
+    <header class="page-header">
+        <div class="header-progress"></div>
+    </header>
+
+    <main class="page-main">
+
+        <div class="page-main-content">
+
+            <div class="page-main-content-top">
+                <header class="header-wrapper">
+
+    <div class="header-content">
+        <a class="logo-title" href="/">
+            Firefly
+        </a>
+
+        <ul class="menu-list">
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/"
+                    >
+                        HOME
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/archives"
+                    >
+                        ARCHIVES
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/categories"
+                    >
+                        CATEGORIES
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/links"
+                    >
+                        LINKS
+                    </a>
+                </li>
+            
+        </ul>
+
+        <div class="menu-bar">
+            <div class="menu-bar-middle"></div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">CATEGORIES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">LINKS</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+            </div>
+
+            <div class="page-main-content-middle">
+
+                <main class="main-content normal-code-theme">
+
+                    
+                        <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Wolrd In C</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span>Firefly</span>
+                        <span class="level">Lv5</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-calendar"></i> 2019-11-02 00:00:00
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/categories/C-C/">C/C++</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/tags/c-c/">c/c++</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i> <span>1.7k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i> <span>7 Mins</span>
+        </span>
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="c-c-note"><a href="#c-c-note" class="headerlink" title=" c / c++ note"></a><center> c / c++ note</center></h1><p>c / c++ 遇到的bug 或者小技巧集</p>
+<p>[TOC]</p>
+<h2 id="typedef-和-define"><a href="#typedef-和-define" class="headerlink" title="typedef 和 #define"></a>typedef 和 #define</h2><p>每一个例子都看懂 == 入门c</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义新的类型</span></span><br><span class="line"><span class="keyword">typedef</span>  <span class="keyword">int</span>* t1;</span><br><span class="line"><span class="comment">//预处理， 替换</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> t2  int*</span></span><br><span class="line"></span><br><span class="line">t1 a, b; <span class="comment">//等价于  int *a, *b;</span></span><br><span class="line">t2 a,b;  <span class="comment">//等价于  int *a, b;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> <span class="keyword">const</span> b = <span class="number">10</span>; <span class="comment">//等价于 const int b = 10;*************</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//这两种写法是一样的，  定义 指针常量, t1 相当于一个新的类型, 如b的定义</span></span><br><span class="line">t1 <span class="keyword">const</span> p1 = &amp;a;</span><br><span class="line"><span class="keyword">const</span> t1 p1 = &amp;a;</span><br><span class="line">*t1 = <span class="number">12</span>;    <span class="comment">//可改变量</span></span><br><span class="line">t1 = &amp;b; <span class="comment">//错误</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> t1 *p5 = &amp;p1; <span class="comment">// 指向  新类型的指针， 这个指针不可变</span></span><br><span class="line">p1 = &amp;b; 			<span class="comment">// 错误</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> t1 * <span class="keyword">const</span> p5 = &amp;p1; <span class="comment">// 这个指针不可变, 而且指针指向的指针的对应的值不可变</span></span><br><span class="line">**p1 = <span class="number">11</span> <span class="comment">// 错误</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> t2 p2 = &amp;a;</span><br><span class="line"><span class="comment">//等价于 const int * p2 = &amp;a;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<h2 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h2><p>~ 用于数字或者整形变量之前，表示对该数取反操作，其规则是~0=1, ~1=0, 如二进制0101 0101取反后就是1010 1010</p>
+<p>测试得到： -a - 1  ==  ~a </p>
+<ul>
+<li>判断 2 的 乘方：</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">n &amp; n - <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>输出二进制 1 的个数:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int cnt &#x3D; 0;</span><br><span class="line">while(n) n &amp;&#x3D; n-1, ++cnt</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="memset赋值无穷大"><a href="#memset赋值无穷大" class="headerlink" title="memset赋值无穷大"></a>memset赋值无穷大</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> G[<span class="number">10</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">memset</span>(G, <span class="number">0x3f</span>, <span class="keyword">sizeof</span>(G));   <span class="comment">//  输出这个1061109567,给数据赋值无穷大的方法</span></span><br></pre></td></tr></table></figure>
+
+<p>memset 是按照一个字节来赋值的， 因此memset 会执行  sizeof（int） * 10 也就是40次的赋值，因此，</p>
+<p> <code>G[0] = 0x3f3f3f3f</code> .</p>
+<p>为什么要选择 0x3f3f3f3f 作为无穷大？  因为这个数相加还是在 int 的范围之内， 无穷大相加还是无穷大， 而且这个数方便写, 连续4个 3f！</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="number">0x3f3f3f3f</span> 	&lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="number">0x3f3f3f3f</span> * <span class="number">2</span> &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="number">0x7fffffff</span> 	&lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; ~(<span class="number">1</span>&lt;&lt;<span class="number">31</span>) 		&lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1061109567</span></span><br><span class="line"><span class="number">2122219134</span></span><br><span class="line"><span class="number">2147483647</span></span><br><span class="line"><span class="number">2147483647</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="格式化标准输入输出"><a href="#格式化标准输入输出" class="headerlink" title="格式化标准输入输出"></a>格式化标准输入输出</h2><p>cout.setf(ios::left);   //左对齐 右对齐相同 </p>
+<p>cout.width(3);    //宽度为3</p>
+<h2 id="struct-初始化的一个小细节"><a href="#struct-初始化的一个小细节" class="headerlink" title="struct 初始化的一个小细节"></a>struct 初始化的一个小细节</h2><p>2019-11-2<br>1.今天写实验定义了一个这样的结构体，然后赋值： </p>
+<p><img src="https://raw.githubusercontent.com/Fierygit/picbed/master/c1.png"></p>
+<p><img src="https://raw.githubusercontent.com/Fierygit/picbed/master/c2.jpg"></p>
+<p>debug了半天， 一个一个输出，终于找到错误的源头，原来是。。。。。。string和struct有冲突，什么原因呢？</p>
+<p>经查，  malloc/free和new/delete </p>
+<hr>
+<ul>
+<li>new会先调用operator new函数，申请足够的内存（通常底层使用malloc实现）。然后调用类型的构造函数，初始化成员变量，最后返回自定义类型指针。delete先调用析构函数，然后调用operator delete函数释放内存（通常底层使用free实现）。</li>
+</ul>
+<hr>
+<ul>
+<li>malloc/free是库函数，只能动态的申请和释放内存，无法强制要求其做自定义类型对象构造和析构工作。</li>
+</ul>
+<hr>
+<p>所以解决的方案是： <code>TreeNode *temp = new TreeNode;</code></p>
+<p>struct 是c里面的， 而string 类是 c++的，所以当在用c++的时候，写c语言就要考虑一下兼容问题。</p>
+<h2 id="map的一个小细节"><a href="#map的一个小细节" class="headerlink" title="map的一个小细节"></a>map的一个小细节</h2><p>当创建一个map的时候，map是没有预分配内存的，当map一个没有的key的时候，就会默认创建这个对象，并且map的size加一！</p>
+<p>看一个例子：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="built_in">string</span>,<span class="keyword">int</span>&gt; map1;</span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="built_in">string</span>,<span class="built_in">string</span>&gt; map2;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;out1-----------\n&quot;</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;map1.size(): &quot;</span> &lt;&lt;  map1.size() &lt;&lt; <span class="string">&quot;\t&quot;</span> &lt;&lt; <span class="built_in">endl</span>  ; </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;map2.size(): &quot;</span> &lt;&lt;  map2.size() &lt;&lt; <span class="string">&quot;\t&quot;</span>  ;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;\n out2-----------\n&quot;</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt;<span class="string">&quot;map1[a]: &quot;</span> &lt;&lt;  map1[<span class="string">&quot;a&quot;</span>] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt;<span class="string">&quot;map2[a]: &quot;</span> &lt;&lt;  map2[<span class="string">&quot;a&quot;</span>] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">if</span>(map2[<span class="string">&quot;a&quot;</span>] == <span class="string">&quot;&quot;</span>) <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;empty string!!!!&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;map1.size(): &quot;</span> &lt;&lt;  map1.size() &lt;&lt; <span class="string">&quot;\t&quot;</span>  &lt;&lt; <span class="built_in">endl</span> ;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;map2.size(): &quot;</span> &lt;&lt;  map2.size() &lt;&lt; <span class="string">&quot;\t&quot;</span>  &lt;&lt; <span class="built_in">endl</span> ;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">out1-----------</span><br><span class="line">map1.size(): <span class="number">0</span></span><br><span class="line">map2.size(): <span class="number">0</span></span><br><span class="line"> out2-----------</span><br><span class="line">map1[a]: <span class="number">0</span></span><br><span class="line">map2[a]:</span><br><span class="line">empty <span class="built_in">string</span>!!!!</span><br><span class="line">map1.size(): <span class="number">1</span></span><br><span class="line">map2.size(): <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>当写一些需要用到map的代码的时候，就要注意了， 可能要花掉你半天的时间去debug这个小问题！！！</p>
+<h2 id="操作系统的-堆和栈"><a href="#操作系统的-堆和栈" class="headerlink" title="操作系统的 堆和栈"></a>操作系统的 堆和栈</h2><p>学操作系统的时候，系统分配内存会分配 堆和栈</p>
+<p>有一个我纠结了很久的问题，堆是一个二叉树实现的，而分配内存的堆是一个线性的地址，这两者有什么关联呢？</p>
+<p>结论，数据结构没有学好！！  找个时间马一个heap</p>
+<p>栈和堆都可以用二叉树实现， 堆栈就是栈， 堆插入一个元素二叉树放到最后面，如果删除了父节点，就要调整二叉树， 而栈只能在二叉树尾部删除和操作，没有其它操作，所以堆栈的含义：堆的后面多了一个限定词， 把范围限定的更小了！！ 但栈一般直接使用数组就好了，查看网上的说法：栈是一种受限制的堆。</p>
+<p>查看数据结构的书本，发现这样一句话，我还画了出来 ： 学生们经常把堆的逻辑表示与利用基于数组的完全二叉树的物理实现相混淆。二者并非同义，虽然堆的一般实现方法是使用数组，但是从逻辑的角度来看，堆实际上是一种树结构。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">0</span>; 全局初始化区</span><br><span class="line"><span class="keyword">char</span> *p1; 全局未初始化区</span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">int</span> b; 栈</span><br><span class="line"><span class="keyword">char</span> s[] = <span class="string">&quot;abc&quot;</span>; 栈</span><br><span class="line"><span class="keyword">char</span> *p2; 栈</span><br><span class="line"><span class="keyword">char</span> *p3 = <span class="string">&quot;123456&quot;</span>; <span class="number">123456</span>\<span class="number">0</span>在常量区，p3在栈上。</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> c =<span class="number">0</span>； 全局（静态）初始化区</span><br><span class="line">p1 = (<span class="keyword">char</span> *)<span class="built_in">malloc</span>(<span class="number">10</span>);</span><br><span class="line">p2 = (<span class="keyword">char</span> *)<span class="built_in">malloc</span>(<span class="number">20</span>);</span><br><span class="line">分配得来得<span class="number">10</span>和<span class="number">20</span>字节的区域就在堆区。</span><br><span class="line"><span class="built_in">strcpy</span>(p1, <span class="string">&quot;123456&quot;</span>); <span class="number">123456</span>\<span class="number">0</span>放在常量区，编译器可能会将它与p3所指向的</span><br><span class="line"><span class="string">&quot;123456&quot;</span>优化成一个</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">int</span> b = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">int</span> c = <span class="number">3</span>;</span><br><span class="line">  <span class="keyword">int</span> d = <span class="number">4</span>;</span><br><span class="line">  <span class="keyword">int</span> e = <span class="number">5</span>;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;addr: %p\n&quot;</span>, &amp;a);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;addr: %p\n&quot;</span>, &amp;b);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;addr: %p\n&quot;</span>, &amp;c);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;addr: %p\n&quot;</span>, &amp;d);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;addr: %p\n&quot;</span>, &amp;e);</span><br><span class="line">  <span class="keyword">int</span> *a1, *b1, *c1, *d1, *e1;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n-----------------\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">  a1 = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">  b1 = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">  c1 = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">  d1 = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">  e1 = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line"></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;addr: %p\n&quot;</span>, &amp;a1);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;addr: %p\n&quot;</span>, &amp;b1);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;addr: %p\n&quot;</span>, &amp;c1);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;addr: %p\n&quot;</span>, &amp;d1);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;addr: %p\n&quot;</span>, &amp;e1);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">输出</span><br><span class="line">addr: <span class="number">0061F</span>F1C</span><br><span class="line">addr: <span class="number">0061F</span>F18</span><br><span class="line">addr: <span class="number">0061F</span>F14</span><br><span class="line">addr: <span class="number">0061F</span>F10</span><br><span class="line">addr: <span class="number">0061F</span>F0C</span><br><span class="line">-----------------</span><br><span class="line">addr: <span class="number">0061F</span>F08</span><br><span class="line">addr: <span class="number">0061F</span>F04</span><br><span class="line">addr: <span class="number">0061F</span>F00</span><br><span class="line">addr: <span class="number">0061F</span>EFC</span><br><span class="line">addr: <span class="number">0061F</span>EF8</span><br><span class="line">可以看出  heap 是 从减小的，  <span class="built_in">stack</span>是增大的</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p>for(int i = 0, siz = a.size(); i &lt; siz; i++)  //for循环可以有有四个值</p>
+<p>​      有时也可以两个值       for( ; a &lt; b; ++a); </p>
+<p>return cout &lt;&lt; “ “ &lt;&lt; endl,0;      //可以在return 后面输出</p>
+<p>在for循环里 ++i 比 i++ 的效率高 <a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/FireflyNo1/article/details/82809624" >详情请点击<i class="fas fa-external-link-alt"></i></a></p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2019/12/28/notepad/algorithm/exercise/HNU_ACM/"
+                        >
+                            <span class="left arrow-icon flex-center" >
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">ACM_exercise</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2019/10/27/notepad/read/others/ssh%E9%85%8D%E7%BD%AE%E5%85%AC%E9%92%A5/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">ssh配置公钥</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center" >
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                    
+                </main>
+
+            </div>
+
+            <div class="page-main-content-bottom">
+                <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2017</span> -
+            
+            2020 <i class="fas fa-heart icon-animate"></i> <a href="/">Firefly</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a> | Theme <a class="theme-version" target="_blank"></a>
+        </div>
+    </div>
+</footer>
+
+            </div>
+        </div>
+    </main>
+
+    <div class="sidebar-tools">
+        <div class="tools-container">
+    <ul class="tools-list">
+        
+            <li class="search popup-trigger">
+                <i class="fas fa-search"></i>
+            </li>
+        
+
+        
+
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+    </ul>
+</div>
+
+    </div>
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center">
+            <i class="fas fa-arrow-up"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="tools-ul-1">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+    </ul>
+</div>
+
+    </div>
+
+    <!-- page aside -->
+    <aside class="page-aside">
+        
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#c-c-note"><span class="nav-number">1.</span> <span class="nav-text"> c &#x2F; c++ note</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#typedef-%E5%92%8C-define"><span class="nav-number">1.1.</span> <span class="nav-text">typedef 和 #define</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%8D%E8%BF%90%E7%AE%97"><span class="nav-number">1.2.</span> <span class="nav-text">位运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#memset%E8%B5%8B%E5%80%BC%E6%97%A0%E7%A9%B7%E5%A4%A7"><span class="nav-number">1.3.</span> <span class="nav-text">memset赋值无穷大</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%A0%87%E5%87%86%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="nav-number">1.4.</span> <span class="nav-text">格式化标准输入输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#struct-%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9A%84%E4%B8%80%E4%B8%AA%E5%B0%8F%E7%BB%86%E8%8A%82"><span class="nav-number">1.5.</span> <span class="nav-text">struct 初始化的一个小细节</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#map%E7%9A%84%E4%B8%80%E4%B8%AA%E5%B0%8F%E7%BB%86%E8%8A%82"><span class="nav-number">1.6.</span> <span class="nav-text">map的一个小细节</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84-%E5%A0%86%E5%92%8C%E6%A0%88"><span class="nav-number">1.7.</span> <span class="nav-text">操作系统的 堆和栈</span></a></li></ol></li></ol>
+    </div>
+</div>
+        
+    </aside>
+
+    <!-- image viewer -->
+    <div class="image-viewer-container">
+    <div class="img-box">
+        <img src="">
+    </div>
+</div>
+
+
+</div>
+
+
+
+    <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-icon">
+            <i class="fas fa-search"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/local-search.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/left-side-toggle.js"></script>
+
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/code-copy.js"></script>
+    
+
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/toc.js"></script>
+    
+
+
+</body>
+</html>

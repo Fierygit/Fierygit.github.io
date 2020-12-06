@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <title>
+        贪心算法 |
+        
+        Firefly
+    </title>
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true},"style":{"primary_color":"#0066CC","avatar":"images/avatar.png","favicon":"images/logo.svg","img_position":"left","left_side_width":"260px","content_max_width":"900px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":false,"description":"Welcome"}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"version":"3.0.3"};
+    KEEP.language = {"search":"Search...","prev":"Prev","next":"Next","prev_posts":"Prev posts","next_posts":"Next posts","page":"Page %d","recent_posts":"Recent Posts","share":"Share","powered_by":"Powered by %s","theme":"Theme","rss_feed":"RSS Feed","category":"Category","categories":"Categories","tag":"Tag","tags":"Tags","tagcloud":"Tag Cloud","comment":"Comment","home":"Home","archive":"Archive","archives":"Archives","about":"About","site_uv":"Visitor Count","site_pv":"Totalview","links":"Links","link":"Link","top":"TOP","read_more":"Read more","wordcount":"Words","min2read":"Mins","changelog":"Changelog","copyright":{"author":"Post author","title":"Post title","link":"Post link","create_time":"Create time","license_title":"Copyright Notice","license_content":"All articles in this blog are licensed under %s unless stating additionally."},"ago":{"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days age","week":"%s weeks age","month":"%s months age","year":"%s years age"}};
+  </script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+<div class="page-container">
+
+    
+
+    <header class="page-header">
+        <div class="header-progress"></div>
+    </header>
+
+    <main class="page-main">
+
+        <div class="page-main-content">
+
+            <div class="page-main-content-top">
+                <header class="header-wrapper">
+
+    <div class="header-content">
+        <a class="logo-title" href="/">
+            Firefly
+        </a>
+
+        <ul class="menu-list">
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/"
+                    >
+                        HOME
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/archives"
+                    >
+                        ARCHIVES
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/categories"
+                    >
+                        CATEGORIES
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/links"
+                    >
+                        LINKS
+                    </a>
+                </li>
+            
+        </ul>
+
+        <div class="menu-bar">
+            <div class="menu-bar-middle"></div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">CATEGORIES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">LINKS</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+            </div>
+
+            <div class="page-main-content-middle">
+
+                <main class="main-content normal-code-theme">
+
+                    
+                        <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">贪心算法</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span>Firefly</span>
+                        <span class="level">Lv5</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-calendar"></i> 2019-12-28 00:00:00
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E8%B4%AA%E5%BF%83/">贪心</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i> <span>2k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i> <span>9 Mins</span>
+        </span>
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a><center>贪心算法</center></h1><p>贪心方法的一般策略</p>
+<p>   问题的一般特征：问题的解是由n个输入的、满足某些事先给定的条件的子集组成。</p>
+<p>​    1）一般方法</p>
+<p>​    根据题意，选取一种度量标准。然后按照这种度量标准对n个输入排序，并按序一次输入一个量。</p>
+<p>​    如果这个输入和当前已构成在这种量度意义下的部分最优解加在一起不能产生一个可行解，则不把此输入加到这部分解中。否则，将当前输入合并到部分解中从而得到包含当前输入的新的部分解。</p>
+<p>   2）贪心方法</p>
+<p>   这种能够得到某种量度意义下的最优解的分级处理方法称为贪心方法</p>
+<h2 id="经典例题"><a href="#经典例题" class="headerlink" title="经典例题"></a>经典例题</h2><h3 id="Bridge"><a href="#Bridge" class="headerlink" title="Bridge"></a>Bridge</h3><blockquote>
+<p>N个人在晚上想通过桥。每次最多过去2个人，需要有手电筒。现在只有1个手电筒。每个人过桥的速度都不一样，过桥的时间以慢的为准。<br>你的工作是找到最少的过桥的方法； </p>
+<p>输入：<br>首先是n,然后n 行是过桥的时间。<br>人数不超过1000，而且没有人过桥的时间超过100秒；<br>输出：<br>首先输出总共所需最少时间；<br>下面表示过桥的过程（见样例），如果有多种过桥方案，输出其中一种。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">每次过桥2个人，希望一起过去的人时间相差最小，所以采用贪心技术。</span><br><span class="line">而且返回的时间要少，所以用时间最少的人返回；</span><br><span class="line"></span><br><span class="line">对于样例 1	2	5	10</span><br><span class="line"></span><br><span class="line">每一组时间相差最小的数有两种选择：</span><br><span class="line">1、可以选择一个最小的1， 每次送每一个人过去再回来。</span><br><span class="line">	1 	10		1和10过去</span><br><span class="line">	1			1 回来</span><br><span class="line">	1 	5			1和5过去</span><br><span class="line">	1			1回来</span><br><span class="line">一共10 + 1 + 5 + 1 &#x3D; 17</span><br><span class="line">2、也可以选两个最小的数来送手电筒</span><br><span class="line">	1	2		1和2过去</span><br><span class="line">	1			1回来</span><br><span class="line">	5	10		5和10 过去</span><br><span class="line">	2			回来</span><br><span class="line">一共2 + 1 + 10 + 2 &#x3D; 15</span><br><span class="line"></span><br><span class="line">那么怎么选用送回手电筒的策略呢？</span><br><span class="line"></span><br><span class="line">结合下面代码看！</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> i, j, n;</span><br><span class="line">  <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">  <span class="keyword">int</span> s[n];</span><br><span class="line">  <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++) <span class="built_in">cin</span> &gt;&gt; s[i];</span><br><span class="line">  sort(s, s + n);<span class="comment">// 先排序</span></span><br><span class="line">  <span class="comment">// 选择第一种情况：</span></span><br><span class="line">  <span class="comment">//  s1 = s[i] + s[0] + s[i-1] + s[0]; // 相当于 上面的 10 + 1 + 5 + 1</span></span><br><span class="line">  <span class="comment">// 选择第二种情况</span></span><br><span class="line">  <span class="comment">//  s2 = s[1] + s[0] + s[i] + s[1];	//相当于上面的 2 + 1 + 10 + 2；</span></span><br><span class="line">  <span class="keyword">int</span> t = <span class="number">2</span> * s[<span class="number">1</span>] - s[<span class="number">0</span>];</span><br><span class="line">   <span class="comment">// 先考虑第一种情况  即: s1 &gt; s2, 化简为   s[i-1] &gt; t; </span></span><br><span class="line">  <span class="keyword">for</span> (i = n - <span class="number">1</span>; (i &gt; <span class="number">2</span>) &amp;&amp; (s[i - <span class="number">1</span>] &gt; t); i -= <span class="number">2</span>)</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d %d\n%d\n%d %d\n%d\n&quot;</span>, s[<span class="number">0</span>], s[<span class="number">1</span>], s[<span class="number">0</span>], s[i - <span class="number">1</span>], s[i], s[<span class="number">1</span>]);</span><br><span class="line">   <span class="comment">// 在考虑第二种情况</span></span><br><span class="line">  <span class="keyword">for</span> (j = i; j &gt; <span class="number">1</span>; --j) <span class="built_in">printf</span>(<span class="string">&quot;%d %d\n%d\n&quot;</span>, s[<span class="number">0</span>], s[j], s[<span class="number">0</span>]);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Radar-Installation"><a href="#Radar-Installation" class="headerlink" title="Radar Installation"></a>Radar Installation</h3><blockquote>
+<p>在一个海边建一些雷达，雷达覆盖范围为d为半径的一个圆，所有海岛都需要覆盖在雷达范围内。问题是最少需要建多少雷达站，使得所有的海岛都被覆盖。</p>
+<p><strong>Input</strong></p>
+<p>The input consists of several test cases. The first line of each case contains two integers n (1&lt;=n&lt;=1000) and d, where n is the number of islands in the sea and d is the distance of coverage of the radar installation. This is followed by n lines each containing two integers representing the coordinate of the position of each island. Then a blank line follows to separate the cases. </p>
+<p> The input is terminated by a line containing pair of zeros </p>
+<p><strong>Output</strong></p>
+<p>For each test case output one line consisting of the test case number followed by the minimal number of radar installations needed. “-1” installation means no solution for that case.</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/Fierygit/picbed/master/20200502185142.png" alt="image-20200502185150700"></p>
+<p>解题思路：</p>
+<ul>
+<li><p>一、从左往右考虑建雷达站，首先第一个雷达尽量往右建（贪心）以期能覆盖尽可能多的海岛。</p>
+</li>
+<li><p>二、重复一，一直到所有的海岛都被覆盖到。</p>
+</li>
+<li><p>三、怎么确定圆心位置。对于每个海岛来说，以海岛为中心，以d为半径画圆，在海岸线上有2个交点。那么第一个右交点就是第一个雷达站位置。</p>
+</li>
+<li><p>四、解题步骤：首先对于每个海岛，求出它的左右交点，按照右交点、左交点的顺序排序。依次找到最小的右交点，只要左交点比该右交点小，就被该圆覆盖。找到下一个不能被覆盖的左交点。</p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">  <span class="keyword">double</span> left, right;</span><br><span class="line">&#125; Interval;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span> *c, <span class="keyword">const</span> <span class="keyword">void</span> *d)</span> </span>&#123;  <span class="comment">// 万能指针， c语言的</span></span><br><span class="line">  Interval *a, *b;</span><br><span class="line">  a = (Interval *)c;</span><br><span class="line">  b = (Interval *)d;</span><br><span class="line">  <span class="keyword">if</span> ((*a).right &lt; (*b).right) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  <span class="keyword">if</span> ((*a).right &gt; (*b).right) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">if</span> ((*a).left &lt; (*b).left) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  <span class="keyword">if</span> ((*a).left &gt; (*b).left) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">Interval island[<span class="number">1000</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> i, j, x, y, dd, m = <span class="number">0</span>, n, d;</span><br><span class="line">  <span class="keyword">double</span> t;</span><br><span class="line">  <span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;d), n) &#123;</span><br><span class="line">    dd = d * d;</span><br><span class="line">    <span class="keyword">for</span> (i = j = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">      <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;x, &amp;y);</span><br><span class="line">      <span class="keyword">if</span> (y &gt; d) j = <span class="number">-1</span>;  <span class="comment">// 输入点的y 大于雷达的半径一定无解， 雷达覆盖不到</span></span><br><span class="line">      <span class="keyword">if</span> (j == <span class="number">-1</span>) <span class="keyword">continue</span>;</span><br><span class="line">      t = <span class="built_in">sqrt</span>(dd - y * y);</span><br><span class="line">      island[i].left = x - t;  <span class="comment">//左右交点， 这一步转换是核心， 大多数这一步想不到</span></span><br><span class="line">      island[i].right = x + t;  <span class="comment">// 转换成一个合适的数据结构来计算</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (j == <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="comment">/* Sort NMEMB elements of BASE, of SIZE bytes each,</span></span><br><span class="line"><span class="comment">     using COMPAR to perform the comparisons.  */</span></span><br><span class="line">      qsort(island, n, <span class="keyword">sizeof</span>(island[<span class="number">0</span>]), cmp);</span><br><span class="line">      <span class="keyword">for</span> (i = j = <span class="number">1</span>, t = island[<span class="number">0</span>].right; i &lt; n; ++i)<span class="comment">// 贪心， 核心代码</span></span><br><span class="line">        <span class="keyword">if</span> (island[i].left &gt; t) &#123; <span class="comment">// 尽可能往右边建， j 表示个数</span></span><br><span class="line">          t = island[i].right;      <span class="comment">// 不能建了， 只能新开一个</span></span><br><span class="line">          ++j;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Case %d: %d\n&quot;</span>, ++m, j);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="合并石头"><a href="#合并石头" class="headerlink" title="合并石头"></a>合并石头</h3><blockquote>
+<p>有n堆石头， 只能两两合并， 求合成一堆的最小花费。</p>
+<p>input</p>
+<p>第一行输入 n， 接下来n 行输入每堆石头的重量</p>
+</blockquote>
+<p>解题思路：</p>
+<p>每次选择，最小的两堆合并！ haffman 算法。</p>
+<p>极致效率：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="comment">// int cmp(const void* a, const void* b) &#123; return (int)(a) - (int)(b); &#125;</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 为了不要每次选择 最小的两堆 合并后再次排序， 可以选择两个数组</span></span><br><span class="line"><span class="comment">   * a 存储输入的数据，</span></span><br><span class="line"><span class="comment">   * b  存储合并后的数据</span></span><br><span class="line"><span class="comment">   * 分别用一个标记记录边界</span></span><br><span class="line"><span class="comment">   * haffman 算法的最优求解方法！！！</span></span><br><span class="line"><span class="comment">   * */</span></span><br><span class="line">  <span class="keyword">int</span> n, a[<span class="number">10003</span>], b[<span class="number">10000</span>];</span><br><span class="line">  sort(a, a + n);</span><br><span class="line">  <span class="comment">// qsort(a, n, sizeof(a[0]), cmp);</span></span><br><span class="line">  a[n] = a[n + <span class="number">1</span>] = <span class="number">1073741800</span>;   <span class="comment">// 为最后的判断设置的一个最大的数</span></span><br><span class="line">  <span class="keyword">int</span> i, j, k, r, m, c, t;</span><br><span class="line">  <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n;) b[i++] = <span class="number">20001</span>;</span><br><span class="line">  n--;</span><br><span class="line">  <span class="keyword">for</span> (i = j = k = r = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">    m = a[j] + a[j + <span class="number">1</span>]; <span class="comment">// 选取原来数组的两个值相加</span></span><br><span class="line">    c = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (m &gt; (t = a[j] + b[k])) &#123;   <span class="comment">// 原来数组和合并之后的各选一个</span></span><br><span class="line">      m = t;</span><br><span class="line">      c = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (m &gt; (t = b[k] + b[k + <span class="number">1</span>])) &#123;<span class="comment">// 都选合并之后的石头堆， k 越大b[k] 一定是递增的</span></span><br><span class="line">      m = t;</span><br><span class="line">      c = <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    r += b[i] = m;      <span class="comment">// 合并后的记录在 b， 总的花费加上1</span></span><br><span class="line">    <span class="keyword">if</span> (c == <span class="number">0</span>)         <span class="comment">// 移动标记 j -&gt; a,    k -&gt; b;</span></span><br><span class="line">      j += <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="number">1</span>)</span><br><span class="line">      j++, k++;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      k += <span class="number">2</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, r);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Sum-of-Factorials"><a href="#Sum-of-Factorials" class="headerlink" title="Sum of Factorials"></a><strong>Sum of Factorials</strong></h3><blockquote>
+<p>一个数是否可以表示为阶乘之和</p>
+<p>input</p>
+<p>9</p>
+<p>output</p>
+<p>yes</p>
+<p>example</p>
+<p>9=1!+2!+3!</p>
+</blockquote>
+<p>因为是超递增序列，所以可以贪心。</p>
+<blockquote>
+<p>超递增序列： 第n个数 大于 前n - 1个数之和</p>
+<p>n! , n^2, 都是超递增序列</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> fact[<span class="number">11</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">jud</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (n &gt;= fact[<span class="number">10</span>]) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">9</span>; i &gt;= <span class="number">0</span>; --i)</span><br><span class="line">    <span class="keyword">if</span> (n &gt; fact[i])  <span class="comment">// 9的阶乘已经很大了， 从大到小， 只要可以放就放进去</span></span><br><span class="line">      n -= fact[i];</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (n == fact[i])</span><br><span class="line">      <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  fact[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">int</span> n;</span><br><span class="line">  <span class="keyword">for</span> (n = <span class="number">1</span>; n &lt; <span class="number">11</span>; ++n)</span><br><span class="line">    fact[n] = n * fact[n - <span class="number">1</span>];  <span class="comment">// 提前计算好每一个数的阶乘</span></span><br><span class="line">  <span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n), n &gt;= <span class="number">0</span>) <span class="built_in">printf</span>(jud(n) ? <span class="string">&quot;YES\n&quot;</span> : <span class="string">&quot;NO\n&quot;</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2019/12/28/notepad/algorithm/exercise/exercise100/"
+                        >
+                            <span class="left arrow-icon flex-center" >
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Test</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2019/12/28/notepad/algorithm/exercise/interview/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">面试算法题</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center" >
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                    
+                </main>
+
+            </div>
+
+            <div class="page-main-content-bottom">
+                <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2017</span> -
+            
+            2020 <i class="fas fa-heart icon-animate"></i> <a href="/">Firefly</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a> | Theme <a class="theme-version" target="_blank"></a>
+        </div>
+    </div>
+</footer>
+
+            </div>
+        </div>
+    </main>
+
+    <div class="sidebar-tools">
+        <div class="tools-container">
+    <ul class="tools-list">
+        
+            <li class="search popup-trigger">
+                <i class="fas fa-search"></i>
+            </li>
+        
+
+        
+
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+    </ul>
+</div>
+
+    </div>
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center">
+            <i class="fas fa-arrow-up"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="tools-ul-1">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+    </ul>
+</div>
+
+    </div>
+
+    <!-- page aside -->
+    <aside class="page-aside">
+        
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">贪心算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E4%BE%8B%E9%A2%98"><span class="nav-number">1.1.</span> <span class="nav-text">经典例题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bridge"><span class="nav-number">1.1.1.</span> <span class="nav-text">Bridge</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Radar-Installation"><span class="nav-number">1.1.2.</span> <span class="nav-text">Radar Installation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%88%E5%B9%B6%E7%9F%B3%E5%A4%B4"><span class="nav-number">1.1.3.</span> <span class="nav-text">合并石头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sum-of-Factorials"><span class="nav-number">1.1.4.</span> <span class="nav-text">Sum of Factorials</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+        
+    </aside>
+
+    <!-- image viewer -->
+    <div class="image-viewer-container">
+    <div class="img-box">
+        <img src="">
+    </div>
+</div>
+
+
+</div>
+
+
+
+    <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-icon">
+            <i class="fas fa-search"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/local-search.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/left-side-toggle.js"></script>
+
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/code-copy.js"></script>
+    
+
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/toc.js"></script>
+    
+
+
+</body>
+</html>

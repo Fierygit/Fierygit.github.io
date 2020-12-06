@@ -16,7 +16,7 @@
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"example.com","root":"/","path":"search.xml"};
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true},"style":{"primary_color":"#0066CC","avatar":"images/avatar.png","favicon":"images/logo.svg","img_position":"left","left_side_width":"260px","content_max_width":"900px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"description":"Welcome"}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"version":"3.0.3"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true},"style":{"primary_color":"#0066CC","avatar":"images/avatar.png","favicon":"images/logo.svg","img_position":"left","left_side_width":"260px","content_max_width":"900px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":false,"description":"Welcome"}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"version":"3.0.3"};
     KEEP.language = {"search":"Search...","prev":"Prev","next":"Next","prev_posts":"Prev posts","next_posts":"Next posts","page":"Page %d","recent_posts":"Recent Posts","share":"Share","powered_by":"Powered by %s","theme":"Theme","rss_feed":"RSS Feed","category":"Category","categories":"Categories","tag":"Tag","tags":"Tags","tagcloud":"Tag Cloud","comment":"Comment","home":"Home","archive":"Archive","archives":"Archives","about":"About","site_uv":"Visitor Count","site_pv":"Totalview","links":"Links","link":"Link","top":"TOP","read_more":"Read more","wordcount":"Words","min2read":"Mins","changelog":"Changelog","copyright":{"author":"Post author","title":"Post title","link":"Post link","create_time":"Create time","license_title":"Copyright Notice","license_content":"All articles in this blog are licensed under %s unless stating additionally."},"ago":{"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days age","week":"%s weeks age","month":"%s months age","year":"%s years age"}};
   </script>
 <meta name="generator" content="Hexo 5.2.0"></head>
@@ -24,40 +24,6 @@
 
 <body>
 <div class="page-container">
-
-    
-        <div class="first-screen-container flex-center">
-    <div class="content flex-center">
-        <div class="description">
-            Welcome
-        </div>
-        
-            <ul class="s-icon-list">
-                
-                    
-                        
-                            <li class="s-icon-item github">
-                                <a target="_blank" rel="noopener" href="https://github.com/Fierygit">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </li>
-                        
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-            </ul>
-        
-    </div>
-</div>
 
     
 
@@ -164,429 +130,6 @@
                 
 
                 <h3 class="home-article-title">
-                    <a href="/2020/12/06/notepad/read/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/easy_c/">
-                        easy_c
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        easy_c实现目标实现一门基于 x86 平台的编译器， 链接基于GNU as， 功能实现加减乘除， 函数调用， if 语句和while循环，，输出整数值和字符串，不实现指针和数组。
-目的在于实现编译器的功能， 所以没有做很强大的语法功能， 自选了几...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-edit"></i> <span class="home-article-date" data-date="Sun Dec 06 2020 10:41:50 GMT+0800">2020-12-06</span></span>
-        
-        
-    </div>
-
-    <a href="/2020/12/06/notepad/read/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/easy_c/">Read more <i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2020/12/06/notepad/read/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/tinhttpd/">
-                        tinhttpd
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        tinhttpdhttps://www.cnblogs.com/nengm1988/p/7816618.html
-不断创建线程接受连接， 并解析http，解析完了之后，创建多个进程处理，每个子进程处理然后发送给父进程， 这里把处理和回复解耦， 处理的...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-edit"></i> <span class="home-article-date" data-date="Sun Dec 06 2020 09:59:36 GMT+0800">2020-12-06</span></span>
-        
-        
-    </div>
-
-    <a href="/2020/12/06/notepad/read/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/tinhttpd/">Read more <i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2020/12/06/notepad/read/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/dubbo/">
-                        
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        dubbo[toc]
-RPC 基础概念基础概念：响应时间(RT)响应时间是指系统对请求作出响应的时间。直观上看，这个指标与人对软件性能的主观感受是非常一致的，因为它完整地记录了整个计算机系统处理请求的时间。由于一个系统通常会提供许多功能，而不同功能的...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-edit"></i> <span class="home-article-date" data-date="Sun Dec 06 2020 09:59:36 GMT+0800">2020-12-06</span></span>
-        
-        
-    </div>
-
-    <a href="/2020/12/06/notepad/read/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/dubbo/">Read more <i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2020/12/06/notepad/read/%E8%AF%AD%E8%A8%80/%E5%8A%A8%E6%80%81%E6%80%A7%E4%B8%8E%E9%9D%99%E6%80%81%E6%80%A7%E3%80%81%E5%BC%BA%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%BC%B1%E7%B1%BB%E5%9E%8B/">
-                        
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        语言特性关于语言特性的定义总是弄混，写篇博客记录一下！  彻底理清！
-强类型与弱类型
-强类型：
-
-每个变量和对象都必须声明类型，在编译时确定好类型了，执行时不能更改。
-偏向于不容忍隐式类型转换。譬如说haskell的int就不能变成double。
-
-...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-edit"></i> <span class="home-article-date" data-date="Sun Dec 06 2020 09:59:36 GMT+0800">2020-12-06</span></span>
-        
-        
-    </div>
-
-    <a href="/2020/12/06/notepad/read/%E8%AF%AD%E8%A8%80/%E5%8A%A8%E6%80%81%E6%80%A7%E4%B8%8E%E9%9D%99%E6%80%81%E6%80%A7%E3%80%81%E5%BC%BA%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%BC%B1%E7%B1%BB%E5%9E%8B/">Read more <i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2020/12/06/notepad/read/%E8%AF%AD%E8%A8%80/%E5%8A%A8%E6%80%81%E6%80%A7%E3%80%81%E9%9D%99%E6%80%81%E6%80%A7%E3%80%81%E5%BC%BA%E7%B1%BB%E5%9E%8B%E3%80%81%E5%BC%B1%E7%B1%BB%E5%9E%8B/">
-                        
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        语言特性关于语言特性的定义总是弄混，写篇博客记录一下！  彻底理清！
-强类型与弱类型
-强类型：
-
-每个变量和对象都必须声明类型，在编译时确定好类型了，执行时不能更改。
-偏向于不容忍隐式类型转换。譬如说haskell的int就不能变成double。
-
-...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-edit"></i> <span class="home-article-date" data-date="Sun Dec 06 2020 09:59:36 GMT+0800">2020-12-06</span></span>
-        
-        
-    </div>
-
-    <a href="/2020/12/06/notepad/read/%E8%AF%AD%E8%A8%80/%E5%8A%A8%E6%80%81%E6%80%A7%E3%80%81%E9%9D%99%E6%80%81%E6%80%A7%E3%80%81%E5%BC%BA%E7%B1%BB%E5%9E%8B%E3%80%81%E5%BC%B1%E7%B1%BB%E5%9E%8B/">Read more <i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2020/12/06/notepad/read/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/x86%20%E6%B1%87%E7%BC%96%E5%99%A8%E7%BC%96%E7%A8%8B/">
-                        x86 汇编器编程
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        x86 汇编器编程基于x86 实现编译器首先得了解x86 平台的指令调度， 以下是一些我在实现编译器过程中用到的基础知识！
-大部分内容参考了 青木的自制编译器，
-基于GNU汇编器c语言使用gcc 编译， 而gcc 编译器将c代码转化为汇编之后， 也是...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-edit"></i> <span class="home-article-date" data-date="Sun Dec 06 2020 09:59:36 GMT+0800">2020-12-06</span></span>
-        
-        
-    </div>
-
-    <a href="/2020/12/06/notepad/read/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/x86%20%E6%B1%87%E7%BC%96%E5%99%A8%E7%BC%96%E7%A8%8B/">Read more <i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2020/12/06/notepad/read/tools/maven/">
-                        
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        maven以下的命令会按顺序执行，后面命令会调用前面的命令
-1mvn clean
-
-把编译好的类清除掉， 因为每个开发环境不同
-1mvn compile
-
-编译主要的类
-1mvn test
-
-编译测试的类
-1mvn package
-
-把工程打包成ja...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-edit"></i> <span class="home-article-date" data-date="Sun Dec 06 2020 09:59:36 GMT+0800">2020-12-06</span></span>
-        
-        
-    </div>
-
-    <a href="/2020/12/06/notepad/read/tools/maven/">Read more <i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2020/12/06/notepad/read/tools/docker/">
-                        
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        docker的使用步骤：
-
-安装 Docker
-去Docker仓库找到这个软件对应的镜像
-使用Docker运行这个镜像，这个镜像就会生成一个Docker容器
-对容器的启动停止就对软件启动和重启
-
-安装内核版本： 3.10 以上
-uname -r
-安装...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-edit"></i> <span class="home-article-date" data-date="Sun Dec 06 2020 09:59:36 GMT+0800">2020-12-06</span></span>
-        
-        
-    </div>
-
-    <a href="/2020/12/06/notepad/read/tools/docker/">Read more <i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2020/12/06/notepad/read/tools/conda/">
-                        
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        
-
-
-更换清华源
-123456789conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/conda config --...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-edit"></i> <span class="home-article-date" data-date="Sun Dec 06 2020 09:59:36 GMT+0800">2020-12-06</span></span>
-        
-        
-    </div>
-
-    <a href="/2020/12/06/notepad/read/tools/conda/">Read more <i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2020/12/06/notepad/read/network/%E8%AE%A1%E7%BD%91%E6%9D%82%E5%BD%95/">
-                        
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        tcp学习笔记TCP 连续发 10 个包， 客户端会收到什么消息？
-
-ip
-3.1 环回地址必须是1 2 7 . 0 . 0 . 1吗？
-1不，任何网络 I D 为1 2 7 的A类地址都是可行的，尽管大多数系统使用了1 2 7 . 0 . 0 . ...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-edit"></i> <span class="home-article-date" data-date="Sun Dec 06 2020 09:59:36 GMT+0800">2020-12-06</span></span>
-        
-        
-    </div>
-
-    <a href="/2020/12/06/notepad/read/network/%E8%AE%A1%E7%BD%91%E6%9D%82%E5%BD%95/">Read more <i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2020/12/06/notepad/read/network/%E8%AE%A1%E7%BD%91%E5%A4%A7%E7%BA%B2/">
-                        
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        计网总结javaguide 上的总结的很好，直接拿来充博客用！ 来自： https://snailclimb.gitee.io/javaguide/#/docs/network/计算机网络
-[toc]
-一 OSI与TCP/IP各层的结构与功能,都有哪...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-edit"></i> <span class="home-article-date" data-date="Sun Dec 06 2020 09:59:36 GMT+0800">2020-12-06</span></span>
-        
-        
-    </div>
-
-    <a href="/2020/12/06/notepad/read/network/%E8%AE%A1%E7%BD%91%E5%A4%A7%E7%BA%B2/">Read more <i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2020/12/06/notepad/read/network/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-                        计算机网络学习笔记
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        运输层
-TCP: 提供可靠的数据传输服务
-UDP： 不能保证数据的可靠传输
-
-多路复用与多路分解运输层负责将数据包发给 进程， 其中要到多路复用和多路分解
-TCP： 使用四元组区分（源IP地址，源端口号， 目的IP地址， 目的端口号） 决定一个连接
-...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-edit"></i> <span class="home-article-date" data-date="Sun Dec 06 2020 09:59:36 GMT+0800">2020-12-06</span></span>
-        
-        
-    </div>
-
-    <a href="/2020/12/06/notepad/read/network/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Read more <i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2020/12/06/notepad/read/network/%E6%A0%91/">
-                        
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        树面试题 04.06. 后继者
-设计一个算法，找出二叉搜索树中指定节点的“下一个”节点（也即中序后继）。
-
-123456789TreeNode* inorderSuccessor(TreeNode* root, TreeNode* p) &#123;...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-edit"></i> <span class="home-article-date" data-date="Sun Dec 06 2020 09:59:36 GMT+0800">2020-12-06</span></span>
-        
-        
-    </div>
-
-    <a href="/2020/12/06/notepad/read/network/%E6%A0%91/">Read more <i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
                     <a href="/2020/12/06/hello-world/">
                         Hello World
                     </a>
@@ -615,91 +158,7 @@ TCP： 使用四元组区分（源IP地址，源端口号， 目的IP地址， �
                 
 
                 <h3 class="home-article-title">
-                    <a href="/2020/12/05/notepad/read/DDIA/">
-                        
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        
-
-
-
-
-
-Markmap
-
-* {
-  margin: 0;
-  padding: 0;
-}
-#mindmap {
-  display: block;
-  width: 100vw;
-  height: 100vh;
-}
-
-
-
-
-
-(r => {
-...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-edit"></i> <span class="home-article-date" data-date="Sat Dec 05 2020 23:59:01 GMT+0800">2020-12-05</span></span>
-        
-        
-    </div>
-
-    <a href="/2020/12/05/notepad/read/DDIA/">Read more <i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2020/12/03/notepad/read/os/os/">
-                        
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        操作系统复习指南1.CPU 调度算法
-了解CPU 调度算法，如先到先服务、最短作业优先、轮转、多级反馈队列等调度算法，以及掌握多处理器调度的特殊性。
-
-T周转时间  =  T完成时间  -  T 到达时间
-FIFO：     平均周转时间很大
-SJF...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-edit"></i> <span class="home-article-date" data-date="Thu Dec 03 2020 17:03:11 GMT+0800">2020-12-03</span></span>
-        
-        
-    </div>
-
-    <a href="/2020/12/03/notepad/read/os/os/">Read more <i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2020/12/03/notepad/read/reamde/">
+                    <a href="/2020/12/03/notepad/read/README/">
                         
                     </a>
                 </h3>
@@ -717,7 +176,7 @@ SJF...
         
     </div>
 
-    <a href="/2020/12/03/notepad/read/reamde/">Read more <i class="fas fa-angle-right"></i></a>
+    <a href="/2020/12/03/notepad/read/README/">Read more <i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -727,39 +186,8 @@ SJF...
                 
 
                 <h3 class="home-article-title">
-                    <a href="/2020/11/30/notepad/read/%E6%95%B0%E6%8D%AE%E5%AF%86%E9%9B%86%E5%9E%8B%E5%BA%94%E7%94%A8.mm/">
-                        
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        数据密集型应用学习笔记第3章数据库核心： 数据结构
-一个最简单的数据库
-
-1234567#!/bin/bashdb_set () &#123;	echo &quot;$1,$2&quot; &gt;&gt; database&#125;db_get ...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-edit"></i> <span class="home-article-date" data-date="Mon Nov 30 2020 19:00:14 GMT+0800">2020-11-30</span></span>
-        
-        
-    </div>
-
-    <a href="/2020/11/30/notepad/read/%E6%95%B0%E6%8D%AE%E5%AF%86%E9%9B%86%E5%9E%8B%E5%BA%94%E7%94%A8.mm/">Read more <i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2020/11/30/notepad/read/DDIA.mm/">
-                        
+                    <a href="/2020/12/03/notepad/read/DDIA.mm/">
+                        DDIA
                     </a>
                 </h3>
 
@@ -773,12 +201,36 @@ SJF...
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span><i class="fas fa-edit"></i> <span class="home-article-date" data-date="Mon Nov 30 2020 19:00:14 GMT+0800">2020-11-30</span></span>
+        <span><i class="fas fa-edit"></i> <span class="home-article-date" data-date="Thu Dec 03 2020 00:00:00 GMT+0800">2020-12-03</span></span>
         
+            <span class="home-article-category"><i class="fas fa-folder"></i>
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+                        </li>
+                    
+                    
+                </ul>
+            </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/DDIA/">DDIA</a>
+                        </li>
+                    
+                </ul>
+            </span>
         
     </div>
 
-    <a href="/2020/11/30/notepad/read/DDIA.mm/">Read more <i class="fas fa-angle-right"></i></a>
+    <a href="/2020/12/03/notepad/read/DDIA.mm/">Read more <i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -807,6 +259,768 @@ SJF...
     </div>
 
     <a href="/2020/09/10/notepad/java/README/">Read more <i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2020/09/10/notepad/java/JavaStudy/src/main/java/Basic/Collection/README/">
+                        
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        集合总结
+copy from zengsiyan
+
+Java对事物的体现都是以对象的形式，为了方便对多个对象的操作，就要对对象进行存储（内存上的存储）。
+然而使用数组存储对象存在一些弊端，因此，Java引入集合框架，实现动态的存储对象的容器。
+
+首先...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-edit"></i> <span class="home-article-date" data-date="Thu Sep 10 2020 15:50:58 GMT+0800">2020-09-10</span></span>
+        
+        
+    </div>
+
+    <a href="/2020/09/10/notepad/java/JavaStudy/src/main/java/Basic/Collection/README/">Read more <i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2020/09/10/notepad/cxx/grammar/class/README/">
+                        
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        problems:
+1、 含有继承的类的初始化顺序是什么？2、 一个类的构建过程， 详细说？3、 为什么构造函数不能写成虚函数？4、 为什么析构函数要写成虚函数？5、 早期绑定和后期绑定（java 中 静态分派（dispatch）和动态分配）6、 虚...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-edit"></i> <span class="home-article-date" data-date="Thu Sep 10 2020 15:50:58 GMT+0800">2020-09-10</span></span>
+        
+        
+    </div>
+
+    <a href="/2020/09/10/notepad/cxx/grammar/class/README/">Read more <i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2020/09/10/notepad/cxx/README/">
+                        
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        firefly 的c++ 学习笔记
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-edit"></i> <span class="home-article-date" data-date="Thu Sep 10 2020 15:50:58 GMT+0800">2020-09-10</span></span>
+        
+        
+    </div>
+
+    <a href="/2020/09/10/notepad/cxx/README/">Read more <i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2020/09/10/notepad/algorithm/README/">
+                        
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        more is in firefly’s blog
+
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-edit"></i> <span class="home-article-date" data-date="Thu Sep 10 2020 15:50:58 GMT+0800">2020-09-10</span></span>
+        
+        
+    </div>
+
+    <a href="/2020/09/10/notepad/algorithm/README/">Read more <i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2020/08/01/notepad/algorithm/limter/README/">
+                        limter
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        漏桶算法
+生动形象，容易理解， 往桶里加水的速度大于漏水的速度就超速了， 桶大小表示最大速度大小
+缺点： 只能匀速处理， 不能并发处理， 虽然可以一下往桶里加水， 但速度取决于漏水速度
+令牌桶
+
+每秒会有 r 个令牌放入桶中，或者说，每过 1/r 秒...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-edit"></i> <span class="home-article-date" data-date="Sat Aug 01 2020 00:00:00 GMT+0800">2020-08-01</span></span>
+        
+        
+    </div>
+
+    <a href="/2020/08/01/notepad/algorithm/limter/README/">Read more <i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2019/12/28/notepad/algorithm/exercise/exercise100/">
+                        Test
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        12345678910111213static int hashFunction( char *key)&#123;    int temp = 0;    int i = 0;    while (key[i] != &#x27;\0&#x27;)...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-edit"></i> <span class="home-article-date" data-date="Sat Dec 28 2019 00:00:00 GMT+0800">2019-12-28</span></span>
+        
+            <span class="home-article-category"><i class="fas fa-folder"></i>
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+                        </li>
+                    
+                    
+                </ul>
+            </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2019/12/28/notepad/algorithm/exercise/exercise100/">Read more <i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2019/12/28/notepad/algorithm/exercise/greedy/">
+                        贪心算法
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        贪心算法贪心方法的一般策略
+   问题的一般特征：问题的解是由n个输入的、满足某些事先给定的条件的子集组成。
+​    1）一般方法
+​    根据题意，选取一种度量标准。然后按照这种度量标准对n个输入排序，并按序一次输入一个量。
+​    如果这个...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-edit"></i> <span class="home-article-date" data-date="Sat Dec 28 2019 00:00:00 GMT+0800">2019-12-28</span></span>
+        
+            <span class="home-article-category"><i class="fas fa-folder"></i>
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+                        </li>
+                    
+                    
+                </ul>
+            </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E8%B4%AA%E5%BF%83/">贪心</a>
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2019/12/28/notepad/algorithm/exercise/greedy/">Read more <i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2019/12/28/notepad/algorithm/exercise/interview/">
+                        面试算法题
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        常见面试题面试题 04.10. 检查子树检查子树。你有两棵非常大的二叉树：T1，有几万个节点；T2，有几万个节点。设计一个算法，判断 T2 是否为 T1 的子树。
+如果 T1 有这么一个节点 n，其子树与 T2 一模一样，则 T2 为 T1 的子树，...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-edit"></i> <span class="home-article-date" data-date="Sat Dec 28 2019 00:00:00 GMT+0800">2019-12-28</span></span>
+        
+            <span class="home-article-category"><i class="fas fa-folder"></i>
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+                        </li>
+                    
+                    
+                </ul>
+            </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2019/12/28/notepad/algorithm/exercise/interview/">Read more <i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2019/12/28/notepad/algorithm/exercise/sorting/">
+                        排序
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        排序算法[toc]
+
+insertSort将数插到正确的地方
+123456789101112131415void insertSort(int *num, int le, int ri) &#123;  for (int i = le; i &lt;...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-edit"></i> <span class="home-article-date" data-date="Sat Dec 28 2019 00:00:00 GMT+0800">2019-12-28</span></span>
+        
+            <span class="home-article-category"><i class="fas fa-folder"></i>
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+                        </li>
+                    
+                    
+                </ul>
+            </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/Leetcode/">Leetcode</a>
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2019/12/28/notepad/algorithm/exercise/sorting/">Read more <i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2019/12/28/notepad/algorithm/exercise/string/">
+                        字符串
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                         string处理 [toc]
+字符串hash字符串可以看做是一个n进制的表示方式： 
+1ABC =   A * 26^2 + B * 26^1 + C * 26^0; 
+
+这就简单地转成 10 进制了， 然后在 取余， 让它在整数范围内就ok， 但...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-edit"></i> <span class="home-article-date" data-date="Sat Dec 28 2019 00:00:00 GMT+0800">2019-12-28</span></span>
+        
+            <span class="home-article-category"><i class="fas fa-folder"></i>
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+                        </li>
+                    
+                    
+                </ul>
+            </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2019/12/28/notepad/algorithm/exercise/string/">Read more <i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2019/12/28/notepad/algorithm/exercise/leetcode100/">
+                        Leetcode100
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        leetcode100 练习来源：力扣（LeetCode）链接：https://leetcode-cn.com/problems/add-two-numbers著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+1.两数之和
+给定一...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-edit"></i> <span class="home-article-date" data-date="Sat Dec 28 2019 00:00:00 GMT+0800">2019-12-28</span></span>
+        
+            <span class="home-article-category"><i class="fas fa-folder"></i>
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+                        </li>
+                    
+                    
+                </ul>
+            </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2019/12/28/notepad/algorithm/exercise/leetcode100/">Read more <i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2019/12/28/notepad/algorithm/exercise/unionfind/">
+                        并查集
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        200. 岛屿数量给你一个由 &#39;1&#39;（陆地）和 &#39;0&#39;（水）组成的的二维网格，请你计算网格中岛屿的数量。
+岛屿总是被水包围，并且每座岛屿只能由水平方向或竖直方向上相邻的陆地连接形成。
+此外，你可以假设该网格的四条边均被...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-edit"></i> <span class="home-article-date" data-date="Sat Dec 28 2019 00:00:00 GMT+0800">2019-12-28</span></span>
+        
+            <span class="home-article-category"><i class="fas fa-folder"></i>
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+                        </li>
+                    
+                    
+                </ul>
+            </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/leetcode/">leetcode</a>
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2019/12/28/notepad/algorithm/exercise/unionfind/">Read more <i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2019/12/28/notepad/algorithm/exercise/%E5%88%86%E6%94%AF%E6%B3%95/">
+                        分治法
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        分治法一个大的问题分解为一些小的问题来求解
+
+归并排序123456789101112131415161718void mergeSort(int* num, int le, int ri) &#123;  if (le &gt;= ri) retur...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-edit"></i> <span class="home-article-date" data-date="Sat Dec 28 2019 00:00:00 GMT+0800">2019-12-28</span></span>
+        
+            <span class="home-article-category"><i class="fas fa-folder"></i>
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+                        </li>
+                    
+                    
+                </ul>
+            </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E5%88%86%E6%B2%BB%E6%B3%95/">分治法</a>
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2019/12/28/notepad/algorithm/exercise/%E5%88%86%E6%94%AF%E6%B3%95/">Read more <i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2019/12/28/notepad/algorithm/exercise/%E5%9B%BE%E8%AE%BA%E6%80%BB%E7%BB%93/">
+                        图
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        图论总结[toc]
+算法这东西，容易忘记， 捡起来很快， 但也要时间， 因此，做一些简短的记录！
+图是什么？
+树可以存线， 图可以存树，树是一种无环图， 线是最简单的数据结构， 图是较为复杂的一种数据结构！
+图的分类
+
+
+
+有向
+无向
+
+
+
+有权
+有...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-edit"></i> <span class="home-article-date" data-date="Sat Dec 28 2019 00:00:00 GMT+0800">2019-12-28</span></span>
+        
+            <span class="home-article-category"><i class="fas fa-folder"></i>
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+                        </li>
+                    
+                    
+                </ul>
+            </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/leetcode/">leetcode</a>
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2019/12/28/notepad/algorithm/exercise/%E5%9B%BE%E8%AE%BA%E6%80%BB%E7%BB%93/">Read more <i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2019/12/28/notepad/algorithm/exercise/%E5%A4%A7%E6%95%B0%E8%BF%90%E7%AE%97/">
+                        大数运算
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        大数运算[toc]
+大数加法1234567intput:123456789012345678901234567890123456789012345678901234567890 1234567890123456789012345678900outpu...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-edit"></i> <span class="home-article-date" data-date="Sat Dec 28 2019 00:00:00 GMT+0800">2019-12-28</span></span>
+        
+            <span class="home-article-category"><i class="fas fa-folder"></i>
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+                        </li>
+                    
+                    
+                </ul>
+            </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2019/12/28/notepad/algorithm/exercise/%E5%A4%A7%E6%95%B0%E8%BF%90%E7%AE%97/">Read more <i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2019/12/28/notepad/algorithm/exercise/tree/">
+                        大数运算
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        [toc]
+树面试题 04.06. 后继者
+设计一个算法，找出二叉搜索树中指定节点的“下一个”节点（也即中序后继）。
+
+123456789TreeNode* inorderSuccessor(TreeNode* root, TreeNode* p) ...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-edit"></i> <span class="home-article-date" data-date="Sat Dec 28 2019 00:00:00 GMT+0800">2019-12-28</span></span>
+        
+            <span class="home-article-category"><i class="fas fa-folder"></i>
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+                        </li>
+                    
+                    
+                </ul>
+            </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2019/12/28/notepad/algorithm/exercise/tree/">Read more <i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>

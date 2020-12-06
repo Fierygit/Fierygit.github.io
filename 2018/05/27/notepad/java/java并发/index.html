@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <title>
+        java 并发与实战 |
+        
+        Firefly
+    </title>
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true},"style":{"primary_color":"#0066CC","avatar":"images/avatar.png","favicon":"images/logo.svg","img_position":"left","left_side_width":"260px","content_max_width":"900px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":false,"description":"Welcome"}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"version":"3.0.3"};
+    KEEP.language = {"search":"Search...","prev":"Prev","next":"Next","prev_posts":"Prev posts","next_posts":"Next posts","page":"Page %d","recent_posts":"Recent Posts","share":"Share","powered_by":"Powered by %s","theme":"Theme","rss_feed":"RSS Feed","category":"Category","categories":"Categories","tag":"Tag","tags":"Tags","tagcloud":"Tag Cloud","comment":"Comment","home":"Home","archive":"Archive","archives":"Archives","about":"About","site_uv":"Visitor Count","site_pv":"Totalview","links":"Links","link":"Link","top":"TOP","read_more":"Read more","wordcount":"Words","min2read":"Mins","changelog":"Changelog","copyright":{"author":"Post author","title":"Post title","link":"Post link","create_time":"Create time","license_title":"Copyright Notice","license_content":"All articles in this blog are licensed under %s unless stating additionally."},"ago":{"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days age","week":"%s weeks age","month":"%s months age","year":"%s years age"}};
+  </script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+<div class="page-container">
+
+    
+
+    <header class="page-header">
+        <div class="header-progress"></div>
+    </header>
+
+    <main class="page-main">
+
+        <div class="page-main-content">
+
+            <div class="page-main-content-top">
+                <header class="header-wrapper">
+
+    <div class="header-content">
+        <a class="logo-title" href="/">
+            Firefly
+        </a>
+
+        <ul class="menu-list">
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/"
+                    >
+                        HOME
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/archives"
+                    >
+                        ARCHIVES
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/categories"
+                    >
+                        CATEGORIES
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/links"
+                    >
+                        LINKS
+                    </a>
+                </li>
+            
+        </ul>
+
+        <div class="menu-bar">
+            <div class="menu-bar-middle"></div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">CATEGORIES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">LINKS</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+            </div>
+
+            <div class="page-main-content-middle">
+
+                <main class="main-content normal-code-theme">
+
+                    
+                        <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">java 并发与实战</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span>Firefly</span>
+                        <span class="level">Lv5</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-calendar"></i> 2018-05-27 00:00:00
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/categories/java/">java</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/tags/java/">java</a>
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i> <span>3.7k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i> <span>14 Mins</span>
+        </span>
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h2 id="java-并发与实战"><a href="#java-并发与实战" class="headerlink" title=" java 并发与实战"></a><center> java 并发与实战</center></h2><h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="线程的安全性"><a href="#线程的安全性" class="headerlink" title="线程的安全性"></a>线程的安全性</h3><p><strong>安全的线程满足条件</strong>：</p>
+<ul>
+<li>不在线程之间共享变量</li>
+<li>将变量置为不可变变量</li>
+<li>访问变量时使用同步</li>
+</ul>
+<p><strong>原子性：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">value = value + <span class="number">1</span>；</span><br></pre></td></tr></table></figure>
+
+<p> 在 cpu  执行  最终的机器指令时， 分为两步， 首先获取value， 然后再加上一返回， 这两步一起执行叫做原子性。</p>
+<p><strong>竞态条件：</strong></p>
+<p>两个线程同时获取了， value， 同时加上了1， 导致，value 只加上了1，这种情况称为竟态条件。</p>
+<p><strong>延时初始化的竟态条件：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Test test = <span class="keyword">null</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Test <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(test == <span class="keyword">null</span>)</span><br><span class="line">            test = <span class="keyword">new</span> Test();</span><br><span class="line">        <span class="keyword">return</span> test;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当两个线程调用这个获取对象的方法时， 一开始所有的 对象获取的都是null， 于是test被初始化了两次！ 存在竟态条件， 如果是单例模式， 那么返回的将不是单例！</p>
+<p><strong>复合操作：</strong></p>
+<p>相当于操作系统的硬件提供的支持， 让一个方法为原子执行， 如 TestAndSet 的函数等等！将数据的操作复合到一起， 保证原子性.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AtomicInteger count = <span class="keyword">new</span> AtomicInteger();</span><br></pre></td></tr></table></figure>
+
+<p>当使用上面的整数时，默认是原子操作的，由jvm虚拟机提供的方法！</p>
+<p>操作系统中学的是硬件提供支持， 而 java虚拟机也可以提供支持！</p>
+<p><strong>内置锁：</strong>（也称监视器锁 或 监视器）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">synchronized</span>(<span class="class"><span class="keyword">class</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 自动获取锁， 保证代码的原子性执行， 但是这样做， 性能低下！！！ 把并行的代码，变成了串行</span></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>静态的synchronized 方法以Class 对象作为锁！</p>
+<p><strong>重入：</strong></p>
+<p>一个线程可以重复获取锁， JVM 会记录线程获取锁的次数，直到所有的锁（重复获取的）都释放了才释放锁。</p>
+<p><strong>多状态的保护：</strong></p>
+<p>当有多个状态的时候， 要有一个锁来保护所有的状态！！</p>
+<h3 id="对象的共享"><a href="#对象的共享" class="headerlink" title="对象的共享"></a><strong>对象的共享</strong></h3><p><strong>可见性：</strong></p>
+<p>一个对象的发生了变化， 其它线程要能够第一时间得知， 变量发生了变化！</p>
+<p>锁能够保证变量的可见性！</p>
+<p><strong>Volatile</strong> </p>
+<p>将变量声明为volatile， 确保变量在更新操作时通知其他线程。<strong>只能确保可见性</strong></p>
+<p>通常用作 某个操作完成，发生中断 或者 状态的标志。</p>
+<p>使用时需要满足下面的所有条件：</p>
+<ul>
+<li>变量的写入操作不依赖当前值， 或者确保只有单个线程更新变量的值</li>
+<li>变量不会与其它状态变量一起纳入不变性条件中</li>
+<li>访问变量时不需要加锁</li>
+</ul>
+<p><strong>发布与逸出</strong></p>
+<blockquote>
+<p>发布： 使对象能够在当前作用域之外的代码中使用(包括引用)</p>
+</blockquote>
+<blockquote>
+<p>溢出： 某一个不该发布的对象被发布时， 称为逸出</p>
+</blockquote>
+<p>当从对象的构造函数中发布对象时， 只是发布了一个尚未构造完成的对象！！！</p>
+<p><strong>线程封闭：</strong></p>
+<p>单线程内访问数据， 不需要同步， 称为线程封闭！</p>
+<p>如JDBC使用的connection对象， 分发到一个线程中， 用完后还回来， 隐含使用了线程封闭</p>
+<p><strong>栈封闭：</strong></p>
+<p>栈封闭是线程封闭的一种特例，在栈封闭中，只能通过局部变量才能访问对象。（没什么用，其它线程访问不到）</p>
+<p><strong>ThreadLocal类：</strong></p>
+<p>这个类可以使线程中的某一个值与保存的值的对象关联起来， 每一个线程对应都有一个副本</p>
+<p><strong>不变性：</strong></p>
+<p>不变的对象一定是线程安全的！</p>
+<p>满足条件有：</p>
+<ul>
+<li>对象创建之后就不可以更改</li>
+<li>对象所有的域都是final 类型的</li>
+<li>对象是正确构造的（在对象的创建期间， this 引用没有逸出）</li>
+</ul>
+<p>使用 volatile 发布不可变对象可以保证线程安全</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Test1 test1;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Integer mapTest1;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Test</span><span class="params">(Integer i, Test1 t)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.test1 = t;</span><br><span class="line">        <span class="keyword">this</span>.mapTest1 = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">int2Test</span><span class="params">(Integer i)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span>  mapTest1 == i? test1 : NULL;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面所有域都是不可变的， 创建之后不可修改， 构造的时候没有溢出， 因此是一个不可变类</p>
+<p>因此是线程安全的！</p>
+<p><strong>安全发布</strong></p>
+<p>不可变对象可以被安全地发布， java内存模式提供初始化安全的保证。</p>
+<p>（final 指向的域是可变的， 那么指向的域也需要同步）</p>
+<p><strong>安全发布的常用模式</strong>：</p>
+<ul>
+<li>在静态初始化函数中初始化一个对象的引用（JVM 存在同步机制，在初始话阶段执行！一定安全）</li>
+<li>将对象的引用保存在volatile 类型的域 或者 AtomicReferance 对象中</li>
+<li>将对象的引用保存到某个正确构造对象的final 类型域中</li>
+<li>将对象的引用保存到由一个锁保护的域中</li>
+</ul>
+<p><strong>事实不可变对象</strong>必须通过安全的方式发布</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Map&lt;String, Date&gt; name2date =</span><br><span class="line">    Collections.synchronizedMap(<span class="keyword">new</span> HashMa&lt;String, Date());</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="对象的组合"><a href="#对象的组合" class="headerlink" title="对象的组合"></a>对象的组合</h3><p><strong>设计线程安全的类：</strong></p>
+<ul>
+<li>找出构成对象状态的所有变量</li>
+<li>找出约束状态变量的不变性条件</li>
+<li>建立对象状态的并发访问管理策略</li>
+</ul>
+<p><strong>实例封装：</strong></p>
+<p>将数据封装在对象的内部， 将数据的访问限制在对象的方法上， 从而确保线程安全</p>
+<p><strong>java监视器模式：</strong></p>
+<p>对变量的封装通过 方法来执行， 而这些方法都是同步的！</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Counter</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> value;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> synchronzed <span class="keyword">long</span> <span class="title">getValue</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> synchronzed <span class="keyword">void</span> <span class="title">setValue</span><span class="params">(<span class="keyword">long</span> value)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.value = value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>使用私有锁来保护变量：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PrivateLock</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Object myLock = <span class="keyword">new</span> Object();</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">        synchronzed(myLock)&#123;</span><br><span class="line">            <span class="comment">// 访问 保护的变量</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>相比监视器模式， 程序的维护较难， 检查是否正确时要检查整个程序而不是单个类（其它类可以通过方法获取lock  ）。</p>
+<p>以上都是一个类的情况</p>
+<hr>
+<p>如果有多个类，<strong>基于委托</strong>， 将线程的安全委托给别的类来处理，如将数据放入concurrentHashMap中。</p>
+<p>多个线程安全的类组合在一起，不一定线程安全， 要视情况而定：</p>
+<ul>
+<li>当多个变量之间有约束条件时， 组合在一起就不线程安全了！</li>
+</ul>
+<h3 id="基础构建模块"><a href="#基础构建模块" class="headerlink" title="基础构建模块"></a>基础构建模块</h3><h4 id="同步容器类"><a href="#同步容器类" class="headerlink" title="同步容器类"></a>同步容器类</h4><p>包括 Vector 和 Hashtable， 这些整个类是线程安全的，符合操作也是线程安全的！</p>
+<p><strong>存在问题</strong></p>
+<p>getValue 和 removeValue 两个方法的复合操作都是线程安全，但是组合在一起时，如果并发执行， 有可能一个线程先remov最后一个元素， 而继续getValue！</p>
+<p>还有一种情况在迭代的时候产生， 一个线程迭代元素，另一个线程删除了某一个元素， 会报错！</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; vector.size(); i++)&#123;</span><br><span class="line">    vector.get(i);</span><br><span class="line">    <span class="comment">//当i 进入到了最后一个元素，但还没有get， 此时跳到另一个线程，删了它，再回到这里 get一个没有的元素！</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>toString 也是一个隐藏的迭代器！</p>
+<p>如果要安全地迭代同步容器类， 可以在客户端给整个容器加锁， 加锁之后，其它操作访问不到， 但这样效率低下，当容器很大的时候！</p>
+<p>引出：</p>
+<h4 id="并发容器类"><a href="#并发容器类" class="headerlink" title="并发容器类"></a>并发容器类</h4><h5 id="concurentHashMap"><a href="#concurentHashMap" class="headerlink" title="concurentHashMap"></a><strong>concurentHashMap</strong></h5><p>对于HashMap，如果散列函数设计的不好，都散列到了同一条的散列表上，当遍历这条散列表时，其它的线程不能访问这条散列表， 导致效率低下！</p>
+<p> concurrentHashMap 没有实现对map的加锁访问，不是在每一个方法上同步， 而是使用分段锁！（详见分段锁）</p>
+<h5 id="CopyOnWhiteArrayList"><a href="#CopyOnWhiteArrayList" class="headerlink" title="CopyOnWhiteArrayList"></a>CopyOnWhiteArrayList</h5><p>顾名思义， 在写的时候会复制一遍，迭代线程和修改线程不会相互影响！</p>
+<h4 id="同步工具类"><a href="#同步工具类" class="headerlink" title="同步工具类"></a>同步工具类</h4><h5 id="CountDownLatch"><a href="#CountDownLatch" class="headerlink" title="CountDownLatch"></a><strong>CountDownLatch</strong></h5><p>闭锁可以让所有的线程都到达时执行！</p>
+<p>初始化为一个正数， 代表等待的线程， 当没有等待线程的时候继续运行！</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Latch</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">calc</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> CountDownLatch startLatch = <span class="keyword">new</span> CountDownLatch(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">final</span> CountDownLatch endLatch = <span class="keyword">new</span> CountDownLatch(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">new</span> Thread(()  -&gt; &#123;</span><br><span class="line">                <span class="keyword">try</span>&#123;</span><br><span class="line">                    startLatch.await();</span><br><span class="line">                    System.out.println(Thread.currentThread().getName() + <span class="string">&quot;: i am here!!&quot;</span>);</span><br><span class="line">                    endLatch.countDown();</span><br><span class="line">                &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">                    System.out.println(e);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;).start();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">long</span> start, end;</span><br><span class="line">        start = System.nanoTime();</span><br><span class="line">        System.out.println(<span class="string">&quot;start count!!!&quot;</span>);</span><br><span class="line">        startLatch.countDown();</span><br><span class="line">        endLatch.await();</span><br><span class="line">        end = System.nanoTime();</span><br><span class="line">        System.out.println(end - start);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Latch test = <span class="keyword">new</span> Latch();</span><br><span class="line">        test.calc();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="CyclicBarrier"><a href="#CyclicBarrier" class="headerlink" title="CyclicBarrier"></a>CyclicBarrier</h5><p>栅栏是所有线程到达栅栏位置才能继续执行, 栅栏是可以重复使用的， 初始化的时候等待n个线程和等待到n个线程运行的任务！</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Barrier</span> </span>&#123;</span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">final</span> CyclicBarrier cyclicBarrier;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="title">Barrier</span><span class="params">()</span></span>&#123;</span><br><span class="line">       <span class="keyword">this</span>.cyclicBarrier = <span class="keyword">new</span> CyclicBarrier(<span class="number">4</span>, () -&gt;&#123;</span><br><span class="line">           System.out.println(<span class="string">&quot;this is barrier!!! end&quot;</span>);</span><br><span class="line">       &#125;);</span><br><span class="line">   &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">meeting</span><span class="params">()</span></span>&#123;</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">11</span>; i++)&#123;</span><br><span class="line">           <span class="keyword">try</span> &#123;</span><br><span class="line">               <span class="keyword">new</span> Thread(()-&gt;&#123;</span><br><span class="line">                   System.out.println(Thread.currentThread().getName() + <span class="string">&quot;: i am here!!&quot;</span>);</span><br><span class="line">                   <span class="keyword">try</span>&#123;</span><br><span class="line">                       <span class="keyword">this</span>.cyclicBarrier.await();</span><br><span class="line">                   &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">                       System.out.println(e);</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;).start();</span><br><span class="line"></span><br><span class="line">           &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">               e.printStackTrace();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Barrier barrier = <span class="keyword">new</span> Barrier();</span><br><span class="line">        barrier.meeting();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="Semphore"><a href="#Semphore" class="headerlink" title="Semphore"></a>Semphore</h5><p>二值信号量相当于一把锁， 信号量可以通过， 锁和条件变量实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestSemaphore</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> List&lt;Integer&gt; list;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Semaphore sem;</span><br><span class="line">    TestSemaphore()&#123;</span><br><span class="line">        <span class="keyword">this</span>.list =<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">this</span>.sem = <span class="keyword">new</span> Semaphore(<span class="number">10</span>, <span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addOne</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            sem.acquire();</span><br><span class="line">            list.add(<span class="number">1</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeOne</span><span class="params">()</span></span>&#123;</span><br><span class="line">        list.remove(<span class="number">0</span>);</span><br><span class="line">        sem.release();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        TestSemaphore testSemaphore = <span class="keyword">new</span> TestSemaphore();</span><br><span class="line">        <span class="keyword">new</span> Thread(()-&gt;&#123;</span><br><span class="line">            <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">                testSemaphore.addOne();</span><br><span class="line">                System.out.println(<span class="string">&quot;addone cur size:&quot;</span> + testSemaphore.list.size());</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(()-&gt;&#123;</span><br><span class="line">            <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">                testSemaphore.removeOne();</span><br><span class="line">                System.out.println(<span class="string">&quot;removeone cur size:&quot;</span> + testSemaphore.list.size());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;).start();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="Exchanger"><a href="#Exchanger" class="headerlink" title="Exchanger"></a>Exchanger</h5><p>exchanger 可以交换一个数据， 当交换数据的时候只要有一个线程没有到达时，会阻塞！</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestExchanger</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Exchanger&lt;String&gt; exchanger = <span class="keyword">new</span> Exchanger&lt;&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">a</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;a is running&quot;</span>);</span><br><span class="line">        String value = <span class="string">&quot;helloa&quot;</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">            <span class="keyword">this</span>.exchanger.exchange(value);</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            System.out.println(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">b</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;b is running&quot;</span>);</span><br><span class="line">        String value = <span class="string">&quot;hellob&quot;</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            String temp = <span class="keyword">this</span>.exchanger.exchange(value);</span><br><span class="line">            System.out.println(value);</span><br><span class="line">            System.out.println(temp);</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            System.out.println(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        TestExchanger te= <span class="keyword">new</span> TestExchanger();</span><br><span class="line">        <span class="keyword">new</span> Thread(te::a).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(te::b).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="FetureTast"><a href="#FetureTast" class="headerlink" title="FetureTast"></a>FetureTast</h5><p>有返回值的闭锁， 新建立一个线程提前运行所要的值， 之后get的时候， 会阻塞等待值的返回！！</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestFuture</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> FutureTask&lt;String&gt; future = <span class="keyword">new</span> FutureTask&lt;String&gt;(<span class="keyword">new</span> Callable&lt;String&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">            Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;hello&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">private</span> Thread thread = <span class="keyword">new</span> Thread(future);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span></span>&#123;</span><br><span class="line">        thread.start();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">get</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">          <span class="keyword">return</span>  future.get();</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            System.out.println(e);</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        TestFuture testFuture = <span class="keyword">new</span> TestFuture();</span><br><span class="line">        testFuture.start();</span><br><span class="line">        System.out.println(<span class="string">&quot;feture started!!!&quot;</span>);</span><br><span class="line">        System.out.println(testFuture.get());</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="结构化并发应用程序"><a href="#结构化并发应用程序" class="headerlink" title="结构化并发应用程序"></a>结构化并发应用程序</h2><h3 id="任务执行"><a href="#任务执行" class="headerlink" title="任务执行"></a>任务执行</h3><p>ThreadPoolExecutor</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ThreadPoolExecutor</span><span class="params">(<span class="keyword">int</span> corePoolSize,</span></span></span><br><span class="line"><span class="function"><span class="params">                          <span class="keyword">int</span> maximumPoolSize,</span></span></span><br><span class="line"><span class="function"><span class="params">                          <span class="keyword">long</span> keepAliveTime,</span></span></span><br><span class="line"><span class="function"><span class="params">                          TimeUnit unit,</span></span></span><br><span class="line"><span class="function"><span class="params">                          BlockingQueue&lt;Runnable&gt; workQueue,</span></span></span><br><span class="line"><span class="function"><span class="params">                          ThreadFactory threadFactory,</span></span></span><br><span class="line"><span class="function"><span class="params">                          RejectedExecutionHandler handler)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (corePoolSize &lt; <span class="number">0</span> ||</span><br><span class="line">        maximumPoolSize &lt;= <span class="number">0</span> ||</span><br><span class="line">        maximumPoolSize &lt; corePoolSize ||</span><br><span class="line">        keepAliveTime &lt; <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException();</span><br><span class="line">    <span class="keyword">if</span> (workQueue == <span class="keyword">null</span> || threadFactory == <span class="keyword">null</span> || handler == <span class="keyword">null</span>)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException();</span><br><span class="line">    <span class="keyword">this</span>.acc = System.getSecurityManager() == <span class="keyword">null</span> ?</span><br><span class="line">            <span class="keyword">null</span> :</span><br><span class="line">            AccessController.getContext();</span><br><span class="line">    <span class="keyword">this</span>.corePoolSize = corePoolSize;</span><br><span class="line">    <span class="keyword">this</span>.maximumPoolSize = maximumPoolSize;</span><br><span class="line">    <span class="keyword">this</span>.workQueue = workQueue;</span><br><span class="line">    <span class="keyword">this</span>.keepAliveTime = unit.toNanos(keepAliveTime);</span><br><span class="line">    <span class="keyword">this</span>.threadFactory = threadFactory;</span><br><span class="line">    <span class="keyword">this</span>.handler = handler;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p><strong>五、Queuing 队列</strong></p>
+<p>BlockingQueu用于存放提交的任务，队列的实际容量与线程池大小相关联。</p>
+<ul>
+<li>如果当前线程池任务线程数量小于核心线程池数量，执行器总是优先创建一个任务线程，而不是从线程队列中取一个空闲线程。</li>
+<li>如果当前线程池任务线程数量大于核心线程池数量，执行器总是优先从运行线程队列中取一个空闲线程，而不是创建一个任务线程。</li>
+<li>如果当前线程池任务线程数量大于核心线程池数量，且运行队列中无空闲任务线程，将会创建一个任务线程，直到超出maximumPoolSize，当超出maxinumPoolSize 时， 放入队列， 如果此时队列是有界的</li>
+</ul>
+<p>主要有三种队列策略：</p>
+<ol>
+<li><p><strong>Direct handoffs 直接握手队列</strong><br> Direct handoffs 的一个很好的默认选择是 SynchronousQueue，它将任务交给线程而不需要保留。这里，如果没有线程立即可用来运行它，那么排队任务的尝试将失败，因此将构建新的线程。<br> 此策略在处理可能具有内部依赖关系的请求集时避免锁定。Direct handoffs 通常需要无限制的maximumPoolSizes来避免拒绝新提交的任务。</p>
+<p> **注意: **当任务持续以平均提交速度大余平均处理速度时，会导致线程数量会无限增长问题。</p>
+</li>
+<li><p><strong>Unbounded queues 无界队列</strong><br> 当所有corePoolSize线程繁忙时，使用无界队列（例如，没有预定义容量的LinkedBlockingQueue）将导致新任务在队列中等待，从而导致maximumPoolSize的值没有任何作用。当每个任务互不影响，完全独立于其他任务时，这可能是合适的; 例如，在网页服务器中， 这种队列方式可以用于平滑瞬时大量请求。<strong>但得注意，当任务持续以平均提交速度大余平均处理速度时，会导致队列无限增长问题。</strong></p>
+</li>
+<li><p><strong>Bounded queues 有界队列</strong><br> 一个有界的队列（例如，一个ArrayBlockingQueue）和有限的maximumPoolSizes配置有助于防止资源耗尽，但是难以控制。队列大小和maximumPoolSizes需要 相互权衡：</p>
+</li>
+</ol>
+<ul>
+<li>使用大队列和较小的maximumPoolSizes可以最大限度地减少CPU使用率，操作系统资源和上下文切换开销，但会导致人为的低吞吐量。如果任务经常被阻塞（比如I/O限制），那么系统可以调度比我们允许的更多的线程。</li>
+<li>使用小队列通常需要较大的maximumPoolSizes，这会使CPU更繁忙，但可能会遇到不可接受的调度开销，这也会降低吞吐量。</li>
+</ul>
+<p><strong>Rejected tasks 拒绝任务</strong><br> 拒绝任务有两种情况：1. 线程池已经被关闭；2. 任务队列已满且maximumPoolSizes已满；<br> 无论哪种情况，都会调用RejectedExecutionHandler的rejectedExecution方法。预定义了四种处理策略：</p>
+<ol>
+<li><strong>AbortPolicy</strong>：默认测策略，抛出RejectedExecutionException运行时异常；</li>
+<li><strong>CallerRunsPolicy</strong>：这提供了一个简单的反馈控制机制，可以减慢提交新任务的速度；</li>
+<li><strong>DiscardPolicy</strong>：直接丢弃新提交的任务；</li>
+<li><strong>DiscardOldestPolicy</strong>：如果执行器没有关闭，队列头的任务将会被丢弃，然后执行器重新尝试执行任务（如果失败，则重复这一过程）；<br> 我们可以自己定义RejectedExecutionHandler，以适应特殊的容量和队列策略场景中。</li>
+</ol>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2018/09/28/notepad/read/tools/docker/"
+                        >
+                            <span class="left arrow-icon flex-center" >
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">docker</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2018/05/27/notepad/java/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3jvm/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">JVM</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center" >
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                    
+                </main>
+
+            </div>
+
+            <div class="page-main-content-bottom">
+                <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2017</span> -
+            
+            2020 <i class="fas fa-heart icon-animate"></i> <a href="/">Firefly</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a> | Theme <a class="theme-version" target="_blank"></a>
+        </div>
+    </div>
+</footer>
+
+            </div>
+        </div>
+    </main>
+
+    <div class="sidebar-tools">
+        <div class="tools-container">
+    <ul class="tools-list">
+        
+            <li class="search popup-trigger">
+                <i class="fas fa-search"></i>
+            </li>
+        
+
+        
+
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+    </ul>
+</div>
+
+    </div>
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center">
+            <i class="fas fa-arrow-up"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="tools-ul-1">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+    </ul>
+</div>
+
+    </div>
+
+    <!-- page aside -->
+    <aside class="page-aside">
+        
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#java-%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%AE%9E%E6%88%98"><span class="nav-number">1.</span> <span class="nav-text"> java 并发与实战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-number">2.</span> <span class="nav-text">基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7"><span class="nav-number">2.1.</span> <span class="nav-text">线程的安全性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%85%B1%E4%BA%AB"><span class="nav-number">2.2.</span> <span class="nav-text">对象的共享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%BB%84%E5%90%88"><span class="nav-number">2.3.</span> <span class="nav-text">对象的组合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E6%9E%84%E5%BB%BA%E6%A8%A1%E5%9D%97"><span class="nav-number">2.4.</span> <span class="nav-text">基础构建模块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E5%AE%B9%E5%99%A8%E7%B1%BB"><span class="nav-number">2.4.1.</span> <span class="nav-text">同步容器类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B9%B6%E5%8F%91%E5%AE%B9%E5%99%A8%E7%B1%BB"><span class="nav-number">2.4.2.</span> <span class="nav-text">并发容器类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#concurentHashMap"><span class="nav-number">2.4.2.1.</span> <span class="nav-text">concurentHashMap</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CopyOnWhiteArrayList"><span class="nav-number">2.4.2.2.</span> <span class="nav-text">CopyOnWhiteArrayList</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E5%B7%A5%E5%85%B7%E7%B1%BB"><span class="nav-number">2.4.3.</span> <span class="nav-text">同步工具类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#CountDownLatch"><span class="nav-number">2.4.3.1.</span> <span class="nav-text">CountDownLatch</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CyclicBarrier"><span class="nav-number">2.4.3.2.</span> <span class="nav-text">CyclicBarrier</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Semphore"><span class="nav-number">2.4.3.3.</span> <span class="nav-text">Semphore</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Exchanger"><span class="nav-number">2.4.3.4.</span> <span class="nav-text">Exchanger</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#FetureTast"><span class="nav-number">2.4.3.5.</span> <span class="nav-text">FetureTast</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E5%8C%96%E5%B9%B6%E5%8F%91%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F"><span class="nav-number">3.</span> <span class="nav-text">结构化并发应用程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%BB%E5%8A%A1%E6%89%A7%E8%A1%8C"><span class="nav-number">3.1.</span> <span class="nav-text">任务执行</span></a></li></ol></li></ol>
+    </div>
+</div>
+        
+    </aside>
+
+    <!-- image viewer -->
+    <div class="image-viewer-container">
+    <div class="img-box">
+        <img src="">
+    </div>
+</div>
+
+
+</div>
+
+
+
+    <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-icon">
+            <i class="fas fa-search"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/local-search.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/left-side-toggle.js"></script>
+
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/code-copy.js"></script>
+    
+
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/toc.js"></script>
+    
+
+
+</body>
+</html>
