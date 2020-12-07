@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <title>
+        Tomcat 学习笔记 |
+        
+        Firefly
+    </title>
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true},"style":{"primary_color":"#0066CC","avatar":"images/avatar.png","favicon":"images/logo.svg","img_position":"left","left_side_width":"260px","content_max_width":"900px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":false,"description":"Welcome"}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"version":"3.0.3"};
+    KEEP.language = {"search":"Search...","prev":"Prev","next":"Next","prev_posts":"Prev posts","next_posts":"Next posts","page":"Page %d","recent_posts":"Recent Posts","share":"Share","powered_by":"Powered by %s","theme":"Theme","rss_feed":"RSS Feed","category":"Category","categories":"Categories","tag":"Tag","tags":"Tags","tagcloud":"Tag Cloud","comment":"Comment","home":"Home","archive":"Archive","archives":"Archives","about":"About","site_uv":"Visitor Count","site_pv":"Totalview","links":"Links","link":"Link","top":"TOP","read_more":"Read more","wordcount":"Words","min2read":"Mins","changelog":"Changelog","copyright":{"author":"Post author","title":"Post title","link":"Post link","create_time":"Create time","license_title":"Copyright Notice","license_content":"All articles in this blog are licensed under %s unless stating additionally."},"ago":{"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days age","week":"%s weeks age","month":"%s months age","year":"%s years age"}};
+  </script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+<div class="page-container">
+
+    
+
+    <header class="page-header">
+        <div class="header-progress"></div>
+    </header>
+
+    <main class="page-main">
+
+        <div class="page-main-content">
+
+            <div class="page-main-content-top">
+                <header class="header-wrapper">
+
+    <div class="header-content">
+        <a class="logo-title" href="/">
+            Firefly
+        </a>
+
+        <ul class="menu-list">
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/"
+                    >
+                        HOME
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/archives"
+                    >
+                        ARCHIVES
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/categories"
+                    >
+                        CATEGORIES
+                    </a>
+                </li>
+            
+                <li class="menu-item">
+                    <a class=""
+                       href="/links"
+                    >
+                        LINKS
+                    </a>
+                </li>
+            
+        </ul>
+
+        <div class="menu-bar">
+            <div class="menu-bar-middle"></div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">CATEGORIES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">LINKS</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+            </div>
+
+            <div class="page-main-content-middle">
+
+                <main class="main-content normal-code-theme">
+
+                    
+                        <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Tomcat 学习笔记</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span>Firefly</span>
+                        <span class="level">Lv5</span>
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-calendar"></i> 2020-11-04 00:00:00
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>
+            <ul>
+                
+                    <li>
+                        <a href="/categories/read/">read</a>
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i> <span>1.1k Words</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i> <span>4 Mins</span>
+        </span>
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h2 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h2><h3 id="connector"><a href="#connector" class="headerlink" title="connector"></a>connector</h3><p>connector 在解析完了http 协议之后会调用 containner 的 invoke 方法！</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connector.getContainer().invoke(request, response);</span><br></pre></td></tr></table></figure>
+
+<p>接下来看是 container 容器的 invoke 方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">invoke</span><span class="params">(Request request, Response response)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line">    pipeline.invoke(request, response);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面看容器的实现方法！</p>
+<h3 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h3><p>servlet 容器是用来处理请求servlet 资源，并为Web 客户端填充response 对象的模块。<br>servlet 容器是org.apache.catalina.Container 接口的实例。</p>
+<h4 id="Container-接口"><a href="#Container-接口" class="headerlink" title="Container 接口"></a>Container 接口</h4><p>在Tomcat 中，共有4 种类型的容器，分别是： Engine 、Host 、Context 和Wrapper</p>
+<ul>
+<li>Engine, 表示整个Catalina servlet 引擎</li>
+<li>Host: 表示包含有一个或多个Context 容器的虚拟主机</li>
+<li>Context: 表示一个Web 应用程序。一个Contex t 可以有多个Wrapper</li>
+<li>Wrapper: 表示一个独立的servlet </li>
+</ul>
+<p>Tomcat 中的servlet 容器必须要实现org.apache.catalina.Container 接口。</p>
+<h4 id="管道任务"><a href="#管道任务" class="headerlink" title="管道任务"></a>管道任务</h4><p>管道包含该servlet 容器将要调用的任务。一个阀表示一个具体的执行任务。在servlet 容器<br>的管道中，有一个基础阀，但是，可以添加任意数量的阀。阀的数量指的是额外添加的阀数量，<br>即，不包括基础阀。</p>
+<p>Tomcat 中使用内部类来实现遍历管道， 引人接口org.apache.catalina.ValveContext。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimplePipeline</span> <span class="keyword">implements</span> <span class="title">Pipeline</span>, <span class="title">Lifecycle</span> </span>&#123;</span><br><span class="line">  <span class="comment">// The basic Valve (if any) associated with this Pipeline.</span></span><br><span class="line">  <span class="keyword">protected</span> Valve basic = <span class="keyword">null</span>;</span><br><span class="line">  <span class="comment">// The Container with which this Pipeline is associated.</span></span><br><span class="line">  <span class="keyword">protected</span> Container container = <span class="keyword">null</span>;</span><br><span class="line">  <span class="comment">// the array of Valves</span></span><br><span class="line">  <span class="keyword">protected</span> Valve valves[] = <span class="keyword">new</span> Valve[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">invoke</span><span class="params">(Request request, Response response)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line">    <span class="comment">// Invoke the first Valve in this pipeline for this request</span></span><br><span class="line">   (<span class="keyword">new</span> StandardPipelineValveContext()).invokeNext(request, response);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// this class is copied from org.apache.catalina.core.StandardPipeline class&#x27;s</span></span><br><span class="line">  <span class="comment">// StandardPipelineValveContext inner class.</span></span><br><span class="line">  <span class="keyword">protected</span> <span class="class"><span class="keyword">class</span> <span class="title">StandardPipelineValveContext</span> <span class="keyword">implements</span> <span class="title">ValveContext</span> </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> stage = <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">invokeNext</span><span class="params">(Request request, Response response)</span></span></span><br><span class="line"><span class="function">      <span class="keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> subscript = stage;</span><br><span class="line">      stage = stage + <span class="number">1</span>;</span><br><span class="line">      <span class="comment">// Invoke the requested Valve for the current request thread</span></span><br><span class="line">      <span class="keyword">if</span> (subscript &lt; valves.length) &#123;</span><br><span class="line">        valves[subscript].invoke(request, response, <span class="keyword">this</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span> <span class="keyword">if</span> ((subscript == valves.length) &amp;&amp; (basic != <span class="keyword">null</span>)) &#123;</span><br><span class="line">        basic.invoke(request, response, <span class="keyword">this</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> ServletException(<span class="string">&quot;No valve&quot;</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="comment">// end of inner class</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>stage 会不断增加，调用所有的value，每个 value调用 invokeNext即可</p>
+<p>先看看各个接口：</p>
+<h5 id="Pipline"><a href="#Pipline" class="headerlink" title="Pipline"></a>Pipline</h5><p>对于 Pipeline 接口，首先要提到的一个方法是invoke() 方法， servlet 容器调用invoke(）方法<br>来开始调用管道中的阀和基础阀。通过调用Pipeline 接口的addValve(）方法，可以向管道中添加<br>新的阀，同样，也可以调用removeValve(）方法从管道中删除某个阀。最后，调用setBasic(）方法<br>将基础阀设置到管道中，调用其getBasic(）方法则可以获取基础阀。基础阀是最后调用的阀，负<br>责处理request 对象及其对应的response 对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="function"><span class="keyword">public</span> interface <span class="title">Pipeline</span> <span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">    <span class="keyword">public</span> Valve getBasic()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBasic</span><span class="params">(Valve valve)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> addVa l <span class="title">ve</span><span class="params">(Valve val ve)</span></span>;</span><br><span class="line">    <span class="keyword">public</span> Valve [ <span class="function">J get <span class="title">Valves</span> <span class="params">()</span> </span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> voi d <span class="title">invoke</span><span class="params">(Request request, Response response)</span></span></span><br><span class="line"><span class="function">                  <span class="keyword">throws</span> IOException, ServletException</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeValve</span><span class="params">(Valve valve)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="Value"><a href="#Value" class="headerlink" title="Value"></a>Value</h5><p>阀是Valve 接口的实例，用来处理接收到的请求。该接口有两个方法， invoke(）方法和  getlnfo(）方法。invoke(）方法已经在前面讨论过了， getlnfo(）方法返回阀的实现信息。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.apache.catalina;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Valve</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getInfo</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">invoke</span><span class="params">(Request request, Response response,</span></span></span><br><span class="line"><span class="function"><span class="params">                       ValveContext context)</span></span></span><br><span class="line"><span class="function">        <span class="keyword">throws</span> IOException, ServletException</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="ValveContext"><a href="#ValveContext" class="headerlink" title="ValveContext"></a>ValveContext</h5><p>该接口有两个方法， invokeNext(）和getlnfo(）。invokeNext(）方法已经在前面讨论过了,getlnfo(）方法会返回ValveContext 的实现信息。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ValveContext</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getlnfo</span><span class="params">()</span> </span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">invokeNext</span><span class="params">(Request request, Response r esponse)</span></span></span><br><span class="line"><span class="function">	 <span class="keyword">throws</span> IOException, ServletException</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="Contained"><a href="#Contained" class="headerlink" title="Contained"></a>Contained</h5><p>阀可以选择是否实现org.apache.catalina.Contained 接口，该接口的实现类可以通过接口中的<br>方法至多与一个servlet 容器相关联。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.apache.catalina ;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Contained</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Container <span class="title">getContainer</span> <span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setContainer</span> <span class="params">(Container container)</span> </span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Wrapper"><a href="#Wrapper" class="headerlink" title="Wrapper"></a>Wrapper</h4><p>Wrapper 级的servlet 容器是一个org.apache. catalina.Wrapper 接口的实例，<strong>表示一个独立的servlet 定义</strong>。</p>
+<p>Wrapper 接口继承自Container 接口，又添加了一些额外的方法。</p>
+<p>Wrapper 接口的实现类要负责管理其基础servlet 类的servlet 生命周期，即调用servlet 的init(）、service(）、destroy(）等方法。由千Wrapper 已经是最低级的servlet 容器了，因此不能再向其中添加子容器。若是Wrapper 的addChild(）方法被调用，则抛出IllegalArgumantException 异常。</p>
+<p>Wrapper 接口中比较重要的方法是load(） 和allocate(）方法。allocate(）方法会分配一个已<br>经初始化的servlet 实例， 而且 allocate(）方法还要考虑下该servlet 类是否实现了javax .servlet.<br>SingleThreadModel 接口。load(）方法载人并初始化servlet 类。</p>
+<h3 id="Loader"><a href="#Loader" class="headerlink" title="Loader"></a>Loader</h3>
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2020/12/03/notepad/read/DDIA.mm/"
+                        >
+                            <span class="left arrow-icon flex-center" >
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">DDIA</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2020/09/10/notepad/java/JavaStudy/src/main/java/Basic/Collection/README/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item"></span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center" >
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                    
+                </main>
+
+            </div>
+
+            <div class="page-main-content-bottom">
+                <!--
+ * @Author: Firefly
+ * @Date: 2020-12-06 11:25:04
+ * @Descripttion: 
+ * @LastEditTime: 2020-12-06 17:25:59
+-->
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2017</span> -
+            
+            2020 <i class="fas fa-heart icon-animate"></i> <a href="/">Firefly</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+        </div>
+    </main>
+
+    <div class="sidebar-tools">
+        <div class="tools-container">
+    <ul class="tools-list">
+        
+            <li class="search popup-trigger">
+                <i class="fas fa-search"></i>
+            </li>
+        
+
+        
+
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+    </ul>
+</div>
+
+    </div>
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center">
+            <i class="fas fa-arrow-up"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="tools-ul-1">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+    </ul>
+</div>
+
+    </div>
+
+    <!-- page aside -->
+    <aside class="page-aside">
+        
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tomcat"><span class="nav-number">1.</span> <span class="nav-text">Tomcat</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#connector"><span class="nav-number">1.1.</span> <span class="nav-text">connector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Servlet"><span class="nav-number">1.2.</span> <span class="nav-text">Servlet</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Container-%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.2.1.</span> <span class="nav-text">Container 接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%A1%E9%81%93%E4%BB%BB%E5%8A%A1"><span class="nav-number">1.2.2.</span> <span class="nav-text">管道任务</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Pipline"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">Pipline</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Value"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">Value</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ValveContext"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">ValveContext</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Contained"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">Contained</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Wrapper"><span class="nav-number">1.2.3.</span> <span class="nav-text">Wrapper</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Loader"><span class="nav-number">1.3.</span> <span class="nav-text">Loader</span></a></li></ol></li></ol>
+    </div>
+</div>
+        
+    </aside>
+
+    <!-- image viewer -->
+    <div class="image-viewer-container">
+    <div class="img-box">
+        <img src="">
+    </div>
+</div>
+
+
+</div>
+
+
+
+    <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-icon">
+            <i class="fas fa-search"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/local-search.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/left-side-toggle.js"></script>
+
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/code-copy.js"></script>
+    
+
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.0.3/source/js/toc.js"></script>
+    
+
+
+</body>
+</html>

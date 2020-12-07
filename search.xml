@@ -454,10 +454,10 @@ movl    %esi,(%edi)</code></pre>
 <p>在for循环里 ++i 比 i++ 的效率高 <a class="link"   href="https://blog.csdn.net/FireflyNo1/article/details/82809624" >详情请点击<i class="fas fa-external-link-alt"></i></a></p>
 ]]></content>
       <categories>
-        <category>C/C++</category>
+        <category>CXX</category>
       </categories>
       <tags>
-        <tag>c/c++</tag>
+        <tag>CXX</tag>
       </tags>
   </entry>
   <entry>
@@ -639,7 +639,7 @@ movl    %esi,(%edi)</code></pre>
 <p>在深克隆中，无论原型对象的成员变量是值类型还是引用类型，都将复制一份给克隆对象，深克隆将原型对象的所有引用对象也复制一份给克隆对象。简单来说，在深克隆中，除了对象本身被复制外，对象所包含的所有成员变量也将复制。</p>
 ]]></content>
       <categories>
-        <category>JAVA</category>
+        <category>java</category>
       </categories>
       <tags>
         <tag>java</tag>
@@ -1580,8 +1580,8 @@ pause</code></pre>
       </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>/2020/12/06/notepad/read/Tomcat/</url>
+    <title>Tomcat 学习笔记</title>
+    <url>/2020/11/04/notepad/read/Tomcat/</url>
     <content><![CDATA[<h2 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h2><h3 id="connector"><a href="#connector" class="headerlink" title="connector"></a>connector</h3><p>connector 在解析完了http 协议之后会调用 containner 的 invoke 方法！</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">connector.getContainer().invoke(request, response);</span><br></pre></td></tr></table></figure>
 
@@ -1621,6 +1621,9 @@ pause</code></pre>
 <p>Wrapper 接口的实现类要负责管理其基础servlet 类的servlet 生命周期，即调用servlet 的init(）、service(）、destroy(）等方法。由千Wrapper 已经是最低级的servlet 容器了，因此不能再向其中添加子容器。若是Wrapper 的addChild(）方法被调用，则抛出IllegalArgumantException 异常。</p>
 <p>Wrapper 接口中比较重要的方法是load(） 和allocate(）方法。allocate(）方法会分配一个已<br>经初始化的servlet 实例， 而且 allocate(）方法还要考虑下该servlet 类是否实现了javax .servlet.<br>SingleThreadModel 接口。load(）方法载人并初始化servlet 类。</p>
 <h3 id="Loader"><a href="#Loader" class="headerlink" title="Loader"></a>Loader</h3>]]></content>
+      <categories>
+        <category>read</category>
+      </categories>
   </entry>
   <entry>
     <title>dubbo</title>
@@ -1666,6 +1669,9 @@ pause</code></pre>
 <p><strong>3、观察模式法</strong></p>
 <p>观察者模式是综合了<strong>最小连接数和最快响应度</strong>，同时考量这两个指标数，进行一个权重的分配。</p>
 ]]></content>
+      <categories>
+        <category>read</category>
+      </categories>
       <tags>
         <tag>RPC</tag>
         <tag>dubbo</tag>
@@ -1678,6 +1684,9 @@ pause</code></pre>
 <p>不断创建线程接受连接， 并解析http，解析完了之后，创建多个进程处理，每个子进程处理然后发送给父进程， 这里把处理和回复解耦， 处理的子进程可以调用其它的服务器，然后接受数据通过管道发给父进程， 父进程再返回给浏览器</p>
 <p><img src="C:%5CUsers%5CFirefly%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200426210029601.png" alt="image-20200426210029601"></p>
 ]]></content>
+      <categories>
+        <category>read</category>
+      </categories>
   </entry>
   <entry>
     <title>语言特性</title>
@@ -1731,7 +1740,7 @@ pause</code></pre>
 <p>强类型不容易混乱数据， 比如当式子复杂的时候，有可能隐式转换类型失败，类型不对，在c++ 会经常遇到！</p>
 ]]></content>
       <categories>
-        <category>语言</category>
+        <category>read</category>
       </categories>
   </entry>
   <entry>
@@ -1966,6 +1975,122 @@ pause</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>ACM_exercise</title>
+    <url>/2019/12/28/notepad/algorithm/exercise/HNU_ACM/</url>
+    <content><![CDATA[<h1 id="HNU-ACM"><a href="#HNU-ACM" class="headerlink" title="HNU ACM"></a>HNU ACM</h1><h2 id="dp"><a href="#dp" class="headerlink" title="dp"></a>dp</h2><h3 id="1-Longest-Ordered-Subsequence"><a href="#1-Longest-Ordered-Subsequence" class="headerlink" title="1. Longest Ordered Subsequence"></a>1. Longest Ordered Subsequence</h3><table>
+<thead>
+<tr>
+<th><strong>Problem description</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A numeric sequence of <em>ai</em> is ordered if <em>a1</em> &lt; <em>a2</em> &lt; … &lt; <em>aN</em>. Let the subsequence of the given numeric sequence (<em>a1</em>, <em>a2</em>, …, <em>aN</em>) be any sequence (<em>ai1</em>, <em>ai2</em>, …, <em>aiK</em>), where 1 &lt;= <em>i1</em> &lt; <em>i2</em> &lt; … &lt; <em>iK</em> &lt;= <em>N</em>. For example, sequence (1, 7, 3, 5, 9, 4, 8) has ordered subsequences, e. g., (1, 7), (3, 4, 8) and many others. All longest ordered subsequences are of length 4, e. g., (1, 3, 5, 8).  Your program, when given the numeric sequence, must find the length of its longest ordered subsequence.</td>
+</tr>
+<tr>
+<td><strong>Input</strong></td>
+</tr>
+<tr>
+<td>The first line of input contains the length of sequence N. The second line contains the elements of sequence - N integers in the range from 0 to 10000 each, separated by spaces. 1 &lt;= N &lt;= 1000</td>
+</tr>
+<tr>
+<td><strong>Output</strong></td>
+</tr>
+<tr>
+<td>Output must contain a single integer - the length of the longest ordered subsequence of the given sequence.</td>
+</tr>
+<tr>
+<td><strong>Sample Input</strong></td>
+</tr>
+<tr>
+<td>7</td>
+</tr>
+<tr>
+<td>1 7 3 5 9 4 8</td>
+</tr>
+<tr>
+<td><strong>Sample Output</strong></td>
+</tr>
+<tr>
+<td><code>4 </code></td>
+</tr>
+<tr>
+<td><strong>Problem Source</strong></td>
+</tr>
+<tr>
+<td>HNU Contest</td>
+</tr>
+</tbody></table>
+<p>思路：</p>
+<p>dp[i] : 表示以第 i 个字符结尾的最长子上升子序列！</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> len;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1000</span> + <span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> a[maxn];</span><br><span class="line"><span class="keyword">int</span> dp[maxn];</span><br><span class="line"><span class="keyword">int</span> ans = <span class="number">1</span>; </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; len;</span><br><span class="line">    <span class="keyword">int</span> tmp;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)   <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; len; i++)&#123;  <span class="comment">// 对于第 i 个 zifu</span></span><br><span class="line">        tmp  = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j ++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a[i] &gt;= a[j]) tmp = max(dp[j] + <span class="number">1</span>, tmp );</span><br><span class="line">        &#125;</span><br><span class="line">        dp[i] = tmp;</span><br><span class="line">        ans = max(tmp,ans);       </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h3 id="2-Dissatisfying-Lift"><a href="#2-Dissatisfying-Lift" class="headerlink" title="2.Dissatisfying Lift"></a>2.<strong>Dissatisfying Lift</strong></h3><table>
+<thead>
+<tr>
+<th><strong>Problem description</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>There’s a building with M floors. The amounts of tenants of every floor are K1, K2, K3, …, Km. One day all the tenants went home together and they took the same lift (suppose the lift was large enough). Because of some reason the lift could only stop on one floor and the tenants must go upstairs or downstairs to their houses. Every tenant went up N floors would make the dissatisfied degree rise N * a + 0.5 * N * (N - 1) degrees, and every tenant went down N floors would make the dissatisfied degree rise N * b + 0.5 * N * (N - 1) degrees. Your task is to tell which floor the lift should stop, in order to make the dissatisfied degree as low as possible.</td>
+</tr>
+<tr>
+<td><strong>Input</strong></td>
+</tr>
+<tr>
+<td>The first line of the input contains a single integer T (1 &lt;= T &lt;= 20), the number of test cases. Then T cases follow. The first line of each test contains M (1 &lt;= M &lt;= 10000), a and b (0 &lt;= a, b &lt;= 100). The second line contains K1, K2, K3, …, Km(0 &lt;= Ki &lt;= 20, i = 1..M).</td>
+</tr>
+<tr>
+<td><strong>Output</strong></td>
+</tr>
+<tr>
+<td>For each test case, print a line containing a single integer, indicating which floor the lift should stop.</td>
+</tr>
+<tr>
+<td><strong>Sample Input</strong></td>
+</tr>
+<tr>
+<td>1</td>
+</tr>
+<tr>
+<td>5 3 2</td>
+</tr>
+<tr>
+<td>1 1 1 1 1</td>
+</tr>
+<tr>
+<td><strong>Sample Output</strong></td>
+</tr>
+<tr>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><strong>Judge Tips</strong></td>
+</tr>
+<tr>
+<td>Dynamic Programming</td>
+</tr>
+<tr>
+<td><strong>Problem Source</strong></td>
+</tr>
+<tr>
+<td>POJ Monthly</td>
+</tr>
+</tbody></table>
+<h3 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h3><h2 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a>贪心</h2>]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>回溯</title>
     <url>/2019/12/28/notepad/algorithm/exercise/Backtracking/</url>
     <content><![CDATA[<h2 id="Backtracking"><a href="#Backtracking" class="headerlink" title="Backtracking"></a>Backtracking</h2><h4 id="面试题-08-04-幂集"><a href="#面试题-08-04-幂集" class="headerlink" title="面试题 08.04. 幂集"></a><a class="link"   href="https://leetcode-cn.com/problems/power-set-lcci/" >面试题 08.04. 幂集<i class="fas fa-external-link-alt"></i></a></h4><p>幂集。编写一种方法，返回某集合的所有子集。集合中<strong>不包含重复的元素</strong>。</p>
@@ -2082,122 +2207,6 @@ pause</code></pre>
       </categories>
       <tags>
         <tag>回溯</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ACM_exercise</title>
-    <url>/2019/12/28/notepad/algorithm/exercise/HNU_ACM/</url>
-    <content><![CDATA[<h1 id="HNU-ACM"><a href="#HNU-ACM" class="headerlink" title="HNU ACM"></a>HNU ACM</h1><h2 id="dp"><a href="#dp" class="headerlink" title="dp"></a>dp</h2><h3 id="1-Longest-Ordered-Subsequence"><a href="#1-Longest-Ordered-Subsequence" class="headerlink" title="1. Longest Ordered Subsequence"></a>1. Longest Ordered Subsequence</h3><table>
-<thead>
-<tr>
-<th><strong>Problem description</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>A numeric sequence of <em>ai</em> is ordered if <em>a1</em> &lt; <em>a2</em> &lt; … &lt; <em>aN</em>. Let the subsequence of the given numeric sequence (<em>a1</em>, <em>a2</em>, …, <em>aN</em>) be any sequence (<em>ai1</em>, <em>ai2</em>, …, <em>aiK</em>), where 1 &lt;= <em>i1</em> &lt; <em>i2</em> &lt; … &lt; <em>iK</em> &lt;= <em>N</em>. For example, sequence (1, 7, 3, 5, 9, 4, 8) has ordered subsequences, e. g., (1, 7), (3, 4, 8) and many others. All longest ordered subsequences are of length 4, e. g., (1, 3, 5, 8).  Your program, when given the numeric sequence, must find the length of its longest ordered subsequence.</td>
-</tr>
-<tr>
-<td><strong>Input</strong></td>
-</tr>
-<tr>
-<td>The first line of input contains the length of sequence N. The second line contains the elements of sequence - N integers in the range from 0 to 10000 each, separated by spaces. 1 &lt;= N &lt;= 1000</td>
-</tr>
-<tr>
-<td><strong>Output</strong></td>
-</tr>
-<tr>
-<td>Output must contain a single integer - the length of the longest ordered subsequence of the given sequence.</td>
-</tr>
-<tr>
-<td><strong>Sample Input</strong></td>
-</tr>
-<tr>
-<td>7</td>
-</tr>
-<tr>
-<td>1 7 3 5 9 4 8</td>
-</tr>
-<tr>
-<td><strong>Sample Output</strong></td>
-</tr>
-<tr>
-<td><code>4 </code></td>
-</tr>
-<tr>
-<td><strong>Problem Source</strong></td>
-</tr>
-<tr>
-<td>HNU Contest</td>
-</tr>
-</tbody></table>
-<p>思路：</p>
-<p>dp[i] : 表示以第 i 个字符结尾的最长子上升子序列！</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> len;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1000</span> + <span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> a[maxn];</span><br><span class="line"><span class="keyword">int</span> dp[maxn];</span><br><span class="line"><span class="keyword">int</span> ans = <span class="number">1</span>; </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; len;</span><br><span class="line">    <span class="keyword">int</span> tmp;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)   <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; len; i++)&#123;  <span class="comment">// 对于第 i 个 zifu</span></span><br><span class="line">        tmp  = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j ++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a[i] &gt;= a[j]) tmp = max(dp[j] + <span class="number">1</span>, tmp );</span><br><span class="line">        &#125;</span><br><span class="line">        dp[i] = tmp;</span><br><span class="line">        ans = max(tmp,ans);       </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-<h3 id="2-Dissatisfying-Lift"><a href="#2-Dissatisfying-Lift" class="headerlink" title="2.Dissatisfying Lift"></a>2.<strong>Dissatisfying Lift</strong></h3><table>
-<thead>
-<tr>
-<th><strong>Problem description</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>There’s a building with M floors. The amounts of tenants of every floor are K1, K2, K3, …, Km. One day all the tenants went home together and they took the same lift (suppose the lift was large enough). Because of some reason the lift could only stop on one floor and the tenants must go upstairs or downstairs to their houses. Every tenant went up N floors would make the dissatisfied degree rise N * a + 0.5 * N * (N - 1) degrees, and every tenant went down N floors would make the dissatisfied degree rise N * b + 0.5 * N * (N - 1) degrees. Your task is to tell which floor the lift should stop, in order to make the dissatisfied degree as low as possible.</td>
-</tr>
-<tr>
-<td><strong>Input</strong></td>
-</tr>
-<tr>
-<td>The first line of the input contains a single integer T (1 &lt;= T &lt;= 20), the number of test cases. Then T cases follow. The first line of each test contains M (1 &lt;= M &lt;= 10000), a and b (0 &lt;= a, b &lt;= 100). The second line contains K1, K2, K3, …, Km(0 &lt;= Ki &lt;= 20, i = 1..M).</td>
-</tr>
-<tr>
-<td><strong>Output</strong></td>
-</tr>
-<tr>
-<td>For each test case, print a line containing a single integer, indicating which floor the lift should stop.</td>
-</tr>
-<tr>
-<td><strong>Sample Input</strong></td>
-</tr>
-<tr>
-<td>1</td>
-</tr>
-<tr>
-<td>5 3 2</td>
-</tr>
-<tr>
-<td>1 1 1 1 1</td>
-</tr>
-<tr>
-<td><strong>Sample Output</strong></td>
-</tr>
-<tr>
-<td><code>3</code></td>
-</tr>
-<tr>
-<td><strong>Judge Tips</strong></td>
-</tr>
-<tr>
-<td>Dynamic Programming</td>
-</tr>
-<tr>
-<td><strong>Problem Source</strong></td>
-</tr>
-<tr>
-<td>POJ Monthly</td>
-</tr>
-</tbody></table>
-<h3 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h3><h2 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a>贪心</h2>]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
@@ -2336,7 +2345,7 @@ pause</code></pre>
   </entry>
   <entry>
     <title>面试算法题</title>
-    <url>/2019/12/28/notepad/algorithm/exercise/interview/</url>
+    <url>/2020/02/28/notepad/algorithm/exercise/interview/</url>
     <content><![CDATA[<h2 id="常见面试题"><a href="#常见面试题" class="headerlink" title="常见面试题"></a>常见面试题</h2><h4 id="面试题-04-10-检查子树"><a href="#面试题-04-10-检查子树" class="headerlink" title="面试题 04.10. 检查子树"></a><a class="link"   href="https://leetcode-cn.com/problems/check-subtree-lcci/" >面试题 04.10. 检查子树<i class="fas fa-external-link-alt"></i></a></h4><p>检查子树。你有两棵非常大的二叉树：T1，有几万个节点；T2，有几万个节点。设计一个算法，判断 T2 是否为 T1 的子树。</p>
 <p>如果 T1 有这么一个节点 n，其子树与 T2 一模一样，则 T2 为 T1 的子树，也就是说，从节点 n 处把树砍断，得到的树与 T2 完全相同。</p>
 <p><strong>示例1:</strong></p>
@@ -2450,7 +2459,7 @@ pause</code></pre>
   </entry>
   <entry>
     <title>字符串</title>
-    <url>/2019/12/28/notepad/algorithm/exercise/string/</url>
+    <url>/2020/02/24/notepad/algorithm/exercise/string/</url>
     <content><![CDATA[<h1 id="string处理"><a href="#string处理" class="headerlink" title=" string处理 "></a><center> string处理 </center></h1><p>[toc]</p>
 <h3 id="字符串hash"><a href="#字符串hash" class="headerlink" title="字符串hash"></a>字符串hash</h3><p>字符串可以看做是一个n进制的表示方式： </p>
 <figure class="highlight c#"><table><tr><td class="code"><pre><span class="line">ABC =   A * <span class="number">26</span>^<span class="number">2</span> + B * <span class="number">26</span>^<span class="number">1</span> + C * <span class="number">26</span>^<span class="number">0</span>; </span><br></pre></td></tr></table></figure>
@@ -2503,7 +2512,7 @@ pause</code></pre>
   </entry>
   <entry>
     <title>大数运算</title>
-    <url>/2019/12/28/notepad/algorithm/exercise/tree/</url>
+    <url>/2020/04/06/notepad/algorithm/exercise/tree/</url>
     <content><![CDATA[<p>[toc]</p>
 <h1 id="树"><a href="#树" class="headerlink" title="树"></a>树</h1><h5 id="面试题-04-06-后继者"><a href="#面试题-04-06-后继者" class="headerlink" title="面试题 04.06. 后继者"></a>面试题 04.06. 后继者</h5><blockquote>
 <p>设计一个算法，找出二叉搜索树中指定节点的“下一个”节点（也即中序后继）。</p>
@@ -2572,7 +2581,7 @@ pause</code></pre>
   </entry>
   <entry>
     <title>并查集</title>
-    <url>/2019/12/28/notepad/algorithm/exercise/unionfind/</url>
+    <url>/2020/03/14/notepad/algorithm/exercise/unionfind/</url>
     <content><![CDATA[<h4 id="200-岛屿数量"><a href="#200-岛屿数量" class="headerlink" title="200. 岛屿数量"></a><a class="link"   href="https://leetcode-cn.com/problems/number-of-islands/" >200. 岛屿数量<i class="fas fa-external-link-alt"></i></a></h4><p>给你一个由 <code>&#39;1&#39;</code>（陆地）和 <code>&#39;0&#39;</code>（水）组成的的二维网格，请你计算网格中岛屿的数量。</p>
 <p>岛屿总是被水包围，并且每座岛屿只能由水平方向或竖直方向上相邻的陆地连接形成。</p>
 <p>此外，你可以假设该网格的四条边均被水包围。</p>
@@ -2623,7 +2632,7 @@ pause</code></pre>
   </entry>
   <entry>
     <title>图</title>
-    <url>/2019/12/28/notepad/algorithm/exercise/%E5%9B%BE%E8%AE%BA%E6%80%BB%E7%BB%93/</url>
+    <url>/2020/03/28/notepad/algorithm/exercise/%E5%9B%BE%E8%AE%BA%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<h1 id="图论总结"><a href="#图论总结" class="headerlink" title="图论总结"></a><center>图论总结</center></h1><p>[toc]</p>
 <p>算法这东西，容易忘记， 捡起来很快， 但也要时间， 因此，做一些简短的记录！</p>
 <h3 id="图是什么？"><a href="#图是什么？" class="headerlink" title="图是什么？"></a>图是什么？</h3><p><img src="https://raw.githubusercontent.com/Fierygit/picbed/master/20200219203748.png"></p>
@@ -4155,7 +4164,7 @@ pause</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>操作系统大纲</title>
+    <title>操作系统学习笔记</title>
     <url>/2019/07/01/notepad/os/os/</url>
     <content><![CDATA[<h1 id="操作系统复习指南"><a href="#操作系统复习指南" class="headerlink" title="操作系统复习指南"></a><center>操作系统复习指南</center></h1><h2 id="1-CPU-调度算法"><a href="#1-CPU-调度算法" class="headerlink" title="1.CPU 调度算法"></a>1.CPU 调度算法</h2><blockquote>
 <p>了解CPU 调度算法，如先到先服务、最短作业优先、轮转、多级反馈队列等调度算法，<br>以及掌握多处理器调度的特殊性。</p>
@@ -4547,6 +4556,9 @@ pause</code></pre>
 </blockquote>
 <p>都包含在上面了。</p>
 ]]></content>
+      <categories>
+        <category>os</category>
+      </categories>
   </entry>
   <entry>
     <title>Java设计模式</title>
