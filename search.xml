@@ -362,252 +362,6 @@ movl    %esi,(%edi)</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>Wolrd In C</title>
-    <url>/2019/11/02/notepad/cxx/c_notepad/</url>
-    <content><![CDATA[<h1 id="c-c-note"><a href="#c-c-note" class="headerlink" title=" c / c++ note"></a><center> c / c++ note</center></h1><p>c / c++ 遇到的bug 或者小技巧集</p>
-<p>[TOC]</p>
-<h2 id="typedef-和-define"><a href="#typedef-和-define" class="headerlink" title="typedef 和 #define"></a>typedef 和 #define</h2><p>每一个例子都看懂 == 入门c</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//定义新的类型</span></span><br><span class="line"><span class="keyword">typedef</span>  <span class="keyword">int</span>* t1;</span><br><span class="line"><span class="comment">//预处理， 替换</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> t2  int*</span></span><br><span class="line"></span><br><span class="line">t1 a, b; <span class="comment">//等价于  int *a, *b;</span></span><br><span class="line">t2 a,b;  <span class="comment">//等价于  int *a, b;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> <span class="keyword">const</span> b = <span class="number">10</span>; <span class="comment">//等价于 const int b = 10;*************</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//这两种写法是一样的，  定义 指针常量, t1 相当于一个新的类型, 如b的定义</span></span><br><span class="line">t1 <span class="keyword">const</span> p1 = &amp;a;</span><br><span class="line"><span class="keyword">const</span> t1 p1 = &amp;a;</span><br><span class="line">*t1 = <span class="number">12</span>;    <span class="comment">//可改变量</span></span><br><span class="line">t1 = &amp;b; <span class="comment">//错误</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> t1 *p5 = &amp;p1; <span class="comment">// 指向  新类型的指针， 这个指针不可变</span></span><br><span class="line">p1 = &amp;b; 			<span class="comment">// 错误</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> t1 * <span class="keyword">const</span> p5 = &amp;p1; <span class="comment">// 这个指针不可变, 而且指针指向的指针的对应的值不可变</span></span><br><span class="line">**p1 = <span class="number">11</span> <span class="comment">// 错误</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> t2 p2 = &amp;a;</span><br><span class="line"><span class="comment">//等价于 const int * p2 = &amp;a;</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-<h2 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h2><p>~ 用于数字或者整形变量之前，表示对该数取反操作，其规则是~0=1, ~1=0, 如二进制0101 0101取反后就是1010 1010</p>
-<p>测试得到： -a - 1  ==  ~a </p>
-<ul>
-<li>判断 2 的 乘方：</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">n &amp; n - <span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>输出二进制 1 的个数:</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int cnt &#x3D; 0;</span><br><span class="line">while(n) n &amp;&#x3D; n-1, ++cnt</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="memset赋值无穷大"><a href="#memset赋值无穷大" class="headerlink" title="memset赋值无穷大"></a>memset赋值无穷大</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> G[<span class="number">10</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">memset</span>(G, <span class="number">0x3f</span>, <span class="keyword">sizeof</span>(G));   <span class="comment">//  输出这个1061109567,给数据赋值无穷大的方法</span></span><br></pre></td></tr></table></figure>
-
-<p>memset 是按照一个字节来赋值的， 因此memset 会执行  sizeof（int） * 10 也就是40次的赋值，因此，</p>
-<p> <code>G[0] = 0x3f3f3f3f</code> .</p>
-<p>为什么要选择 0x3f3f3f3f 作为无穷大？  因为这个数相加还是在 int 的范围之内， 无穷大相加还是无穷大， 而且这个数方便写, 连续4个 3f！</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="number">0x3f3f3f3f</span> 	&lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="number">0x3f3f3f3f</span> * <span class="number">2</span> &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="number">0x7fffffff</span> 	&lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; ~(<span class="number">1</span>&lt;&lt;<span class="number">31</span>) 		&lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="number">1061109567</span></span><br><span class="line"><span class="number">2122219134</span></span><br><span class="line"><span class="number">2147483647</span></span><br><span class="line"><span class="number">2147483647</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-<h2 id="格式化标准输入输出"><a href="#格式化标准输入输出" class="headerlink" title="格式化标准输入输出"></a>格式化标准输入输出</h2><p>cout.setf(ios::left);   //左对齐 右对齐相同 </p>
-<p>cout.width(3);    //宽度为3</p>
-<h2 id="struct-初始化的一个小细节"><a href="#struct-初始化的一个小细节" class="headerlink" title="struct 初始化的一个小细节"></a>struct 初始化的一个小细节</h2><p>2019-11-2<br>1.今天写实验定义了一个这样的结构体，然后赋值： </p>
-<p><img src="https://raw.githubusercontent.com/Fierygit/picbed/master/c1.png"></p>
-<p><img src="https://raw.githubusercontent.com/Fierygit/picbed/master/c2.jpg"></p>
-<p>debug了半天， 一个一个输出，终于找到错误的源头，原来是。。。。。。string和struct有冲突，什么原因呢？</p>
-<p>经查，  malloc/free和new/delete </p>
-<hr>
-<ul>
-<li>new会先调用operator new函数，申请足够的内存（通常底层使用malloc实现）。然后调用类型的构造函数，初始化成员变量，最后返回自定义类型指针。delete先调用析构函数，然后调用operator delete函数释放内存（通常底层使用free实现）。</li>
-</ul>
-<hr>
-<ul>
-<li>malloc/free是库函数，只能动态的申请和释放内存，无法强制要求其做自定义类型对象构造和析构工作。</li>
-</ul>
-<hr>
-<p>所以解决的方案是： <code>TreeNode *temp = new TreeNode;</code></p>
-<p>struct 是c里面的， 而string 类是 c++的，所以当在用c++的时候，写c语言就要考虑一下兼容问题。</p>
-<h2 id="map的一个小细节"><a href="#map的一个小细节" class="headerlink" title="map的一个小细节"></a>map的一个小细节</h2><p>当创建一个map的时候，map是没有预分配内存的，当map一个没有的key的时候，就会默认创建这个对象，并且map的size加一！</p>
-<p>看一个例子：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="built_in">string</span>,<span class="keyword">int</span>&gt; map1;</span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="built_in">string</span>,<span class="built_in">string</span>&gt; map2;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;out1-----------\n&quot;</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;map1.size(): &quot;</span> &lt;&lt;  map1.size() &lt;&lt; <span class="string">&quot;\t&quot;</span> &lt;&lt; <span class="built_in">endl</span>  ; </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;map2.size(): &quot;</span> &lt;&lt;  map2.size() &lt;&lt; <span class="string">&quot;\t&quot;</span>  ;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;\n out2-----------\n&quot;</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt;<span class="string">&quot;map1[a]: &quot;</span> &lt;&lt;  map1[<span class="string">&quot;a&quot;</span>] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt;<span class="string">&quot;map2[a]: &quot;</span> &lt;&lt;  map2[<span class="string">&quot;a&quot;</span>] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">if</span>(map2[<span class="string">&quot;a&quot;</span>] == <span class="string">&quot;&quot;</span>) <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;empty string!!!!&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;map1.size(): &quot;</span> &lt;&lt;  map1.size() &lt;&lt; <span class="string">&quot;\t&quot;</span>  &lt;&lt; <span class="built_in">endl</span> ;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;map2.size(): &quot;</span> &lt;&lt;  map2.size() &lt;&lt; <span class="string">&quot;\t&quot;</span>  &lt;&lt; <span class="built_in">endl</span> ;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">out1-----------</span><br><span class="line">map1.size(): <span class="number">0</span></span><br><span class="line">map2.size(): <span class="number">0</span></span><br><span class="line"> out2-----------</span><br><span class="line">map1[a]: <span class="number">0</span></span><br><span class="line">map2[a]:</span><br><span class="line">empty <span class="built_in">string</span>!!!!</span><br><span class="line">map1.size(): <span class="number">1</span></span><br><span class="line">map2.size(): <span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-<p>当写一些需要用到map的代码的时候，就要注意了， 可能要花掉你半天的时间去debug这个小问题！！！</p>
-<h2 id="操作系统的-堆和栈"><a href="#操作系统的-堆和栈" class="headerlink" title="操作系统的 堆和栈"></a>操作系统的 堆和栈</h2><p>学操作系统的时候，系统分配内存会分配 堆和栈</p>
-<p>有一个我纠结了很久的问题，堆是一个二叉树实现的，而分配内存的堆是一个线性的地址，这两者有什么关联呢？</p>
-<p>结论，数据结构没有学好！！  找个时间马一个heap</p>
-<p>栈和堆都可以用二叉树实现， 堆栈就是栈， 堆插入一个元素二叉树放到最后面，如果删除了父节点，就要调整二叉树， 而栈只能在二叉树尾部删除和操作，没有其它操作，所以堆栈的含义：堆的后面多了一个限定词， 把范围限定的更小了！！ 但栈一般直接使用数组就好了，查看网上的说法：栈是一种受限制的堆。</p>
-<p>查看数据结构的书本，发现这样一句话，我还画了出来 ： 学生们经常把堆的逻辑表示与利用基于数组的完全二叉树的物理实现相混淆。二者并非同义，虽然堆的一般实现方法是使用数组，但是从逻辑的角度来看，堆实际上是一种树结构。</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">0</span>; 全局初始化区</span><br><span class="line"><span class="keyword">char</span> *p1; 全局未初始化区</span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">int</span> b; 栈</span><br><span class="line"><span class="keyword">char</span> s[] = <span class="string">&quot;abc&quot;</span>; 栈</span><br><span class="line"><span class="keyword">char</span> *p2; 栈</span><br><span class="line"><span class="keyword">char</span> *p3 = <span class="string">&quot;123456&quot;</span>; <span class="number">123456</span>\<span class="number">0</span>在常量区，p3在栈上。</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> c =<span class="number">0</span>； 全局（静态）初始化区</span><br><span class="line">p1 = (<span class="keyword">char</span> *)<span class="built_in">malloc</span>(<span class="number">10</span>);</span><br><span class="line">p2 = (<span class="keyword">char</span> *)<span class="built_in">malloc</span>(<span class="number">20</span>);</span><br><span class="line">分配得来得<span class="number">10</span>和<span class="number">20</span>字节的区域就在堆区。</span><br><span class="line"><span class="built_in">strcpy</span>(p1, <span class="string">&quot;123456&quot;</span>); <span class="number">123456</span>\<span class="number">0</span>放在常量区，编译器可能会将它与p3所指向的</span><br><span class="line"><span class="string">&quot;123456&quot;</span>优化成一个</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">int</span> b = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">int</span> c = <span class="number">3</span>;</span><br><span class="line">  <span class="keyword">int</span> d = <span class="number">4</span>;</span><br><span class="line">  <span class="keyword">int</span> e = <span class="number">5</span>;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;addr: %p\n&quot;</span>, &amp;a);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;addr: %p\n&quot;</span>, &amp;b);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;addr: %p\n&quot;</span>, &amp;c);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;addr: %p\n&quot;</span>, &amp;d);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;addr: %p\n&quot;</span>, &amp;e);</span><br><span class="line">  <span class="keyword">int</span> *a1, *b1, *c1, *d1, *e1;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n-----------------\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">  a1 = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">  b1 = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">  c1 = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">  d1 = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">  e1 = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line"></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;addr: %p\n&quot;</span>, &amp;a1);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;addr: %p\n&quot;</span>, &amp;b1);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;addr: %p\n&quot;</span>, &amp;c1);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;addr: %p\n&quot;</span>, &amp;d1);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;addr: %p\n&quot;</span>, &amp;e1);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">输出</span><br><span class="line">addr: <span class="number">0061F</span>F1C</span><br><span class="line">addr: <span class="number">0061F</span>F18</span><br><span class="line">addr: <span class="number">0061F</span>F14</span><br><span class="line">addr: <span class="number">0061F</span>F10</span><br><span class="line">addr: <span class="number">0061F</span>F0C</span><br><span class="line">-----------------</span><br><span class="line">addr: <span class="number">0061F</span>F08</span><br><span class="line">addr: <span class="number">0061F</span>F04</span><br><span class="line">addr: <span class="number">0061F</span>F00</span><br><span class="line">addr: <span class="number">0061F</span>EFC</span><br><span class="line">addr: <span class="number">0061F</span>EF8</span><br><span class="line">可以看出  heap 是 从减小的，  <span class="built_in">stack</span>是增大的</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-<p>for(int i = 0, siz = a.size(); i &lt; siz; i++)  //for循环可以有有四个值</p>
-<p>​      有时也可以两个值       for( ; a &lt; b; ++a); </p>
-<p>return cout &lt;&lt; “ “ &lt;&lt; endl,0;      //可以在return 后面输出</p>
-<p>在for循环里 ++i 比 i++ 的效率高 <a class="link"   href="https://blog.csdn.net/FireflyNo1/article/details/82809624" >详情请点击<i class="fas fa-external-link-alt"></i></a></p>
-]]></content>
-      <categories>
-        <category>CXX</category>
-      </categories>
-      <tags>
-        <tag>CXX</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>cplusplus</title>
-    <url>/2017/11/21/notepad/cxx/cplusplus/</url>
-    <content><![CDATA[<p>[toc]</p>
-<h2 id="c11的语言特性"><a href="#c11的语言特性" class="headerlink" title="c11的语言特性"></a>c11的语言特性</h2><p>.h 头文件可以不加</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector.h&gt;</span></span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="function-bind"><a href="#function-bind" class="headerlink" title="function, bind"></a>function, bind</h3><p>关于std::function 的用法：<br>其实就可以理解成函数指针</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//保存自由函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;<span class="built_in">cout</span>&lt;&lt;a&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::function&lt;<span class="keyword">void</span>(<span class="keyword">int</span> a)&gt; func;</span><br><span class="line">func = printA;</span><br><span class="line">func(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//保存lambda表达式</span></span><br><span class="line"><span class="built_in">std</span>::function&lt;<span class="keyword">void</span>()&gt; func_1 = []()&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;hello world&quot;</span>&lt;&lt;<span class="built_in">endl</span>;&#125;;</span><br><span class="line">func_1();</span><br><span class="line"></span><br><span class="line"><span class="comment">//保存成员函数</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Foo</span> &#123;</span></span><br><span class="line">    Foo(<span class="keyword">int</span> num) : num_(num) &#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">print_add</span><span class="params">(<span class="keyword">int</span> i)</span> <span class="keyword">const</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; num_+i &lt;&lt; <span class="string">&#x27;\n&#x27;</span>; &#125;</span><br><span class="line">    <span class="keyword">int</span> num_;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::function&lt;<span class="keyword">void</span>(<span class="keyword">const</span> Foo&amp;, <span class="keyword">int</span>)&gt; f_add_display = &amp;Foo::print_add;</span><br><span class="line"><span class="function">Foo <span class="title">foo</span><span class="params">(<span class="number">2</span>)</span></span>;</span><br><span class="line">f_add_display(foo, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">在实际使用中都用 <span class="keyword">auto</span> 关键字来代替<span class="built_in">std</span>::function… 这一长串了。</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">fun_3</span><span class="params">(<span class="keyword">int</span> k,<span class="keyword">int</span> m)</span></span>&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;k&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;m&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> z)</span></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;x&lt;&lt;<span class="string">&quot;  &quot;</span>&lt;&lt;y&lt;&lt;<span class="string">&quot;  &quot;</span>&lt;&lt;z&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun_2</span><span class="params">(<span class="keyword">int</span> &amp;a,<span class="keyword">int</span> &amp;b)</span></span>&#123;</span><br><span class="line">    a++; b++;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;a&lt;&lt;<span class="string">&quot;  &quot;</span>&lt;&lt;b&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span></span>&#123;</span><br><span class="line">    <span class="keyword">auto</span> f1 = <span class="built_in">std</span>::bind(fun,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>); <span class="comment">//表示绑定函数 fun 的第一，二，三个参数值为： 1 2 3</span></span><br><span class="line">    f1(); <span class="comment">//print:1  2  3</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">auto</span> f2 = <span class="built_in">std</span>::bind(fun, placeholders::_1,placeholders::_2,<span class="number">3</span>);</span><br><span class="line">    <span class="comment">//表示绑定函数 fun 的第三个参数为 3，而fun 的第一，二个参数分别有调用 f2 的第一，二个参数指定</span></span><br><span class="line">    f2(<span class="number">1</span>,<span class="number">2</span>);<span class="comment">//print:1  2  3</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">auto</span> f3 = <span class="built_in">std</span>::bind(fun,placeholders::_2,placeholders::_1,<span class="number">3</span>);</span><br><span class="line">    <span class="comment">//表示绑定函数 fun 的第三个参数为 3，而fun 的第一，二个参数分别有调用 f3 的第二，一个参数指定</span></span><br><span class="line">    <span class="comment">//注意： f2  和  f3 的区别。</span></span><br><span class="line">    f3(<span class="number">1</span>,<span class="number">2</span>);<span class="comment">//print:2  1  3</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">2</span>;    <span class="keyword">int</span> m = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">auto</span> f4 = <span class="built_in">std</span>::bind(fun_2, n,placeholders::_1);</span><br><span class="line">    f4(m); <span class="comment">//print:3  4</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//print:4  说明：bind对于不事先绑定的参数，通过std::placeholders传递的参数是通过引用传递的</span></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;m&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="comment">//print:2  说明：bind对于预先绑定的函数参数是通过值传递的</span></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;n&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    A a;</span><br><span class="line">    <span class="keyword">auto</span> f5 = <span class="built_in">std</span>::bind(&amp;A::fun_3, a,placeholders::_1,placeholders::_2);</span><br><span class="line">    f5(<span class="number">10</span>,<span class="number">20</span>);<span class="comment">//print:10 20</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::function&lt;<span class="keyword">void</span>(<span class="keyword">int</span>,<span class="keyword">int</span>)&gt; fc = </span><br><span class="line">        <span class="built_in">std</span>::bind(&amp;A::fun_3, a,<span class="built_in">std</span>::placeholders::_1,<span class="built_in">std</span>::placeholders::_2);</span><br><span class="line">    fc(<span class="number">10</span>,<span class="number">20</span>);<span class="comment">//print:10 20</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="智能指针"><a href="#智能指针" class="headerlink" title="智能指针"></a>智能指针</h3><p>auto_ptr、unique_ptr、shared_ptr和weak_ptr 这几个智能指针背后的设计思想: 将基本类型指针封装为类对象指针，并在析构函数里编写delete语句删除指针指向的内存空间。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">智能指针析构是会<span class="keyword">delete</span> 指针， 因此不要这样做</span><br><span class="line"><span class="function">tring <span class="title">vacation</span><span class="params">(<span class="string">&quot;I wandered lonely as a cloud.&quot;</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="built_in">shared_ptr</span>&lt;<span class="built_in">string</span>&gt; <span class="title">pvac</span><span class="params">(&amp;vacation)</span></span>;   <span class="comment">// No</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>先来看下面的赋值语句:</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="built_in">auto_ptr</span>&lt; <span class="built_in">string</span>&gt; <span class="title">ps</span> <span class="params">(<span class="keyword">new</span> <span class="built_in">string</span> (<span class="string">&quot;I reigned lonely as a cloud.”）;</span></span></span></span><br><span class="line"><span class="function"><span class="params"><span class="string">auto_ptr&lt;string&gt; vocation; </span></span></span></span><br><span class="line"><span class="function"><span class="params"><span class="string">vocaticn = ps;</span></span></span></span><br></pre></td></tr></table></figure>
-
-<p>上述赋值语句将完成什么工作呢？如果ps和vocation是常规指针，则两个指针将指向同一个string对象。这是不能接受的，因为程序将试图删除同一个对象两次——一次是ps过期时，另一次是vocation过期时。要避免这种问题，方法有多种：</p>
-<ul>
-<li>定义陚值运算符，使之执行深复制。这样两个指针将指向不同的对象，其中的一个对象是另一个对象的副本，缺点是浪费空间，所以智能指针都未采用此方案。</li>
-<li>建立所有权（ownership）概念。对于特定的对象，只能有一个智能指针可拥有，这样只有拥有对象的智能指针的构造函数会删除该对象。然后让赋值操作转让所有权。这就是用于auto_ptr和uniqiie_ptr 的策略，但unique_ptr的策略更严格。</li>
-<li>创建智能更高的指针，跟踪引用特定对象的智能指针数。这称为引用计数。例如，赋值时，计数将加1，而指针过期时，计数将减1,。当减为0时才调用delete。这是shared_ptr采用的策略。</li>
-</ul>
-<p>当然，同样的策略也适用于复制构造函数，每种方法都有其用途，但为何说要摒弃auto_ptr呢？</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;memory&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">auto_ptr</span>&lt;<span class="built_in">string</span>&gt; films[<span class="number">5</span>] =</span><br><span class="line"> &#123;</span><br><span class="line">  <span class="built_in">auto_ptr</span>&lt;<span class="built_in">string</span>&gt; (<span class="keyword">new</span> <span class="built_in">string</span>(<span class="string">&quot;Fowl Balls&quot;</span>)),</span><br><span class="line">  <span class="built_in">auto_ptr</span>&lt;<span class="built_in">string</span>&gt; (<span class="keyword">new</span> <span class="built_in">string</span>(<span class="string">&quot;Duck Walks&quot;</span>)),</span><br><span class="line">  <span class="built_in">auto_ptr</span>&lt;<span class="built_in">string</span>&gt; (<span class="keyword">new</span> <span class="built_in">string</span>(<span class="string">&quot;Chicken Runs&quot;</span>)),</span><br><span class="line">  <span class="built_in">auto_ptr</span>&lt;<span class="built_in">string</span>&gt; (<span class="keyword">new</span> <span class="built_in">string</span>(<span class="string">&quot;Turkey Errors&quot;</span>)),</span><br><span class="line">  <span class="built_in">auto_ptr</span>&lt;<span class="built_in">string</span>&gt; (<span class="keyword">new</span> <span class="built_in">string</span>(<span class="string">&quot;Goose Eggs&quot;</span>))</span><br><span class="line"> &#125;;</span><br><span class="line"> <span class="built_in">auto_ptr</span>&lt;<span class="built_in">string</span>&gt; pwin;</span><br><span class="line"> pwin = films[<span class="number">2</span>]; </span><br><span class="line"> <span class="comment">// films[2] loses ownership. 将所有权从films[2]转让给pwin，</span></span><br><span class="line"> 此时films[<span class="number">2</span>]不再引用该字符串从而变成空指针</span><br><span class="line"></span><br><span class="line"> <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;The nominees for best avian baseballl film are\n&quot;</span>;</span><br><span class="line"> <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; ++i)</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; *films[i] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"> <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;The winner is &quot;</span> &lt;&lt; *pwin &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"> <span class="built_in">cin</span>.get();</span><br><span class="line"></span><br><span class="line"> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>运行下发现程序崩溃了，原因在上面注释已经说的很清楚，films[2]已经是空指针了，下面输出访问空指针当然会崩溃了。但这里如果把auto_ptr换成shared_ptr或unique_ptr后，程序就不会崩溃，原因如下：</p>
-<ul>
-<li><p>使用shared_ptr时运行正常，因为shared_ptr采用引用计数，pwin和films[2]都指向同一块内存，在释放空间时因为事先要判断引用计数值的大小因此不会出现多次删除一个对象的错误。</p>
-</li>
-<li><p>使用unique_ptr时编译出错，与auto_ptr一样，unique_ptr也采用所有权模型，但在使用unique_ptr时，程序不会等到运行阶段崩溃，而在编译器因下述代码行出现错误：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="built_in">unique_ptr</span>&lt;<span class="built_in">string</span>&gt; pwin;</span><br><span class="line">pwin = films[<span class="number">2</span>]; <span class="comment">// films[2] loses ownership.</span></span><br></pre></td></tr></table></figure>
-
-<p>指导你发现潜在的内存错误。</p>
-</li>
-</ul>
-<p>这就是为何要摒弃auto_ptr的原因，一句话总结就是：<strong>避免潜在的内存崩溃问题。</strong></p>
-<ul>
-<li>unique_ptr为何优于auto_ptr？</li>
-</ul>
-<p>可能大家认为前面的例子已经说明了unique_ptr为何优于auto_ptr，也就是安全问题，下面再叙述的清晰一点。<br>请看下面的语句:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">auto_ptr&lt;string&gt; p1(new string (&quot;auto&quot;) ； &#x2F;&#x2F;#1</span><br><span class="line">auto_ptr&lt;string&gt; p2;                       &#x2F;&#x2F;#2</span><br><span class="line">p2 &#x3D; p1;                                   &#x2F;&#x2F;#3</span><br></pre></td></tr></table></figure>
-
-<p>在语句#3中，p2接管string对象的所有权后，p1的所有权将被剥夺。前面说过，这是好事，可防止p1和p2的析构函数试图刪同—个对象；</p>
-<p>但如果程序随后试图使用p1，这将是件坏事，因为p1不再指向有效的数据。</p>
-<p>下面来看使用unique_ptr的情况：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">unique_ptr&lt;string&gt; p3 (new string (&quot;auto&quot;);   &#x2F;&#x2F;#4</span><br><span class="line">unique_ptr&lt;string&gt; p4；                       &#x2F;&#x2F;#5</span><br><span class="line">p4 &#x3D; p3;                                      &#x2F;&#x2F;#6</span><br></pre></td></tr></table></figure>
-
-<p>编译器认为语句#6非法，避免了p3不再指向有效数据的问题。因此，unique_ptr比auto_ptr更安全。</p>
-<p><strong>但unique_ptr还有更聪明的地方。</strong><br>有时候，会将一个智能指针赋给另一个并不会留下危险的悬挂指针。假设有如下函数定义：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">unique_ptr&lt;string&gt; demo(const char * s)</span><br><span class="line">&#123;</span><br><span class="line">    unique_ptr&lt;string&gt; temp (new string (s))； </span><br><span class="line">    return temp；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>并假设编写了如下代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">unique_ptr&lt;string&gt; ps;</span><br><span class="line">ps &#x3D; demo(&#39;Uniquely special&quot;)；</span><br></pre></td></tr></table></figure>
-
-<p>demo()返回一个临时unique_ptr，然后ps接管了原本归返回的unique_ptr所有的对象，而返回时临时的 unique_ptr 被销毁，也就是说没有机会使用 unique_ptr 来访问无效的数据，换句话来说，这种赋值是不会出现任何问题的，即没有理由禁止这种赋值。实际上，编译器确实允许这种赋值，这正是unique_ptr更聪明的地方。</p>
-<p><strong>总之，党程序试图将一个 unique_ptr 赋值给另一个时，如果源 unique_ptr 是个临时右值，编译器允许这么做；如果源 unique_ptr 将存在一段时间，编译器将禁止这么做</strong>，比如：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="built_in">unique_ptr</span>&lt;<span class="built_in">string</span>&gt; <span class="title">pu1</span><span class="params">(<span class="keyword">new</span> <span class="built_in">string</span> (<span class="string">&quot;hello world&quot;</span>))</span></span>;</span><br><span class="line"><span class="built_in">unique_ptr</span>&lt;<span class="built_in">string</span>&gt; pu2;</span><br><span class="line">pu2 = pu1;                                      <span class="comment">// #1 not allowed</span></span><br><span class="line"><span class="built_in">unique_ptr</span>&lt;<span class="built_in">string</span>&gt; pu3;</span><br><span class="line">pu3 = <span class="built_in">unique_ptr</span>&lt;<span class="built_in">string</span>&gt;(<span class="keyword">new</span> <span class="built_in">string</span> (<span class="string">&quot;You&quot;</span>));   <span class="comment">// #2 allowed</span></span><br></pre></td></tr></table></figure>
-
-<p>其中#1留下悬挂的unique_ptr(pu1)，这可能导致危害。而#2不会留下悬挂的unique_ptr，因为它调用 unique_ptr 的构造函数，该构造函数创建的临时对象在其所有权让给 pu3 后就会被销毁。<strong>这种随情况而已的行为表明，unique_ptr 优于允许两种赋值的auto_ptr 。</strong></p>
-<p>当然，您可能确实想执行类似于#1的操作，仅当以非智能的方式使用摒弃的智能指针时（如解除引用时），这种赋值才不安全。要安全的重用这种指针，可给它赋新值。C++有一个标准库函数std::move()，让你能够将一个unique_ptr赋给另一个。下面是一个使用前述demo()函数的例子，该函数返回一个unique_ptr<string>对象：<br>使用move后，原来的指针仍转让所有权变成空指针，可以对其重新赋值。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="built_in">unique_ptr</span>&lt;<span class="built_in">string</span>&gt; ps1, ps2;</span><br><span class="line">ps1 = demo(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">ps2 = move(ps1);</span><br><span class="line">ps1 = demo(<span class="string">&quot;alexia&quot;</span>);</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; *ps2 &lt;&lt; *ps1 &lt;&lt; <span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>如何选择智能指针？</li>
-</ul>
-<p>在掌握了这几种智能指针后，大家可能会想另一个问题：在实际应用中，应使用哪种智能指针呢？<br>下面给出几个使用指南。</p>
-<p>（1）如果程序要使用多个指向同一个对象的指针，应选择shared_ptr。这样的情况包括：</p>
-<ul>
-<li>有一个指针数组，并使用一些辅助指针来标示特定的元素，如最大的元素和最小的元素；</li>
-<li>两个对象包含都指向第三个对象的指针；</li>
-<li>STL容器包含指针。很多STL算法都支持复制和赋值操作，这些操作可用于shared_ptr，但不能用于unique_ptr（编译器发出warning）和auto_ptr（行为不确定）。如果你的编译器没有提供shared_ptr，可使用Boost库提供的shared_ptr。</li>
-</ul>
-<p>（2）如果程序不需要多个指向同一个对象的指针，则可使用unique_ptr。如果函数使用new分配内存，并返还指向该内存的指针，将其返回类型声明为unique_ptr是不错的选择。这样，所有权转让给接受返回值的unique_ptr，而该智能指针将负责调用delete。可将unique_ptr存储到STL容器在那个，只要不调用将一个unique_ptr复制或赋给另一个算法（如sort()）。例如，可在程序中使用类似于下面的代码段。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="built_in">unique_ptr</span>&lt;<span class="keyword">int</span>&gt; <span class="title">make_int</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">unique_ptr</span>&lt;<span class="keyword">int</span>&gt;(<span class="keyword">new</span> <span class="keyword">int</span>(n));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">(<span class="built_in">unique_ptr</span>&lt;<span class="keyword">int</span>&gt; &amp;p1)</span></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; *a &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">unique_ptr</span>&lt;<span class="keyword">int</span>&gt; &gt; vp(size);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; vp.size(); i++)</span><br><span class="line">        vp[i] = make_int(rand() % <span class="number">1000</span>);              <span class="comment">// copy temporary unique_ptr</span></span><br><span class="line">    vp.push_back(make_int(rand() % <span class="number">1000</span>));     <span class="comment">// ok because arg is temporary</span></span><br><span class="line">    for_each(vp.begin(), vp.end(), show);           <span class="comment">// use for_each()</span></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>其中push_back调用没有问题，因为它返回一个临时unique_ptr，该unique_ptr被赋给vp中的一个unique_ptr。另外，如果按值而不是按引用给show()传递对象，for_each()将非法，因为这将导致使用一个来自vp的非临时unique_ptr初始化pi，而这是不允许的。前面说过，编译器将发现错误使用unique_ptr的企图。</p>
-<p>在unique_ptr为右值时，可将其赋给shared_ptr，这与将一个unique_ptr赋给一个需要满足的条件相同。与前面一样，在下面的代码中，make_int()的返回类型为unique_ptr<int>：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="built_in">unique_ptr</span>&lt;<span class="keyword">int</span>&gt; <span class="title">pup</span><span class="params">(make_int(rand() % <span class="number">1000</span>))</span></span>;   <span class="comment">// ok</span></span><br><span class="line"><span class="function"><span class="built_in">shared_ptr</span>&lt;<span class="keyword">int</span>&gt; <span class="title">spp</span><span class="params">(pup)</span></span>;                       <span class="comment">// not allowed, pup as lvalue</span></span><br><span class="line"><span class="function"><span class="built_in">shared_ptr</span>&lt;<span class="keyword">int</span>&gt; <span class="title">spr</span><span class="params">(make_int(rand() % <span class="number">1000</span>))</span></span>;   <span class="comment">// ok</span></span><br></pre></td></tr></table></figure>
-
-<p>模板shared_ptr包含一个显式构造函数，可用于将右值unique_ptr转换为shared_ptr。shared_ptr将接管原来归unique_ptr所有的对象。</p>
-<p>在满足unique_ptr要求的条件时，也可使用auto_ptr，但unique_ptr是更好的选择。如果你的编译器没有unique_ptr，可考虑使用Boost库提供的scoped_ptr，它与unique_ptr类似。</p>
-<h3 id="varidic-template"><a href="#varidic-template" class="headerlink" title="varidic template"></a>varidic template</h3><p>模版参数可变</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... Types&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">const</span> T&amp; firstArg, <span class="keyword">const</span> Types&amp;... args)</span> </span>&#123;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; firstArg &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  print(args...);<span class="comment">// 当参数为0 的时候， 调用上面的空函数</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">print(<span class="number">1</span>,<span class="string">&quot;a&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="space-in-Template-Expression-nullptr，auto"><a href="#space-in-Template-Expression-nullptr，auto" class="headerlink" title="space in Template Expression, nullptr，auto"></a>space in Template Expression, nullptr，auto</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span> &gt; &gt;  <span class="comment">// 旧版</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span> &gt;&gt;	<span class="comment">// c11新版</span></span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(<span class="keyword">int</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(<span class="keyword">int</span>*)</span></span>; </span><br><span class="line">foo(<span class="literal">NULL</span>) <span class="comment">// foo1? foo2 ? 旧版有冲突</span></span><br><span class="line">(<span class="literal">NULL</span> == <span class="number">0</span>) -&gt; <span class="literal">true</span></span><br><span class="line"><span class="literal">nullptr</span>(<span class="keyword">void</span> *) <span class="comment">//c11 解决方案</span></span><br><span class="line">        </span><br><span class="line"><span class="keyword">auto</span> i = <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="Uniform-Initiazation"><a href="#Uniform-Initiazation" class="headerlink" title="Uniform Initiazation"></a>Uniform Initiazation</h3><p>初始化统一可以用大括号，在变量的后面直接用!!!  (强)</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> values[] &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; str&#123;<span class="string">&quot;df&quot;</span>,<span class="string">&quot;df&quot;</span>&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="initializer-list"><a href="#initializer-list" class="headerlink" title="initializer_list"></a>initializer_list</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> i;</span><br><span class="line"><span class="keyword">int</span> p&#123;&#125;;  <span class="comment">//0</span></span><br><span class="line"><span class="keyword">int</span> *p;   <span class="comment">//no</span></span><br><span class="line"><span class="keyword">int</span> *q&#123;&#125;;	  <span class="comment">//nullptr</span></span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;<span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>;&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">initializer_list</span>&lt;<span class="keyword">int</span>&gt; vals)</span></span>&#123;</span><br><span class="line">    for_each(vals.begin(), vals.end(), print);</span><br><span class="line">&#125;</span><br><span class="line">print(&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">45</span>&#125;);</span><br><span class="line">    </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">P</span>&#123;</span></span><br><span class="line">    P(<span class="keyword">int</span> a)&#123;&#125;</span><br><span class="line">    P(<span class="built_in">initializer_list</span>&lt;<span class="keyword">int</span>&gt; intlist)&#123;&#125;</span><br><span class="line">    <span class="keyword">void</span> <span class="keyword">operator</span>=(<span class="built_in">initializer_list</span>&lt;<span class="keyword">int</span>&gt; il)&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">P <span class="title">p</span><span class="params">(<span class="number">3</span>)</span></span>; 		<span class="comment">// 第一个构造函数</span></span><br><span class="line">P p&#123;<span class="number">3</span>&#125;;			<span class="comment">// 第二个</span></span><br><span class="line">P P&#123;<span class="number">3</span>,<span class="number">4</span>&#125;;</span><br><span class="line">P P=&#123;<span class="number">3</span>,<span class="number">4</span>&#125;;		<span class="comment">// 第三个</span></span><br><span class="line"></span><br><span class="line">min(&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">34</span>,<span class="number">4</span>&#125;)</span><br><span class="line">max(&#123;<span class="built_in">string</span>(<span class="string">&quot;dsf&quot;</span>),<span class="built_in">string</span>(<span class="string">&quot;fsda&quot;</span>)&#125;); <span class="comment">// 强</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="explict-for-actors-taking-more-than-one-argument"><a href="#explict-for-actors-taking-more-than-one-argument" class="headerlink" title="explict for actors taking more than one argument"></a>explict for actors taking more than one argument</h3> <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span>&#123;</span></span><br><span class="line">	<span class="function">explict <span class="title">C</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line">C c = <span class="number">1</span>; <span class="comment">//error  1 -&gt; C not explict</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="for"><a href="#for" class="headerlink" title="for"></a>for</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a[<span class="number">10</span>] = &#123;      <span class="number">1</span>,      <span class="number">2</span>,      <span class="number">3</span>  &#125;;</span><br><span class="line">  <span class="comment">//* -----------------------------------</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;auto &amp;&amp; foreach\n&quot;</span>);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; i : a) i = <span class="number">2</span>;  <span class="comment">//取地址</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span> i : a) &#123;        <span class="comment">//取值</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    <span class="keyword">if</span> (i == <span class="number">3</span>) <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">//! 尽量用 取值， 不然有拷贝会慢一点</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">  template&lt;class InputIterator, class Function&gt;</span></span><br><span class="line"><span class="comment">  Function for_each(InputIterator first, InputIterator last, Function fn)&#123;</span></span><br><span class="line"><span class="comment">      while (first!=last) &#123;</span></span><br><span class="line"><span class="comment">        fn (*first);</span></span><br><span class="line"><span class="comment">        ++first;</span></span><br><span class="line"><span class="comment">      &#125;</span></span><br><span class="line"><span class="comment">      return fn;      // or, since C++11: return move(fn);</span></span><br><span class="line"><span class="comment">  &#125;</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">foreach</span> <span class="params">(a, a + <span class="number">5</span>)</span></span>;</span><br><span class="line">  for_each(foreach.begin(), foreach.end(), [](<span class="keyword">int</span> a) &#123; <span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="string">&quot; &quot;</span>; &#125;);</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">Sum</span> &#123;</span>  <span class="comment">//仿函数</span></span><br><span class="line">    <span class="keyword">int</span> sum;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123; sum += val; &#125;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="defalut-delete"><a href="#defalut-delete" class="headerlink" title="=defalut, =delete"></a>=defalut, =delete</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>&#123;</span></span><br><span class="line">    B(<span class="keyword">int</span> a) : a(a)&#123;&#125; <span class="comment">// 写了后没有构造函数</span></span><br><span class="line">    B(<span class="keyword">const</span> B&amp;) = <span class="keyword">delete</span>; <span class="comment">//不给拷贝构造</span></span><br><span class="line">    B&amp; <span class="keyword">operator</span>=(<span class="keyword">const</span> B&amp;) = <span class="keyword">delete</span>; <span class="comment">//不给拷贝构造</span></span><br><span class="line">    <span class="keyword">private</span>: </span><br><span class="line">    	<span class="keyword">int</span> a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 也可以 放到private ，去friend中调用</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="alias-template"><a href="#alias-template" class="headerlink" title="alias template"></a>alias template</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">using</span> vec = <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;T&gt;;</span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vint <span class="comment">// 无法带参数！！！！！</span></span><br><span class="line">    </span><br><span class="line">vec&lt;<span class="keyword">int</span>&gt; arr;</span><br><span class="line">vint arr;</span><br><span class="line">    </span><br><span class="line">    </span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="decltype"><a href="#decltype" class="headerlink" title="decltype"></a>decltype</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> t = []()&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">decltype</span>(t)&gt; v(t);</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">[]&#123; cou &lt;&lt;<span class="string">&quot;heloo&quot;</span>;&#125; 	<span class="comment">//函数</span></span><br><span class="line">[]&#123;<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;world&quot;</span>;&#125;();	<span class="comment">//</span></span><br><span class="line">    </span><br><span class="line"><span class="keyword">int</span> x;</span><br><span class="line"><span class="keyword">int</span> y;</span><br><span class="line"><span class="keyword">auto</span> q = [x, &amp;y]&#123;&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h2 id="左值和右值"><a href="#左值和右值" class="headerlink" title="左值和右值"></a>左值和右值</h2><h3 id="简单的定义"><a href="#简单的定义" class="headerlink" title="简单的定义"></a>简单的定义</h3><p><em>左值 (lvalue, locator value)</em> 表示了一个占据内存中某个可识别的位置（也就是一个地址）的对象。</p>
-<p><em>右值 (rvalue)</em> 则使用排除法来定义。一个表达式不是 <em>左值</em> 就是 <em>右值</em> 。 那么，右值是一个 <em>不</em> 表示内存中某个可识别位置的对象的表达式。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> globalvar = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span>&amp; <span class="title">foo</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> globalvar;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    foo() = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="右值引用"><a href="#右值引用" class="headerlink" title="右值引用"></a>右值引用</h3><h2 id="标准库"><a href="#标准库" class="headerlink" title="标准库"></a>标准库</h2><h3 id="array"><a href="#array" class="headerlink" title="array"></a>array</h3><p>将数组封装成模版类， 没有构造函数和析构函数， 模拟出数组！</p>
-<h3 id="tuple"><a href="#tuple" class="headerlink" title="tuple"></a>tuple</h3><p>使用模版继承实现</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> tu = make_tuple(<span class="number">22</span>,<span class="number">44</span>,<span class="string">&quot;dsjfk&quot;</span>);</span><br><span class="line">tuple_size&lt;&gt;::value</span><br></pre></td></tr></table></figure>
-
-]]></content>
-  </entry>
-  <entry>
     <title>Wolrd In Java</title>
     <url>/2018/10/28/notepad/java/Wolrd_In_Java/</url>
     <content><![CDATA[<h1 id="深入理解Java"><a href="#深入理解Java" class="headerlink" title="深入理解Java"></a>深入理解Java</h1><p>有空就记录一点小内容！！</p>
@@ -1678,17 +1432,6 @@ pause</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>tinhttpd</title>
-    <url>/2019/05/18/notepad/read/tinhttpd/</url>
-    <content><![CDATA[<h1 id="tinhttpd"><a href="#tinhttpd" class="headerlink" title="tinhttpd"></a>tinhttpd</h1><p><a class="link"   href="https://www.cnblogs.com/nengm1988/p/7816618.html" >https://www.cnblogs.com/nengm1988/p/7816618.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>不断创建线程接受连接， 并解析http，解析完了之后，创建多个进程处理，每个子进程处理然后发送给父进程， 这里把处理和回复解耦， 处理的子进程可以调用其它的服务器，然后接受数据通过管道发给父进程， 父进程再返回给浏览器</p>
-<p><img src="C:%5CUsers%5CFirefly%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200426210029601.png" alt="image-20200426210029601"></p>
-]]></content>
-      <categories>
-        <category>read</category>
-      </categories>
-  </entry>
-  <entry>
     <title>语言特性</title>
     <url>/2019/03/09/notepad/read/%E5%8A%A8%E6%80%81%E6%80%A7%E4%B8%8E%E9%9D%99%E6%80%81%E6%80%A7%E3%80%81%E5%BC%BA%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%BC%B1%E7%B1%BB%E5%9E%8B/</url>
     <content><![CDATA[<h2 id="语言特性"><a href="#语言特性" class="headerlink" title="语言特性"></a><center>语言特性</center></h2><p>关于语言特性的定义总是弄混，写篇博客记录一下！  彻底理清！</p>
@@ -1744,26 +1487,15 @@ pause</code></pre>
       </categories>
   </entry>
   <entry>
-    <title>conda</title>
-    <url>/2018/03/28/notepad/tools/conda/</url>
-    <content><![CDATA[<p>更换清华源</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/</span><br><span class="line">conda config --append channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/fastai/</span><br><span class="line">conda config --append channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/</span><br><span class="line">conda config --append channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda/</span><br><span class="line"> </span><br><span class="line"><span class="meta">#</span><span class="bash"> 搜索时显示通道地址</span></span><br><span class="line">conda config --set show_channel_urls yes</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">conda env list</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">conda activate py37</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">activate &#x2F;&#x2F; 切换到base环境</span><br><span class="line">activate name &#x2F;&#x2F; 切换到name环境</span><br><span class="line">conda create -n learn python&#x3D;3 &#x2F;&#x2F; 创建一个名为learn的环境并指定python版本为3(的最新版本)</span><br><span class="line">conda env list &#x2F;&#x2F; 列出conda管理的所有环境</span><br><span class="line">conda list &#x2F;&#x2F; 列出当前环境的所有包</span><br><span class="line">conda install requests 安装requests包</span><br><span class="line">conda remove requests 卸载requets包</span><br><span class="line">conda remove -n learn --all &#x2F;&#x2F; 删除learn环境及下属所有包</span><br><span class="line">conda update requests 更新requests包</span><br><span class="line">conda env export &gt; environment.yaml &#x2F;&#x2F; 导出当前环境的包信息</span><br><span class="line">conda env create -f environment.yaml &#x2F;&#x2F; 用配置文件创建新的虚拟环境</span><br></pre></td></tr></table></figure>
-
+    <title>tinhttpd</title>
+    <url>/2019/05/18/notepad/read/tinhttpd/</url>
+    <content><![CDATA[<h1 id="tinhttpd"><a href="#tinhttpd" class="headerlink" title="tinhttpd"></a>tinhttpd</h1><p><a class="link"   href="https://www.cnblogs.com/nengm1988/p/7816618.html" >https://www.cnblogs.com/nengm1988/p/7816618.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>不断创建线程接受连接， 并解析http，解析完了之后，创建多个进程处理，每个子进程处理然后发送给父进程， 这里把处理和回复解耦， 处理的子进程可以调用其它的服务器，然后接受数据通过管道发给父进程， 父进程再返回给浏览器</p>
+<p><img src="C:%5CUsers%5CFirefly%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200426210029601.png" alt="image-20200426210029601"></p>
 ]]></content>
       <categories>
-        <category>工具</category>
+        <category>read</category>
       </categories>
-      <tags>
-        <tag>conda</tag>
-      </tags>
   </entry>
   <entry>
     <title>docker</title>
@@ -1802,6 +1534,28 @@ pause</code></pre>
       </categories>
       <tags>
         <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>conda</title>
+    <url>/2018/03/28/notepad/tools/conda/</url>
+    <content><![CDATA[<p>更换清华源</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/</span><br><span class="line">conda config --append channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/fastai/</span><br><span class="line">conda config --append channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/</span><br><span class="line">conda config --append channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda/</span><br><span class="line"> </span><br><span class="line"><span class="meta">#</span><span class="bash"> 搜索时显示通道地址</span></span><br><span class="line">conda config --set show_channel_urls yes</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">conda env list</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">conda activate py37</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">activate &#x2F;&#x2F; 切换到base环境</span><br><span class="line">activate name &#x2F;&#x2F; 切换到name环境</span><br><span class="line">conda create -n learn python&#x3D;3 &#x2F;&#x2F; 创建一个名为learn的环境并指定python版本为3(的最新版本)</span><br><span class="line">conda env list &#x2F;&#x2F; 列出conda管理的所有环境</span><br><span class="line">conda list &#x2F;&#x2F; 列出当前环境的所有包</span><br><span class="line">conda install requests 安装requests包</span><br><span class="line">conda remove requests 卸载requets包</span><br><span class="line">conda remove -n learn --all &#x2F;&#x2F; 删除learn环境及下属所有包</span><br><span class="line">conda update requests 更新requests包</span><br><span class="line">conda env export &gt; environment.yaml &#x2F;&#x2F; 导出当前环境的包信息</span><br><span class="line">conda env create -f environment.yaml &#x2F;&#x2F; 用配置文件创建新的虚拟环境</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>conda</tag>
       </tags>
   </entry>
   <entry>
@@ -1973,6 +1727,252 @@ pause</code></pre>
       <tags>
         <tag>maven</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Wolrd In C</title>
+    <url>/2019/11/02/notepad/cxx/c_notepad/</url>
+    <content><![CDATA[<h1 id="c-c-note"><a href="#c-c-note" class="headerlink" title=" c / c++ note"></a><center> c / c++ note</center></h1><p>c / c++ 遇到的bug 或者小技巧集</p>
+<p>[TOC]</p>
+<h2 id="typedef-和-define"><a href="#typedef-和-define" class="headerlink" title="typedef 和 #define"></a>typedef 和 #define</h2><p>每一个例子都看懂 == 入门c</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//定义新的类型</span></span><br><span class="line"><span class="keyword">typedef</span>  <span class="keyword">int</span>* t1;</span><br><span class="line"><span class="comment">//预处理， 替换</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> t2  int*</span></span><br><span class="line"></span><br><span class="line">t1 a, b; <span class="comment">//等价于  int *a, *b;</span></span><br><span class="line">t2 a,b;  <span class="comment">//等价于  int *a, b;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> <span class="keyword">const</span> b = <span class="number">10</span>; <span class="comment">//等价于 const int b = 10;*************</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//这两种写法是一样的，  定义 指针常量, t1 相当于一个新的类型, 如b的定义</span></span><br><span class="line">t1 <span class="keyword">const</span> p1 = &amp;a;</span><br><span class="line"><span class="keyword">const</span> t1 p1 = &amp;a;</span><br><span class="line">*t1 = <span class="number">12</span>;    <span class="comment">//可改变量</span></span><br><span class="line">t1 = &amp;b; <span class="comment">//错误</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> t1 *p5 = &amp;p1; <span class="comment">// 指向  新类型的指针， 这个指针不可变</span></span><br><span class="line">p1 = &amp;b; 			<span class="comment">// 错误</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> t1 * <span class="keyword">const</span> p5 = &amp;p1; <span class="comment">// 这个指针不可变, 而且指针指向的指针的对应的值不可变</span></span><br><span class="line">**p1 = <span class="number">11</span> <span class="comment">// 错误</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> t2 p2 = &amp;a;</span><br><span class="line"><span class="comment">//等价于 const int * p2 = &amp;a;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<h2 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h2><p>~ 用于数字或者整形变量之前，表示对该数取反操作，其规则是~0=1, ~1=0, 如二进制0101 0101取反后就是1010 1010</p>
+<p>测试得到： -a - 1  ==  ~a </p>
+<ul>
+<li>判断 2 的 乘方：</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">n &amp; n - <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>输出二进制 1 的个数:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int cnt &#x3D; 0;</span><br><span class="line">while(n) n &amp;&#x3D; n-1, ++cnt</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="memset赋值无穷大"><a href="#memset赋值无穷大" class="headerlink" title="memset赋值无穷大"></a>memset赋值无穷大</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> G[<span class="number">10</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">memset</span>(G, <span class="number">0x3f</span>, <span class="keyword">sizeof</span>(G));   <span class="comment">//  输出这个1061109567,给数据赋值无穷大的方法</span></span><br></pre></td></tr></table></figure>
+
+<p>memset 是按照一个字节来赋值的， 因此memset 会执行  sizeof（int） * 10 也就是40次的赋值，因此，</p>
+<p> <code>G[0] = 0x3f3f3f3f</code> .</p>
+<p>为什么要选择 0x3f3f3f3f 作为无穷大？  因为这个数相加还是在 int 的范围之内， 无穷大相加还是无穷大， 而且这个数方便写, 连续4个 3f！</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="number">0x3f3f3f3f</span> 	&lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="number">0x3f3f3f3f</span> * <span class="number">2</span> &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="number">0x7fffffff</span> 	&lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; ~(<span class="number">1</span>&lt;&lt;<span class="number">31</span>) 		&lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="number">1061109567</span></span><br><span class="line"><span class="number">2122219134</span></span><br><span class="line"><span class="number">2147483647</span></span><br><span class="line"><span class="number">2147483647</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="格式化标准输入输出"><a href="#格式化标准输入输出" class="headerlink" title="格式化标准输入输出"></a>格式化标准输入输出</h2><p>cout.setf(ios::left);   //左对齐 右对齐相同 </p>
+<p>cout.width(3);    //宽度为3</p>
+<h2 id="struct-初始化的一个小细节"><a href="#struct-初始化的一个小细节" class="headerlink" title="struct 初始化的一个小细节"></a>struct 初始化的一个小细节</h2><p>2019-11-2<br>1.今天写实验定义了一个这样的结构体，然后赋值： </p>
+<p><img src="https://raw.githubusercontent.com/Fierygit/picbed/master/c1.png"></p>
+<p><img src="https://raw.githubusercontent.com/Fierygit/picbed/master/c2.jpg"></p>
+<p>debug了半天， 一个一个输出，终于找到错误的源头，原来是。。。。。。string和struct有冲突，什么原因呢？</p>
+<p>经查，  malloc/free和new/delete </p>
+<hr>
+<ul>
+<li>new会先调用operator new函数，申请足够的内存（通常底层使用malloc实现）。然后调用类型的构造函数，初始化成员变量，最后返回自定义类型指针。delete先调用析构函数，然后调用operator delete函数释放内存（通常底层使用free实现）。</li>
+</ul>
+<hr>
+<ul>
+<li>malloc/free是库函数，只能动态的申请和释放内存，无法强制要求其做自定义类型对象构造和析构工作。</li>
+</ul>
+<hr>
+<p>所以解决的方案是： <code>TreeNode *temp = new TreeNode;</code></p>
+<p>struct 是c里面的， 而string 类是 c++的，所以当在用c++的时候，写c语言就要考虑一下兼容问题。</p>
+<h2 id="map的一个小细节"><a href="#map的一个小细节" class="headerlink" title="map的一个小细节"></a>map的一个小细节</h2><p>当创建一个map的时候，map是没有预分配内存的，当map一个没有的key的时候，就会默认创建这个对象，并且map的size加一！</p>
+<p>看一个例子：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="built_in">string</span>,<span class="keyword">int</span>&gt; map1;</span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="built_in">string</span>,<span class="built_in">string</span>&gt; map2;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;out1-----------\n&quot;</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;map1.size(): &quot;</span> &lt;&lt;  map1.size() &lt;&lt; <span class="string">&quot;\t&quot;</span> &lt;&lt; <span class="built_in">endl</span>  ; </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;map2.size(): &quot;</span> &lt;&lt;  map2.size() &lt;&lt; <span class="string">&quot;\t&quot;</span>  ;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;\n out2-----------\n&quot;</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt;<span class="string">&quot;map1[a]: &quot;</span> &lt;&lt;  map1[<span class="string">&quot;a&quot;</span>] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt;<span class="string">&quot;map2[a]: &quot;</span> &lt;&lt;  map2[<span class="string">&quot;a&quot;</span>] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">if</span>(map2[<span class="string">&quot;a&quot;</span>] == <span class="string">&quot;&quot;</span>) <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;empty string!!!!&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;map1.size(): &quot;</span> &lt;&lt;  map1.size() &lt;&lt; <span class="string">&quot;\t&quot;</span>  &lt;&lt; <span class="built_in">endl</span> ;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;map2.size(): &quot;</span> &lt;&lt;  map2.size() &lt;&lt; <span class="string">&quot;\t&quot;</span>  &lt;&lt; <span class="built_in">endl</span> ;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">out1-----------</span><br><span class="line">map1.size(): <span class="number">0</span></span><br><span class="line">map2.size(): <span class="number">0</span></span><br><span class="line"> out2-----------</span><br><span class="line">map1[a]: <span class="number">0</span></span><br><span class="line">map2[a]:</span><br><span class="line">empty <span class="built_in">string</span>!!!!</span><br><span class="line">map1.size(): <span class="number">1</span></span><br><span class="line">map2.size(): <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>当写一些需要用到map的代码的时候，就要注意了， 可能要花掉你半天的时间去debug这个小问题！！！</p>
+<h2 id="操作系统的-堆和栈"><a href="#操作系统的-堆和栈" class="headerlink" title="操作系统的 堆和栈"></a>操作系统的 堆和栈</h2><p>学操作系统的时候，系统分配内存会分配 堆和栈</p>
+<p>有一个我纠结了很久的问题，堆是一个二叉树实现的，而分配内存的堆是一个线性的地址，这两者有什么关联呢？</p>
+<p>结论，数据结构没有学好！！  找个时间马一个heap</p>
+<p>栈和堆都可以用二叉树实现， 堆栈就是栈， 堆插入一个元素二叉树放到最后面，如果删除了父节点，就要调整二叉树， 而栈只能在二叉树尾部删除和操作，没有其它操作，所以堆栈的含义：堆的后面多了一个限定词， 把范围限定的更小了！！ 但栈一般直接使用数组就好了，查看网上的说法：栈是一种受限制的堆。</p>
+<p>查看数据结构的书本，发现这样一句话，我还画了出来 ： 学生们经常把堆的逻辑表示与利用基于数组的完全二叉树的物理实现相混淆。二者并非同义，虽然堆的一般实现方法是使用数组，但是从逻辑的角度来看，堆实际上是一种树结构。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">0</span>; 全局初始化区</span><br><span class="line"><span class="keyword">char</span> *p1; 全局未初始化区</span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">int</span> b; 栈</span><br><span class="line"><span class="keyword">char</span> s[] = <span class="string">&quot;abc&quot;</span>; 栈</span><br><span class="line"><span class="keyword">char</span> *p2; 栈</span><br><span class="line"><span class="keyword">char</span> *p3 = <span class="string">&quot;123456&quot;</span>; <span class="number">123456</span>\<span class="number">0</span>在常量区，p3在栈上。</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> c =<span class="number">0</span>； 全局（静态）初始化区</span><br><span class="line">p1 = (<span class="keyword">char</span> *)<span class="built_in">malloc</span>(<span class="number">10</span>);</span><br><span class="line">p2 = (<span class="keyword">char</span> *)<span class="built_in">malloc</span>(<span class="number">20</span>);</span><br><span class="line">分配得来得<span class="number">10</span>和<span class="number">20</span>字节的区域就在堆区。</span><br><span class="line"><span class="built_in">strcpy</span>(p1, <span class="string">&quot;123456&quot;</span>); <span class="number">123456</span>\<span class="number">0</span>放在常量区，编译器可能会将它与p3所指向的</span><br><span class="line"><span class="string">&quot;123456&quot;</span>优化成一个</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> a = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">int</span> b = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">int</span> c = <span class="number">3</span>;</span><br><span class="line">  <span class="keyword">int</span> d = <span class="number">4</span>;</span><br><span class="line">  <span class="keyword">int</span> e = <span class="number">5</span>;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;addr: %p\n&quot;</span>, &amp;a);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;addr: %p\n&quot;</span>, &amp;b);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;addr: %p\n&quot;</span>, &amp;c);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;addr: %p\n&quot;</span>, &amp;d);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;addr: %p\n&quot;</span>, &amp;e);</span><br><span class="line">  <span class="keyword">int</span> *a1, *b1, *c1, *d1, *e1;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n-----------------\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">  a1 = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">  b1 = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">  c1 = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">  d1 = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">  e1 = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line"></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;addr: %p\n&quot;</span>, &amp;a1);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;addr: %p\n&quot;</span>, &amp;b1);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;addr: %p\n&quot;</span>, &amp;c1);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;addr: %p\n&quot;</span>, &amp;d1);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;addr: %p\n&quot;</span>, &amp;e1);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">输出</span><br><span class="line">addr: <span class="number">0061F</span>F1C</span><br><span class="line">addr: <span class="number">0061F</span>F18</span><br><span class="line">addr: <span class="number">0061F</span>F14</span><br><span class="line">addr: <span class="number">0061F</span>F10</span><br><span class="line">addr: <span class="number">0061F</span>F0C</span><br><span class="line">-----------------</span><br><span class="line">addr: <span class="number">0061F</span>F08</span><br><span class="line">addr: <span class="number">0061F</span>F04</span><br><span class="line">addr: <span class="number">0061F</span>F00</span><br><span class="line">addr: <span class="number">0061F</span>EFC</span><br><span class="line">addr: <span class="number">0061F</span>EF8</span><br><span class="line">可以看出  heap 是 从减小的，  <span class="built_in">stack</span>是增大的</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p>for(int i = 0, siz = a.size(); i &lt; siz; i++)  //for循环可以有有四个值</p>
+<p>​      有时也可以两个值       for( ; a &lt; b; ++a); </p>
+<p>return cout &lt;&lt; “ “ &lt;&lt; endl,0;      //可以在return 后面输出</p>
+<p>在for循环里 ++i 比 i++ 的效率高 <a class="link"   href="https://blog.csdn.net/FireflyNo1/article/details/82809624" >详情请点击<i class="fas fa-external-link-alt"></i></a></p>
+]]></content>
+      <categories>
+        <category>CXX</category>
+      </categories>
+      <tags>
+        <tag>CXX</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>cplusplus</title>
+    <url>/2017/11/21/notepad/cxx/cplusplus/</url>
+    <content><![CDATA[<p>[toc]</p>
+<h2 id="c11的语言特性"><a href="#c11的语言特性" class="headerlink" title="c11的语言特性"></a>c11的语言特性</h2><p>.h 头文件可以不加</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector.h&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="function-bind"><a href="#function-bind" class="headerlink" title="function, bind"></a>function, bind</h3><p>关于std::function 的用法：<br>其实就可以理解成函数指针</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//保存自由函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;<span class="built_in">cout</span>&lt;&lt;a&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::function&lt;<span class="keyword">void</span>(<span class="keyword">int</span> a)&gt; func;</span><br><span class="line">func = printA;</span><br><span class="line">func(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//保存lambda表达式</span></span><br><span class="line"><span class="built_in">std</span>::function&lt;<span class="keyword">void</span>()&gt; func_1 = []()&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;hello world&quot;</span>&lt;&lt;<span class="built_in">endl</span>;&#125;;</span><br><span class="line">func_1();</span><br><span class="line"></span><br><span class="line"><span class="comment">//保存成员函数</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Foo</span> &#123;</span></span><br><span class="line">    Foo(<span class="keyword">int</span> num) : num_(num) &#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">print_add</span><span class="params">(<span class="keyword">int</span> i)</span> <span class="keyword">const</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; num_+i &lt;&lt; <span class="string">&#x27;\n&#x27;</span>; &#125;</span><br><span class="line">    <span class="keyword">int</span> num_;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::function&lt;<span class="keyword">void</span>(<span class="keyword">const</span> Foo&amp;, <span class="keyword">int</span>)&gt; f_add_display = &amp;Foo::print_add;</span><br><span class="line"><span class="function">Foo <span class="title">foo</span><span class="params">(<span class="number">2</span>)</span></span>;</span><br><span class="line">f_add_display(foo, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">在实际使用中都用 <span class="keyword">auto</span> 关键字来代替<span class="built_in">std</span>::function… 这一长串了。</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">fun_3</span><span class="params">(<span class="keyword">int</span> k,<span class="keyword">int</span> m)</span></span>&#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;k&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;m&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> z)</span></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;x&lt;&lt;<span class="string">&quot;  &quot;</span>&lt;&lt;y&lt;&lt;<span class="string">&quot;  &quot;</span>&lt;&lt;z&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun_2</span><span class="params">(<span class="keyword">int</span> &amp;a,<span class="keyword">int</span> &amp;b)</span></span>&#123;</span><br><span class="line">    a++; b++;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;a&lt;&lt;<span class="string">&quot;  &quot;</span>&lt;&lt;b&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span></span>&#123;</span><br><span class="line">    <span class="keyword">auto</span> f1 = <span class="built_in">std</span>::bind(fun,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>); <span class="comment">//表示绑定函数 fun 的第一，二，三个参数值为： 1 2 3</span></span><br><span class="line">    f1(); <span class="comment">//print:1  2  3</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">auto</span> f2 = <span class="built_in">std</span>::bind(fun, placeholders::_1,placeholders::_2,<span class="number">3</span>);</span><br><span class="line">    <span class="comment">//表示绑定函数 fun 的第三个参数为 3，而fun 的第一，二个参数分别有调用 f2 的第一，二个参数指定</span></span><br><span class="line">    f2(<span class="number">1</span>,<span class="number">2</span>);<span class="comment">//print:1  2  3</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">auto</span> f3 = <span class="built_in">std</span>::bind(fun,placeholders::_2,placeholders::_1,<span class="number">3</span>);</span><br><span class="line">    <span class="comment">//表示绑定函数 fun 的第三个参数为 3，而fun 的第一，二个参数分别有调用 f3 的第二，一个参数指定</span></span><br><span class="line">    <span class="comment">//注意： f2  和  f3 的区别。</span></span><br><span class="line">    f3(<span class="number">1</span>,<span class="number">2</span>);<span class="comment">//print:2  1  3</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">2</span>;    <span class="keyword">int</span> m = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">auto</span> f4 = <span class="built_in">std</span>::bind(fun_2, n,placeholders::_1);</span><br><span class="line">    f4(m); <span class="comment">//print:3  4</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//print:4  说明：bind对于不事先绑定的参数，通过std::placeholders传递的参数是通过引用传递的</span></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;m&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="comment">//print:2  说明：bind对于预先绑定的函数参数是通过值传递的</span></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;n&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    A a;</span><br><span class="line">    <span class="keyword">auto</span> f5 = <span class="built_in">std</span>::bind(&amp;A::fun_3, a,placeholders::_1,placeholders::_2);</span><br><span class="line">    f5(<span class="number">10</span>,<span class="number">20</span>);<span class="comment">//print:10 20</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::function&lt;<span class="keyword">void</span>(<span class="keyword">int</span>,<span class="keyword">int</span>)&gt; fc = </span><br><span class="line">        <span class="built_in">std</span>::bind(&amp;A::fun_3, a,<span class="built_in">std</span>::placeholders::_1,<span class="built_in">std</span>::placeholders::_2);</span><br><span class="line">    fc(<span class="number">10</span>,<span class="number">20</span>);<span class="comment">//print:10 20</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="智能指针"><a href="#智能指针" class="headerlink" title="智能指针"></a>智能指针</h3><p>auto_ptr、unique_ptr、shared_ptr和weak_ptr 这几个智能指针背后的设计思想: 将基本类型指针封装为类对象指针，并在析构函数里编写delete语句删除指针指向的内存空间。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">智能指针析构是会<span class="keyword">delete</span> 指针， 因此不要这样做</span><br><span class="line"><span class="function">tring <span class="title">vacation</span><span class="params">(<span class="string">&quot;I wandered lonely as a cloud.&quot;</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="built_in">shared_ptr</span>&lt;<span class="built_in">string</span>&gt; <span class="title">pvac</span><span class="params">(&amp;vacation)</span></span>;   <span class="comment">// No</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>先来看下面的赋值语句:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="built_in">auto_ptr</span>&lt; <span class="built_in">string</span>&gt; <span class="title">ps</span> <span class="params">(<span class="keyword">new</span> <span class="built_in">string</span> (<span class="string">&quot;I reigned lonely as a cloud.”）;</span></span></span></span><br><span class="line"><span class="function"><span class="params"><span class="string">auto_ptr&lt;string&gt; vocation; </span></span></span></span><br><span class="line"><span class="function"><span class="params"><span class="string">vocaticn = ps;</span></span></span></span><br></pre></td></tr></table></figure>
+
+<p>上述赋值语句将完成什么工作呢？如果ps和vocation是常规指针，则两个指针将指向同一个string对象。这是不能接受的，因为程序将试图删除同一个对象两次——一次是ps过期时，另一次是vocation过期时。要避免这种问题，方法有多种：</p>
+<ul>
+<li>定义陚值运算符，使之执行深复制。这样两个指针将指向不同的对象，其中的一个对象是另一个对象的副本，缺点是浪费空间，所以智能指针都未采用此方案。</li>
+<li>建立所有权（ownership）概念。对于特定的对象，只能有一个智能指针可拥有，这样只有拥有对象的智能指针的构造函数会删除该对象。然后让赋值操作转让所有权。这就是用于auto_ptr和uniqiie_ptr 的策略，但unique_ptr的策略更严格。</li>
+<li>创建智能更高的指针，跟踪引用特定对象的智能指针数。这称为引用计数。例如，赋值时，计数将加1，而指针过期时，计数将减1,。当减为0时才调用delete。这是shared_ptr采用的策略。</li>
+</ul>
+<p>当然，同样的策略也适用于复制构造函数，每种方法都有其用途，但为何说要摒弃auto_ptr呢？</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;memory&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">auto_ptr</span>&lt;<span class="built_in">string</span>&gt; films[<span class="number">5</span>] =</span><br><span class="line"> &#123;</span><br><span class="line">  <span class="built_in">auto_ptr</span>&lt;<span class="built_in">string</span>&gt; (<span class="keyword">new</span> <span class="built_in">string</span>(<span class="string">&quot;Fowl Balls&quot;</span>)),</span><br><span class="line">  <span class="built_in">auto_ptr</span>&lt;<span class="built_in">string</span>&gt; (<span class="keyword">new</span> <span class="built_in">string</span>(<span class="string">&quot;Duck Walks&quot;</span>)),</span><br><span class="line">  <span class="built_in">auto_ptr</span>&lt;<span class="built_in">string</span>&gt; (<span class="keyword">new</span> <span class="built_in">string</span>(<span class="string">&quot;Chicken Runs&quot;</span>)),</span><br><span class="line">  <span class="built_in">auto_ptr</span>&lt;<span class="built_in">string</span>&gt; (<span class="keyword">new</span> <span class="built_in">string</span>(<span class="string">&quot;Turkey Errors&quot;</span>)),</span><br><span class="line">  <span class="built_in">auto_ptr</span>&lt;<span class="built_in">string</span>&gt; (<span class="keyword">new</span> <span class="built_in">string</span>(<span class="string">&quot;Goose Eggs&quot;</span>))</span><br><span class="line"> &#125;;</span><br><span class="line"> <span class="built_in">auto_ptr</span>&lt;<span class="built_in">string</span>&gt; pwin;</span><br><span class="line"> pwin = films[<span class="number">2</span>]; </span><br><span class="line"> <span class="comment">// films[2] loses ownership. 将所有权从films[2]转让给pwin，</span></span><br><span class="line"> 此时films[<span class="number">2</span>]不再引用该字符串从而变成空指针</span><br><span class="line"></span><br><span class="line"> <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;The nominees for best avian baseballl film are\n&quot;</span>;</span><br><span class="line"> <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; ++i)</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; *films[i] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"> <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;The winner is &quot;</span> &lt;&lt; *pwin &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"> <span class="built_in">cin</span>.get();</span><br><span class="line"></span><br><span class="line"> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>运行下发现程序崩溃了，原因在上面注释已经说的很清楚，films[2]已经是空指针了，下面输出访问空指针当然会崩溃了。但这里如果把auto_ptr换成shared_ptr或unique_ptr后，程序就不会崩溃，原因如下：</p>
+<ul>
+<li><p>使用shared_ptr时运行正常，因为shared_ptr采用引用计数，pwin和films[2]都指向同一块内存，在释放空间时因为事先要判断引用计数值的大小因此不会出现多次删除一个对象的错误。</p>
+</li>
+<li><p>使用unique_ptr时编译出错，与auto_ptr一样，unique_ptr也采用所有权模型，但在使用unique_ptr时，程序不会等到运行阶段崩溃，而在编译器因下述代码行出现错误：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="built_in">unique_ptr</span>&lt;<span class="built_in">string</span>&gt; pwin;</span><br><span class="line">pwin = films[<span class="number">2</span>]; <span class="comment">// films[2] loses ownership.</span></span><br></pre></td></tr></table></figure>
+
+<p>指导你发现潜在的内存错误。</p>
+</li>
+</ul>
+<p>这就是为何要摒弃auto_ptr的原因，一句话总结就是：<strong>避免潜在的内存崩溃问题。</strong></p>
+<ul>
+<li>unique_ptr为何优于auto_ptr？</li>
+</ul>
+<p>可能大家认为前面的例子已经说明了unique_ptr为何优于auto_ptr，也就是安全问题，下面再叙述的清晰一点。<br>请看下面的语句:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">auto_ptr&lt;string&gt; p1(new string (&quot;auto&quot;) ； &#x2F;&#x2F;#1</span><br><span class="line">auto_ptr&lt;string&gt; p2;                       &#x2F;&#x2F;#2</span><br><span class="line">p2 &#x3D; p1;                                   &#x2F;&#x2F;#3</span><br></pre></td></tr></table></figure>
+
+<p>在语句#3中，p2接管string对象的所有权后，p1的所有权将被剥夺。前面说过，这是好事，可防止p1和p2的析构函数试图刪同—个对象；</p>
+<p>但如果程序随后试图使用p1，这将是件坏事，因为p1不再指向有效的数据。</p>
+<p>下面来看使用unique_ptr的情况：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">unique_ptr&lt;string&gt; p3 (new string (&quot;auto&quot;);   &#x2F;&#x2F;#4</span><br><span class="line">unique_ptr&lt;string&gt; p4；                       &#x2F;&#x2F;#5</span><br><span class="line">p4 &#x3D; p3;                                      &#x2F;&#x2F;#6</span><br></pre></td></tr></table></figure>
+
+<p>编译器认为语句#6非法，避免了p3不再指向有效数据的问题。因此，unique_ptr比auto_ptr更安全。</p>
+<p><strong>但unique_ptr还有更聪明的地方。</strong><br>有时候，会将一个智能指针赋给另一个并不会留下危险的悬挂指针。假设有如下函数定义：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">unique_ptr&lt;string&gt; demo(const char * s)</span><br><span class="line">&#123;</span><br><span class="line">    unique_ptr&lt;string&gt; temp (new string (s))； </span><br><span class="line">    return temp；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>并假设编写了如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">unique_ptr&lt;string&gt; ps;</span><br><span class="line">ps &#x3D; demo(&#39;Uniquely special&quot;)；</span><br></pre></td></tr></table></figure>
+
+<p>demo()返回一个临时unique_ptr，然后ps接管了原本归返回的unique_ptr所有的对象，而返回时临时的 unique_ptr 被销毁，也就是说没有机会使用 unique_ptr 来访问无效的数据，换句话来说，这种赋值是不会出现任何问题的，即没有理由禁止这种赋值。实际上，编译器确实允许这种赋值，这正是unique_ptr更聪明的地方。</p>
+<p><strong>总之，党程序试图将一个 unique_ptr 赋值给另一个时，如果源 unique_ptr 是个临时右值，编译器允许这么做；如果源 unique_ptr 将存在一段时间，编译器将禁止这么做</strong>，比如：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="built_in">unique_ptr</span>&lt;<span class="built_in">string</span>&gt; <span class="title">pu1</span><span class="params">(<span class="keyword">new</span> <span class="built_in">string</span> (<span class="string">&quot;hello world&quot;</span>))</span></span>;</span><br><span class="line"><span class="built_in">unique_ptr</span>&lt;<span class="built_in">string</span>&gt; pu2;</span><br><span class="line">pu2 = pu1;                                      <span class="comment">// #1 not allowed</span></span><br><span class="line"><span class="built_in">unique_ptr</span>&lt;<span class="built_in">string</span>&gt; pu3;</span><br><span class="line">pu3 = <span class="built_in">unique_ptr</span>&lt;<span class="built_in">string</span>&gt;(<span class="keyword">new</span> <span class="built_in">string</span> (<span class="string">&quot;You&quot;</span>));   <span class="comment">// #2 allowed</span></span><br></pre></td></tr></table></figure>
+
+<p>其中#1留下悬挂的unique_ptr(pu1)，这可能导致危害。而#2不会留下悬挂的unique_ptr，因为它调用 unique_ptr 的构造函数，该构造函数创建的临时对象在其所有权让给 pu3 后就会被销毁。<strong>这种随情况而已的行为表明，unique_ptr 优于允许两种赋值的auto_ptr 。</strong></p>
+<p>当然，您可能确实想执行类似于#1的操作，仅当以非智能的方式使用摒弃的智能指针时（如解除引用时），这种赋值才不安全。要安全的重用这种指针，可给它赋新值。C++有一个标准库函数std::move()，让你能够将一个unique_ptr赋给另一个。下面是一个使用前述demo()函数的例子，该函数返回一个unique_ptr<string>对象：<br>使用move后，原来的指针仍转让所有权变成空指针，可以对其重新赋值。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="built_in">unique_ptr</span>&lt;<span class="built_in">string</span>&gt; ps1, ps2;</span><br><span class="line">ps1 = demo(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">ps2 = move(ps1);</span><br><span class="line">ps1 = demo(<span class="string">&quot;alexia&quot;</span>);</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; *ps2 &lt;&lt; *ps1 &lt;&lt; <span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如何选择智能指针？</li>
+</ul>
+<p>在掌握了这几种智能指针后，大家可能会想另一个问题：在实际应用中，应使用哪种智能指针呢？<br>下面给出几个使用指南。</p>
+<p>（1）如果程序要使用多个指向同一个对象的指针，应选择shared_ptr。这样的情况包括：</p>
+<ul>
+<li>有一个指针数组，并使用一些辅助指针来标示特定的元素，如最大的元素和最小的元素；</li>
+<li>两个对象包含都指向第三个对象的指针；</li>
+<li>STL容器包含指针。很多STL算法都支持复制和赋值操作，这些操作可用于shared_ptr，但不能用于unique_ptr（编译器发出warning）和auto_ptr（行为不确定）。如果你的编译器没有提供shared_ptr，可使用Boost库提供的shared_ptr。</li>
+</ul>
+<p>（2）如果程序不需要多个指向同一个对象的指针，则可使用unique_ptr。如果函数使用new分配内存，并返还指向该内存的指针，将其返回类型声明为unique_ptr是不错的选择。这样，所有权转让给接受返回值的unique_ptr，而该智能指针将负责调用delete。可将unique_ptr存储到STL容器在那个，只要不调用将一个unique_ptr复制或赋给另一个算法（如sort()）。例如，可在程序中使用类似于下面的代码段。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="built_in">unique_ptr</span>&lt;<span class="keyword">int</span>&gt; <span class="title">make_int</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">unique_ptr</span>&lt;<span class="keyword">int</span>&gt;(<span class="keyword">new</span> <span class="keyword">int</span>(n));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">(<span class="built_in">unique_ptr</span>&lt;<span class="keyword">int</span>&gt; &amp;p1)</span></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; *a &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">unique_ptr</span>&lt;<span class="keyword">int</span>&gt; &gt; vp(size);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; vp.size(); i++)</span><br><span class="line">        vp[i] = make_int(rand() % <span class="number">1000</span>);              <span class="comment">// copy temporary unique_ptr</span></span><br><span class="line">    vp.push_back(make_int(rand() % <span class="number">1000</span>));     <span class="comment">// ok because arg is temporary</span></span><br><span class="line">    for_each(vp.begin(), vp.end(), show);           <span class="comment">// use for_each()</span></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中push_back调用没有问题，因为它返回一个临时unique_ptr，该unique_ptr被赋给vp中的一个unique_ptr。另外，如果按值而不是按引用给show()传递对象，for_each()将非法，因为这将导致使用一个来自vp的非临时unique_ptr初始化pi，而这是不允许的。前面说过，编译器将发现错误使用unique_ptr的企图。</p>
+<p>在unique_ptr为右值时，可将其赋给shared_ptr，这与将一个unique_ptr赋给一个需要满足的条件相同。与前面一样，在下面的代码中，make_int()的返回类型为unique_ptr<int>：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="built_in">unique_ptr</span>&lt;<span class="keyword">int</span>&gt; <span class="title">pup</span><span class="params">(make_int(rand() % <span class="number">1000</span>))</span></span>;   <span class="comment">// ok</span></span><br><span class="line"><span class="function"><span class="built_in">shared_ptr</span>&lt;<span class="keyword">int</span>&gt; <span class="title">spp</span><span class="params">(pup)</span></span>;                       <span class="comment">// not allowed, pup as lvalue</span></span><br><span class="line"><span class="function"><span class="built_in">shared_ptr</span>&lt;<span class="keyword">int</span>&gt; <span class="title">spr</span><span class="params">(make_int(rand() % <span class="number">1000</span>))</span></span>;   <span class="comment">// ok</span></span><br></pre></td></tr></table></figure>
+
+<p>模板shared_ptr包含一个显式构造函数，可用于将右值unique_ptr转换为shared_ptr。shared_ptr将接管原来归unique_ptr所有的对象。</p>
+<p>在满足unique_ptr要求的条件时，也可使用auto_ptr，但unique_ptr是更好的选择。如果你的编译器没有unique_ptr，可考虑使用Boost库提供的scoped_ptr，它与unique_ptr类似。</p>
+<h3 id="varidic-template"><a href="#varidic-template" class="headerlink" title="varidic template"></a>varidic template</h3><p>模版参数可变</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... Types&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">const</span> T&amp; firstArg, <span class="keyword">const</span> Types&amp;... args)</span> </span>&#123;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; firstArg &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  print(args...);<span class="comment">// 当参数为0 的时候， 调用上面的空函数</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">print(<span class="number">1</span>,<span class="string">&quot;a&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="space-in-Template-Expression-nullptr，auto"><a href="#space-in-Template-Expression-nullptr，auto" class="headerlink" title="space in Template Expression, nullptr，auto"></a>space in Template Expression, nullptr，auto</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span> &gt; &gt;  <span class="comment">// 旧版</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span> &gt;&gt;	<span class="comment">// c11新版</span></span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(<span class="keyword">int</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(<span class="keyword">int</span>*)</span></span>; </span><br><span class="line">foo(<span class="literal">NULL</span>) <span class="comment">// foo1? foo2 ? 旧版有冲突</span></span><br><span class="line">(<span class="literal">NULL</span> == <span class="number">0</span>) -&gt; <span class="literal">true</span></span><br><span class="line"><span class="literal">nullptr</span>(<span class="keyword">void</span> *) <span class="comment">//c11 解决方案</span></span><br><span class="line">        </span><br><span class="line"><span class="keyword">auto</span> i = <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Uniform-Initiazation"><a href="#Uniform-Initiazation" class="headerlink" title="Uniform Initiazation"></a>Uniform Initiazation</h3><p>初始化统一可以用大括号，在变量的后面直接用!!!  (强)</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> values[] &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; str&#123;<span class="string">&quot;df&quot;</span>,<span class="string">&quot;df&quot;</span>&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="initializer-list"><a href="#initializer-list" class="headerlink" title="initializer_list"></a>initializer_list</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> i;</span><br><span class="line"><span class="keyword">int</span> p&#123;&#125;;  <span class="comment">//0</span></span><br><span class="line"><span class="keyword">int</span> *p;   <span class="comment">//no</span></span><br><span class="line"><span class="keyword">int</span> *q&#123;&#125;;	  <span class="comment">//nullptr</span></span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;<span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>;&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">initializer_list</span>&lt;<span class="keyword">int</span>&gt; vals)</span></span>&#123;</span><br><span class="line">    for_each(vals.begin(), vals.end(), print);</span><br><span class="line">&#125;</span><br><span class="line">print(&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">45</span>&#125;);</span><br><span class="line">    </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">P</span>&#123;</span></span><br><span class="line">    P(<span class="keyword">int</span> a)&#123;&#125;</span><br><span class="line">    P(<span class="built_in">initializer_list</span>&lt;<span class="keyword">int</span>&gt; intlist)&#123;&#125;</span><br><span class="line">    <span class="keyword">void</span> <span class="keyword">operator</span>=(<span class="built_in">initializer_list</span>&lt;<span class="keyword">int</span>&gt; il)&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">P <span class="title">p</span><span class="params">(<span class="number">3</span>)</span></span>; 		<span class="comment">// 第一个构造函数</span></span><br><span class="line">P p&#123;<span class="number">3</span>&#125;;			<span class="comment">// 第二个</span></span><br><span class="line">P P&#123;<span class="number">3</span>,<span class="number">4</span>&#125;;</span><br><span class="line">P P=&#123;<span class="number">3</span>,<span class="number">4</span>&#125;;		<span class="comment">// 第三个</span></span><br><span class="line"></span><br><span class="line">min(&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">34</span>,<span class="number">4</span>&#125;)</span><br><span class="line">max(&#123;<span class="built_in">string</span>(<span class="string">&quot;dsf&quot;</span>),<span class="built_in">string</span>(<span class="string">&quot;fsda&quot;</span>)&#125;); <span class="comment">// 强</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="explict-for-actors-taking-more-than-one-argument"><a href="#explict-for-actors-taking-more-than-one-argument" class="headerlink" title="explict for actors taking more than one argument"></a>explict for actors taking more than one argument</h3> <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span>&#123;</span></span><br><span class="line">	<span class="function">explict <span class="title">C</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line">C c = <span class="number">1</span>; <span class="comment">//error  1 -&gt; C not explict</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="for"><a href="#for" class="headerlink" title="for"></a>for</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a[<span class="number">10</span>] = &#123;      <span class="number">1</span>,      <span class="number">2</span>,      <span class="number">3</span>  &#125;;</span><br><span class="line">  <span class="comment">//* -----------------------------------</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;auto &amp;&amp; foreach\n&quot;</span>);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; i : a) i = <span class="number">2</span>;  <span class="comment">//取地址</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span> i : a) &#123;        <span class="comment">//取值</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    <span class="keyword">if</span> (i == <span class="number">3</span>) <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">//! 尽量用 取值， 不然有拷贝会慢一点</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">  template&lt;class InputIterator, class Function&gt;</span></span><br><span class="line"><span class="comment">  Function for_each(InputIterator first, InputIterator last, Function fn)&#123;</span></span><br><span class="line"><span class="comment">      while (first!=last) &#123;</span></span><br><span class="line"><span class="comment">        fn (*first);</span></span><br><span class="line"><span class="comment">        ++first;</span></span><br><span class="line"><span class="comment">      &#125;</span></span><br><span class="line"><span class="comment">      return fn;      // or, since C++11: return move(fn);</span></span><br><span class="line"><span class="comment">  &#125;</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">foreach</span> <span class="params">(a, a + <span class="number">5</span>)</span></span>;</span><br><span class="line">  for_each(foreach.begin(), foreach.end(), [](<span class="keyword">int</span> a) &#123; <span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="string">&quot; &quot;</span>; &#125;);</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">Sum</span> &#123;</span>  <span class="comment">//仿函数</span></span><br><span class="line">    <span class="keyword">int</span> sum;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123; sum += val; &#125;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="defalut-delete"><a href="#defalut-delete" class="headerlink" title="=defalut, =delete"></a>=defalut, =delete</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>&#123;</span></span><br><span class="line">    B(<span class="keyword">int</span> a) : a(a)&#123;&#125; <span class="comment">// 写了后没有构造函数</span></span><br><span class="line">    B(<span class="keyword">const</span> B&amp;) = <span class="keyword">delete</span>; <span class="comment">//不给拷贝构造</span></span><br><span class="line">    B&amp; <span class="keyword">operator</span>=(<span class="keyword">const</span> B&amp;) = <span class="keyword">delete</span>; <span class="comment">//不给拷贝构造</span></span><br><span class="line">    <span class="keyword">private</span>: </span><br><span class="line">    	<span class="keyword">int</span> a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 也可以 放到private ，去friend中调用</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="alias-template"><a href="#alias-template" class="headerlink" title="alias template"></a>alias template</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">using</span> vec = <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;T&gt;;</span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vint <span class="comment">// 无法带参数！！！！！</span></span><br><span class="line">    </span><br><span class="line">vec&lt;<span class="keyword">int</span>&gt; arr;</span><br><span class="line">vint arr;</span><br><span class="line">    </span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="decltype"><a href="#decltype" class="headerlink" title="decltype"></a>decltype</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> t = []()&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">decltype</span>(t)&gt; v(t);</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">[]&#123; cou &lt;&lt;<span class="string">&quot;heloo&quot;</span>;&#125; 	<span class="comment">//函数</span></span><br><span class="line">[]&#123;<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;world&quot;</span>;&#125;();	<span class="comment">//</span></span><br><span class="line">    </span><br><span class="line"><span class="keyword">int</span> x;</span><br><span class="line"><span class="keyword">int</span> y;</span><br><span class="line"><span class="keyword">auto</span> q = [x, &amp;y]&#123;&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="左值和右值"><a href="#左值和右值" class="headerlink" title="左值和右值"></a>左值和右值</h2><h3 id="简单的定义"><a href="#简单的定义" class="headerlink" title="简单的定义"></a>简单的定义</h3><p><em>左值 (lvalue, locator value)</em> 表示了一个占据内存中某个可识别的位置（也就是一个地址）的对象。</p>
+<p><em>右值 (rvalue)</em> 则使用排除法来定义。一个表达式不是 <em>左值</em> 就是 <em>右值</em> 。 那么，右值是一个 <em>不</em> 表示内存中某个可识别位置的对象的表达式。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> globalvar = <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span>&amp; <span class="title">foo</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> globalvar;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    foo() = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="右值引用"><a href="#右值引用" class="headerlink" title="右值引用"></a>右值引用</h3><h2 id="标准库"><a href="#标准库" class="headerlink" title="标准库"></a>标准库</h2><h3 id="array"><a href="#array" class="headerlink" title="array"></a>array</h3><p>将数组封装成模版类， 没有构造函数和析构函数， 模拟出数组！</p>
+<h3 id="tuple"><a href="#tuple" class="headerlink" title="tuple"></a>tuple</h3><p>使用模版继承实现</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> tu = make_tuple(<span class="number">22</span>,<span class="number">44</span>,<span class="string">&quot;dsjfk&quot;</span>);</span><br><span class="line">tuple_size&lt;&gt;::value</span><br></pre></td></tr></table></figure>
+
+]]></content>
   </entry>
   <entry>
     <title>回溯</title>
@@ -2454,7 +2454,7 @@ pause</code></pre>
         <category>算法</category>
       </categories>
       <tags>
-        <tag>Leetcode</tag>
+        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -2599,6 +2599,35 @@ pause</code></pre>
       </categories>
       <tags>
         <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>分治法</title>
+    <url>/2019/12/28/notepad/algorithm/exercise/%E5%88%86%E6%94%AF%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a><center>分治法</center></h1><p>一个大的问题分解为一些小的问题来求解</p>
+<p><img src="https://raw.githubusercontent.com/Fierygit/picbed/master/image-20200501152619434.png"></p>
+<h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span>* num, <span class="keyword">int</span> le, <span class="keyword">int</span> ri)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (le &gt;= ri) <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">int</span> mid = le + ((ri - le) &gt;&gt; <span class="number">1</span>);</span><br><span class="line">  mergeSort(num, le, mid);</span><br><span class="line">  mergeSort(num, mid + <span class="number">1</span>, ri);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">int</span> tmp[ri - le + <span class="number">1</span>];</span><br><span class="line">  <span class="keyword">int</span> start = <span class="number">0</span>, l = le, r = mid + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (l &lt;= mid &amp;&amp; r &lt;= ri) &#123;</span><br><span class="line">    <span class="keyword">if</span> (num[l] &lt; num[r])  tmp[start++] = num[l++];</span><br><span class="line">    <span class="keyword">else</span>   tmp[start++] = num[r++];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">while</span> (l &lt;= mid) tmp[start++] = num[l++];</span><br><span class="line">  <span class="keyword">while</span> (r &lt;= ri) tmp[start++] = num[r++];</span><br><span class="line">  start = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = le; i &lt;= ri; i++) num[i] = tmp[start++];  <span class="comment">// 拷贝</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="二分搜索"><a href="#二分搜索" class="headerlink" title="二分搜索"></a>二分搜索</h3><h3 id="非线性方程的运算"><a href="#非线性方程的运算" class="headerlink" title="非线性方程的运算"></a>非线性方程的运算</h3><h3 id="快速幂运算"><a href="#快速幂运算" class="headerlink" title="快速幂运算"></a>快速幂运算</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(a+b）%m&#x3D;a%m+b%m</span><br><span class="line">a*b%m&#x3D;(a%m)*(b%m)</span><br><span class="line">ab%m&#x3D;(a%m)b</span><br></pre></td></tr></table></figure>
+
+<p>求 a ^ b?</p>
+<p><img src="https://raw.githubusercontent.com/Fierygit/picbed/master/1.png"></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//计算a的2j次方对m取模的结果,用数组r保存</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">cal</span><span class="params">(<span class="keyword">long</span> *r, <span class="keyword">long</span> a, <span class="keyword">long</span> m)</span> </span>&#123;</span><br><span class="line">  r[<span class="number">0</span>] = a % m;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">32</span>; ++i) r[i] = (<span class="keyword">long</span>)r[i - <span class="number">1</span>] * r[i - <span class="number">1</span>] % m;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//计算a^b%m的值</span></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="title">calc</span><span class="params">(<span class="keyword">unsigned</span> m, <span class="keyword">long</span> <span class="keyword">unsigned</span> a, <span class="keyword">long</span> <span class="keyword">unsigned</span> b)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">long</span> ans = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">long</span> bl[<span class="number">32</span>]&#123;<span class="number">0</span>&#125;, r[<span class="number">32</span>];  <span class="comment">// bl是b的二进制结果</span></span><br><span class="line">  cal(r, a, m);           <span class="comment">//计算ab%m的值</span></span><br><span class="line">  <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span> (b) &#123;</span><br><span class="line">    bl[i++] = b &amp; <span class="number">1</span>;  <span class="comment">// b拆分成二进制， &amp; 是求出b二进制的最后一位，一直右移</span></span><br><span class="line">    b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; ++j)</span><br><span class="line">    <span class="keyword">if</span> (bl[j]) ans = (ans * r[j]) % m;</span><br><span class="line">  <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>分治法</tag>
       </tags>
   </entry>
   <entry>
@@ -2779,35 +2808,6 @@ pause</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>分治法</title>
-    <url>/2019/12/28/notepad/algorithm/exercise/%E5%88%86%E6%94%AF%E6%B3%95/</url>
-    <content><![CDATA[<h1 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a><center>分治法</center></h1><p>一个大的问题分解为一些小的问题来求解</p>
-<p><img src="https://raw.githubusercontent.com/Fierygit/picbed/master/image-20200501152619434.png"></p>
-<h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span>* num, <span class="keyword">int</span> le, <span class="keyword">int</span> ri)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (le &gt;= ri) <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">int</span> mid = le + ((ri - le) &gt;&gt; <span class="number">1</span>);</span><br><span class="line">  mergeSort(num, le, mid);</span><br><span class="line">  mergeSort(num, mid + <span class="number">1</span>, ri);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">int</span> tmp[ri - le + <span class="number">1</span>];</span><br><span class="line">  <span class="keyword">int</span> start = <span class="number">0</span>, l = le, r = mid + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (l &lt;= mid &amp;&amp; r &lt;= ri) &#123;</span><br><span class="line">    <span class="keyword">if</span> (num[l] &lt; num[r])  tmp[start++] = num[l++];</span><br><span class="line">    <span class="keyword">else</span>   tmp[start++] = num[r++];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">while</span> (l &lt;= mid) tmp[start++] = num[l++];</span><br><span class="line">  <span class="keyword">while</span> (r &lt;= ri) tmp[start++] = num[r++];</span><br><span class="line">  start = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = le; i &lt;= ri; i++) num[i] = tmp[start++];  <span class="comment">// 拷贝</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h3 id="二分搜索"><a href="#二分搜索" class="headerlink" title="二分搜索"></a>二分搜索</h3><h3 id="非线性方程的运算"><a href="#非线性方程的运算" class="headerlink" title="非线性方程的运算"></a>非线性方程的运算</h3><h3 id="快速幂运算"><a href="#快速幂运算" class="headerlink" title="快速幂运算"></a>快速幂运算</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(a+b）%m&#x3D;a%m+b%m</span><br><span class="line">a*b%m&#x3D;(a%m)*(b%m)</span><br><span class="line">ab%m&#x3D;(a%m)b</span><br></pre></td></tr></table></figure>
-
-<p>求 a ^ b?</p>
-<p><img src="https://raw.githubusercontent.com/Fierygit/picbed/master/1.png"></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//计算a的2j次方对m取模的结果,用数组r保存</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">cal</span><span class="params">(<span class="keyword">long</span> *r, <span class="keyword">long</span> a, <span class="keyword">long</span> m)</span> </span>&#123;</span><br><span class="line">  r[<span class="number">0</span>] = a % m;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">32</span>; ++i) r[i] = (<span class="keyword">long</span>)r[i - <span class="number">1</span>] * r[i - <span class="number">1</span>] % m;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//计算a^b%m的值</span></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="title">calc</span><span class="params">(<span class="keyword">unsigned</span> m, <span class="keyword">long</span> <span class="keyword">unsigned</span> a, <span class="keyword">long</span> <span class="keyword">unsigned</span> b)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">long</span> ans = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">long</span> bl[<span class="number">32</span>]&#123;<span class="number">0</span>&#125;, r[<span class="number">32</span>];  <span class="comment">// bl是b的二进制结果</span></span><br><span class="line">  cal(r, a, m);           <span class="comment">//计算ab%m的值</span></span><br><span class="line">  <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span> (b) &#123;</span><br><span class="line">    bl[i++] = b &amp; <span class="number">1</span>;  <span class="comment">// b拆分成二进制， &amp; 是求出b二进制的最后一位，一直右移</span></span><br><span class="line">    b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; ++j)</span><br><span class="line">    <span class="keyword">if</span> (bl[j]) ans = (ans * r[j]) % m;</span><br><span class="line">  <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>分治法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>大数运算</title>
     <url>/2019/12/28/notepad/algorithm/exercise/%E5%A4%A7%E6%95%B0%E8%BF%90%E7%AE%97/</url>
     <content><![CDATA[<h1 id="大数运算"><a href="#大数运算" class="headerlink" title="大数运算"></a>大数运算</h1><p>[toc]</p>
@@ -2852,249 +2852,6 @@ pause</code></pre>
     <title>problem</title>
     <url>/1899/11/30/notepad/cxx/grammar/class/README/</url>
     <content><![CDATA[<h1 id="problems"><a href="#problems" class="headerlink" title="problems:"></a>problems:</h1><h3 id="1、-含有继承的类的初始化顺序是什么？"><a href="#1、-含有继承的类的初始化顺序是什么？" class="headerlink" title="1、 含有继承的类的初始化顺序是什么？"></a>1、 含有继承的类的初始化顺序是什么？</h3><h3 id="2、-一个类的构建过程，-详细说？"><a href="#2、-一个类的构建过程，-详细说？" class="headerlink" title="2、 一个类的构建过程， 详细说？"></a>2、 一个类的构建过程， 详细说？</h3><h3 id="3、-为什么构造函数不能写成虚函数？"><a href="#3、-为什么构造函数不能写成虚函数？" class="headerlink" title="3、 为什么构造函数不能写成虚函数？"></a>3、 为什么构造函数不能写成虚函数？</h3><h3 id="4、-为什么析构函数要写成虚函数？"><a href="#4、-为什么析构函数要写成虚函数？" class="headerlink" title="4、 为什么析构函数要写成虚函数？"></a>4、 为什么析构函数要写成虚函数？</h3><h3 id="5、-早期绑定和后期绑定（java-中-静态分派（dispatch）和动态分配）"><a href="#5、-早期绑定和后期绑定（java-中-静态分派（dispatch）和动态分配）" class="headerlink" title="5、 早期绑定和后期绑定（java 中 静态分派（dispatch）和动态分配）"></a>5、 早期绑定和后期绑定（java 中 静态分派（dispatch）和动态分配）</h3><h3 id="6、-虚函数原理是什么，-为什么需要虚函数"><a href="#6、-虚函数原理是什么，-为什么需要虚函数" class="headerlink" title="6、 虚函数原理是什么， 为什么需要虚函数"></a>6、 虚函数原理是什么， 为什么需要虚函数</h3>]]></content>
-  </entry>
-  <entry>
-    <title>STL 使用</title>
-    <url>/2018/03/01/notepad/cxx/STL%20%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p>本文来自CSDN博客，转载请标明出处：<a class="link"   href="http://blog.csdn.net/ciahi/archive/2009/08/09/4429103.aspx" >http://blog.csdn.net/ciahi/archive/2009/08/09/4429103.aspx<i class="fas fa-external-link-alt"></i></a></p>
-<h1 id="STL-的使用"><a href="#STL-的使用" class="headerlink" title="STL 的使用"></a>STL 的使用</h1><p>条款1：仔细选择你的容器</p>
-<p>deque是唯一一个“在迭代器失效时不会使它的指针和引用失效”的标准STL容器。</p>
-<p>条款2：小心对“容器无关代码”的幻想</p>
-<p>既要和序列容器又要和关联容器一起工作的代码并没有什么意义。很多成员函数只存在于其中一类容器中，比如，只有序列容器支持push_front或push_back，只有关联容器支持count和lower_bound。 在不同的类中，相同的操作名称，但在意义上是天差地别的。</p>
-<p>条款3：使容器里对象的拷贝操作轻量而正确</p>
-<p>拷贝对象是STL的方式。即，比如向容器中添加对象，都是通过值来传递的，即都要对对象进行拷贝。</p>
-<p>还有其它的操作，如排序算法，删除元素等，都要进行大量的拷贝动作。（通过容器里面的对象的拷贝构造函数和拷贝赋值操作符来完成的）</p>
-<p>如果你以基类对象建立一个容器，而你试图插入派生类对象，那么当对象（通过基类的拷贝构造函数）拷入容器的时候对象的派生部分会被删除。</p>
-<p>一个使拷贝更高效、正确而且对分割问题免疫的简单的方式是建立指针的容器而不是对象的容器。</p>
-<p>（但指针的容器有它们自己STL相关的头疼问题。智能指针的容器是一个吸引人的选择）</p>
-<p>条款4：用empty来代替检查size()是否为0</p>
-<p>对于所有的标准容器，empty是一个常数时间的操作，但对于一些list实现，size花费线性时间。</p>
-<p>条款5：尽量使用区间成员函数代替它们的单元素兄弟</p>
-<p>因为区间成员函数一般针对特定的容器进行了优化，要比“通用”版本的操作效率高。</p>
-<p>无论何时你必须完全代替一个容器的内容，你就应该想到赋值。</p>
-<p>几乎所有目标区间被插入迭代器指定的copy的使用都可以用调用的区间成员函数的来代替。(尽量用成员函数来代替copy)</p>
-<p>● 一般来说使用区间成员函数可以输入更少的代码。</p>
-<p>● 区间成员函数会导致代码更清晰更直接了当。</p>
-<p>条款6：警惕C++最令人恼怒的解析</p>
-<p>ifstream dataFile(“ints.dat”);</p>
-<p>list<int> data(istream_iterator<int>(dataFile), // 警告！这完成的并不</p>
-<p>istream_iterator<int>()); // 是像你想象的那样</p>
-<p>编译器可能会将它解析为一个函数的声明。</p>
-<p>改用如下代码来代替：（即在第一个参数外面加上括号）</p>
-<p>list<int> data((istream_iterator<int>(dataFile)),</p>
-<p>istream_iterator<int>());</p>
-<p>不过这种方法可能并不是所有编译器都支持的。</p>
-<p>所以改成下面的方法可以保证所有编译器支持：</p>
-<p>istream_iterator<int> dataBegin(dataFile);</p>
-<p>istream_iterator<int> dataEnd;</p>
-<p>list<int> data(dataBegin, dataEnd);</p>
-<p>条款7：当使用new得指针的容器时，记得在销毁容器前delete那些指针</p>
-<p>当你要删除指针的容器时要避免资源泄漏，你必须用智能引用计数指针对象（比如Boost的shared_ptr）来代替指针，或者你必须在容器销毁前手动删除容器中的每个指针。</p>
-<p>条款8：永不建立auto_ptr的容器</p>
-<p>auto_ptr的容器（COAPs）是禁止的。试图使用它们的代码都不能编译。</p>
-<p>主要是因为auto_ptr会传递所有权，所以再对容器操作的时候，很可能产生一些非预期的行为。</p>
-<p>条款9：在删除选项中仔细选择</p>
-<p>● 去除一个容器中有特定值的所有对象：</p>
-<p>如果容器是vector、string或deque，使用erase-remove惯用法。</p>
-<p>如果容器是list，使用list::remove。</p>
-<p>如果容器是标准关联容器，使用它的erase成员函数。</p>
-<p>● 去除一个容器中满足一个特定判定式的所有对象：</p>
-<p>如果容器是vector、string或deque，使用erase-remove_if惯用法。</p>
-<p>如果容器是list，使用list::remove_if。</p>
-<p>如果容器是标准关联容器，使用remove_copy_if和swap，或写一个循环来遍历容器元素，当你把迭代器传给erase时记得后置递增它。</p>
-<p>● 在循环内做某些事情（除了删除对象之外）：</p>
-<p>如果容器是标准序列容器，写一个循环来遍历容器元素，每当调用erase时记得都用它的返回值更新你的迭代器。</p>
-<p>如果容器是标准关联容器，写一个循环来遍历容器元素，当你把迭代器传给erase时记得后置递增它。</p>
-<p>条款10：注意分配器的协定和约束</p>
-<p>条款12：对STL容器线程安全性的期待现实一些</p>
-<p>你能从已有的实现里确定的最多是下列内容：</p>
-<p>● 多个读取者是安全的。多线程可能同时读取一个容器的内容，这将正确地执行。当然，在读取时不能有任何写入者操作这个容器。</p>
-<p>● 对不同容器的多个写入者是安全的。多线程可以同时写不同的容器。</p>
-<p>所以要实现线程安全，必须自己来处理代码，将要加锁部分的代码lock住。</p>
-<p>条款13：尽量使用vector和string来代替动态分配的数组</p>
-<p>无论何时，你发现你自己准备动态分配一个数组（也就是，企图写“new T[…]”），你应该首先考虑使用一个vector或一个string。(这样就可以避免管理资源,省去了new及delete所可能造成的资源泄漏)</p>
-<p>如果你在多线程环境中使用引用计数字符串，就应该注意线程安全性支持所带来的的性能下降问题。</p>
-<p>如果你用的string实现是引用计数的，而且要在多线程环境中使用，可以用如下的方法尝试：</p>
-<p>一，看看库是否可以关闭引用计数。</p>
-<p>二，寻找或开发一个不使用引用计数的string实现。</p>
-<p>三，考虑使用vector<char>来代替string。</p>
-<p>条款14：使用reserve来避免不必要的重新分配</p>
-<p>因为vector和string空间不足时(且小于max_size)，每次会以2为因数增长。而且每次都会申请新内存，将旧数据拷贝到新内存，销毁旧内存的对象，释放旧内存。所以消耗很大。</p>
-<p>用reserve来保存足够多的容量。如果确切的知道有多少元素，就可以使用reserve，或者保留你可能需要的最大空间。将数据全部添加完后，再修整掉多余的内容。</p>
-<p>条款15：小心string实现的多样性</p>
-<p>因为string的各实现不同，可能造成string特性的一些差异，如sizeof(string)就可能大小不一致。</p>
-<p>新字符串值的建立可能需要0、1或2次动态分配。</p>
-<p>string对象可能是或可能不共享字符串的大小和容量信息。</p>
-<p>string可能是或可能不支持每对象配置器。</p>
-<p>不同实现对于最小化字符缓冲区的配置器有不同策略。</p>
-<p>条款16: 如何将vector和string的数据传给遗留的API</p>
-<p>如果你有一个vector对象v，而你需要得到一个指向v中数据的指针，以使得它可以被当作一个数组，只要使用&amp;v[0]就可以了。</p>
-<p>让C风格API把数据放入一个vector，然后拷到你实际想要的STL容器中的主意总是有效的。</p>
-<p>条款17：使用“交换技巧”来修整过剩容量</p>
-<p>当vector擦除了很多元素之后，想要把它的大小缩减，以节省空间。</p>
-<p>reserve和resize都没法减少vector的占用空间。只能用swap来做。</p>
-<p>如下：</p>
-<p>vector<Contestant>(contestants).swap(contestants);</p>
-<p>即，用目前contestants的有效元素来初始化一个临时vector，然后再将两个vector的内容互换。并且当这个临时对象消失的时候，那个vector的所有空间都被释放了。</p>
-<p>string(s).swap(s); // 在s上进行“收缩到合适”</p>
-<p>vector<Contestant>().swap(v); // 清除v而且最小化它的容量</p>
-<p>string().swap(s); // 清除s而且最小化它的容量</p>
-<p>条款18：避免使用vector<bool></p>
-<p>第一，它不是一个STL容器。</p>
-<p>第二，它并不容纳bool。</p>
-<p>(虽然vector<bool>满足大部分STL容器的必要条件，但仍然不能完全满足。)</p>
-<p>可以用deque<bool>来代替(deque<bool>的存储并不连续)。或者用bitset来代替。(bitset是标准库的一部分，但不是STL容器。)</p>
-<p>bitset在编译期间固定大小，所以不支持插入和删除元素。也不支持iterator，使用一个压缩的表示法，使得它包含的每个值只占用一比特。它提供vector<bool>特有的flip成员函数及其它位集操作函数。</p>
-<p>条款19：了解相等和等价的区别</p>
-<p>a==b表示a和b相等。</p>
-<p>!(a&lt;b) &amp;&amp; !(b&lt;a) 即，a&lt;b为假，且 b&lt;a 也为假，则a和b等价。</p>
-<p>只所以在关联容器中使用等价，没有使用相等的原因是：</p>
-<p>如果关联容器使用相等来决定两个对象是否有相同的值，但因为关联容器要决定元素间的顺序，所以还是要有用来比较元素大小的运算符，这样多个运算符，在关联容器中容易造成混乱。</p>
-<p>通过只使用一个比较函数并使用等价作为两个值“相等”的意义的仲裁者，标准关联容器避开了很多会由允许两个比较函数而引发的困难。</p>
-<p>条款20：为指针的关联容器指定比较类型</p>
-<p>在对关联容器进行默认排序时，会默认采用指针的值来做为排序对象。所以此时要自定义排序规则。</p>
-<p>条款21: 永远让比较函数对相等的值返回false</p>
-<p>如果对相等的值返回true的时候，则在关联容器里面用operator &lt;= 来比较两个元素的时候，则会将两个不相等的元素判断为不相等。(因为!(a&lt;b) &amp;&amp; !(b&lt;a)为true才相等)</p>
-<p>而且对multiset及multimap等，使用equal_range来得到等价的值的范围，a==b，但并不能得到a与b等价，所以它们两个不可能都在equal_range得到的范围内。</p>
-<p>从技术上说，用于排序关联容器的比较函数必须在它们所比较的对象上定义一个“严格的弱序化(strict weak ordering)”。任何一个定义了严格的弱序化的函数都必须在传入相同的值的两个拷贝时返回false。</p>
-<p>条款22：避免原地修改set和multiset的键</p>
-<p>set和multiset保持它们的元素有序，这些容器的正确行为依赖于它们保持有序。</p>
-<p>如果要修改的话，将原有元素拷贝出来，然后修改这个拷贝值。删除容器中的原元素，再将新的拷贝元素插入到容器里面。</p>
-<p>条款23：考虑用有序vector代替关联容器</p>
-<p>有序的vector与关联容器相比，从算法上来看，查找速度可能不会快，但会节省空间，因为关联容器要保存一些指针。</p>
-<p>但实际上，因为关联容器存储元素的时候，元素是分散的，就可能存储在多个内存页面上，或者是存储在虚拟内存中，所以用到元素的时候，会经常发生缺页错误，从而导致页面更频繁的换入换出，影响查找速度。</p>
-<p>用有序vector来模拟map或multimap时，map&lt;const K, Val&gt; 中的K不能为const，因为要对vector进行排序的时候，要改变K的值，来达到排序的效果。(模拟map的话，因为vector存储的是pair，所以要自定义排序函数)</p>
-<p>条款24：当关乎效率时应该在map::operator[]和map-insert之间仔细选择</p>
-<p>map::operator[]被设计为简化“添加或更新”功能，与vecotr、string等的operator[]无关，也与内建数组没有联系。</p>
-<p>map&lt;int, Widget&gt; m;</p>
-<p>m[1] = 1.50; //使用operator[]</p>
-<p>m.insert(map&lt;int, Widget&gt;::value_type(1, 1.50)); //使用insert</p>
-<p>使用：m[1] = 1.50; 时，如果1还未在map中出现，就会插入这个元素。</p>
-<p>当插入元素的过程中(即1还未在map中出现)，第一种方法会比第二种方法多出如下的三步：</p>
-<p>建立临时的默认构造Widget对象。</p>
-<p>对Widget的赋值操作。</p>
-<p>销毁这个临时Widget对象。</p>
-<p>当1已经在map中出现，就会更新这个值。</p>
-<p>这个时候，第一种方法反而会更高效。原因如下：</p>
-<p>在insert方法中出现的map&lt;int, Widget&gt;是一个pair对象，在这个地方就会构造和析构pair，而且还会构造Widget，所以此时效率就比operator[]低。</p>
-<p>不过我们自己可以实现一个算法，针对不同的情况调用不同的函数来提高效率，使其总是高效的。</p>
-<p>条款25：熟悉非标准散列容器</p>
-<p>散列容器是关联容器。</p>
-<p>事实上的标准名字：hash_set、hash_multiset、hash_map和hash_multimap。(目前还未标准化，但下个版本会加入标准库。不同的厂家实现原理、细节可能会不同)</p>
-<p>条款26：尽量用iterator代替const_iterator，reverse_iterator和const_reverse_iterator</p>
-<p>有些函数只接受iterator类型的参数。</p>
-<p>const_iterator不能隐式转换成iterator，即使用变通的办法，也不通用，且不能保证高效。</p>
-<p>从reverse_iterator转换而来的iterator在转换之后可能需要相应的调整。</p>
-<p>还有种情况，如果const_iterator将operator==实现为了成员函数的话，则在==的左边必须是const_iterator才能编译通过。</p>
-<p>不过，const_iterator可以防止所指元素被改变，有时候也是有用的。</p>
-<p>条款27：用distance和advance把const_iterator转化成iterator</p>
-<p>//ci是const_iterator，Iter i是iterator</p>
-<p>Iter i(const_cast<Iter>(ci)); // 错误！不能从const_iterator映射为iterator</p>
-<p>只所以错误，是因为const_iterator与iterator是完全不同的类。(如果是vector和string容器的迭代器的话，有可能可以通过编译，因为这些容器通常用真实的指针作为它们的迭代器。)</p>
-<p>用如下的方法来转换：</p>
-<p>Iter i(d.begin()); // 初始化i为d.begin()</p>
-<p>advance(i, distance<ConstIter>(i, ci)); // 把i移到指向ci位置</p>
-<p>条款28：了解如何通过reverse_iterator的base得到iterator</p>
-<p>vector<int>::reverse_iterator ri;</p>
-<p>vector<int>::iterator i(ri.base());</p>
-<p>实际上得到的i是指向ri的下一个位置的元素，而并不是ri所指的元素。</p>
-<p>这样做的好处是在插入元素的时候，并不需要考虑它们的位置，不管用i还是ri来插入元素，都会插入到相同的位置。</p>
-<p>但是，在擦除元素的时候就会出现问题。因为erase是插除迭代器本身所指的元素，所以i和ri会擦除不同的元素。</p>
-<p>解决方法如下：</p>
-<p>v.erase((++ri).base()); // 删除ri指向的元素；</p>
-<p>条款29：需要一个一个字符输入时考虑使用istreambuf_iterator</p>
-<p>istream_iterators所依靠的operator&gt;&gt;函数进行的是格式化输入，这意味着每次你调用的时候它们都必须做大量工作。如它们必须检查影响它们行为的流标志，读取错误检查等等。所以它的速度相对比较慢。</p>
-<p>你可以像istream_iterator一样使用istreambuf_iterator，但istream_iterator<char>对象使用operator&gt;&gt;来从输入流中读取单个字符。，istreambuf_iterator不忽略任何字符。它们只简单地抓取流缓冲区的下一个字符。</p>
-<p>条款30：确保目标区间足够大</p>
-<p>如果目标区间并不足够大，用back_inserter或front_inserter或inserter来插入。</p>
-<p>赋值只在两个对象之间操作时有意义，而不是在一个对象和一块原始的比特之间。</p>
-<p>results.reserve(results.size() + values.size());</p>
-<p>transform(values.begin(), values.end(),</p>
-<p>results.end(), // 到未初始化的内存</p>
-<p>transmogrify); // 行为未定义！</p>
-<p>因为reserve出来的空间只是原始内存，里面并不包含对象。</p>
-<p>条款31：了解你的排序选择</p>
-<p>partial_sort只排序前N个元素。</p>
-<p>nth_element本质上等价于partial_sort，但是它并不在这前N个元素内部排序。但前N个是所有元素里面N个最大的。 它也可以将指定位置的单一元素设成与相应位置相符的大小。</p>
-<p>partition排序指定范围内的元素。</p>
-<p>条款32：如果你真的想删除东西的话就在类似remove的算法后接上erase</p>
-<p>唯一从容器中除去一个元素的方法是在那个容器上调用一个成员函数，而且因为remove无法知道它正在操作的容器，所以remove不可能从一个容器中除去元素。从一个容器中remove元素不会改变容器中元素的个数，它只是将相应位置后面的元素向前移，而且不删除最后面的元素。 用size()取得的大小也不会变化。</p>
-<p>所以要想删除元素，调用完remove后一定要调用erase。</p>
-<p>v.erase(remove(v.begin(), v.end(), 99), v.end()); // 真的删除所有等于99的元素。</p>
-<p>(不过list的成员函数remove可以真正的删除元素。)</p>
-<p>条款33：提防在指针的容器上使用类似remove的算法</p>
-<p>容器存储的是指针的时候，调用remove的时候，会使一些内存空间不被指针所指向，从而无法再引用这段内存空间，从而造成内存泄漏。</p>
-<p>如果你无法避免在那样的容器上使用remove，排除这个问题一种方法是在应用erase-remove惯用法之前先删除指针并设置它们为空，然后除去容器中的所有空指针。</p>
-<p>条款34：注意哪个算法需要有序区间</p>
-<p>binary_search</p>
-<p>lower_bound</p>
-<p>upper_bound</p>
-<p>equal_range</p>
-<p>set_union</p>
-<p>set_intersection</p>
-<p>set_difference</p>
-<p>set_symmetric_difference</p>
-<p>merge</p>
-<p>inplace_merge</p>
-<p>includes</p>
-<p>要注意容器的排序方式与算法的排序方式是否一致，如果不一致，可能导致一些未定义的行为。</p>
-<p>条款35：通过mismatch或lexicographical比较实现简单的忽略大小写字符串比较</p>
-<p>mismatch，用来返回两个字符串第一个不匹配的位置。只要为它指定比较规则即可，第一个区间要小于第二个区间的长度。</p>
-<p>lexicographical_compare用来进行字典排序。</p>
-<p>条款36：了解copy_if的正确实现</p>
-<p>条款37：用accumulate或for_each来统计区间</p>
-<p>条款38：把仿函数类设计为用于值传递</p>
-<p>c/c++准则：函数指针是值传递。</p>
-<p>STL算法库一般要按值传递来接收函数对象。不过可以通过显示指定算法的模板参数类型，来传递引用。不过传递引用时，有时候会发生编译错误。</p>
-<p>用值传递函数对象时，函数对象要尽可能的小，否则它们的拷贝会很昂贵。函数对象必须是单态的，不能用虚函数。因为派生类以值传递的时候可能造成切割问题。</p>
-<p>如果要传递的函数对象很大，或者要使用到多态，用Bridge模式可以解决。 实现方式即：</p>
-<p>带着你要放进你的仿函数类的数据和/或多态，把它们移到另一个类中（即实现类）。然后给你的仿函数一个指向这个新类的指针。建立一个包含一个指向实现类的指针的小而单态的类，然后把所有数据和虚函数放到实现类。</p>
-<p>条款39：用纯函数做判断式</p>
-<p>判断式是返回bool（或者其他可以隐式转化为bool的东西）。</p>
-<p>纯函数是返回值只依赖于参数的函数。且它的内部不会改变参数的值，由纯函数引用的所有数据不是作为参数传进的就是在函数生存期内是常量。所以纯函数没有状态。</p>
-<p>一个判断式类是一个仿函数类，它的operator()函数是一个判断式，也就是，它的operator()返回true或false（或其他可以隐式转换到true或false的东西）。</p>
-<p>如果在判断式中改变了所引用的数据，即不是纯函数了，这时候，以值来传递判断式的时候，可能会出现问题，比如说判断式本应该只有一次返回true，但两次使用这个判断式时，两次被重新构造，有两次返回true了。结果就会有问题了。</p>
-<p>最简单的使你自己不摔跟头而进入语言陷阱的方法是在判断式类中把你的operator()函数声明为const。这样，编译器不会让你在里面改变任何类数据成员。</p>
-<p>不管怎么写判断式，他们都应该是纯函数。</p>
-<p>条款40：使仿函数类可适配</p>
-<p>提供必要的typedef的函数对象称为可适配的。(typedef是：argument_type、first_argument_type、second_argument_type和result_type)</p>
-<p>ptr_fun做的唯一的事是使一些typedef有效。</p>
-<p>只要使我们的类继承自std::unary_function或是std::binary_function模板类，就可以自动使这个函数对象变为可适配的。</p>
-<p>在仿函数类中，只能提供一个operator()来适配一元或二元的仿函数，如果提供两个，它只能适配一个！</p>
-<p>条款41：了解使用ptr_fun、mem_fun和mem_fun_ref的原因</p>
-<p>这些函数的主要任务之一是覆盖C++固有的语法矛盾之一。</p>
-<p>它们被称为函数对象适配器。</p>
-<p>在将成员函数传递给STL组件时，一定得使用mem_fun和mem_fun_ref，否则不能通过编译。</p>
-<p>ptr_fun是在函数对象没有提供一些typedef时，要使用的。(参看条款40)</p>
-<p>条款42：确定less<T>表示operator&lt;</p>
-<p>条款43：尽量用算法调用代替手写循环</p>
-<p>调用算法通常比手写的循环更优越。原因：</p>
-<p>● 效率：算法通常比程序员产生的循环更高效。</p>
-<p>● 正确性：写循环时比调用算法更容易产生错误。</p>
-<p>● 可维护性：算法通常使代码比相应的显式循环更干净、更直观。</p>
-<p>条款44：尽量用成员函数代替同名的算法</p>
-<p>首先，成员函数更快。其次，比起算法来，它们与容器结合得更好</p>
-<p>因为成员函数就是针对某容器提供的特化版本算法。</p>
-<p>list成员函数的行为和它们的算法兄弟的行为经常不相同。如调用通用的remove、remove_if和unique算法后，必须紧接着调用erase函数才能清除对象，但list的remove等成员函数后面并不需要erase函数，就能清除对象。</p>
-<p>条款45：注意count、find、binary_search、lower_bound、upper_bound和equal_range的区别</p>
-<p>如果迭代器定义了一个有序区间，则可以通过binary_search、lower_bound、upper_bound和equal_range来加速。如果没有有序区间，则只能用count、find线性时间的算法。count经常用来检查元素是否存在。但count找到存在的元素后，仍会继续查找，直到将所有元素遍历。但find找到后就会结束，所以find的效率可能略优一点。</p>
-<p>要测试在有序区间中是否存在一个值，使用binary_search，但这个算法只返回一个bool值，表明是否找到了，要想得到更多的信息，则这个算法无能为力了。如果想知道存在的元素在哪儿，可以用equal_range。</p>
-<p>条款46：考虑使用函数对象代替函数作算法的参数</p>
-<p>函数作为算法的参数的时候，会传递函数的指针作为参数，而且函数指针会抑制内联。函数对象的operator()被声明为内联的时候，在速度上，会高于以函数作为算法的参数进行传递。</p>
-<p>有时候，用函数作为参数的时候，可能会编译不过，但用函数对象，一般都不会出问题。</p>
-<p>条款47：避免产生只写代码</p>
-<p>此处的“只写”代码是指，容易写，但是不容易读和理解的代码。</p>
-<p>代码的读比写更经常，这是软件工程的真理。</p>
-<p>条款48：总是#include适当的头文件</p>
-<p>条款49：学习破解有关STL的编译器诊断信息</p>
-<p>条款50：让你自己熟悉有关STL的网站</p>
-]]></content>
-      <categories>
-        <category>CXX</category>
-      </categories>
-      <tags>
-        <tag>cxx</tag>
-      </tags>
   </entry>
   <entry>
     <title>java 并发与实战</title>
@@ -3478,7 +3235,7 @@ pause</code></pre>
   <entry>
     <title>DDIA</title>
     <url>/2020/12/03/notepad/read/DDIA.mm/</url>
-    <content><![CDATA[<h1 id="数据密集型应用学习笔记"><a href="#数据密集型应用学习笔记" class="headerlink" title="数据密集型应用学习笔记"></a>数据密集型应用学习笔记</h1><h2 id="第1章"><a href="#第1章" class="headerlink" title="第1章"></a>第1章</h2><blockquote>
+    <content><![CDATA[<h1 id="数据密集型应用学习笔记"><a href="#数据密集型应用学习笔记" class="headerlink" title="数据密集型应用学习笔记"></a>数据密集型应用学习笔记</h1><h2 id="陈杰"><a href="#陈杰" class="headerlink" title="陈杰"></a>陈杰</h2><h2 id="第1章"><a href="#第1章" class="headerlink" title="第1章"></a>第1章</h2><blockquote>
 <p> 当今许多应用大多是数据数据密集（data-intensive）而不是计算密集型（compute-intensive）的。所以CPU的处理能力往往不是应用程序的瓶颈。关键在于数据的量、数据的复杂度以及数据的快速多变性。</p>
 </blockquote>
 <ul>
@@ -3866,6 +3623,249 @@ pause</code></pre>
       </categories>
       <tags>
         <tag>DDIA</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>STL 使用</title>
+    <url>/2018/03/01/notepad/cxx/STL%20%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p>本文来自CSDN博客，转载请标明出处：<a class="link"   href="http://blog.csdn.net/ciahi/archive/2009/08/09/4429103.aspx" >http://blog.csdn.net/ciahi/archive/2009/08/09/4429103.aspx<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="STL-的使用"><a href="#STL-的使用" class="headerlink" title="STL 的使用"></a>STL 的使用</h1><p>条款1：仔细选择你的容器</p>
+<p>deque是唯一一个“在迭代器失效时不会使它的指针和引用失效”的标准STL容器。</p>
+<p>条款2：小心对“容器无关代码”的幻想</p>
+<p>既要和序列容器又要和关联容器一起工作的代码并没有什么意义。很多成员函数只存在于其中一类容器中，比如，只有序列容器支持push_front或push_back，只有关联容器支持count和lower_bound。 在不同的类中，相同的操作名称，但在意义上是天差地别的。</p>
+<p>条款3：使容器里对象的拷贝操作轻量而正确</p>
+<p>拷贝对象是STL的方式。即，比如向容器中添加对象，都是通过值来传递的，即都要对对象进行拷贝。</p>
+<p>还有其它的操作，如排序算法，删除元素等，都要进行大量的拷贝动作。（通过容器里面的对象的拷贝构造函数和拷贝赋值操作符来完成的）</p>
+<p>如果你以基类对象建立一个容器，而你试图插入派生类对象，那么当对象（通过基类的拷贝构造函数）拷入容器的时候对象的派生部分会被删除。</p>
+<p>一个使拷贝更高效、正确而且对分割问题免疫的简单的方式是建立指针的容器而不是对象的容器。</p>
+<p>（但指针的容器有它们自己STL相关的头疼问题。智能指针的容器是一个吸引人的选择）</p>
+<p>条款4：用empty来代替检查size()是否为0</p>
+<p>对于所有的标准容器，empty是一个常数时间的操作，但对于一些list实现，size花费线性时间。</p>
+<p>条款5：尽量使用区间成员函数代替它们的单元素兄弟</p>
+<p>因为区间成员函数一般针对特定的容器进行了优化，要比“通用”版本的操作效率高。</p>
+<p>无论何时你必须完全代替一个容器的内容，你就应该想到赋值。</p>
+<p>几乎所有目标区间被插入迭代器指定的copy的使用都可以用调用的区间成员函数的来代替。(尽量用成员函数来代替copy)</p>
+<p>● 一般来说使用区间成员函数可以输入更少的代码。</p>
+<p>● 区间成员函数会导致代码更清晰更直接了当。</p>
+<p>条款6：警惕C++最令人恼怒的解析</p>
+<p>ifstream dataFile(“ints.dat”);</p>
+<p>list<int> data(istream_iterator<int>(dataFile), // 警告！这完成的并不</p>
+<p>istream_iterator<int>()); // 是像你想象的那样</p>
+<p>编译器可能会将它解析为一个函数的声明。</p>
+<p>改用如下代码来代替：（即在第一个参数外面加上括号）</p>
+<p>list<int> data((istream_iterator<int>(dataFile)),</p>
+<p>istream_iterator<int>());</p>
+<p>不过这种方法可能并不是所有编译器都支持的。</p>
+<p>所以改成下面的方法可以保证所有编译器支持：</p>
+<p>istream_iterator<int> dataBegin(dataFile);</p>
+<p>istream_iterator<int> dataEnd;</p>
+<p>list<int> data(dataBegin, dataEnd);</p>
+<p>条款7：当使用new得指针的容器时，记得在销毁容器前delete那些指针</p>
+<p>当你要删除指针的容器时要避免资源泄漏，你必须用智能引用计数指针对象（比如Boost的shared_ptr）来代替指针，或者你必须在容器销毁前手动删除容器中的每个指针。</p>
+<p>条款8：永不建立auto_ptr的容器</p>
+<p>auto_ptr的容器（COAPs）是禁止的。试图使用它们的代码都不能编译。</p>
+<p>主要是因为auto_ptr会传递所有权，所以再对容器操作的时候，很可能产生一些非预期的行为。</p>
+<p>条款9：在删除选项中仔细选择</p>
+<p>● 去除一个容器中有特定值的所有对象：</p>
+<p>如果容器是vector、string或deque，使用erase-remove惯用法。</p>
+<p>如果容器是list，使用list::remove。</p>
+<p>如果容器是标准关联容器，使用它的erase成员函数。</p>
+<p>● 去除一个容器中满足一个特定判定式的所有对象：</p>
+<p>如果容器是vector、string或deque，使用erase-remove_if惯用法。</p>
+<p>如果容器是list，使用list::remove_if。</p>
+<p>如果容器是标准关联容器，使用remove_copy_if和swap，或写一个循环来遍历容器元素，当你把迭代器传给erase时记得后置递增它。</p>
+<p>● 在循环内做某些事情（除了删除对象之外）：</p>
+<p>如果容器是标准序列容器，写一个循环来遍历容器元素，每当调用erase时记得都用它的返回值更新你的迭代器。</p>
+<p>如果容器是标准关联容器，写一个循环来遍历容器元素，当你把迭代器传给erase时记得后置递增它。</p>
+<p>条款10：注意分配器的协定和约束</p>
+<p>条款12：对STL容器线程安全性的期待现实一些</p>
+<p>你能从已有的实现里确定的最多是下列内容：</p>
+<p>● 多个读取者是安全的。多线程可能同时读取一个容器的内容，这将正确地执行。当然，在读取时不能有任何写入者操作这个容器。</p>
+<p>● 对不同容器的多个写入者是安全的。多线程可以同时写不同的容器。</p>
+<p>所以要实现线程安全，必须自己来处理代码，将要加锁部分的代码lock住。</p>
+<p>条款13：尽量使用vector和string来代替动态分配的数组</p>
+<p>无论何时，你发现你自己准备动态分配一个数组（也就是，企图写“new T[…]”），你应该首先考虑使用一个vector或一个string。(这样就可以避免管理资源,省去了new及delete所可能造成的资源泄漏)</p>
+<p>如果你在多线程环境中使用引用计数字符串，就应该注意线程安全性支持所带来的的性能下降问题。</p>
+<p>如果你用的string实现是引用计数的，而且要在多线程环境中使用，可以用如下的方法尝试：</p>
+<p>一，看看库是否可以关闭引用计数。</p>
+<p>二，寻找或开发一个不使用引用计数的string实现。</p>
+<p>三，考虑使用vector<char>来代替string。</p>
+<p>条款14：使用reserve来避免不必要的重新分配</p>
+<p>因为vector和string空间不足时(且小于max_size)，每次会以2为因数增长。而且每次都会申请新内存，将旧数据拷贝到新内存，销毁旧内存的对象，释放旧内存。所以消耗很大。</p>
+<p>用reserve来保存足够多的容量。如果确切的知道有多少元素，就可以使用reserve，或者保留你可能需要的最大空间。将数据全部添加完后，再修整掉多余的内容。</p>
+<p>条款15：小心string实现的多样性</p>
+<p>因为string的各实现不同，可能造成string特性的一些差异，如sizeof(string)就可能大小不一致。</p>
+<p>新字符串值的建立可能需要0、1或2次动态分配。</p>
+<p>string对象可能是或可能不共享字符串的大小和容量信息。</p>
+<p>string可能是或可能不支持每对象配置器。</p>
+<p>不同实现对于最小化字符缓冲区的配置器有不同策略。</p>
+<p>条款16: 如何将vector和string的数据传给遗留的API</p>
+<p>如果你有一个vector对象v，而你需要得到一个指向v中数据的指针，以使得它可以被当作一个数组，只要使用&amp;v[0]就可以了。</p>
+<p>让C风格API把数据放入一个vector，然后拷到你实际想要的STL容器中的主意总是有效的。</p>
+<p>条款17：使用“交换技巧”来修整过剩容量</p>
+<p>当vector擦除了很多元素之后，想要把它的大小缩减，以节省空间。</p>
+<p>reserve和resize都没法减少vector的占用空间。只能用swap来做。</p>
+<p>如下：</p>
+<p>vector<Contestant>(contestants).swap(contestants);</p>
+<p>即，用目前contestants的有效元素来初始化一个临时vector，然后再将两个vector的内容互换。并且当这个临时对象消失的时候，那个vector的所有空间都被释放了。</p>
+<p>string(s).swap(s); // 在s上进行“收缩到合适”</p>
+<p>vector<Contestant>().swap(v); // 清除v而且最小化它的容量</p>
+<p>string().swap(s); // 清除s而且最小化它的容量</p>
+<p>条款18：避免使用vector<bool></p>
+<p>第一，它不是一个STL容器。</p>
+<p>第二，它并不容纳bool。</p>
+<p>(虽然vector<bool>满足大部分STL容器的必要条件，但仍然不能完全满足。)</p>
+<p>可以用deque<bool>来代替(deque<bool>的存储并不连续)。或者用bitset来代替。(bitset是标准库的一部分，但不是STL容器。)</p>
+<p>bitset在编译期间固定大小，所以不支持插入和删除元素。也不支持iterator，使用一个压缩的表示法，使得它包含的每个值只占用一比特。它提供vector<bool>特有的flip成员函数及其它位集操作函数。</p>
+<p>条款19：了解相等和等价的区别</p>
+<p>a==b表示a和b相等。</p>
+<p>!(a&lt;b) &amp;&amp; !(b&lt;a) 即，a&lt;b为假，且 b&lt;a 也为假，则a和b等价。</p>
+<p>只所以在关联容器中使用等价，没有使用相等的原因是：</p>
+<p>如果关联容器使用相等来决定两个对象是否有相同的值，但因为关联容器要决定元素间的顺序，所以还是要有用来比较元素大小的运算符，这样多个运算符，在关联容器中容易造成混乱。</p>
+<p>通过只使用一个比较函数并使用等价作为两个值“相等”的意义的仲裁者，标准关联容器避开了很多会由允许两个比较函数而引发的困难。</p>
+<p>条款20：为指针的关联容器指定比较类型</p>
+<p>在对关联容器进行默认排序时，会默认采用指针的值来做为排序对象。所以此时要自定义排序规则。</p>
+<p>条款21: 永远让比较函数对相等的值返回false</p>
+<p>如果对相等的值返回true的时候，则在关联容器里面用operator &lt;= 来比较两个元素的时候，则会将两个不相等的元素判断为不相等。(因为!(a&lt;b) &amp;&amp; !(b&lt;a)为true才相等)</p>
+<p>而且对multiset及multimap等，使用equal_range来得到等价的值的范围，a==b，但并不能得到a与b等价，所以它们两个不可能都在equal_range得到的范围内。</p>
+<p>从技术上说，用于排序关联容器的比较函数必须在它们所比较的对象上定义一个“严格的弱序化(strict weak ordering)”。任何一个定义了严格的弱序化的函数都必须在传入相同的值的两个拷贝时返回false。</p>
+<p>条款22：避免原地修改set和multiset的键</p>
+<p>set和multiset保持它们的元素有序，这些容器的正确行为依赖于它们保持有序。</p>
+<p>如果要修改的话，将原有元素拷贝出来，然后修改这个拷贝值。删除容器中的原元素，再将新的拷贝元素插入到容器里面。</p>
+<p>条款23：考虑用有序vector代替关联容器</p>
+<p>有序的vector与关联容器相比，从算法上来看，查找速度可能不会快，但会节省空间，因为关联容器要保存一些指针。</p>
+<p>但实际上，因为关联容器存储元素的时候，元素是分散的，就可能存储在多个内存页面上，或者是存储在虚拟内存中，所以用到元素的时候，会经常发生缺页错误，从而导致页面更频繁的换入换出，影响查找速度。</p>
+<p>用有序vector来模拟map或multimap时，map&lt;const K, Val&gt; 中的K不能为const，因为要对vector进行排序的时候，要改变K的值，来达到排序的效果。(模拟map的话，因为vector存储的是pair，所以要自定义排序函数)</p>
+<p>条款24：当关乎效率时应该在map::operator[]和map-insert之间仔细选择</p>
+<p>map::operator[]被设计为简化“添加或更新”功能，与vecotr、string等的operator[]无关，也与内建数组没有联系。</p>
+<p>map&lt;int, Widget&gt; m;</p>
+<p>m[1] = 1.50; //使用operator[]</p>
+<p>m.insert(map&lt;int, Widget&gt;::value_type(1, 1.50)); //使用insert</p>
+<p>使用：m[1] = 1.50; 时，如果1还未在map中出现，就会插入这个元素。</p>
+<p>当插入元素的过程中(即1还未在map中出现)，第一种方法会比第二种方法多出如下的三步：</p>
+<p>建立临时的默认构造Widget对象。</p>
+<p>对Widget的赋值操作。</p>
+<p>销毁这个临时Widget对象。</p>
+<p>当1已经在map中出现，就会更新这个值。</p>
+<p>这个时候，第一种方法反而会更高效。原因如下：</p>
+<p>在insert方法中出现的map&lt;int, Widget&gt;是一个pair对象，在这个地方就会构造和析构pair，而且还会构造Widget，所以此时效率就比operator[]低。</p>
+<p>不过我们自己可以实现一个算法，针对不同的情况调用不同的函数来提高效率，使其总是高效的。</p>
+<p>条款25：熟悉非标准散列容器</p>
+<p>散列容器是关联容器。</p>
+<p>事实上的标准名字：hash_set、hash_multiset、hash_map和hash_multimap。(目前还未标准化，但下个版本会加入标准库。不同的厂家实现原理、细节可能会不同)</p>
+<p>条款26：尽量用iterator代替const_iterator，reverse_iterator和const_reverse_iterator</p>
+<p>有些函数只接受iterator类型的参数。</p>
+<p>const_iterator不能隐式转换成iterator，即使用变通的办法，也不通用，且不能保证高效。</p>
+<p>从reverse_iterator转换而来的iterator在转换之后可能需要相应的调整。</p>
+<p>还有种情况，如果const_iterator将operator==实现为了成员函数的话，则在==的左边必须是const_iterator才能编译通过。</p>
+<p>不过，const_iterator可以防止所指元素被改变，有时候也是有用的。</p>
+<p>条款27：用distance和advance把const_iterator转化成iterator</p>
+<p>//ci是const_iterator，Iter i是iterator</p>
+<p>Iter i(const_cast<Iter>(ci)); // 错误！不能从const_iterator映射为iterator</p>
+<p>只所以错误，是因为const_iterator与iterator是完全不同的类。(如果是vector和string容器的迭代器的话，有可能可以通过编译，因为这些容器通常用真实的指针作为它们的迭代器。)</p>
+<p>用如下的方法来转换：</p>
+<p>Iter i(d.begin()); // 初始化i为d.begin()</p>
+<p>advance(i, distance<ConstIter>(i, ci)); // 把i移到指向ci位置</p>
+<p>条款28：了解如何通过reverse_iterator的base得到iterator</p>
+<p>vector<int>::reverse_iterator ri;</p>
+<p>vector<int>::iterator i(ri.base());</p>
+<p>实际上得到的i是指向ri的下一个位置的元素，而并不是ri所指的元素。</p>
+<p>这样做的好处是在插入元素的时候，并不需要考虑它们的位置，不管用i还是ri来插入元素，都会插入到相同的位置。</p>
+<p>但是，在擦除元素的时候就会出现问题。因为erase是插除迭代器本身所指的元素，所以i和ri会擦除不同的元素。</p>
+<p>解决方法如下：</p>
+<p>v.erase((++ri).base()); // 删除ri指向的元素；</p>
+<p>条款29：需要一个一个字符输入时考虑使用istreambuf_iterator</p>
+<p>istream_iterators所依靠的operator&gt;&gt;函数进行的是格式化输入，这意味着每次你调用的时候它们都必须做大量工作。如它们必须检查影响它们行为的流标志，读取错误检查等等。所以它的速度相对比较慢。</p>
+<p>你可以像istream_iterator一样使用istreambuf_iterator，但istream_iterator<char>对象使用operator&gt;&gt;来从输入流中读取单个字符。，istreambuf_iterator不忽略任何字符。它们只简单地抓取流缓冲区的下一个字符。</p>
+<p>条款30：确保目标区间足够大</p>
+<p>如果目标区间并不足够大，用back_inserter或front_inserter或inserter来插入。</p>
+<p>赋值只在两个对象之间操作时有意义，而不是在一个对象和一块原始的比特之间。</p>
+<p>results.reserve(results.size() + values.size());</p>
+<p>transform(values.begin(), values.end(),</p>
+<p>results.end(), // 到未初始化的内存</p>
+<p>transmogrify); // 行为未定义！</p>
+<p>因为reserve出来的空间只是原始内存，里面并不包含对象。</p>
+<p>条款31：了解你的排序选择</p>
+<p>partial_sort只排序前N个元素。</p>
+<p>nth_element本质上等价于partial_sort，但是它并不在这前N个元素内部排序。但前N个是所有元素里面N个最大的。 它也可以将指定位置的单一元素设成与相应位置相符的大小。</p>
+<p>partition排序指定范围内的元素。</p>
+<p>条款32：如果你真的想删除东西的话就在类似remove的算法后接上erase</p>
+<p>唯一从容器中除去一个元素的方法是在那个容器上调用一个成员函数，而且因为remove无法知道它正在操作的容器，所以remove不可能从一个容器中除去元素。从一个容器中remove元素不会改变容器中元素的个数，它只是将相应位置后面的元素向前移，而且不删除最后面的元素。 用size()取得的大小也不会变化。</p>
+<p>所以要想删除元素，调用完remove后一定要调用erase。</p>
+<p>v.erase(remove(v.begin(), v.end(), 99), v.end()); // 真的删除所有等于99的元素。</p>
+<p>(不过list的成员函数remove可以真正的删除元素。)</p>
+<p>条款33：提防在指针的容器上使用类似remove的算法</p>
+<p>容器存储的是指针的时候，调用remove的时候，会使一些内存空间不被指针所指向，从而无法再引用这段内存空间，从而造成内存泄漏。</p>
+<p>如果你无法避免在那样的容器上使用remove，排除这个问题一种方法是在应用erase-remove惯用法之前先删除指针并设置它们为空，然后除去容器中的所有空指针。</p>
+<p>条款34：注意哪个算法需要有序区间</p>
+<p>binary_search</p>
+<p>lower_bound</p>
+<p>upper_bound</p>
+<p>equal_range</p>
+<p>set_union</p>
+<p>set_intersection</p>
+<p>set_difference</p>
+<p>set_symmetric_difference</p>
+<p>merge</p>
+<p>inplace_merge</p>
+<p>includes</p>
+<p>要注意容器的排序方式与算法的排序方式是否一致，如果不一致，可能导致一些未定义的行为。</p>
+<p>条款35：通过mismatch或lexicographical比较实现简单的忽略大小写字符串比较</p>
+<p>mismatch，用来返回两个字符串第一个不匹配的位置。只要为它指定比较规则即可，第一个区间要小于第二个区间的长度。</p>
+<p>lexicographical_compare用来进行字典排序。</p>
+<p>条款36：了解copy_if的正确实现</p>
+<p>条款37：用accumulate或for_each来统计区间</p>
+<p>条款38：把仿函数类设计为用于值传递</p>
+<p>c/c++准则：函数指针是值传递。</p>
+<p>STL算法库一般要按值传递来接收函数对象。不过可以通过显示指定算法的模板参数类型，来传递引用。不过传递引用时，有时候会发生编译错误。</p>
+<p>用值传递函数对象时，函数对象要尽可能的小，否则它们的拷贝会很昂贵。函数对象必须是单态的，不能用虚函数。因为派生类以值传递的时候可能造成切割问题。</p>
+<p>如果要传递的函数对象很大，或者要使用到多态，用Bridge模式可以解决。 实现方式即：</p>
+<p>带着你要放进你的仿函数类的数据和/或多态，把它们移到另一个类中（即实现类）。然后给你的仿函数一个指向这个新类的指针。建立一个包含一个指向实现类的指针的小而单态的类，然后把所有数据和虚函数放到实现类。</p>
+<p>条款39：用纯函数做判断式</p>
+<p>判断式是返回bool（或者其他可以隐式转化为bool的东西）。</p>
+<p>纯函数是返回值只依赖于参数的函数。且它的内部不会改变参数的值，由纯函数引用的所有数据不是作为参数传进的就是在函数生存期内是常量。所以纯函数没有状态。</p>
+<p>一个判断式类是一个仿函数类，它的operator()函数是一个判断式，也就是，它的operator()返回true或false（或其他可以隐式转换到true或false的东西）。</p>
+<p>如果在判断式中改变了所引用的数据，即不是纯函数了，这时候，以值来传递判断式的时候，可能会出现问题，比如说判断式本应该只有一次返回true，但两次使用这个判断式时，两次被重新构造，有两次返回true了。结果就会有问题了。</p>
+<p>最简单的使你自己不摔跟头而进入语言陷阱的方法是在判断式类中把你的operator()函数声明为const。这样，编译器不会让你在里面改变任何类数据成员。</p>
+<p>不管怎么写判断式，他们都应该是纯函数。</p>
+<p>条款40：使仿函数类可适配</p>
+<p>提供必要的typedef的函数对象称为可适配的。(typedef是：argument_type、first_argument_type、second_argument_type和result_type)</p>
+<p>ptr_fun做的唯一的事是使一些typedef有效。</p>
+<p>只要使我们的类继承自std::unary_function或是std::binary_function模板类，就可以自动使这个函数对象变为可适配的。</p>
+<p>在仿函数类中，只能提供一个operator()来适配一元或二元的仿函数，如果提供两个，它只能适配一个！</p>
+<p>条款41：了解使用ptr_fun、mem_fun和mem_fun_ref的原因</p>
+<p>这些函数的主要任务之一是覆盖C++固有的语法矛盾之一。</p>
+<p>它们被称为函数对象适配器。</p>
+<p>在将成员函数传递给STL组件时，一定得使用mem_fun和mem_fun_ref，否则不能通过编译。</p>
+<p>ptr_fun是在函数对象没有提供一些typedef时，要使用的。(参看条款40)</p>
+<p>条款42：确定less<T>表示operator&lt;</p>
+<p>条款43：尽量用算法调用代替手写循环</p>
+<p>调用算法通常比手写的循环更优越。原因：</p>
+<p>● 效率：算法通常比程序员产生的循环更高效。</p>
+<p>● 正确性：写循环时比调用算法更容易产生错误。</p>
+<p>● 可维护性：算法通常使代码比相应的显式循环更干净、更直观。</p>
+<p>条款44：尽量用成员函数代替同名的算法</p>
+<p>首先，成员函数更快。其次，比起算法来，它们与容器结合得更好</p>
+<p>因为成员函数就是针对某容器提供的特化版本算法。</p>
+<p>list成员函数的行为和它们的算法兄弟的行为经常不相同。如调用通用的remove、remove_if和unique算法后，必须紧接着调用erase函数才能清除对象，但list的remove等成员函数后面并不需要erase函数，就能清除对象。</p>
+<p>条款45：注意count、find、binary_search、lower_bound、upper_bound和equal_range的区别</p>
+<p>如果迭代器定义了一个有序区间，则可以通过binary_search、lower_bound、upper_bound和equal_range来加速。如果没有有序区间，则只能用count、find线性时间的算法。count经常用来检查元素是否存在。但count找到存在的元素后，仍会继续查找，直到将所有元素遍历。但find找到后就会结束，所以find的效率可能略优一点。</p>
+<p>要测试在有序区间中是否存在一个值，使用binary_search，但这个算法只返回一个bool值，表明是否找到了，要想得到更多的信息，则这个算法无能为力了。如果想知道存在的元素在哪儿，可以用equal_range。</p>
+<p>条款46：考虑使用函数对象代替函数作算法的参数</p>
+<p>函数作为算法的参数的时候，会传递函数的指针作为参数，而且函数指针会抑制内联。函数对象的operator()被声明为内联的时候，在速度上，会高于以函数作为算法的参数进行传递。</p>
+<p>有时候，用函数作为参数的时候，可能会编译不过，但用函数对象，一般都不会出问题。</p>
+<p>条款47：避免产生只写代码</p>
+<p>此处的“只写”代码是指，容易写，但是不容易读和理解的代码。</p>
+<p>代码的读比写更经常，这是软件工程的真理。</p>
+<p>条款48：总是#include适当的头文件</p>
+<p>条款49：学习破解有关STL的编译器诊断信息</p>
+<p>条款50：让你自己熟悉有关STL的网站</p>
+]]></content>
+      <categories>
+        <category>CXX</category>
+      </categories>
+      <tags>
+        <tag>cxx</tag>
       </tags>
   </entry>
   <entry>
