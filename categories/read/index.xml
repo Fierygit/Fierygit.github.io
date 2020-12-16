@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>read on Firefly</title>
+    <link>http://fireflying.top/categories/read/</link>
+    <description>Recent content in read on Firefly</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 03 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://fireflying.top/categories/read/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DDIA</title>
+      <link>http://fireflying.top/post/notepad/read/ddia.mm/</link>
+      <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/read/ddia.mm/</guid>
+      <description>数据密集型应用学习笔记 第1章 当今许多应用大多是数据数据密集（data-intensive）而不是计算密集型（compute-intensiv</description>
+    </item>
+    
+    <item>
+      <title>Tomcat 学习笔记</title>
+      <link>http://fireflying.top/post/notepad/read/tomcat/</link>
+      <pubDate>Wed, 04 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/read/tomcat/</guid>
+      <description>Tomcat connector connector 在解析完了http 协议之后会调用 containner 的 invoke 方法！ 1 connector.getContainer().invoke(request, response); 接下来看是 container 容器的 invoke 方法 1 2 3 4 public void invoke(Request request, Response response) throws IOException, ServletException { pipeline.invoke(request, response); } 下面看容器的实现方法！ Servlet servlet</description>
+    </item>
+    
+    <item>
+      <title>tinhttpd</title>
+      <link>http://fireflying.top/post/notepad/read/tinhttpd/</link>
+      <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/read/tinhttpd/</guid>
+      <description>tinhttpd https://www.cnblogs.com/nengm1988/p/7816618.html 不断创建线程接受连接， 并解析http，解析完了之后，创建多个进程处理，每个子进程处理然后发送给父进程， 这里把处理和回复解耦， 处理的子进程</description>
+    </item>
+    
+    <item>
+      <title>Java设计模式</title>
+      <link>http://fireflying.top/post/notepad/read/design_pattern/</link>
+      <pubDate>Tue, 01 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/read/design_pattern/</guid>
+      <description>设计模式 笔记说明： 这是一节专业选修课，上课没怎么听， 弥补一下错过的东西， 给大部分的设计模式写了一个demo， 很多细节都在里面，代码地址： github/fierygit, 一</description>
+    </item>
+    
+    <item>
+      <title>dubbo</title>
+      <link>http://fireflying.top/post/notepad/read/dubbo/</link>
+      <pubDate>Wed, 01 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/read/dubbo/</guid>
+      <description>dubbo [toc] RPC 基础概念 基础概念： 响应时间(RT) 响应时间是指系统对请求作出响应的时间。直观上看，这个指标与人对软件性能的主观感受是非常一致的，因为它</description>
+    </item>
+    
+    <item>
+      <title>语言特性</title>
+      <link>http://fireflying.top/post/notepad/read/%E5%8A%A8%E6%80%81%E6%80%A7%E4%B8%8E%E9%9D%99%E6%80%81%E6%80%A7%E5%BC%BA%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%BC%B1%E7%B1%BB%E5%9E%8B/</link>
+      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/read/%E5%8A%A8%E6%80%81%E6%80%A7%E4%B8%8E%E9%9D%99%E6%80%81%E6%80%A7%E5%BC%BA%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%BC%B1%E7%B1%BB%E5%9E%8B/</guid>
+      <description>语言特性 关于语言特性的定义总是弄混，写篇博客记录一下！ 彻底理清！ 强类型与弱类型 强类型： 每个变量和对象都必须声明类型，在编译时确定好类型了，执</description>
+    </item>
+    
+  </channel>
+</rss>

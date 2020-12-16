@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CXX on Firefly</title>
+    <link>http://fireflying.top/categories/cxx/</link>
+    <description>Recent content in CXX on Firefly</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 02 Nov 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://fireflying.top/categories/cxx/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Wolrd In C</title>
+      <link>http://fireflying.top/post/notepad/cxx/c_notepad/</link>
+      <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/cxx/c_notepad/</guid>
+      <description>c / c++ note c / c++ 遇到的bug 或者小技巧集 [TOC] typedef 和 #define 每一个例子都看懂 == 入门c 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 //定义新的类型 typedef int*</description>
+    </item>
+    
+    <item>
+      <title>STL 使用</title>
+      <link>http://fireflying.top/post/notepad/cxx/stl-%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Thu, 01 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/cxx/stl-%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>本文来自CSDN博客，转载请标明出处：http://blog.csdn.net/ciahi/archive/2009/08/09/44291</description>
+    </item>
+    
+    <item>
+      <title>cplusplus</title>
+      <link>http://fireflying.top/post/notepad/cxx/cplusplus/</link>
+      <pubDate>Tue, 21 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/cxx/cplusplus/</guid>
+      <description>[toc] c11的语言特性 .h 头文件可以不加 1 2 #include &amp;lt;vector&amp;gt;#include &amp;lt;vector.h&amp;gt; function, bind 关于std::function 的用法： 其实就可以理解成函数指针 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15</description>
+    </item>
+    
+  </channel>
+</rss>

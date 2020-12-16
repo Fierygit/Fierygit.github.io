@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>easy_c - Firefly</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Firefly" /><meta name="description" content="easy_c 实现目标 实现一门基于 x86 平台的编译器， 链接基于GNU as， 功能实现加减乘除， 函数调用， if 语句和while循环，，输出整数值和字符串，不实现指" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
+
+
+<link rel="canonical" href="http://fireflying.top/notepad/compiling/easy_c/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="easy_c" />
+<meta property="og:description" content="easy_c 实现目标 实现一门基于 x86 平台的编译器， 链接基于GNU as， 功能实现加减乘除， 函数调用， if 语句和while循环，，输出整数值和字符串，不实现指" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fireflying.top/notepad/compiling/easy_c/" />
+
+<meta itemprop="name" content="easy_c">
+<meta itemprop="description" content="easy_c 实现目标 实现一门基于 x86 平台的编译器， 链接基于GNU as， 功能实现加减乘除， 函数调用， if 语句和while循环，，输出整数值和字符串，不实现指">
+
+<meta itemprop="wordCount" content="3089">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="easy_c"/>
+<meta name="twitter:description" content="easy_c 实现目标 实现一门基于 x86 平台的编译器， 链接基于GNU as， 功能实现加减乘除， 函数调用， if 语句和while循环，，输出整数值和字符串，不实现指"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Firefly</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/notepad">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/notepad/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Firefly</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/notepad">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/notepad/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <h1 id="centereasy_ccenter"><center>easy_c</center></h1>
+<h2 id="实现目标">实现目标</h2>
+<p>实现一门基于 x86 平台的编译器， 链接基于GNU as， 功能实现加减乘除， 函数调用， if 语句和while循环，，输出整数值和字符串，不实现指针和数组。</p>
+<p>目的在于实现编译器的功能， 所以没有做很强大的语法功能， 自选了几个常用的作为实现， 虽然弱小，但五脏俱全！</p>
+<p>湖南大学编译原理实验1-8， 这里大概介绍实现的思路， 具体太多细节， 看原码： <a href="https://github.com/Fierygit/easy_c">github</a></p>
+<p>开始实现时参考了 青木的自制编译器， 发现书中用到的语言是java，我打算使用c来实现， 发现有很多的不同， 书中前段使用了java的正则表达式等， 我想使用编译原理课上学过的知识来实现。</p>
+<h2 id="语法定义">语法定义</h2>
+<p>这一部分在开始的没有列全，好后悔好后悔！！！倒置项目在进行到最后的时候， 发现这也忘记考虑了， 那也忘记考虑了， 吸取经验： <strong>在写项目的时候， 一定先要有一个实现目标</strong>。 不然到最后突然发现， 输出字符串词法分析没有实现， 倒置到最后只能强前面几千方的代码， 也只能使用ID作为字符串输出ID的值。-_-</p>
+<h4 id="运算符">运算符：</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="o">+</span> <span class="o">-</span> <span class="o">*</span> <span class="o">/</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="逻辑运算">逻辑运算：</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="o">==</span> 	<span class="o">&lt;=</span> 	<span class="o">&gt;=</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="操作符">操作符：</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="o">+=</span> 	 <span class="o">-=</span>	 <span class="o">/=</span> 	<span class="o">*=</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="变量">变量：</h4>
+<p>变量使用前统一声明， 在函数开始时， 或者全局声明</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">max</span><span class="p">(){</span>
+	<span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+	<span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">a</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">//函数里面的a会首先找函数体里面声明的变量， 然后再找全局变量里声明的符号
+</span></code></pre></td></tr></table>
+</div>
+</div><p>所有的大括号不能省略！</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="k">if</span><span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="mi">10</span><span class="p">)</span> <span class="k">return</span> <span class="n">a</span><span class="p">;</span>  <span class="c1">// error!!!
+</span><span class="c1"></span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>           <span class="c1">//error!!!
+</span></code></pre></td></tr></table>
+</div>
+</div><h4 id="输出">输出：</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">int a;
+a = 10;
+print(a);
+// &gt; 10
+print[a];
+// &gt; a
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="词法分析">词法分析</h2>
+<h4 id="关键字">关键字</h4>
+<p><strong>else  if  int  return  void  while</strong> <strong>print</strong></p>
+<h4 id="专用符号">专用符号</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">+ - * / &lt;  &gt; = ; , ( )  { } /* */
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="其他标记">其他标记</h4>
+<p>ID = letter letter*</p>
+<p>NUM = digit digit*</p>
+<h4 id="逻辑运算-1">逻辑运算</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">== &lt;= &gt;=
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="操作数">操作数</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">+= 	-=	  *=	 /=
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="实现方法">实现方法：</h4>
+<p>使用状态机：</p>
+<p><img src="https://raw.githubusercontent.com/Fierygit/picbed/master/20200118150829.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Fierygit/picbed/master/tes" alt=""></p>
+<p>其它类似方法！！！</p>
+<p>每次读入一个字符就判断它去了那个状态， 简单的编译器使用这种方法是实现简单，但是当编译器大的时候， 这种情况就变的十分的庞大！</p>
+<h4 id="数据结构">数据结构：</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="k">struct</span> <span class="n">Token</span><span class="p">{</span>
+  <span class="n">string</span> <span class="n">type</span><span class="p">;</span>
+  <span class="n">string</span> <span class="n">value</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">row</span><span class="p">;</span>			<span class="c1">// 保留每个token的 行数
+</span><span class="c1"></span>  <span class="kt">int</span> <span class="n">column</span><span class="p">;</span>		<span class="c1">// 保留每个token的  列数
+</span><span class="c1"></span>  <span class="n">Token</span><span class="p">(</span><span class="n">string</span> <span class="n">type</span><span class="p">,</span> <span class="n">string</span> <span class="n">value</span><span class="p">,</span> <span class="kt">int</span> <span class="n">row</span><span class="p">,</span> <span class="kt">int</span> <span class="n">column</span><span class="p">){</span>
+      <span class="n">this</span><span class="o">-&gt;</span><span class="n">type</span> <span class="o">=</span> <span class="n">type</span><span class="p">;</span>
+      <span class="n">this</span><span class="o">-&gt;</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+      <span class="n">this</span><span class="o">-&gt;</span><span class="n">row</span> <span class="o">=</span> <span class="n">row</span><span class="p">;</span>
+      <span class="n">this</span><span class="o">-&gt;</span><span class="n">column</span> <span class="o">=</span> <span class="n">column</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>保存每一个记号的 行数 和 列数</p>
+<p><img src="C:%5CUsers%5CFirefly%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200118195516438.png" alt="image-20200118195516438"></p>
+<p>上面图片是将每一个token存入 vector 中， 最后将其输出！</p>
+<h2 id="语法分析">语法分析：</h2>
+<p>语法分析采用的是 LL（1） 的递归下降文法！ 向前看看一个字符， 首先转换为右递归文法！！</p>
+<p>LL（1）是。。。。。。</p>
+<h5 id="nfa文法提取自c-编译器">NFA文法：（提取自c-编译器）</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">param -&gt;  INT
+param_list  -&gt;  param  |  param_list, param
+params -&gt; NULL |  param_list
+local_declaration  -&gt;   var-decaration  | NULL
+arg-list → arg-list , expression|expression
+args → arg - list | empty
+call →  ID (args)
+factor  -&gt;  ( expression ) | var | call | NUM
+term   -&gt; factor  op  term  | factor   右循环
+additive_expression   -&gt;    term  |   term op  additive_expression ;  op = + | -
+simple_expression  -&gt;  additive_expression 
+				|  additive_expression op additive_expression  (op == &gt;= &lt;=)
+iteration_stmt    -&gt;   while(expression) { statement_list }
+expression    -&gt;   simple_expression  |  var = expression
+expression_stmt   -&gt;   expression ; || ;
+statement -&gt;  iteration_stmt | selection_stmt | expression_stmt |
+				return_stmt | print_stmt
+statement_list   -&gt;   statement_list statement || NULL
+compound_stmt -&gt;  local_declaration &amp; statement_list
+declaration  -&gt; var-declare | fun-declare
+declaration_list   -&gt;  declaration |  declaration_list
+。。。。。
+参考parse.cpp
+</code></pre></td></tr></table>
+</div>
+</div><p>由此生成语法树！</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="k">struct</span> <span class="n">TreeNode</span> <span class="p">{</span>
+  <span class="k">struct</span> <span class="n">TreeNode</span> <span class="o">*</span><span class="n">child</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>  <span class="c1">//四个子节点
+</span><span class="c1"></span>  <span class="k">struct</span> <span class="n">TreeNode</span> <span class="o">*</span><span class="n">sibling</span><span class="p">;</span>   <span class="c1">//存储兄弟节点
+</span><span class="c1"></span>  <span class="kt">int</span> <span class="n">tokenIndex</span><span class="p">;</span>             <span class="c1">//存储代码的位置, 可以获取到信息
+</span><span class="c1"></span>  <span class="n">NodeKind</span> <span class="n">nodekind</span><span class="p">;</span>          <span class="c1">//存储类型
+</span><span class="c1"></span>  <span class="n">string</span> <span class="n">value</span><span class="p">;</span>
+
+  <span class="kt">bool</span> <span class="n">isVisit</span><span class="p">;</span>  <span class="c1">// 中间代码生成的时候用
+</span><span class="c1"></span><span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>一个函数最多有四部分构成  int max （ ） ｛  ｝</p>
+<p>所以使用 四个子孩子就行了！</p>
+<h2 id="语义分析">语义分析</h2>
+<p>语义分析主要有两大部分：</p>
+<h4 id="一变量声明">一、变量声明</h4>
+<p>当有一个变量声明， 把声明加入符号表， 之后要是用到了这个变量就查找符号表！</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="k">struct</span> <span class="n">VariableInfo</span> <span class="p">{</span>
+  <span class="n">string</span> <span class="n">name</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">lineNo</span><span class="p">;</span>      <span class="c1">//所在的代码行数
+</span><span class="c1"></span>  <span class="kt">int</span> <span class="n">location</span><span class="p">;</span>    <span class="c1">// 在内存的位置
+</span><span class="c1"></span>  <span class="n">string</span> <span class="n">type</span><span class="p">;</span>     <span class="c1">//变量的类型， 只有一个类型 INT
+</span><span class="c1"></span>  <span class="n">TreeNode</span> <span class="o">*</span><span class="n">node</span><span class="p">;</span>  <span class="c1">//记录声明的节点在哪里
+</span><span class="c1"></span><span class="p">};</span>
+
+<span class="c1">// 记录 每一个变量声明的地方  &lt; 函数名字，  &lt; 变量名字， Variableinfo  &gt;
+</span><span class="c1"></span><span class="k">extern</span> <span class="n">map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">VariableInfo</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">var_table</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>// 记录 每一个变量声明的地方  &lt; 函数名字，  &lt; 变量名字， Variableinfo  &gt;</p>
+<p>通过函数 变量名字找信息， 全局变量的 函数名字为 golbal， 在找一个id是否有定义的时候， 通过这个map找信息，  c语言是可以重复命名的， if 里面可以定义变量， 在一开始定义语言的时候， 想的是使用变量时必须函数一开始要定义， 没想到要在if里面也可以定义， 所以这里这个数据结构够用了， 如果要考虑作用域， 加多一个 scope 的变量， 标记同一个变量名的作用域， 作用域从小往大找， 找到global都没有就报错！</p>
+<h4 id="二类型检查">二、类型检查</h4>
+<p>类型检查包括两大部分：</p>
+<h5 id="函数参数检查">函数参数检查</h5>
+<p>每当有一个函数声明， 记录函数的参数个数， 当调用的时候，检查类型和参数！</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="k">typedef</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">vstr</span><span class="p">;</span>
+<span class="k">struct</span> <span class="n">FunctionInfo</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">param_num</span><span class="p">;</span>       <span class="c1">// 参数的个数
+</span><span class="c1"></span>  <span class="n">vstr</span> <span class="n">param_type</span><span class="p">;</span>     <span class="c1">// 每个参数的类型
+</span><span class="c1"></span>  <span class="n">string</span> <span class="n">return_type</span><span class="p">;</span>  <span class="c1">// 返回的类型
+</span><span class="c1"></span>  <span class="n">TreeNode</span> <span class="o">*</span><span class="n">node</span><span class="p">;</span>      <span class="c1">//记录声明的节点在哪里
+</span><span class="c1"></span><span class="p">};</span>
+
+<span class="c1">// 记录每一个 函数的信息符号表, 全局变量也在这里
+</span><span class="c1"></span><span class="k">extern</span> <span class="n">map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span> <span class="n">FunctionInfo</span><span class="o">&gt;</span> <span class="n">fun_table</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这个函数的作用是记录， 函数的信息， 每当有一个函数声明的时候加入这个数据结构， 当有函数调用的时候， 找这个表，检查参数的个数！</p>
+<h5 id="语句类型检查">语句类型检查</h5>
+<p>检查语句两边的参数是否正确， 不正确的话，输出错误！</p>
+<p>如果有一个语法树的节点为 + ， <strong>递归</strong>检查这个节点的两边是否都为整形！</p>
+<h2 id="中间代码生成">中间代码生成</h2>
+<p>前序遍历语法树， 把对应的节点生成 <strong>三地址码</strong>。</p>
+<p>这部分最主要的是设计数据结构， 由于一开始没有设计好数据结构， 发现后面写的很乱！！！！！</p>
+<p>提前想好程序是怎么跑的很重要！！</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="k">struct</span> <span class="nc">MidArgs</span> <span class="p">{</span>
+  <span class="c1">// type 分为 STR, ID， TMP,  NUM；
+</span><span class="c1"></span>  <span class="c1">// bool  用INT  0  1 表示
+</span><span class="c1"></span>  <span class="n">string</span> <span class="n">type</span><span class="p">;</span>
+  <span class="n">string</span> <span class="n">value</span><span class="p">;</span>
+  <span class="c1">// 代码有全局变量和非全局变量
+</span><span class="c1"></span>  <span class="c1">// 到符号表里面找， 全变量用伪标签
+</span><span class="c1"></span>  <span class="c1">// 堆： 自己创建的内存（不用）   栈： 函数临时变量   全局区：
+</span><span class="c1"></span>  <span class="c1">// 静态和全局变量区（伪标签实现） 字符串 属于全局区
+</span><span class="c1"></span>  <span class="kt">bool</span> <span class="n">isGlobal</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">offset</span><span class="p">;</span>  <span class="c1">//栈中, type = tmp, id                  全局变量直接用！！！，
+</span><span class="c1"></span>               <span class="c1">//不用找
+</span><span class="c1"></span><span class="p">};</span>
+<span class="c1">// 函数调用     call(10, a);
+</span><span class="c1">// op = param arg1 = a  arg2 = NULL   op = param  arg1 = 10  arg2 = NULL
+</span><span class="c1">// op = call  arg1 = id       op  = return arg1 = id or null
+</span><span class="c1"></span><span class="k">struct</span> <span class="nc">MidCodeItem</span> <span class="p">{</span>
+  <span class="n">string</span> <span class="n">dest</span><span class="p">;</span>
+  <span class="n">string</span> <span class="n">op</span><span class="p">;</span>
+  <span class="n">MidArgs</span> <span class="o">*</span><span class="n">arg1</span><span class="p">;</span>
+  <span class="n">MidArgs</span> <span class="o">*</span><span class="n">arg2</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="nc">MidCode</span> <span class="p">{</span>
+  <span class="n">string</span> <span class="n">funcName</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">stackSize</span><span class="p">;</span>  <span class="c1">// 只有整形的值， 只考虑4字节， 因此只需要偏移量, 动态变化
+</span><span class="c1"></span>  <span class="n">vector</span><span class="o">&lt;</span><span class="n">MidCodeItem</span> <span class="o">*&gt;</span> <span class="n">item</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">extern</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">MidCode</span> <span class="o">*&gt;</span> <span class="n">midCode</span><span class="p">;</span>
+<span class="c1">// 声明 ID 加入， value随机初始     TMP 生成一条语句加入 ， 或更改id，
+</span><span class="c1"></span><span class="k">extern</span> <span class="n">map</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">MidArgs</span> <span class="o">*&gt;</span> <span class="n">stackInfo</span><span class="p">;</span>  <span class="c1">// ID, TMP, 加入
+</span><span class="c1"></span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这一部分我写的最头疼一部分的时候， 太多变量要去考虑， 刚开始的时候每出现一个变量就去看看他的定义， 没办法， 每一个变量都要用到。</p>
+<p>每一个操作数的节点，+ - * / 都会生成一个临时变量， 函数调用也会。用一个全局变量递增临时变量， 加上双下划线作为前缀防止变量名冲突！！！</p>
+<p>（注意函数调用的三地址码）</p>
+<p>下面是其中一个代码的中间代码：</p>
+<p>dest 											op												arg1													arg2</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="nl">FUNCTION</span><span class="p">:</span> <span class="n">VAR_DECLARE</span>	<span class="p">(</span><span class="nl">stackSize</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
+	                    <span class="n">INT</span>                 	<span class="p">[</span><span class="n">p</span><span class="p">,</span> <span class="n">ID</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>                 <span class="n">NONE</span>                          
+<span class="nl">FUNCTION</span><span class="p">:</span> <span class="n">test</span>	<span class="p">(</span><span class="nl">stackSize</span><span class="p">:</span> <span class="mi">4</span><span class="p">)</span>
+	<span class="n">__t1</span>                <span class="o">+</span>                   	<span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">ARG</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>                <span class="p">[</span><span class="n">b</span><span class="p">,</span> <span class="n">ARG</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>                
+	<span class="n">ans</span>                 <span class="o">=</span>                   	<span class="p">[</span><span class="n">__t1</span><span class="p">,</span> <span class="n">TMP</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>             <span class="n">NONE</span>                          
+	<span class="n">__t2</span>                <span class="o">-</span>                   	<span class="p">[</span><span class="n">ans</span><span class="p">,</span> <span class="n">ID</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>               <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">NUM</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>                
+	                    <span class="n">PRINT</span>               	<span class="p">[</span><span class="n">__t2</span><span class="p">,</span> <span class="n">TMP</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>             <span class="n">NONE</span>                          
+	<span class="n">__t3</span>                <span class="o">-</span>                   	<span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">ARG</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>                <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">NUM</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>                
+	                    <span class="k">return</span>              	<span class="p">[</span><span class="n">__t3</span><span class="p">,</span> <span class="n">TMP</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>             <span class="n">NONE</span>                          
+<span class="nl">FUNCTION</span><span class="p">:</span> <span class="n">main</span>	<span class="p">(</span><span class="nl">stackSize</span><span class="p">:</span> <span class="mi">9</span><span class="p">)</span>
+	<span class="n">a</span>                   <span class="o">=</span>                   	<span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="n">NUM</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>                <span class="n">NONE</span>                          
+	<span class="n">p</span>                   <span class="o">=</span>                   	<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">NUM</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>                <span class="n">NONE</span>                          
+	<span class="nl">Label0</span><span class="p">:</span>             <span class="n">LABEL</span>               	<span class="n">NONE</span>                          <span class="n">NONE</span>                          
+	                    <span class="k">if</span>                  	<span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">ID</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>                 <span class="n">NONE</span>                          
+	                    <span class="k">goto</span>                	<span class="p">[</span><span class="nl">Label1</span><span class="p">:,</span> <span class="n">LABEL</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>        <span class="n">NONE</span>                          
+	                    <span class="k">goto</span>                	<span class="p">[</span><span class="nl">Label2</span><span class="p">:,</span> <span class="n">LABEL</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>        <span class="n">NONE</span>                          
+	<span class="nl">Label1</span><span class="p">:</span>             <span class="n">LABEL</span>               	<span class="n">NONE</span>                          <span class="n">NONE</span>                          
+	<span class="n">__t3</span>                <span class="o">=</span>                   	<span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">ID</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>                 <span class="n">NONE</span>                          
+	<span class="n">__t4</span>                <span class="o">=</span>                   	<span class="p">[</span><span class="n">p</span><span class="p">,</span> <span class="n">ID</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>                 <span class="n">NONE</span>                          
+	                    <span class="n">ARG</span>                 	<span class="p">[</span><span class="n">__t4</span><span class="p">,</span> <span class="n">TMP</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>             <span class="n">NONE</span>                          
+	                    <span class="n">ARG</span>                 	<span class="p">[</span><span class="n">__t3</span><span class="p">,</span> <span class="n">TMP</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>             <span class="n">NONE</span>                          
+	<span class="n">__t5</span>                <span class="n">CALL</span>                	<span class="p">[</span><span class="n">test</span><span class="p">,</span> <span class="n">CALL</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>            <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="n">ARG_NUM</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>            
+	<span class="n">a</span>                   <span class="o">=</span>                   	<span class="p">[</span><span class="n">__t5</span><span class="p">,</span> <span class="n">TMP</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>             <span class="n">NONE</span>                          
+	                    <span class="k">goto</span>                	<span class="p">[</span><span class="nl">Label0</span><span class="p">:,</span> <span class="n">TMP</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>          <span class="n">NONE</span>                          
+	<span class="nl">Label2</span><span class="p">:</span>             <span class="n">LABEL</span>               	<span class="n">NONE</span>                          <span class="n">NONE</span>                          
+	                    <span class="n">PRINT</span>               	<span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="n">STR</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>                <span class="n">NONE</span>                          
+	                    <span class="n">PRINT</span>               	<span class="p">[</span><span class="n">space</span><span class="p">,</span> <span class="n">STR</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>            <span class="n">NONE</span>                          
+	                    <span class="n">PRINT</span>               	<span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="n">STR</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>                <span class="n">NONE</span>                          
+	                    <span class="n">PRINT</span>               	<span class="p">[</span><span class="n">endl</span><span class="p">,</span> <span class="n">STR</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>             <span class="n">NONE</span>                          
+	                    <span class="k">if</span>                  	<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">NUM</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>                <span class="n">NONE</span>                          
+	                    <span class="k">goto</span>                	<span class="p">[</span><span class="nl">Label3</span><span class="p">:,</span> <span class="n">LABEL</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>        <span class="n">NONE</span>                          
+	                    <span class="k">goto</span>                	<span class="p">[</span><span class="nl">Label4</span><span class="p">:,</span> <span class="n">LABEL</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>        <span class="n">NONE</span>                          
+	<span class="nl">Label3</span><span class="p">:</span>             <span class="n">LABEL</span>               	<span class="n">NONE</span>                          <span class="n">NONE</span>                          
+	<span class="n">p</span>                   <span class="o">=</span>                   	<span class="p">[</span><span class="mi">2020</span><span class="p">,</span> <span class="n">NUM</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>             <span class="n">NONE</span>                          
+	                    <span class="n">PRINT</span>               	<span class="p">[</span><span class="n">p</span><span class="p">,</span> <span class="n">ID</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>                 <span class="n">NONE</span>                          
+	<span class="nl">Label4</span><span class="p">:</span>             <span class="n">LABEL</span>               	<span class="n">NONE</span>                          <span class="n">NONE</span>                          
+	                    <span class="k">return</span>              	<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">NUM</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>                <span class="n">NONE</span>     
+</code></pre></td></tr></table>
+</div>
+</div><p>总结这一步分， 烦， 烦人！ 想吐</p>
+<p>到这一部分和前面感觉又分开了！！！^ _ ^，  我只需要遍历中间代码的数据结构， 生成对应的汇编， 首先还得学汇编，，， 于是另一篇博客产生， 总结汇编用到的指令</p>
+<h2 id="汇编代码生成">汇编代码生成</h2>
+<p>总思路：</p>
+<p>把字符串放到 rodata静态变量段</p>
+<p>全局变量通过 comm 放到 静态数据段</p>
+<p>所有的变量直接进行压栈处理</p>
+<p>函数一开始，先分配所有变量用到的空间大小</p>
+<p>当要函数调用时， 有多少个参数就扩大多少栈空间，在函数调用后返回值在eax， 再还原栈空间</p>
+<p>还有很多对应汇编知识和实现方式细节：</p>
+<p><a href="">blog</a></p>
+<h2 id="后端优化">后端优化</h2>
+<h4 id="优化一活性分析">优化一：活性分析</h4>
+<p>按照之前的思路， 在生成汇编代码的时候， 有很多临时变量也压栈了， 但是大多数的临时变量其实只用了一次， 也就是说一次性用品， 按照上课的思路， 来一个活性分析， 当一个变量在后面没有再被引用的情况， 把这个变量在栈的空间赋给另一个变量使用！！！ 但是这个实现有点难， 老师也只讲了思路，有点复杂， 没有实现</p>
+<h4 id="优化二常量折叠">优化二：常量折叠</h4>
+<p>当一个语法树节点为+ - 等， 而且左右子节点树都为常量， 提前计算好！！！这个遍历语法书就行了</p>
+<h4 id="优化三提前条件判断">优化三：提前条件判断</h4>
+<p>if(0)  这种情况直接不要！！！！</p>
+
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="http://github.com/fierygit" class="iconfont icon-github" title="github"></a>
+  <a href="http://fireflying.top/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>Firefly</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

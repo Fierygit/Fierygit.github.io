@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>other on Firefly</title>
+    <link>http://fireflying.top/categories/other/</link>
+    <description>Recent content in other on Firefly</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 17 Oct 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://fireflying.top/categories/other/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>树莓派入坑之旅</title>
+      <link>http://fireflying.top/post/notepad/others/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Thu, 17 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/others/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8/</guid>
+      <description>树莓派使用 树莓派的安装 1、安装Win32DiskImager-0.9.5-install.exe到电脑上。 解压2019-06-20-rasp</description>
+    </item>
+    
+    <item>
+      <title>matlab基础语法</title>
+      <link>http://fireflying.top/post/notepad/others/matlab%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</link>
+      <pubDate>Thu, 22 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/others/matlab%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</guid>
+      <description>matlab基础语法 disp显示结果 clc用来清除命令窗口的显示内容 clear用来清除工作空间里的数据内容 Who、whos命令用来在命令窗口</description>
+    </item>
+    
+  </channel>
+</rss>

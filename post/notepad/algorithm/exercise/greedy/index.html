@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>贪心算法 - Firefly</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Firefly" /><meta name="description" content="贪心算法 贪心方法的一般策略 问题的一般特征：问题的解是由n个输入的、满足某些事先给定的条件的子集组成。 ​ 1）一般方法 ​ 根据题意，选取一种度量标" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
+
+
+<link rel="canonical" href="http://fireflying.top/post/notepad/algorithm/exercise/greedy/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="贪心算法" />
+<meta property="og:description" content="贪心算法 贪心方法的一般策略 问题的一般特征：问题的解是由n个输入的、满足某些事先给定的条件的子集组成。 ​ 1）一般方法 ​ 根据题意，选取一种度量标" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fireflying.top/post/notepad/algorithm/exercise/greedy/" />
+<meta property="article:published_time" content="2020-01-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-01-28T00:00:00+00:00" />
+<meta itemprop="name" content="贪心算法">
+<meta itemprop="description" content="贪心算法 贪心方法的一般策略 问题的一般特征：问题的解是由n个输入的、满足某些事先给定的条件的子集组成。 ​ 1）一般方法 ​ 根据题意，选取一种度量标">
+<meta itemprop="datePublished" content="2020-01-28T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2020-01-28T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2234">
+
+
+
+<meta itemprop="keywords" content="贪心," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="贪心算法"/>
+<meta name="twitter:description" content="贪心算法 贪心方法的一般策略 问题的一般特征：问题的解是由n个输入的、满足某些事先给定的条件的子集组成。 ​ 1）一般方法 ​ 根据题意，选取一种度量标"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Firefly</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Firefly</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">贪心算法</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-01-28 </span>
+        <div class="post-category">
+            <a href="/categories/%E7%AE%97%E6%B3%95/"> 算法 </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#center贪心算法center"><center>贪心算法</center></a>
+      <ul>
+        <li><a href="#经典例题">经典例题</a>
+          <ul>
+            <li><a href="#bridge">Bridge</a></li>
+            <li><a href="#radar-installation">Radar Installation</a></li>
+            <li><a href="#合并石头">合并石头</a></li>
+            <li><a href="#sum-of-factorials"><strong>Sum of Factorials</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h1 id="center贪心算法center"><center>贪心算法</center></h1>
+<p>贪心方法的一般策略</p>
+<p>问题的一般特征：问题的解是由n个输入的、满足某些事先给定的条件的子集组成。</p>
+<p>​    1）一般方法</p>
+<p>​    根据题意，选取一种度量标准。然后按照这种度量标准对n个输入排序，并按序一次输入一个量。</p>
+<p>​    如果这个输入和当前已构成在这种量度意义下的部分最优解加在一起不能产生一个可行解，则不把此输入加到这部分解中。否则，将当前输入合并到部分解中从而得到包含当前输入的新的部分解。</p>
+<p>2）贪心方法</p>
+<p>这种能够得到某种量度意义下的最优解的分级处理方法称为贪心方法</p>
+<h2 id="经典例题">经典例题</h2>
+<h3 id="bridge">Bridge</h3>
+<blockquote>
+<p>N个人在晚上想通过桥。每次最多过去2个人，需要有手电筒。现在只有1个手电筒。每个人过桥的速度都不一样，过桥的时间以慢的为准。
+你的工作是找到最少的过桥的方法；</p>
+<p>输入：
+首先是n,然后n 行是过桥的时间。
+人数不超过1000，而且没有人过桥的时间超过100秒；
+输出：
+首先输出总共所需最少时间；
+下面表示过桥的过程（见样例），如果有多种过桥方案，输出其中一种。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">每次过桥2个人，希望一起过去的人时间相差最小，所以采用贪心技术。
+而且返回的时间要少，所以用时间最少的人返回；
+
+对于样例 1	2	5	10
+
+每一组时间相差最小的数有两种选择：
+1、可以选择一个最小的1， 每次送每一个人过去再回来。
+	1 	10		1和10过去
+	1			1 回来
+	1 	5			1和5过去
+	1			1回来
+一共10 + 1 + 5 + 1 = 17
+2、也可以选两个最小的数来送手电筒
+	1	2		1和2过去
+	1			1回来
+	5	10		5和10 过去
+	2			回来
+一共2 + 1 + 10 + 2 = 15
+
+那么怎么选用送回手电筒的策略呢？
+
+结合下面代码看！
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;algorithm&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="n">using</span> <span class="n">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">n</span><span class="p">;</span>
+  <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">s</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+  <span class="n">sort</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">s</span> <span class="o">+</span> <span class="n">n</span><span class="p">);</span><span class="c1">// 先排序
+</span><span class="c1"></span>  <span class="c1">// 选择第一种情况：
+</span><span class="c1"></span>  <span class="c1">//  s1 = s[i] + s[0] + s[i-1] + s[0]; // 相当于 上面的 10 + 1 + 5 + 1
+</span><span class="c1"></span>  <span class="c1">// 选择第二种情况
+</span><span class="c1"></span>  <span class="c1">//  s2 = s[1] + s[0] + s[i] + s[1];	//相当于上面的 2 + 1 + 10 + 2；
+</span><span class="c1"></span>  <span class="kt">int</span> <span class="n">t</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+   <span class="c1">// 先考虑第一种情况  即: s1 &gt; s2, 化简为   s[i-1] &gt; t; 
+</span><span class="c1"></span>  <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="p">(</span><span class="n">i</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">t</span><span class="p">);</span> <span class="n">i</span> <span class="o">-=</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d %d</span><span class="se">\n</span><span class="s">%d</span><span class="se">\n</span><span class="s">%d %d</span><span class="se">\n</span><span class="s">%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+   <span class="c1">// 在考虑第二种情况
+</span><span class="c1"></span>  <span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">;</span> <span class="o">--</span><span class="n">j</span><span class="p">)</span> <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d %d</span><span class="se">\n</span><span class="s">%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="radar-installation">Radar Installation</h3>
+<blockquote>
+<p>在一个海边建一些雷达，雷达覆盖范围为d为半径的一个圆，所有海岛都需要覆盖在雷达范围内。问题是最少需要建多少雷达站，使得所有的海岛都被覆盖。</p>
+<p><strong>Input</strong></p>
+<p>The input consists of several test cases. The first line of each case contains two integers n (1&lt;=n&lt;=1000) and d, where n is the number of islands in the sea and d is the distance of coverage of the radar installation. This is followed by n lines each containing two integers representing the coordinate of the position of each island. Then a blank line follows to separate the cases.</p>
+<p>The input is terminated by a line containing pair of zeros</p>
+<p><strong>Output</strong></p>
+<p>For each test case output one line consisting of the test case number followed by the minimal number of radar installations needed. &ldquo;-1&rdquo; installation means no solution for that case.</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/Fierygit/picbed/master/20200502185142.png" alt="image-20200502185150700"></p>
+<p>解题思路：</p>
+<ul>
+<li>
+<p>一、从左往右考虑建雷达站，首先第一个雷达尽量往右建（贪心）以期能覆盖尽可能多的海岛。</p>
+</li>
+<li>
+<p>二、重复一，一直到所有的海岛都被覆盖到。</p>
+</li>
+<li>
+<p>三、怎么确定圆心位置。对于每个海岛来说，以海岛为中心，以d为半径画圆，在海岸线上有2个交点。那么第一个右交点就是第一个雷达站位置。</p>
+</li>
+<li>
+<p>四、解题步骤：首先对于每个海岛，求出它的左右交点，按照右交点、左交点的顺序排序。依次找到最小的右交点，只要左交点比该右交点小，就被该圆覆盖。找到下一个不能被覆盖的左交点。</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;math.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+  <span class="kt">double</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">Interval</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">cmp</span><span class="p">(</span><span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">c</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// 万能指针， c语言的
+</span><span class="c1"></span>  <span class="n">Interval</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">b</span><span class="p">;</span>
+  <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">Interval</span> <span class="o">*</span><span class="p">)</span><span class="n">c</span><span class="p">;</span>
+  <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">Interval</span> <span class="o">*</span><span class="p">)</span><span class="n">d</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">((</span><span class="o">*</span><span class="n">a</span><span class="p">).</span><span class="n">right</span> <span class="o">&lt;</span> <span class="p">(</span><span class="o">*</span><span class="n">b</span><span class="p">).</span><span class="n">right</span><span class="p">)</span> <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">((</span><span class="o">*</span><span class="n">a</span><span class="p">).</span><span class="n">right</span> <span class="o">&gt;</span> <span class="p">(</span><span class="o">*</span><span class="n">b</span><span class="p">).</span><span class="n">right</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">((</span><span class="o">*</span><span class="n">a</span><span class="p">).</span><span class="n">left</span> <span class="o">&lt;</span> <span class="p">(</span><span class="o">*</span><span class="n">b</span><span class="p">).</span><span class="n">left</span><span class="p">)</span> <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">((</span><span class="o">*</span><span class="n">a</span><span class="p">).</span><span class="n">left</span> <span class="o">&gt;</span> <span class="p">(</span><span class="o">*</span><span class="n">b</span><span class="p">).</span><span class="n">left</span><span class="p">)</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">Interval</span> <span class="n">island</span><span class="p">[</span><span class="mi">1000</span><span class="p">];</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">dd</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span><span class="p">;</span>
+  <span class="kt">double</span> <span class="n">t</span><span class="p">;</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d%d&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">d</span><span class="p">),</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">dd</span> <span class="o">=</span> <span class="n">d</span> <span class="o">*</span> <span class="n">d</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d%d&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">y</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">y</span> <span class="o">&gt;</span> <span class="n">d</span><span class="p">)</span> <span class="n">j</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>  <span class="c1">// 输入点的y 大于雷达的半径一定无解， 雷达覆盖不到
+</span><span class="c1"></span>      <span class="k">if</span> <span class="p">(</span><span class="n">j</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span>
+      <span class="n">t</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">dd</span> <span class="o">-</span> <span class="n">y</span> <span class="o">*</span> <span class="n">y</span><span class="p">);</span>
+      <span class="n">island</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">left</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">t</span><span class="p">;</span>  <span class="c1">//左右交点， 这一步转换是核心， 大多数这一步想不到
+</span><span class="c1"></span>      <span class="n">island</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">right</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">t</span><span class="p">;</span>  <span class="c1">// 转换成一个合适的数据结构来计算
+</span><span class="c1"></span>    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">j</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="cm">/* Sort NMEMB elements of BASE, of SIZE bytes each,
+</span><span class="cm">     using COMPAR to perform the comparisons.  */</span>
+      <span class="n">qsort</span><span class="p">(</span><span class="n">island</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">island</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">cmp</span><span class="p">);</span>
+      <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">island</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">right</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="c1">// 贪心， 核心代码
+</span><span class="c1"></span>        <span class="k">if</span> <span class="p">(</span><span class="n">island</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">left</span> <span class="o">&gt;</span> <span class="n">t</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 尽可能往右边建， j 表示个数
+</span><span class="c1"></span>          <span class="n">t</span> <span class="o">=</span> <span class="n">island</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">right</span><span class="p">;</span>      <span class="c1">// 不能建了， 只能新开一个
+</span><span class="c1"></span>          <span class="o">++</span><span class="n">j</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;Case %d: %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">++</span><span class="n">m</span><span class="p">,</span> <span class="n">j</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="合并石头">合并石头</h3>
+<blockquote>
+<p>有n堆石头， 只能两两合并， 求合成一堆的最小花费。</p>
+<p>input</p>
+<p>第一行输入 n， 接下来n 行输入每堆石头的重量</p>
+</blockquote>
+<p>解题思路：</p>
+<p>每次选择，最小的两堆合并！ haffman 算法。</p>
+<p>极致效率：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;algorithm&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="n">using</span> <span class="n">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="c1">// int cmp(const void* a, const void* b) { return (int)(a) - (int)(b); }
+</span><span class="c1"></span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="cm">/**
+</span><span class="cm">   * 为了不要每次选择 最小的两堆 合并后再次排序， 可以选择两个数组
+</span><span class="cm">   * a 存储输入的数据，
+</span><span class="cm">   * b  存储合并后的数据
+</span><span class="cm">   * 分别用一个标记记录边界
+</span><span class="cm">   * haffman 算法的最优求解方法！！！
+</span><span class="cm">   * */</span>
+  <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="mi">10003</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="mi">10000</span><span class="p">];</span>
+  <span class="n">sort</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">n</span><span class="p">);</span>
+  <span class="c1">// qsort(a, n, sizeof(a[0]), cmp);
+</span><span class="c1"></span>  <span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1073741800</span><span class="p">;</span>   <span class="c1">// 为最后的判断设置的一个最大的数
+</span><span class="c1"></span>  <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">t</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;)</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20001</span><span class="p">;</span>
+  <span class="n">n</span><span class="o">--</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">j</span> <span class="o">=</span> <span class="n">k</span> <span class="o">=</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span> <span class="c1">// 选取原来数组的两个值相加
+</span><span class="c1"></span>    <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">m</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">t</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="n">k</span><span class="p">]))</span> <span class="p">{</span>   <span class="c1">// 原来数组和合并之后的各选一个
+</span><span class="c1"></span>      <span class="n">m</span> <span class="o">=</span> <span class="n">t</span><span class="p">;</span>
+      <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">m</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">t</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]))</span> <span class="p">{</span><span class="c1">// 都选合并之后的石头堆， k 越大b[k] 一定是递增的
+</span><span class="c1"></span>      <span class="n">m</span> <span class="o">=</span> <span class="n">t</span><span class="p">;</span>
+      <span class="n">c</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">r</span> <span class="o">+=</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="p">;</span>      <span class="c1">// 合并后的记录在 b， 总的花费加上1
+</span><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>         <span class="c1">// 移动标记 j -&gt; a,    k -&gt; b;
+</span><span class="c1"></span>      <span class="n">j</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="n">j</span><span class="o">++</span><span class="p">,</span> <span class="n">k</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">else</span>
+      <span class="n">k</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="sum-of-factorials"><strong>Sum of Factorials</strong></h3>
+<blockquote>
+<p>一个数是否可以表示为阶乘之和</p>
+<p>input</p>
+<p>9</p>
+<p>output</p>
+<p>yes</p>
+<p>example</p>
+<p>9=1!+2!+3!</p>
+</blockquote>
+<p>因为是超递增序列，所以可以贪心。</p>
+<blockquote>
+<p>超递增序列： 第n个数 大于 前n - 1个数之和</p>
+<p>n! , n^2, 都是超递增序列</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="n">using</span> <span class="n">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">fact</span><span class="p">[</span><span class="mi">11</span><span class="p">];</span>
+<span class="kt">int</span> <span class="nf">jud</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&gt;=</span> <span class="n">fact</span><span class="p">[</span><span class="mi">10</span><span class="p">])</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="o">--</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="n">fact</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>  <span class="c1">// 9的阶乘已经很大了， 从大到小， 只要可以放就放进去
+</span><span class="c1"></span>      <span class="n">n</span> <span class="o">-=</span> <span class="n">fact</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="n">fact</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+      <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">fact</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">11</span><span class="p">;</span> <span class="o">++</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">fact</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">fact</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>  <span class="c1">// 提前计算好每一个数的阶乘
+</span><span class="c1"></span>  <span class="k">while</span> <span class="p">(</span><span class="n">scanf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">),</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="n">printf</span><span class="p">(</span><span class="n">jud</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">?</span> <span class="s">&#34;YES</span><span class="se">\n</span><span class="s">&#34;</span> <span class="o">:</span> <span class="s">&#34;NO</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Firefly</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2020-01-28
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E8%B4%AA%E5%BF%83/">贪心</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/notepad/algorithm/exercise/string/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">字符串</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/notepad/algorithm/exercise/leetcode100/">
+            <span class="next-text nav-default">Leetcode100</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="http://github.com/fierygit" class="iconfont icon-github" title="github"></a>
+  <a href="http://fireflying.top/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>Firefly</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

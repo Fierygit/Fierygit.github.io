@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DP on Firefly</title>
+    <link>http://fireflying.top/tags/dp/</link>
+    <description>Recent content in DP on Firefly</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 28 Dec 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://fireflying.top/tags/dp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DP</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/dp/</link>
+      <pubDate>Sat, 28 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/dp/</guid>
+      <description>DP 题目汇总 记录一些遇到过的dp问题 DP(Dynamic Programming) 一种解决最优化问题的算法思想。 要求： 重叠子问题 &amp;amp;&amp;amp; 最优子结构 递归： 记忆化搜索 递推： 自底向上 [toc] 比特位计数 给</description>
+    </item>
+    
+  </channel>
+</rss>

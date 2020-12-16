@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>数学建模 on Firefly</title>
+    <link>http://fireflying.top/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/</link>
+    <description>Recent content in 数学建模 on Firefly</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 22 Aug 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://fireflying.top/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>matlab基础语法</title>
+      <link>http://fireflying.top/post/notepad/others/matlab%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</link>
+      <pubDate>Thu, 22 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/others/matlab%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</guid>
+      <description>matlab基础语法 disp显示结果 clc用来清除命令窗口的显示内容 clear用来清除工作空间里的数据内容 Who、whos命令用来在命令窗口</description>
+    </item>
+    
+  </channel>
+</rss>

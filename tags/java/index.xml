@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>java on Firefly</title>
+    <link>http://fireflying.top/tags/java/</link>
+    <description>Recent content in java on Firefly</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 23 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://fireflying.top/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>java 结合总结</title>
+      <link>http://fireflying.top/post/notepad/java/javanote/java-basic-study/src/main/java/basic/collection/readme/</link>
+      <pubDate>Thu, 23 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/java/javanote/java-basic-study/src/main/java/basic/collection/readme/</guid>
+      <description>集合总结 copy from zengsiyan Java对事物的体现都是以对象的形式，为了方便对多个对象的操作，就要对对象进行存储（内存上的存储）。 然而使用数组存储对象存在一</description>
+    </item>
+    
+    <item>
+      <title>Java设计模式</title>
+      <link>http://fireflying.top/post/notepad/read/design_pattern/</link>
+      <pubDate>Tue, 01 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/read/design_pattern/</guid>
+      <description>设计模式 笔记说明： 这是一节专业选修课，上课没怎么听， 弥补一下错过的东西， 给大部分的设计模式写了一个demo， 很多细节都在里面，代码地址： github/fierygit, 一</description>
+    </item>
+    
+    <item>
+      <title>Wolrd In Java</title>
+      <link>http://fireflying.top/post/notepad/java/wolrd_in_java/</link>
+      <pubDate>Sun, 28 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/java/wolrd_in_java/</guid>
+      <description>深入理解Java 有空就记录一点小内容！！ Java接口与抽象类的区别 Java提供和支持创建抽象类和接口。它们的实现有共同点，不同点在于： 接口中</description>
+    </item>
+    
+    <item>
+      <title>java 并发与实战</title>
+      <link>http://fireflying.top/post/notepad/java/java%E5%B9%B6%E5%8F%91/</link>
+      <pubDate>Sun, 27 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/java/java%E5%B9%B6%E5%8F%91/</guid>
+      <description>java 并发与实战 基础知识 线程的安全性 安全的线程满足条件： 不在线程之间共享变量 将变量置为不可变变量 访问变量时使用同步 原子性： 1 value = value + 1； 在 cpu 执行</description>
+    </item>
+    
+    <item>
+      <title>JVM</title>
+      <link>http://fireflying.top/post/notepad/java/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3jvm/</link>
+      <pubDate>Sun, 27 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/java/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3jvm/</guid>
+      <description>JVM i do not love java at all! 内存机制 运行时数据区域 程序计数器 线程私有，执行native方法时为空！ 不会OutOfMemoryError！ java虚拟机栈</description>
+    </item>
+    
+  </channel>
+</rss>

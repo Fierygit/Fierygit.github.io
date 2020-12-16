@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>leetcode on Firefly</title>
+    <link>http://fireflying.top/tags/leetcode/</link>
+    <description>Recent content in leetcode on Firefly</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 28 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://fireflying.top/tags/leetcode/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>图</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/%E5%9B%BE%E8%AE%BA%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Sat, 28 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/%E5%9B%BE%E8%AE%BA%E6%80%BB%E7%BB%93/</guid>
+      <description>图论总结 [toc] 算法这东西，容易忘记， 捡起来很快， 但也要时间， 因此，做一些简短的记录！ 图是什么？ 树可以存线， 图可以存树，树是一种无环图， 线是最简单</description>
+    </item>
+    
+  </channel>
+</rss>

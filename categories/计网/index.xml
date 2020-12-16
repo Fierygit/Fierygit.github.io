@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>计网 on Firefly</title>
+    <link>http://fireflying.top/categories/%E8%AE%A1%E7%BD%91/</link>
+    <description>Recent content in 计网 on Firefly</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 28 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://fireflying.top/categories/%E8%AE%A1%E7%BD%91/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>计网总结</title>
+      <link>http://fireflying.top/post/notepad/network/%E8%AE%A1%E7%BD%91%E5%A4%A7%E7%BA%B2/</link>
+      <pubDate>Sat, 28 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/network/%E8%AE%A1%E7%BD%91%E5%A4%A7%E7%BA%B2/</guid>
+      <description>计网总结 javaguide 上的总结的很好，直接拿来充博客用！ 来自： https://snailclimb.gitee.io/javaguide/#/docs/</description>
+    </item>
+    
+    <item>
+      <title>tcp学习笔记</title>
+      <link>http://fireflying.top/post/notepad/network/%E8%AE%A1%E7%BD%91%E6%9D%82%E5%BD%95/</link>
+      <pubDate>Fri, 28 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/network/%E8%AE%A1%E7%BD%91%E6%9D%82%E5%BD%95/</guid>
+      <description>tcp学习笔记 TCP 连续发 10 个包， 客户端会收到什么消息？ ip 3.1 环回地址必须是1 2 7 . 0 . 0 . 1吗？ 1 不，任何网络 I D 为1 2 7 的A类地址都是可行的，</description>
+    </item>
+    
+    <item>
+      <title>计算机网络学习笔记</title>
+      <link>http://fireflying.top/post/notepad/network/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Wed, 01 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/network/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+      <description>运输层 TCP: 提供可靠的数据传输服务 UDP： 不能保证数据的可靠传输 多路复用与多路分解 运输层负责将数据包发给 进程， 其中要到多路复用和多路分解 TCP：</description>
+    </item>
+    
+  </channel>
+</rss>

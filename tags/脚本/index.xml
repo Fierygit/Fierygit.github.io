@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>脚本 on Firefly</title>
+    <link>http://fireflying.top/tags/%E8%84%9A%E6%9C%AC/</link>
+    <description>Recent content in 脚本 on Firefly</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 27 Oct 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://fireflying.top/tags/%E8%84%9A%E6%9C%AC/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ssh配置公钥</title>
+      <link>http://fireflying.top/post/notepad/others/ssh%E9%85%8D%E7%BD%AE%E5%85%AC%E9%92%A5/</link>
+      <pubDate>Sun, 27 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/others/ssh%E9%85%8D%E7%BD%AE%E5%85%AC%E9%92%A5/</guid>
+      <description>ssh的使用 背景 ssh连接服务器是经常要操作的步骤，可当每次都要手动输入 ssh user@ip ，然后加上密码连接可谓是及其地麻烦，虽然有xs的记录密码，但当要</description>
+    </item>
+    
+    <item>
+      <title>服务器自动拉取git脚本</title>
+      <link>http://fireflying.top/post/notepad/others/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%87%AA%E5%8A%A8%E6%8B%89%E5%8F%96git%E8%84%9A%E6%9C%AC/</link>
+      <pubDate>Tue, 01 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/others/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%87%AA%E5%8A%A8%E6%8B%89%E5%8F%96git%E8%84%9A%E6%9C%AC/</guid>
+      <description>linux 自动运行脚本代码 背景 Blog每次提交到git的时候，都要上服务器拉取一下，而且每次执行相同的操作，这种机械的操作机器是最擅长的，于是乎，上</description>
+    </item>
+    
+    <item>
+      <title>windows的脚本命令一件部署后端服务</title>
+      <link>http://fireflying.top/post/notepad/others/windows%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2%E5%90%8E%E7%AB%AF/</link>
+      <pubDate>Wed, 11 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/others/windows%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2%E5%90%8E%E7%AB%AF/</guid>
+      <description>windows的脚本命令一件部署后端服务 实习一个月了，其中有许多有意思的东西希望能记住一些小技巧，今天想记录的是，花了一个下午才研究通透的一</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>linux on Firefly</title>
+    <link>http://fireflying.top/tags/linux/</link>
+    <description>Recent content in linux on Firefly</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 17 Oct 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://fireflying.top/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>树莓派入坑之旅</title>
+      <link>http://fireflying.top/post/notepad/others/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Thu, 17 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/others/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8/</guid>
+      <description>树莓派使用 树莓派的安装 1、安装Win32DiskImager-0.9.5-install.exe到电脑上。 解压2019-06-20-rasp</description>
+    </item>
+    
+  </channel>
+</rss>

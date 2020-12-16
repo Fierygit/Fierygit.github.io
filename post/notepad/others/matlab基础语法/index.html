@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>matlab基础语法 - Firefly</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Firefly" /><meta name="description" content="matlab基础语法 disp显示结果 clc用来清除命令窗口的显示内容 clear用来清除工作空间里的数据内容 Who、whos命令用来在命令窗口" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
+
+
+<link rel="canonical" href="http://fireflying.top/post/notepad/others/matlab%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="matlab基础语法" />
+<meta property="og:description" content="matlab基础语法 disp显示结果 clc用来清除命令窗口的显示内容 clear用来清除工作空间里的数据内容 Who、whos命令用来在命令窗口" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fireflying.top/post/notepad/others/matlab%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" />
+<meta property="article:published_time" content="2019-08-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-08-22T00:00:00+00:00" />
+<meta itemprop="name" content="matlab基础语法">
+<meta itemprop="description" content="matlab基础语法 disp显示结果 clc用来清除命令窗口的显示内容 clear用来清除工作空间里的数据内容 Who、whos命令用来在命令窗口">
+<meta itemprop="datePublished" content="2019-08-22T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-08-22T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2004">
+
+
+
+<meta itemprop="keywords" content="matlab,数学建模," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="matlab基础语法"/>
+<meta name="twitter:description" content="matlab基础语法 disp显示结果 clc用来清除命令窗口的显示内容 clear用来清除工作空间里的数据内容 Who、whos命令用来在命令窗口"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Firefly</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Firefly</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">matlab基础语法</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-08-22 </span>
+        <div class="post-category">
+            <a href="/categories/other/"> other </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#matlab基础语法">matlab基础语法</a></li>
+        <li><a href="#1-创建一维矩阵">1. 创建一维矩阵</a></li>
+        <li><a href="#2-创建二维矩阵">2. 创建二维矩阵</a>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="matlab基础语法">matlab基础语法</h2>
+<p>disp显示结果<br>
+clc用来清除命令窗口的显示内容<br>
+clear用来清除工作空间里的数据内容<br>
+Who、whos命令用来在命令窗口中显示工作空间的变量信息<br>
+warning off用来去除出现的警告<br>
+dir用来显示当前工作目录的文件和子目录清单<br>
+-cd用来显示或设置当前工作目录<br>
+type用来显示指定m文件的内容<br>
+quit或exit用来关闭/推出MATALB<br>
+disp(X)：用于显示变量X的值，并且不显示变量名称X<br>
+num2str(A)：用于将数字A转换为字符串，根据这个函数的构造很容易看出它的意思“number to string”，是不是很有意思<br>
+input()：用于用户对程序内输入数据，具体用法为x = input(prompt)或者str = input(prompt,&rsquo;s')，前者表示输入一个数值，后者表示输入一个字符串。当程序运行到这个地方时，在命令窗口内，需要用户输入一个数据，以回车键结束，那么这个数据会存储到x(如果使用的是字符型输入，则存储到str)，其中，prompt表示提示语，一般是一个字符串，而且这个字符串必须有（可以为空字符串””）。</p>
+<h2 id="1-创建一维矩阵">1. 创建一维矩阵</h2>
+<p>首先，介绍如何创建行矩阵。</p>
+<p>方法一：使用方括号“[ ]”操作符
+例如，创建一个一维矩阵a</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">a=[1 3 pi 3+5*i]  %or a=[1, 3, pi, 3+5*i] 
+a= 1.0000      3.0000      3.1416       3.0000 + 5.0000i
+</code></pre></td></tr></table>
+</div>
+</div><p>方法二：使用冒号“:”操作符
+利用冒号“:”操作符创建行向量的基本语法格式：<br>
+x=Start : Increment : End</p>
+<ol>
+<li>Start表示新向量x的第一个元素；</li>
+<li>新向量x的最后一个元素不能大于End ；</li>
+<li>Increment可正可负，若负，则必须Start&gt;End；若正，则必须Start End，否则创建的为空向量；</li>
+<li>若Increment=1,则可简写为x=Start:End。
+例如，创建以1~10顺序排列整数为元素的行向量b</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">b=1 : 1 : 10
+ b=1 2 3 4 5 6 7 8 9 10
+</code></pre></td></tr></table>
+</div>
+</div><p>方法三：利用函数linspace
+函数linspace的基本语法为：
+x= linspace(x1, x2, n)</p>
+<ol>
+<li>该函数生成一个由n个元素组成的行向量；</li>
+<li>x1为其第一个元素；</li>
+<li>x2为其最后一个元素；</li>
+<li>x1、x2之间元素的间隔=(x2-x1)/(n-1)；</li>
+<li>如果忽略参数n，则系统默认生成100个元素的行向量。
+例如，键入并执行x= linspace(1,2,5)，结果为：
+x=1.0000 1.2500 1.5000 1.7500 2.0000</li>
+</ol>
+<p>其次，介绍如何创建列矩阵</p>
+<p>使用方括号“[ ]”操作符，使用分号“;”分割行。<br>
+例如：键入并执行x= [1; 2; 3]，结果如下：
+X=1
+2
+3</p>
+<h2 id="2-创建二维矩阵">2. 创建二维矩阵</h2>
+<p>方法一：使用方括号“[ ]”操作符
+使用规则如下：</p>
+<ol>
+<li>数组元素必须在“<input disabled="" type="checkbox"> ”内键入；</li>
+<li>行与行之间须用分号“;” 间隔，也可以在分行处用回车键间隔；</li>
+<li>行内元素用空格或逗号“,”间隔。
+例如，键入并执行a2=[1 2 3;4 5 6;7 8 9]，或者a2=[1:3;4:6;7:9]，结果都是：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">a2=
+    1  2  3
+    4  5  6
+    7  8  9
+</code></pre></td></tr></table>
+</div>
+</div><p>当然，由向量构成二维数组，例如（结果自行验证）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&gt;&gt;a=[1 2 3]; b=[2 3 4]; 
+&gt;&gt;c=[a;b];
+&gt;&gt;c1=[a b];
+</code></pre></td></tr></table>
+</div>
+</div><p>方法二：函数方法</p>
+<p>函数ones(生成全1矩阵)、zeros (生成全0矩阵) 、reshape都可以创建初始矩阵。在命令窗口键入help elmat获得基本的矩阵生成和操作函数列表，这里仅展示全1矩阵ones的用法。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">例如，创建全1的3x3矩阵。
+&gt;&gt;ones(3)
+而创建全1的1x3的矩阵则是：
+&gt;&gt;ones(1,3)
+又例如，创建全1的3x4矩阵。
+&gt;&gt;ones(3,4)
+</code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>矩阵元素的相关操作
+对于一个给定的矩阵，里面有很多元素，那么如何取出这些元素、如何更改这些元素呢？对于一个给定的矩阵，要想取出它的某个元素，可以使用括号()来实现。</li>
+</ol>
+<p>例如，现有一个3x4的二维矩阵A，想要取出第2行第3列的数据给b，可以表示如下：
+b=A(2,3);</p>
+<p>想要将第1行第2列元素设置为10，表示如下：
+A(1,2)=10;</p>
+<p>同样，对于一个拥有10个元素的一维矩阵B，取出它的第3个元素给c的操作为：
+c=B(3);</p>
+<p>您可以使用 save 命令将工作区中的变量保存到称为 MAT 文件的 MATLAB 特定格式文件中。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&gt;&gt; save foo x
+以上命令将名为 x 的变量保存到名为 foo.mat 的 MAT 文件中。
+您可以使用 load 命令从 MAT 文件加载变量。
+&gt;&gt; load foo
+</code></pre></td></tr></table>
+</div>
+</div><p>您可以使用 MATLAB 关键字 end，作为行或列索引来引用最后一个元素。</p>
+<p>用作索引时，冒号运算符 (:) 可指代该维度中的所有元素。以下语法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&gt;&gt; x = A(2,:)
+</code></pre></td></tr></table>
+</div>
+</div><p>会创建一个包含 A 中第 2 行上所有元素的行向量。</p>
+<h4 id="---是按照元素相乘">.*   是按照元素相乘</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&gt;&gt; doc fcnName
+以获取任何 MATLAB 函数的相关信息。
+</code></pre></td></tr></table>
+</div>
+</div><p>plot 函数接受一个附加参数，该参数让您能够在单引号中使用各种符号来指定颜色、线型和标记样式。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&gt;&gt; plot(x,y,&#39;r--o&#39;)
+</code></pre></td></tr></table>
+</div>
+</div><p>以上命令将会绘制一条红色 (r) 虚线 (&ndash;)，并使用圆圈 (o) 作为标记。您可以在线条设定的文档中了解有关可用符号的详细信息。</p>
+<p>您会注意到，最开始创建的绘图消失了。要在一张图上先后绘制两条线，请使用 hold on 命令保留之前的绘图，然后添加另一条线。</p>
+<p>close all  关闭所有的窗口</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">使用 plot 函数时，您可在绘图参数和线条设定符之后添加属性名称-属性值对组。
+&gt;&gt; plot(x,y,&#39;ro-&#39;,&#39;LineWidth&#39;,5)
+</code></pre></td></tr></table>
+</div>
+</div><p>使用 numel 函数返回数组中的元素数目。</p>
+<p>您可以使用逻辑数组作为数组索引，在这种情况下，MATLAB 会提取索引为 true 的数组元素。以下示例将会提取 v1 中大于 6 的所有元素。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&gt;&gt; v = v1(v1 &gt; 6)
+v =
+    6.6678
+    9.0698
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="用-vpa-显示小数">用 vpa 显示小数。</h4>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Firefly</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-08-22
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/matlab/">matlab</a>
+          <a href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/notepad/others/windows%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2%E5%90%8E%E7%AB%AF/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">windows的脚本命令一件部署后端服务</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/notepad/java/javanote/notes/spring-boot%E7%AC%94%E8%AE%B0/">
+            <span class="next-text nav-default">spring-boot</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="http://github.com/fierygit" class="iconfont icon-github" title="github"></a>
+  <a href="http://fireflying.top/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>Firefly</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

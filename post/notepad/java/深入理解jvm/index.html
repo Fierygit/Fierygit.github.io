@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>JVM - Firefly</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Firefly" /><meta name="description" content="JVM i do not love java at all! 内存机制 运行时数据区域 程序计数器 线程私有，执行native方法时为空！ 不会OutOfMemoryError！ java虚拟机栈" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
+
+
+<link rel="canonical" href="http://fireflying.top/post/notepad/java/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3jvm/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="JVM" />
+<meta property="og:description" content="JVM i do not love java at all! 内存机制 运行时数据区域 程序计数器 线程私有，执行native方法时为空！ 不会OutOfMemoryError！ java虚拟机栈" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fireflying.top/post/notepad/java/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3jvm/" />
+<meta property="article:published_time" content="2018-05-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-05-27T00:00:00+00:00" />
+<meta itemprop="name" content="JVM">
+<meta itemprop="description" content="JVM i do not love java at all! 内存机制 运行时数据区域 程序计数器 线程私有，执行native方法时为空！ 不会OutOfMemoryError！ java虚拟机栈">
+<meta itemprop="datePublished" content="2018-05-27T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2018-05-27T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3438">
+
+
+
+<meta itemprop="keywords" content="JVM,java," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="JVM"/>
+<meta name="twitter:description" content="JVM i do not love java at all! 内存机制 运行时数据区域 程序计数器 线程私有，执行native方法时为空！ 不会OutOfMemoryError！ java虚拟机栈"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Firefly</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Firefly</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">JVM</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-05-27 </span>
+        <div class="post-category">
+            <a href="/categories/java/"> java </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#centerjvmcenter"><center>JVM</center></a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#内存机制">内存机制</a></li>
+            <li><a href="#垃圾回收">垃圾回收</a></li>
+            <li><a href="#类文件结构">类文件结构</a></li>
+            <li><a href="#虚拟机字节码执行引擎">虚拟机字节码执行引擎</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h1 id="centerjvmcenter"><center>JVM</center></h1>
+<p>i do not love java at all!</p>
+<h3 id="内存机制">内存机制</h3>
+<h4 id="运行时数据区域">运行时数据区域</h4>
+<ul>
+<li>程序计数器</li>
+</ul>
+<p>线程私有，执行native方法时为空！ 不会OutOfMemoryError！</p>
+<ul>
+<li>java虚拟机栈</li>
+</ul>
+<p>线程私有，存放局部变量表，动态连接，返回信息等，每一个方法对应一个栈帧!</p>
+<p>OutOfMemoryError （扩展时无法申请）    OutOfMemoryError(超过允许最大深度)</p>
+<ul>
+<li>本地方法栈</li>
+</ul>
+<p>与虚拟机栈类似， 只是执行本地方法的栈！</p>
+<ul>
+<li>java堆</li>
+</ul>
+<p><strong>唯一目的</strong>： 存放对象实例； 几乎所有的对象实例都在这里分配内存， gc的主要区域！</p>
+<ul>
+<li>方法区</li>
+</ul>
+<p>与堆一样，放<strong>共享数据</strong>， 加载的类信息（存放类的版本，信息，方法，接口等），常量， 静态变量等</p>
+<ul>
+<li>运行时常量池</li>
+</ul>
+<p>属于方法区的一部分， 出了上述的， 还需存放<strong>编译时</strong>生成的字面量和符号引用</p>
+<ul>
+<li>直接内存</li>
+</ul>
+<p>不在堆， 而是直接使用物理内存（使用unsafe 类分配）</p>
+<h4 id="对象的创建">对象的创建</h4>
+<ul>
+<li>检查是否被加载</li>
+<li>分配内存</li>
+<li>初始化0值</li>
+<li>设置对象的信息（如是哪个类的实例等等）</li>
+<li>调用 用户或者默认的&lt; init &gt; 方法</li>
+</ul>
+<h4 id="对象的访问">对象的访问</h4>
+<ul>
+<li>通过句柄，将实例数据独立出来， （实例数据比类型数据多了初始化信息等）</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Fierygit/picbed/master/20200221224645.png" alt=""></p>
+<ul>
+<li>直接指针访问</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Fierygit/picbed/master/20200221224710.png" alt=""></p>
+<p>这两种对象访问方式个有优势，使用句柄来访问的最大好处就是reference中存储的是稳定的句柄地址，在对象被移动（垃圾收集时移动对象是非常普遍的）时只会改变句柄中的实例数据指针，而reference本身不需要修改。</p>
+<h4 id="测试代码">测试代码</h4>
+<ul>
+<li>java堆溢出(无限创建变量)</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> * @author Firefly
+</span><span class="cm"> * @version 1.0
+</span><span class="cm"> * @date 2020/2/22 9:20
+</span><span class="cm"> * VM args: -Xms20m -Xmx20m
+</span><span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">testheap</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kd">class</span> <span class="nc">test</span> <span class="o">{</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">test</span><span class="o">&gt;</span> <span class="n">tests</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">tests</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">test</span><span class="o">());</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="c1">// Exception in thread &#34;main&#34; java.lang.OutOfMemoryError: Java heap space
+</span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>栈溢出(递归调用函数)</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Teststack</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test</span><span class="o">(){</span>
+        <span class="n">len</span><span class="o">++;</span>
+        <span class="n">test</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Teststack</span> <span class="n">t</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Teststack</span><span class="o">();</span>
+        <span class="n">t</span><span class="o">.</span><span class="na">test</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="c1">// Exception in thread &#34;main&#34; java.lang.StackOverflowError
+</span></code></pre></td></tr></table>
+</div>
+</div><p>栈的内存溢出可以通过建立线程设置得到！</p>
+<ul>
+<li>常量池溢出</li>
+</ul>
+<p>测试不出。。</p>
+<h3 id="垃圾回收">垃圾回收</h3>
+<h3 id="类文件结构">类文件结构</h3>
+<h4 id="class文件的数据结构">class文件的数据结构</h4>
+<p>javac 生成的是java字节码， 相当于编译原理的前段， javac 没有对代码进行优化， 字节码相当于是一种中间数据结构， 其它语言也可以通过前段编译器编译出字节码， 优化在jvm。</p>
+<p>首先是一段代码：</p>
+<p><img src="https://raw.githubusercontent.com/Fierygit/picbed/master/20200211101432.png" alt=""></p>
+<p>javac 编译后生成如下的字节码的一部分：</p>
+<p><img src="https://raw.githubusercontent.com/Fierygit/picbed/master/image-20200211103302553.png" alt=""></p>
+<ul>
+<li>魔数</li>
+</ul>
+<p>前4个字节 CAFABABE 表示魔数， 大多数文件都有魔数 ， 很多java书都是一杯咖啡！</p>
+<ul>
+<li>
+<p>接下来 4 个字节为 版本号， 我用1.8 编译的 所以<code>00 00 00 37</code> 表示8，</p>
+</li>
+<li>
+<p>接下来是 常量池</p>
+</li>
+</ul>
+<p>由于java使用了虚拟机， 因此没有连接这一步骤， 在class 加载的时候动态连接，只需要保存名字。</p>
+<p>图中<code> 00 21</code> 表示 常量池的长度， 表示接下来21 个字节长度为常量池</p>
+<p>下图是常量池的数据类型：</p>
+<p><img src="https://raw.githubusercontent.com/Fierygit/picbed/master/20200211104155.png" alt=""></p>
+<p>0A 查表表示 method， 由表得知下一字节为索引， 索引类型 0， 即字符串， 然后得到一个utf 常量值！</p>
+<p>javap 可以自动帮我们转换， 因此， java是可以反编译的！</p>
+<p>javap -verbose TestClass.class  java字节码转换成了人类看的懂得形式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">Classfile /D:/c/TestClass.class
+  Last modified 2020年2月11日; size 474 bytes
+  MD5 checksum 2924e1bfe2ffb03842152f3c1e83460e
+  Compiled from &#34;TestClass.java&#34;
+public class jvm.TestClass
+  minor version: 0
+  major version: 55
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #5                          // jvm/TestClass   
+  super_class: #6                         // java/lang/Object
+  interfaces: 0, fields: 1, methods: 3, attributes: 1        
+Constant pool:
+   #1 = Methodref          #6.#19         // java/lang/Object.&#34;&lt;init&gt;&#34;:()V
+   #2 = Fieldref           #5.#20         // jvm/TestClass.a:I
+   #3 = Fieldref           #21.#22        // java/lang/System.out:Ljava/io/PrintStream;
+   #4 = Methodref          #23.#24        // java/io/PrintStream.println:(I)V
+   #5 = Class              #25            // jvm/TestClass
+   #6 = Class              #26            // java/lang/Object
+   #7 = Utf8               a
+   #8 = Utf8               I
+   #9 = Utf8               &lt;init&gt;
+  #10 = Utf8               ()V
+  #11 = Utf8               Code
+  #12 = Utf8               LineNumberTable
+  #13 = Utf8               getA
+  #14 = Utf8               ()I
+  #15 = Utf8               main
+  #16 = Utf8               ([Ljava/lang/String;)V
+  #17 = Utf8               SourceFile
+  #18 = Utf8               TestClass.java
+  #19 = NameAndType        #9:#10         // &#34;&lt;init&gt;&#34;:()V
+  #20 = NameAndType        #7:#8          // a:I
+  #21 = Class              #27            // java/lang/System
+  #22 = NameAndType        #28:#29        // out:Ljava/io/PrintStream;
+  #23 = Class              #30            // java/io/PrintStream
+  #24 = NameAndType        #31:#32        // println:(I)V
+  #25 = Utf8               jvm/TestClass
+  #26 = Utf8               java/lang/Object
+  #27 = Utf8               java/lang/System
+  #28 = Utf8               out
+  #29 = Utf8               Ljava/io/PrintStream;
+  #30 = Utf8               java/io/PrintStream
+  #31 = Utf8               println
+  #32 = Utf8               (I)V
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>访问标志</li>
+</ul>
+<p>常量池结束后就是 访问标志了，</p>
+<p><img src="https://raw.githubusercontent.com/Fierygit/picbed/master/20200211105542.png" alt=""></p>
+<p>vscode 插件 hex for dump 方便就找到了常量池的最后一个符号， 然后在往后两个字节  .! 的utf编码值00 21 ,后面的为索引索引常量的名字，得到类名， 父类名， 方法属性的访问权限的的等等，这一部分就不读了， 没有必要记住， 知道字节码是存放什么就行了。</p>
+<h4 id="jvm字节码指令简介">jvm字节码指令简介</h4>
+<p>上面部分了解了class文件的数据结构， 在编译原理上可以通过 词法分析， 语法分析， 语义分析生成得到。</p>
+<p>jvm的指令只有一个字节，所以查看返汇编的代码， 很多操作都是只有一个操作码， 没有操作数，jvm是面向操作数栈而不是寄存器的架构， 操作数在栈里！</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="k">do</span><span class="p">{</span>
+    <span class="err">自动计算</span><span class="n">PC寄存器加1</span><span class="err">；</span>
+    <span class="err">根据</span><span class="n">PC寄存器的指示位置</span><span class="err">，</span> <span class="err">从字节码流中取出操作码</span>
+    <span class="k">if</span><span class="p">(</span><span class="err">字节码存在操作数</span><span class="p">)</span>  <span class="err">从字节码中取出操作数</span>
+     <span class="err">执行操作码所定义的操作</span>
+<span class="p">}</span> <span class="k">while</span><span class="p">(</span> <span class="err">字节码长度</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>加载存储指令</li>
+</ul>
+<p>load， store  ，  push  对应的数值类型有  i a l等</p>
+<ul>
+<li>运算指令</li>
+</ul>
+<p>add， sub， mul， div， rem， neg， shl， or， and， xor， inc， cmpg</p>
+<p>注意的是：</p>
+<ol>
+<li>只有除数为零的时候才会抛出ArithmeticException 异常，其它不应该抛出异常</li>
+<li>浮点数舍入选择最近的数字， 浮点数到整形选择 向下舍入</li>
+<li>处理浮点数不会报错</li>
+</ol>
+<ul>
+<li>
+<p>对象的创建和访问</p>
+<p>创建对象： new	创建数组： newarray</p>
+</li>
+<li>
+<p>异常处理指令</p>
+</li>
+</ul>
+<p>通过异常表来跳转</p>
+<ul>
+<li>同步指令， 通过 管程实现  monitorEnter monitorExit</li>
+</ul>
+<h4 id="虚拟机类加载机制">虚拟机类加载机制</h4>
+<p>java 天生可以动态扩展的语言特性就是依赖运行期动态加载和动态连接这个特点实现的。</p>
+<p>类的生命周期分为7个阶段 加载 - 验证 - 准备 - 解析 - 初始化 - 使用 - 卸载</p>
+<p>只有5种情况会立即初始化：</p>
+<ol>
+<li>new， getstatic， putstatic， invokestatic</li>
+<li>使用 reflect 包进行反射调用</li>
+<li>初始化时父类还没初始化</li>
+<li>需要一个main</li>
+<li>methodHandle</li>
+</ol>
+<p>例子：</p>
+<p>1)被动引用才会初始化</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SUperClass</span><span class="o">{</span>
+    <span class="kd">static</span><span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;SuperClass init!&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">value</span> <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="n">123</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SubClass</span> <span class="n">enxtends</span> <span class="n">SuperClass</span><span class="o">{</span>
+    <span class="kd">static</span><span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;SubClass init!&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">SubClass</span><span class="o">.</span><span class="na">value</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>上面代码父类被引用了， 所以运行后父类会初始化</p>
+<ol start="2">
+<li>数组对象的初始化不会初始化对象</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+    <span class="n">SuperClass</span> <span class="n">sca</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SuperClass</span><span class="o">[</span><span class="n">10</span><span class="o">];</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>上面的代码不会调用  SuperCLass的构造函数， 会创建一个内置的数组对象类， 并封装了越界检查，在指令上。</p>
+<p>3） 常量的引用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">calss</span>  <span class="n">ConstClass</span><span class="o">{</span>
+    <span class="kd">static</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;ConstClass init!&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">HELLOWORLD</span> <span class="o">=</span> <span class="s">&#34;hello world!&#34;</span><span class="o">;</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span> <span class="n">args</span><span class="o">[]){</span>
+		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ConstClass</span><span class="o">.</span><span class="na">HELLOWORLD</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>上面的代码不会调用构造函数！而是放到常量池</p>
+<h4 id="类加载的过程">类加载的过程</h4>
+<ul>
+<li>加载</li>
+</ul>
+<ol>
+<li>通过一个类的全限定名来获取定义此类的二进制字节流</li>
+<li>将这个字节流所表示的静态存储结构转化为方法区的运行时数据结构</li>
+<li>在内存中生成一个代表这个类的Class 对象， 作为方法区这个类的各种数据的访问入口</li>
+</ol>
+<p>字节码的获取可以来自任何地方</p>
+<ul>
+<li>验证</li>
+</ul>
+<p>相当于编译原理的 语义分析， 检查类型时候正确等等</p>
+<p>如果自己的第三方包已经反复测试没有问题， 可以使用 -Xverify:none关闭验证，加快加载速度</p>
+<ul>
+<li>准备</li>
+</ul>
+<p>为类变量分配内存并且设置类变量的阶段。</p>
+<p>public static int value = 123， 这个变量会设置初始值0，到方法区。</p>
+<p>而类的<strong>实例变量</strong>，会随对象初始化在堆中， <code>pirvate int value</code></p>
+<p>还有一个特殊情况，  <code>public static final int value = 123</code>，加了final的变量会初始化为123</p>
+<ul>
+<li>解析   v</li>
+</ul>
+<p>将常量池的符号引用替换为直接的内存引用， 相当于java自动帮程序员转换指针， 因此程序员获取不到指针。</p>
+<p>直接引用： 一个指向目标的指针， 相对偏移量或是一个能间接定位到目标的句柄</p>
+<p>符号引用 ：一组符号描述目标</p>
+<p>这一部分还涉及到语义分析的过程， 当一个变量重复定义的情况等等。</p>
+<ul>
+<li>初始化</li>
+</ul>
+<p>开始执行java程序（字节码）</p>
+<p>调用  &lt; cinit &gt;() 方法：</p>
+<ol>
+<li>收集 static{}, 此时只可以赋值， 不可以访问， 访问会报 非法向前引用</li>
+<li>不用调用父类的构造函数， jvm确保已经初始化</li>
+<li>后面的值会覆盖前面的值</li>
+<li>如果没有静态语句块， 不会生成这个方法</li>
+<li>jvm 默认保证这个方法是线程安全的</li>
+</ol>
+<h4 id="类加载器">类加载器</h4>
+<p>类加载的获取二进制文件的方法放到了类加载器中实现！</p>
+<p>比较两个类是否相等，只有在这两个类是由==同一个类加载器==加载的前提下才有意义！</p>
+<h5 id="双亲委派模型">双亲委派模型</h5>
+<p><img src="https://raw.githubusercontent.com/Fierygit/picbed/master/20200213105357.png" alt=""></p>
+<ul>
+<li>
+<p>启动类在  &lt;java_home&gt;\lib 目录下</p>
+</li>
+<li>
+<p>扩展类在 &lt;java_home&gt;\lib\ext 目录下</p>
+</li>
+<li>
+<p>应用类用户目录下</p>
+</li>
+</ul>
+<p>工作过程： 如果一个类加载器收到了类加载的请求， 它首先不会自己去尝试加载这个类，而是把这个请求<strong>委派</strong>给父加载器加载， 当父加载器不能加载这个类的时候才自己加载</p>
+<p>作用： 使得类的加载有优先层次关系， 会首先加载内置的类， 如果重名就加载不了！</p>
+<h3 id="虚拟机字节码执行引擎">虚拟机字节码执行引擎</h3>
+<p>虚拟机为不同的物理机提供统一的外观！</p>
+<h4 id="栈帧结构">栈帧结构</h4>
+<ul>
+<li>局部变量表</li>
+</ul>
+<p>用于存放方法参数 和 局部变量， 如果局部变量是一个类， 则存储它的引用。</p>
+<ul>
+<li>操作数</li>
+</ul>
+<p>后入先出的栈（广义上的栈）， jvm执行指令时， 操作数就在栈里， 所谓基于栈的执行引擎的栈， 就是这里的栈。</p>
+<ul>
+<li>动态连接</li>
+</ul>
+<p>指向运行时常量池中改栈帧所属方法的引用，持有这个引用是为了支持方法调用过程中的动态链接。</p>
+<ul>
+<li>方法返回地址</li>
+</ul>
+<p>存放返回的地址， 异常不会使用</p>
+<h4 id="方法调用">方法调用</h4>
+<p>在解析的时候， 满足条件的有： 编译期可知， 运行期不可变， 有静态方法和私有方法两种！叫做解析调用</p>
+<p>分派（dispatch）调用可以是静态的也可以是动态的</p>
+<ul>
+<li>静态分派（Method overload Resotion） （方法重载）</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span>  <span class="kd">class</span> <span class="nc">TestStaticDispatcher</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kd">abstract</span> <span class="kd">class</span>  <span class="nc">Human</span><span class="o">{}</span>
+    <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Man</span> <span class="kd">extends</span> <span class="n">Human</span><span class="o">{}</span>
+    <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Woman</span> <span class="kd">extends</span> <span class="n">Human</span><span class="o">{}</span>
+    <span class="kd">static</span> <span class="kt">void</span>  <span class="nf">sayHello</span><span class="o">(</span><span class="n">Human</span> <span class="n">human</span><span class="o">){</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;hey guy&#34;</span><span class="o">);}</span>
+    <span class="kd">static</span> <span class="kt">void</span>  <span class="nf">sayHello</span><span class="o">(</span><span class="n">Man</span> <span class="n">human</span><span class="o">){</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;hey man&#34;</span><span class="o">);}</span>
+    <span class="kd">static</span> <span class="kt">void</span>  <span class="nf">sayHello</span><span class="o">(</span><span class="n">Woman</span> <span class="n">human</span><span class="o">){</span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;hey human&#34;</span><span class="o">);}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Human</span> <span class="n">man</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Man</span><span class="o">();</span>
+        <span class="n">Human</span> <span class="n">woman</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Man</span><span class="o">();</span>
+        <span class="k">new</span> <span class="n">TestStaticDispatcher</span><span class="o">().</span><span class="na">sayHello</span><span class="o">(</span><span class="n">man</span><span class="o">);</span>
+        <span class="k">new</span> <span class="n">TestStaticDispatcher</span><span class="o">().</span><span class="na">sayHello</span><span class="o">(</span><span class="n">woman</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="c1">//实际类型变化
+</span><span class="c1"></span><span class="n">Human</span> <span class="n">man</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Man</span><span class="o">();</span>
+<span class="n">man</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Woman</span><span class="o">();</span>
+<span class="c1">//静态类型变化
+</span><span class="c1"></span><span class="n">sr</span><span class="o">,</span><span class="n">sayHello</span><span class="o">((</span><span class="n">Man</span><span class="o">)</span><span class="n">man</span><span class="o">);</span><span class="c1">// 确定的
+</span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>动态分派 （重写）</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Firefly</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2018-05-27
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/jvm/">JVM</a>
+          <a href="/tags/java/">java</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/notepad/java/java%E5%B9%B6%E5%8F%91/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">java 并发与实战</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/notepad/tools/conda/">
+            <span class="next-text nav-default">conda</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="http://github.com/fierygit" class="iconfont icon-github" title="github"></a>
+  <a href="http://fireflying.top/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>Firefly</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

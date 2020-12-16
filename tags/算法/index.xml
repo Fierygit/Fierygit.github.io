@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>算法 on Firefly</title>
+    <link>http://fireflying.top/tags/%E7%AE%97%E6%B3%95/</link>
+    <description>Recent content in 算法 on Firefly</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 28 Feb 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://fireflying.top/tags/%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>面试算法题</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/interview/</link>
+      <pubDate>Fri, 28 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/interview/</guid>
+      <description>常见面试题 面试题 04.10. 检查子树 检查子树。你有两棵非常大的二叉树：T1，有几万个节点；T2，有几万个节点。设计一个算法，判断 T2 是否为 T1 的子树。 如果</description>
+    </item>
+    
+    <item>
+      <title>ACM_exercise</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/hnu_acm/</link>
+      <pubDate>Sat, 28 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/hnu_acm/</guid>
+      <description>HNU ACM dp 1. Longest Ordered Subsequence Problem description A numeric sequence of ai is ordered if a1 &amp;lt; a2 &amp;lt; &amp;hellip; &amp;lt; aN. Let the subsequence of the given numeric sequence (a1, a2, &amp;hellip;, aN) be any sequence (ai1, ai2, &amp;hellip;, aiK), where 1 &amp;lt;= i1 &amp;lt; i2 &amp;lt; &amp;hellip; &amp;lt; iK &amp;lt;= N. For example, sequence (1, 7, 3, 5, 9, 4, 8) has ordered subsequences, e. g.,</description>
+    </item>
+    
+    <item>
+      <title>Test</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/exercise100/</link>
+      <pubDate>Sat, 28 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/exercise100/</guid>
+      <description>1 2 3 4 5 6 7 8 9 10 11 12 13 static int hashFunction( char *key) { int temp = 0; int i = 0; while (key[i] != &amp;#39;\0&amp;#39;) { temp = ((temp &amp;lt;&amp;lt; SHIFT) + key[i]) % MAXTABLESIZE; ++i; } return temp; } 101.删除排序数组中的重复项 给定一个排序数组，</description>
+    </item>
+    
+    <item>
+      <title>排序</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/sorting/</link>
+      <pubDate>Sat, 28 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/sorting/</guid>
+      <description>排序算法 [toc] insertSort 将数插到正确的地方 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 void insertSort(int *num, int le, int ri) { for (int i = le; i &amp;lt;= ri; i++) { int index = -1; for (int j = 0; j &amp;lt; i; j++) { if (num[j] &amp;gt; num[i]) { index = j;</description>
+    </item>
+    
+  </channel>
+</rss>

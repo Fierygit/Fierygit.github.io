@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dubbo on Firefly</title>
+    <link>http://fireflying.top/tags/dubbo/</link>
+    <description>Recent content in dubbo on Firefly</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 01 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://fireflying.top/tags/dubbo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>dubbo</title>
+      <link>http://fireflying.top/post/notepad/read/dubbo/</link>
+      <pubDate>Wed, 01 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/read/dubbo/</guid>
+      <description>dubbo [toc] RPC 基础概念 基础概念： 响应时间(RT) 响应时间是指系统对请求作出响应的时间。直观上看，这个指标与人对软件性能的主观感受是非常一致的，因为它</description>
+    </item>
+    
+  </channel>
+</rss>

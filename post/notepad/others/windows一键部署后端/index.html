@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>windows的脚本命令一件部署后端服务 - Firefly</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Firefly" /><meta name="description" content="windows的脚本命令一件部署后端服务 实习一个月了，其中有许多有意思的东西希望能记住一些小技巧，今天想记录的是，花了一个下午才研究通透的一" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
+
+
+<link rel="canonical" href="http://fireflying.top/post/notepad/others/windows%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2%E5%90%8E%E7%AB%AF/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="windows的脚本命令一件部署后端服务" />
+<meta property="og:description" content="windows的脚本命令一件部署后端服务 实习一个月了，其中有许多有意思的东西希望能记住一些小技巧，今天想记录的是，花了一个下午才研究通透的一" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fireflying.top/post/notepad/others/windows%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2%E5%90%8E%E7%AB%AF/" />
+<meta property="article:published_time" content="2019-09-11T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-09-11T00:00:00+00:00" />
+<meta itemprop="name" content="windows的脚本命令一件部署后端服务">
+<meta itemprop="description" content="windows的脚本命令一件部署后端服务 实习一个月了，其中有许多有意思的东西希望能记住一些小技巧，今天想记录的是，花了一个下午才研究通透的一">
+<meta itemprop="datePublished" content="2019-09-11T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-09-11T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1246">
+
+
+
+<meta itemprop="keywords" content="脚本," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="windows的脚本命令一件部署后端服务"/>
+<meta name="twitter:description" content="windows的脚本命令一件部署后端服务 实习一个月了，其中有许多有意思的东西希望能记住一些小技巧，今天想记录的是，花了一个下午才研究通透的一"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Firefly</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Firefly</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">windows的脚本命令一件部署后端服务</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-09-11 </span>
+        <div class="post-category">
+            <a href="/categories/%E7%BB%8F%E9%AA%8C/"> 经验 </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+        <li><a href="#一bat命令简要说明">一，BAT命令简要说明</a></li>
+        <li><a href="#二流程">二，流程</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h4 id="windows的脚本命令一件部署后端服务">windows的脚本命令一件部署后端服务</h4>
+<p>实习一个月了，其中有许多有意思的东西希望能记住一些小技巧，今天想记录的是，花了一个下午才研究通透的一个windows脚本命令。</p>
+<h2 id="一bat命令简要说明">一，BAT命令简要说明</h2>
+<p>这个是windows的批处理文件，在这里可以这接写dos命令，一些恶意小程序就是可以在这里写，和linux的sh不同是，不用给文件赋予权限，bat只需要，把后缀改为bat就行了，其实windwos部署服务很少，习惯了linux，突然用dos感觉好不习惯。</p>
+<ul>
+<li>
+<p>首先是注释  ：：  两个冒号代表注释一行，为了防止写着脚本自己写到哪里了都不知道，注释还是有作用的。
+<img src="https://img-blog.csdnimg.cn/20190808105234421.png" alt="在这里插入图片描述"></p>
+</li>
+<li>
+<pre><code>goto  :next
+`echo 'pull sucess!'
+`echo 'pull sucess!'
+:next
+        
+  上面的goto语句是跳过中间的两个命令， 简洁明了
+</code></pre>
+</li>
+<li>
+<p>echo off
+如果不想要每次都显示路径这个就可以只显示执行的情况。所以一般开头加一句</p>
+</li>
+<li>
+<p>call<br>
+这个命令值得注意下，如果在bat命令中调用了其它的bat，其它bat里面运行完一般会有退出命令，所以，如果不想在调用了其它命令后退出，就call 这个命令。比如说mvn命令，这个调用了之后运行完会直接退出，所以加个call</p>
+</li>
+</ul>
+<h2 id="二流程">二，流程</h2>
+<ol>
+<li>
+<p>::先随便到一个目录，把该目录下的jcSrc  保存
+cd  E:\jc
+::Q表示不显示文件名C错误也复制E所有子目录Y不提示覆盖
+xcopy  E:\jc\jcSrc  E:\jc\jcSrcHistory/E/C/Y/Q
+解释：此命令只是把先前的src复制一遍存起来</p>
+</li>
+<li>
+<p>cd jcSrc
+git pull origin master
+echo &lsquo;pull sucess!&rsquo;
+解释：上面的三条脚本在bash测试成功后放到这里，Git拉取src，git还要配置环境变量</p>
+</li>
+<li>
+<p>::mvn打包
+cd   E:\jc\jcSrc\common
+call mvn clean compile
+call mvn clean package
+echo &lsquo;mvn package success&rsquo;
+这个也要配置环境变量</p>
+</li>
+<li>
+<p>::删除原来的包,注意改名jar
+cd  E:\jc\jcJar
+rd/s/q    common-0.0.1-SNAPSHOT.jar
+echo ‘delete success！’
+写到这里想起差点把我的一个大文件给删了。 注意注意注意</p>
+</li>
+<li>
+<p>::将打包好的jar包复制到jcJar中
+xcopy  E:\jc\jcSrc\common\target\common-0.0.1-SNAPSHOT.jar  E:\jc\jcJar/E/C/Y/Q
+echo &lsquo;copy jar success&rsquo;</p>
+</li>
+<li>
+<p>set port=8092
+for /f &ldquo;tokens=1-5&rdquo; %%i in (&lsquo;netstat -ano^|findstr &ldquo;:%port%&quot;') do taskkill /F /pid %%m
+echo &lsquo;delete port success&rsquo;
+解释：这一步很重要，先要删除端口，很高兴在网上找到了删除端口对应程序的代码，在2008里面既然不能用，后来发现，是这个脚本命令不能换行。不然换行写多舒服！</p>
+</li>
+<li>
+<p>::运行
+cd  E:\jc\jcJar
+java -jar common-0.0.1-SNAPSHOT.jar &ndash;server.port=8092
+echo &lsquo;如果你在运行的时候看到我,就说明启动失败啦!!!,上面的某一条命令没有执行成功&rsquo;
+echo &lsquo;success!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!&rsquo;
+pause
+解释：
+1.因为java -jar  运行后端服务是持续的，所以后面的echo是要等到java运行完才打印的，如果没有启动成功，才会打印，=
+2.还是因为这是2008的上古神机windows版本，所以用了java命令，如果是window10，可以直接用javaw， 命令，这个命令可以让jar在后台执行。</p>
+</li>
+</ol>
+<p>最后来一个全的</p>
+<pre><code>::先随便到一个目录，把该目录下的jcSrc  保存
+cd  E:\jc
+::Q表示不显示文件名C错误也复制E所有子目录Y不提示覆盖
+xcopy  E:\jc\jcSrc  E:\jc\jcSrcHistory/E/C/Y/Q
+
+echo 'copy sucess!'
+
+cd jcSrc
+git pull origin master
+echo 'pull sucess!'
+
+
+::mvn 打包
+cd   E:\jc\jcSrc\common
+call mvn clean compile
+call mvn clean package
+echo 'mvn package success'
+
+
+::删除原来的包,注意改名jar
+cd  E:\jc\jcJar
+rd/s/q    common-0.0.1-SNAPSHOT.jar
+echo ‘delete success！’
+
+::将打包好的jar包复制到jcJar中
+
+xcopy  E:\jc\jcSrc\common\target\common-0.0.1-SNAPSHOT.jar  E:\jc\jcJar/E/C/Y/Q
+echo 'copy jar success'
+
+
+set port=8092
+for /f &quot;tokens=1-5&quot; %%i in ('netstat -ano^|findstr &quot;:%port%&quot;') do taskkill /F /pid %%m
+  
+echo 'delete port success'
+
+::运行
+cd  E:\jc\jcJar
+java -jar common-0.0.1-SNAPSHOT.jar --server.port=8092
+echo '如果你在运行的时候看到我,就说明启动失败啦!!!,上面的某一条命令没有执行成功'
+echo 'success!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
+
+pause
+</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Firefly</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-09-11
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E8%84%9A%E6%9C%AC/">脚本</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/notepad/tools/git/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">git使用</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/notepad/others/matlab%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">
+            <span class="next-text nav-default">matlab基础语法</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="http://github.com/fierygit" class="iconfont icon-github" title="github"></a>
+  <a href="http://fireflying.top/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>Firefly</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

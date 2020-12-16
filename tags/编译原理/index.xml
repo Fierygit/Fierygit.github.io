@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>编译原理 on Firefly</title>
+    <link>http://fireflying.top/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/</link>
+    <description>Recent content in 编译原理 on Firefly</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 05 Nov 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://fireflying.top/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>easy_c</title>
+      <link>http://fireflying.top/post/notepad/compiling/easy_c/</link>
+      <pubDate>Tue, 05 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/compiling/easy_c/</guid>
+      <description>easy_c 实现目标 实现一门基于 x86 平台的编译器， 链接基于GNU as， 功能实现加减乘除， 函数调用， if 语句和while循环，，输出整数值和字符串，不实现指</description>
+    </item>
+    
+    <item>
+      <title>x86 汇编器编程</title>
+      <link>http://fireflying.top/post/notepad/compiling/x86-%E6%B1%87%E7%BC%96%E5%99%A8%E7%BC%96%E7%A8%8B/</link>
+      <pubDate>Tue, 05 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/compiling/x86-%E6%B1%87%E7%BC%96%E5%99%A8%E7%BC%96%E7%A8%8B/</guid>
+      <description>x86 汇编器编程 基于x86 实现编译器首先得了解x86 平台的指令调度， 以下是一些我在实现编译器过程中用到的基础知识！ 大部分内容参考了 青木的自制编译</description>
+    </item>
+    
+  </channel>
+</rss>

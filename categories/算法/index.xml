@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>算法 on Firefly</title>
+    <link>http://fireflying.top/categories/%E7%AE%97%E6%B3%95/</link>
+    <description>Recent content in 算法 on Firefly</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 06 Apr 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://fireflying.top/categories/%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>大数运算</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/tree/</link>
+      <pubDate>Mon, 06 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/tree/</guid>
+      <description>[toc] 树 面试题 04.06. 后继者 设计一个算法，找出二叉搜索树中指定节点的“下一个”节点（也即中序后继）。 1 2 3 4 5 6 7 8 9 TreeNode* inorderSuccessor(TreeNode* root, TreeNode* p) { TreeNode * ans =nullptr; while(root){ cout &amp;lt;&amp;lt; root-&amp;gt;val &amp;lt;&amp;lt; endl;</description>
+    </item>
+    
+    <item>
+      <title>图</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/%E5%9B%BE%E8%AE%BA%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Sat, 28 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/%E5%9B%BE%E8%AE%BA%E6%80%BB%E7%BB%93/</guid>
+      <description>图论总结 [toc] 算法这东西，容易忘记， 捡起来很快， 但也要时间， 因此，做一些简短的记录！ 图是什么？ 树可以存线， 图可以存树，树是一种无环图， 线是最简单</description>
+    </item>
+    
+    <item>
+      <title>并查集</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/unionfind/</link>
+      <pubDate>Sat, 14 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/unionfind/</guid>
+      <description>200. 岛屿数量 给你一个由 &#39;1&#39;（陆地）和 &#39;0&#39;（水）组成的的二维网格，请你计算网格中岛屿的数量。 岛屿总是被水包围，并且每座岛屿只能由水平方向或竖</description>
+    </item>
+    
+    <item>
+      <title>回溯</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/backtracking/</link>
+      <pubDate>Fri, 28 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/backtracking/</guid>
+      <description>Backtracking 面试题 08.04. 幂集 幂集。编写一种方法，返回某集合的所有子集。集合中不包含重复的元素。 说明：解集不能包含重复的子集。 示例: 1 2 3 4 5 6 7 8 9 10 11 12</description>
+    </item>
+    
+    <item>
+      <title>面试算法题</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/interview/</link>
+      <pubDate>Fri, 28 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/interview/</guid>
+      <description>常见面试题 面试题 04.10. 检查子树 检查子树。你有两棵非常大的二叉树：T1，有几万个节点；T2，有几万个节点。设计一个算法，判断 T2 是否为 T1 的子树。 如果</description>
+    </item>
+    
+    <item>
+      <title>字符串</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/string/</link>
+      <pubDate>Mon, 24 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/string/</guid>
+      <description>string处理 [toc] 字符串hash 字符串可以看做是一个n进制的表示方式： 1 ABC = A * 26^2 + B * 26^1 + C * 26^0; 这就简单地转成 10 进制了， 然后在 取余， 让它在</description>
+    </item>
+    
+    <item>
+      <title>贪心算法</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/greedy/</link>
+      <pubDate>Tue, 28 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/greedy/</guid>
+      <description>贪心算法 贪心方法的一般策略 问题的一般特征：问题的解是由n个输入的、满足某些事先给定的条件的子集组成。 ​ 1）一般方法 ​ 根据题意，选取一种度量标</description>
+    </item>
+    
+    <item>
+      <title>Leetcode100</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/leetcode100/</link>
+      <pubDate>Wed, 08 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/leetcode100/</guid>
+      <description>leetcode100 练习 来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/add-two-numbers 著</description>
+    </item>
+    
+    <item>
+      <title>ACM_exercise</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/hnu_acm/</link>
+      <pubDate>Sat, 28 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/hnu_acm/</guid>
+      <description>HNU ACM dp 1. Longest Ordered Subsequence Problem description A numeric sequence of ai is ordered if a1 &amp;lt; a2 &amp;lt; &amp;hellip; &amp;lt; aN. Let the subsequence of the given numeric sequence (a1, a2, &amp;hellip;, aN) be any sequence (ai1, ai2, &amp;hellip;, aiK), where 1 &amp;lt;= i1 &amp;lt; i2 &amp;lt; &amp;hellip; &amp;lt; iK &amp;lt;= N. For example, sequence (1, 7, 3, 5, 9, 4, 8) has ordered subsequences, e. g.,</description>
+    </item>
+    
+    <item>
+      <title>DP</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/dp/</link>
+      <pubDate>Sat, 28 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/dp/</guid>
+      <description>DP 题目汇总 记录一些遇到过的dp问题 DP(Dynamic Programming) 一种解决最优化问题的算法思想。 要求： 重叠子问题 &amp;amp;&amp;amp; 最优子结构 递归： 记忆化搜索 递推： 自底向上 [toc] 比特位计数 给</description>
+    </item>
+    
+    <item>
+      <title>Test</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/exercise100/</link>
+      <pubDate>Sat, 28 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/exercise100/</guid>
+      <description>1 2 3 4 5 6 7 8 9 10 11 12 13 static int hashFunction( char *key) { int temp = 0; int i = 0; while (key[i] != &amp;#39;\0&amp;#39;) { temp = ((temp &amp;lt;&amp;lt; SHIFT) + key[i]) % MAXTABLESIZE; ++i; } return temp; } 101.删除排序数组中的重复项 给定一个排序数组，</description>
+    </item>
+    
+    <item>
+      <title>分治法</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/%E5%88%86%E6%94%AF%E6%B3%95/</link>
+      <pubDate>Sat, 28 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/%E5%88%86%E6%94%AF%E6%B3%95/</guid>
+      <description>分治法 一个大的问题分解为一些小的问题来求解 归并排序 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 void mergeSort(int* num, int le, int ri) { if (le &amp;gt;= ri) return; int mid = le + ((ri - le) &amp;gt;&amp;gt; 1); mergeSort(num, le, mid); mergeSort(num,</description>
+    </item>
+    
+    <item>
+      <title>大数运算</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/%E5%A4%A7%E6%95%B0%E8%BF%90%E7%AE%97/</link>
+      <pubDate>Sat, 28 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/%E5%A4%A7%E6%95%B0%E8%BF%90%E7%AE%97/</guid>
+      <description>大数运算 [toc] 大数加法 1 2 3 4 5 6 7 intput: 123456789012345678901234567890 123456789012345678901234567890 123456789012345678901234567890 0 output: 370370367037037036703703703670 大数乘法</description>
+    </item>
+    
+    <item>
+      <title>排序</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/sorting/</link>
+      <pubDate>Sat, 28 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/sorting/</guid>
+      <description>排序算法 [toc] insertSort 将数插到正确的地方 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 void insertSort(int *num, int le, int ri) { for (int i = le; i &amp;lt;= ri; i++) { int index = -1; for (int j = 0; j &amp;lt; i; j++) { if (num[j] &amp;gt; num[i]) { index = j;</description>
+    </item>
+    
+  </channel>
+</rss>
