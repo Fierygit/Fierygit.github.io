@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>cplusplus - Firefly</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Firefly" /><meta name="description" content="[toc] c11的语言特性 .h 头文件可以不加 1 2 #include &amp;lt;vector&amp;gt;#include &amp;lt;vector.h&amp;gt; function, bind 关于std::function 的用法： 其实就可以理解成函数指针 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
+
+
+<link rel="canonical" href="http://fireflying.top/post/notepad/cxx/cplusplus/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="cplusplus" />
+<meta property="og:description" content="[toc] c11的语言特性 .h 头文件可以不加 1 2 #include &lt;vector&gt;#include &lt;vector.h&gt; function, bind 关于std::function 的用法： 其实就可以理解成函数指针 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fireflying.top/post/notepad/cxx/cplusplus/" />
+<meta property="article:published_time" content="2017-11-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2017-11-21T00:00:00+00:00" />
+<meta itemprop="name" content="cplusplus">
+<meta itemprop="description" content="[toc] c11的语言特性 .h 头文件可以不加 1 2 #include &lt;vector&gt;#include &lt;vector.h&gt; function, bind 关于std::function 的用法： 其实就可以理解成函数指针 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15">
+<meta itemprop="datePublished" content="2017-11-21T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2017-11-21T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4587">
+
+
+
+<meta itemprop="keywords" content="CXX," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="cplusplus"/>
+<meta name="twitter:description" content="[toc] c11的语言特性 .h 头文件可以不加 1 2 #include &lt;vector&gt;#include &lt;vector.h&gt; function, bind 关于std::function 的用法： 其实就可以理解成函数指针 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Firefly</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Firefly</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">cplusplus</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017-11-21 </span>
+        <div class="post-category">
+            <a href="/categories/cxx/"> CXX </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#c11的语言特性">c11的语言特性</a>
+          <ul>
+            <li><a href="#function-bind">function, bind</a></li>
+            <li><a href="#智能指针">智能指针</a></li>
+            <li><a href="#varidic-template">varidic template</a></li>
+            <li><a href="#space-in-template-expression-nullptrauto">space in Template Expression, nullptr，auto</a></li>
+            <li><a href="#uniform-initiazation">Uniform Initiazation</a></li>
+            <li><a href="#initializer_list">initializer_list</a></li>
+            <li><a href="#explict-for-actors-taking-more-than-one-argument">explict for actors taking more than one argument</a></li>
+            <li><a href="#for">for</a></li>
+            <li><a href="#defalut-delete">=defalut, =delete</a></li>
+            <li><a href="#alias-template">alias template</a></li>
+            <li><a href="#decltype">decltype</a></li>
+          </ul>
+        </li>
+        <li><a href="#左值和右值">左值和右值</a>
+          <ul>
+            <li><a href="#简单的定义">简单的定义</a></li>
+            <li><a href="#右值引用">右值引用</a></li>
+          </ul>
+        </li>
+        <li><a href="#标准库">标准库</a>
+          <ul>
+            <li><a href="#array">array</a></li>
+            <li><a href="#tuple">tuple</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>[toc]</p>
+<h2 id="c11的语言特性">c11的语言特性</h2>
+<p>.h 头文件可以不加</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;vector.h&gt;</span><span class="cp">
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="function-bind">function, bind</h3>
+<p>关于std::function 的用法：
+其实就可以理解成函数指针</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="c1">//保存自由函数
+</span><span class="c1"></span><span class="kt">void</span> <span class="nf">print</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">){</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">a</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;}</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">func</span><span class="p">;</span>
+<span class="n">func</span> <span class="o">=</span> <span class="n">printA</span><span class="p">;</span>
+<span class="n">func</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+
+<span class="c1">//保存lambda表达式
+</span><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">()</span><span class="o">&gt;</span> <span class="n">func_1</span> <span class="o">=</span> <span class="p">[](){</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&#34;hello world&#34;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;};</span>
+<span class="n">func_1</span><span class="p">();</span>
+
+<span class="c1">//保存成员函数
+</span><span class="c1"></span><span class="k">struct</span> <span class="n">Foo</span> <span class="p">{</span>
+    <span class="n">Foo</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">)</span> <span class="o">:</span> <span class="n">num_</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="kt">void</span> <span class="n">print_add</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">num_</span><span class="o">+</span><span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span> <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">num_</span><span class="p">;</span>
+<span class="p">};</span>
+
+
+<span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="k">const</span> <span class="n">Foo</span><span class="o">&amp;</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">f_add_display</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">Foo</span><span class="o">::</span><span class="n">print_add</span><span class="p">;</span>
+<span class="n">Foo</span> <span class="nf">foo</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">f_add_display</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+<span class="err">在实际使用中都用</span> <span class="k">auto</span> <span class="err">关键字来代替</span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="err">…</span> <span class="err">这一长串了。</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="n">using</span> <span class="n">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="n">class</span> <span class="n">A</span><span class="p">{</span>
+<span class="nl">public</span><span class="p">:</span>
+    <span class="kt">void</span> <span class="n">fun_3</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">,</span><span class="kt">int</span> <span class="n">m</span><span class="p">){</span>
+        <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">k</span><span class="o">&lt;&lt;</span><span class="s">&#34; &#34;</span><span class="o">&lt;&lt;</span><span class="n">m</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">void</span> <span class="nf">fun</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span><span class="kt">int</span> <span class="n">y</span><span class="p">,</span><span class="kt">int</span> <span class="n">z</span><span class="p">){</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">x</span><span class="o">&lt;&lt;</span><span class="s">&#34;  &#34;</span><span class="o">&lt;&lt;</span><span class="n">y</span><span class="o">&lt;&lt;</span><span class="s">&#34;  &#34;</span><span class="o">&lt;&lt;</span><span class="n">z</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">fun_2</span><span class="p">(</span><span class="kt">int</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="kt">int</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">){</span>
+    <span class="n">a</span><span class="o">++</span><span class="p">;</span> <span class="n">b</span><span class="o">++</span><span class="p">;</span>
+    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">a</span><span class="o">&lt;&lt;</span><span class="s">&#34;  &#34;</span><span class="o">&lt;&lt;</span><span class="n">b</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[]){</span>
+    <span class="k">auto</span> <span class="n">f1</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="n">fun</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span> <span class="c1">//表示绑定函数 fun 的第一，二，三个参数值为： 1 2 3
+</span><span class="c1"></span>    <span class="n">f1</span><span class="p">();</span> <span class="c1">//print:1  2  3
+</span><span class="c1"></span>
+    <span class="k">auto</span> <span class="n">f2</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="n">fun</span><span class="p">,</span> <span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">,</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_2</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+    <span class="c1">//表示绑定函数 fun 的第三个参数为 3，而fun 的第一，二个参数分别有调用 f2 的第一，二个参数指定
+</span><span class="c1"></span>    <span class="n">f2</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span><span class="c1">//print:1  2  3
+</span><span class="c1"></span>
+    <span class="k">auto</span> <span class="n">f3</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="n">fun</span><span class="p">,</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_2</span><span class="p">,</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+    <span class="c1">//表示绑定函数 fun 的第三个参数为 3，而fun 的第一，二个参数分别有调用 f3 的第二，一个参数指定
+</span><span class="c1"></span>    <span class="c1">//注意： f2  和  f3 的区别。
+</span><span class="c1"></span>    <span class="n">f3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span><span class="c1">//print:2  1  3
+</span><span class="c1"></span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>    <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+
+    <span class="k">auto</span> <span class="n">f4</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="n">fun_2</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">);</span>
+    <span class="n">f4</span><span class="p">(</span><span class="n">m</span><span class="p">);</span> <span class="c1">//print:3  4
+</span><span class="c1"></span>    
+    <span class="c1">//print:4  说明：bind对于不事先绑定的参数，通过std::placeholders传递的参数是通过引用传递的
+</span><span class="c1"></span>    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">m</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="c1">//print:2  说明：bind对于预先绑定的函数参数是通过值传递的
+</span><span class="c1"></span>    <span class="n">cout</span><span class="o">&lt;&lt;</span><span class="n">n</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="n">A</span> <span class="n">a</span><span class="p">;</span>
+    <span class="k">auto</span> <span class="n">f5</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">A</span><span class="o">::</span><span class="n">fun_3</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">,</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_2</span><span class="p">);</span>
+    <span class="n">f5</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">);</span><span class="c1">//print:10 20
+</span><span class="c1"></span>
+    <span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">fc</span> <span class="o">=</span> 
+        <span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">A</span><span class="o">::</span><span class="n">fun_3</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span><span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">,</span><span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_2</span><span class="p">);</span>
+    <span class="n">fc</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">);</span><span class="c1">//print:10 20
+</span><span class="c1"></span>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="智能指针">智能指针</h3>
+<p>auto_ptr、unique_ptr、shared_ptr和weak_ptr 这几个智能指针背后的设计思想: 将基本类型指针封装为类对象指针，并在析构函数里编写delete语句删除指针指向的内存空间。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="err">智能指针析构是会</span><span class="n">delete</span> <span class="err">指针，</span> <span class="err">因此不要这样做</span>
+<span class="n">tring</span> <span class="n">vacation</span><span class="p">(</span><span class="s">&#34;I wandered lonely as a cloud.&#34;</span><span class="p">);</span>
+<span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">pvac</span><span class="p">(</span><span class="o">&amp;</span><span class="n">vacation</span><span class="p">);</span>   <span class="c1">// No
+</span></code></pre></td></tr></table>
+</div>
+</div><p>先来看下面的赋值语句:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="n">auto_ptr</span><span class="o">&lt;</span> <span class="n">string</span><span class="o">&gt;</span> <span class="n">ps</span> <span class="p">(</span><span class="n">new</span> <span class="n">string</span> <span class="p">(</span><span class="s">&#34;I reigned lonely as a cloud.”）;</span>
+<span class="n">auto_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">vocation</span><span class="p">;</span> 
+<span class="n">vocaticn</span> <span class="o">=</span> <span class="n">ps</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>上述赋值语句将完成什么工作呢？如果ps和vocation是常规指针，则两个指针将指向同一个string对象。这是不能接受的，因为程序将试图删除同一个对象两次——一次是ps过期时，另一次是vocation过期时。要避免这种问题，方法有多种：</p>
+<ul>
+<li>定义陚值运算符，使之执行深复制。这样两个指针将指向不同的对象，其中的一个对象是另一个对象的副本，缺点是浪费空间，所以智能指针都未采用此方案。</li>
+<li>建立所有权（ownership）概念。对于特定的对象，只能有一个智能指针可拥有，这样只有拥有对象的智能指针的构造函数会删除该对象。然后让赋值操作转让所有权。这就是用于auto_ptr和uniqiie_ptr 的策略，但unique_ptr的策略更严格。</li>
+<li>创建智能更高的指针，跟踪引用特定对象的智能指针数。这称为引用计数。例如，赋值时，计数将加1，而指针过期时，计数将减1,。当减为0时才调用delete。这是shared_ptr采用的策略。</li>
+</ul>
+<p>当然，同样的策略也适用于复制构造函数，每种方法都有其用途，但为何说要摒弃auto_ptr呢？</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;memory&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="n">using</span> <span class="n">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">auto_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">films</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span>
+ <span class="p">{</span>
+  <span class="n">auto_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">new</span> <span class="n">string</span><span class="p">(</span><span class="s">&#34;Fowl Balls&#34;</span><span class="p">)),</span>
+  <span class="n">auto_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">new</span> <span class="n">string</span><span class="p">(</span><span class="s">&#34;Duck Walks&#34;</span><span class="p">)),</span>
+  <span class="n">auto_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">new</span> <span class="n">string</span><span class="p">(</span><span class="s">&#34;Chicken Runs&#34;</span><span class="p">)),</span>
+  <span class="n">auto_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">new</span> <span class="n">string</span><span class="p">(</span><span class="s">&#34;Turkey Errors&#34;</span><span class="p">)),</span>
+  <span class="n">auto_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">new</span> <span class="n">string</span><span class="p">(</span><span class="s">&#34;Goose Eggs&#34;</span><span class="p">))</span>
+ <span class="p">};</span>
+ <span class="n">auto_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">pwin</span><span class="p">;</span>
+ <span class="n">pwin</span> <span class="o">=</span> <span class="n">films</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span> 
+ <span class="c1">// films[2] loses ownership. 将所有权从films[2]转让给pwin，
+</span><span class="c1"></span> <span class="err">此时</span><span class="n">films</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="err">不再引用该字符串从而变成空指针</span>
+
+ <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;The nominees for best avian baseballl film are</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
+ <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">films</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+ <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;The winner is &#34;</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">pwin</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+ <span class="n">cin</span><span class="p">.</span><span class="n">get</span><span class="p">();</span>
+
+ <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>运行下发现程序崩溃了，原因在上面注释已经说的很清楚，films[2]已经是空指针了，下面输出访问空指针当然会崩溃了。但这里如果把auto_ptr换成shared_ptr或unique_ptr后，程序就不会崩溃，原因如下：</p>
+<ul>
+<li>
+<p>使用shared_ptr时运行正常，因为shared_ptr采用引用计数，pwin和films[2]都指向同一块内存，在释放空间时因为事先要判断引用计数值的大小因此不会出现多次删除一个对象的错误。</p>
+</li>
+<li>
+<p>使用unique_ptr时编译出错，与auto_ptr一样，unique_ptr也采用所有权模型，但在使用unique_ptr时，程序不会等到运行阶段崩溃，而在编译器因下述代码行出现错误：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">pwin</span><span class="p">;</span>
+<span class="n">pwin</span> <span class="o">=</span> <span class="n">films</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span> <span class="c1">// films[2] loses ownership.
+</span></code></pre></td></tr></table>
+</div>
+</div><p>指导你发现潜在的内存错误。</p>
+</li>
+</ul>
+<p>这就是为何要摒弃auto_ptr的原因，一句话总结就是：<strong>避免潜在的内存崩溃问题。</strong></p>
+<ul>
+<li>unique_ptr为何优于auto_ptr？</li>
+</ul>
+<p>可能大家认为前面的例子已经说明了unique_ptr为何优于auto_ptr，也就是安全问题，下面再叙述的清晰一点。
+请看下面的语句:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">auto_ptr&lt;string&gt; p1(new string (&#34;auto&#34;) ； //#1
+auto_ptr&lt;string&gt; p2;                       //#2
+p2 = p1;                                   //#3
+</code></pre></td></tr></table>
+</div>
+</div><p>在语句#3中，p2接管string对象的所有权后，p1的所有权将被剥夺。前面说过，这是好事，可防止p1和p2的析构函数试图刪同—个对象；</p>
+<p>但如果程序随后试图使用p1，这将是件坏事，因为p1不再指向有效的数据。</p>
+<p>下面来看使用unique_ptr的情况：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">unique_ptr&lt;string&gt; p3 (new string (&#34;auto&#34;);   //#4
+unique_ptr&lt;string&gt; p4；                       //#5
+p4 = p3;                                      //#6
+</code></pre></td></tr></table>
+</div>
+</div><p>编译器认为语句#6非法，避免了p3不再指向有效数据的问题。因此，unique_ptr比auto_ptr更安全。</p>
+<p><strong>但unique_ptr还有更聪明的地方。</strong>
+有时候，会将一个智能指针赋给另一个并不会留下危险的悬挂指针。假设有如下函数定义：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">unique_ptr&lt;string&gt; demo(const char * s)
+{
+    unique_ptr&lt;string&gt; temp (new string (s))； 
+    return temp；
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>并假设编写了如下代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">unique_ptr&lt;string&gt; ps;
+ps = demo(&#39;Uniquely special&#34;)；
+</code></pre></td></tr></table>
+</div>
+</div><p>demo()返回一个临时unique_ptr，然后ps接管了原本归返回的unique_ptr所有的对象，而返回时临时的 unique_ptr 被销毁，也就是说没有机会使用 unique_ptr 来访问无效的数据，换句话来说，这种赋值是不会出现任何问题的，即没有理由禁止这种赋值。实际上，编译器确实允许这种赋值，这正是unique_ptr更聪明的地方。</p>
+<p><strong>总之，党程序试图将一个 unique_ptr 赋值给另一个时，如果源 unique_ptr 是个临时右值，编译器允许这么做；如果源 unique_ptr 将存在一段时间，编译器将禁止这么做</strong>，比如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">pu1</span><span class="p">(</span><span class="n">new</span> <span class="n">string</span> <span class="p">(</span><span class="s">&#34;hello world&#34;</span><span class="p">));</span>
+<span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">pu2</span><span class="p">;</span>
+<span class="n">pu2</span> <span class="o">=</span> <span class="n">pu1</span><span class="p">;</span>                                      <span class="c1">// #1 not allowed
+</span><span class="c1"></span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">pu3</span><span class="p">;</span>
+<span class="n">pu3</span> <span class="o">=</span> <span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="n">new</span> <span class="n">string</span> <span class="p">(</span><span class="s">&#34;You&#34;</span><span class="p">));</span>   <span class="c1">// #2 allowed
+</span></code></pre></td></tr></table>
+</div>
+</div><p>其中#1留下悬挂的unique_ptr(pu1)，这可能导致危害。而#2不会留下悬挂的unique_ptr，因为它调用 unique_ptr 的构造函数，该构造函数创建的临时对象在其所有权让给 pu3 后就会被销毁。<strong>这种随情况而已的行为表明，unique_ptr 优于允许两种赋值的auto_ptr 。</strong></p>
+<p>当然，您可能确实想执行类似于#1的操作，仅当以非智能的方式使用摒弃的智能指针时（如解除引用时），这种赋值才不安全。要安全的重用这种指针，可给它赋新值。C++有一个标准库函数std::move()，让你能够将一个unique_ptr赋给另一个。下面是一个使用前述demo()函数的例子，该函数返回一个unique_ptr<string>对象：
+使用move后，原来的指针仍转让所有权变成空指针，可以对其重新赋值。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">ps1</span><span class="p">,</span> <span class="n">ps2</span><span class="p">;</span>
+<span class="n">ps1</span> <span class="o">=</span> <span class="n">demo</span><span class="p">(</span><span class="s">&#34;hello&#34;</span><span class="p">);</span>
+<span class="n">ps2</span> <span class="o">=</span> <span class="n">move</span><span class="p">(</span><span class="n">ps1</span><span class="p">);</span>
+<span class="n">ps1</span> <span class="o">=</span> <span class="n">demo</span><span class="p">(</span><span class="s">&#34;alexia&#34;</span><span class="p">);</span>
+<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">ps2</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">ps1</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>如何选择智能指针？</li>
+</ul>
+<p>在掌握了这几种智能指针后，大家可能会想另一个问题：在实际应用中，应使用哪种智能指针呢？
+下面给出几个使用指南。</p>
+<p>（1）如果程序要使用多个指向同一个对象的指针，应选择shared_ptr。这样的情况包括：</p>
+<ul>
+<li>有一个指针数组，并使用一些辅助指针来标示特定的元素，如最大的元素和最小的元素；</li>
+<li>两个对象包含都指向第三个对象的指针；</li>
+<li>STL容器包含指针。很多STL算法都支持复制和赋值操作，这些操作可用于shared_ptr，但不能用于unique_ptr（编译器发出warning）和auto_ptr（行为不确定）。如果你的编译器没有提供shared_ptr，可使用Boost库提供的shared_ptr。</li>
+</ul>
+<p>（2）如果程序不需要多个指向同一个对象的指针，则可使用unique_ptr。如果函数使用new分配内存，并返还指向该内存的指针，将其返回类型声明为unique_ptr是不错的选择。这样，所有权转让给接受返回值的unique_ptr，而该智能指针将负责调用delete。可将unique_ptr存储到STL容器在那个，只要不调用将一个unique_ptr复制或赋给另一个算法（如sort()）。例如，可在程序中使用类似于下面的代码段。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">make_int</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">){</span>
+    <span class="k">return</span> <span class="n">unique_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">new</span> <span class="kt">int</span><span class="p">(</span><span class="n">n</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="n">show</span><span class="p">(</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">p1</span><span class="p">){</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39; &#39;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
+    <span class="p">...</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">vp</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">vp</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">vp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">make_int</span><span class="p">(</span><span class="n">rand</span><span class="p">()</span> <span class="o">%</span> <span class="mi">1000</span><span class="p">);</span>              <span class="c1">// copy temporary unique_ptr
+</span><span class="c1"></span>    <span class="n">vp</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">make_int</span><span class="p">(</span><span class="n">rand</span><span class="p">()</span> <span class="o">%</span> <span class="mi">1000</span><span class="p">));</span>     <span class="c1">// ok because arg is temporary
+</span><span class="c1"></span>    <span class="n">for_each</span><span class="p">(</span><span class="n">vp</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">vp</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">show</span><span class="p">);</span>           <span class="c1">// use for_each()
+</span><span class="c1"></span>    <span class="p">...</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>其中push_back调用没有问题，因为它返回一个临时unique_ptr，该unique_ptr被赋给vp中的一个unique_ptr。另外，如果按值而不是按引用给show()传递对象，for_each()将非法，因为这将导致使用一个来自vp的非临时unique_ptr初始化pi，而这是不允许的。前面说过，编译器将发现错误使用unique_ptr的企图。</p>
+<p>在unique_ptr为右值时，可将其赋给shared_ptr，这与将一个unique_ptr赋给一个需要满足的条件相同。与前面一样，在下面的代码中，make_int()的返回类型为unique_ptr<int>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">pup</span><span class="p">(</span><span class="n">make_int</span><span class="p">(</span><span class="n">rand</span><span class="p">()</span> <span class="o">%</span> <span class="mi">1000</span><span class="p">));</span>   <span class="c1">// ok
+</span><span class="c1"></span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">spp</span><span class="p">(</span><span class="n">pup</span><span class="p">);</span>                       <span class="c1">// not allowed, pup as lvalue
+</span><span class="c1"></span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">spr</span><span class="p">(</span><span class="n">make_int</span><span class="p">(</span><span class="n">rand</span><span class="p">()</span> <span class="o">%</span> <span class="mi">1000</span><span class="p">));</span>   <span class="c1">// ok
+</span></code></pre></td></tr></table>
+</div>
+</div><p>模板shared_ptr包含一个显式构造函数，可用于将右值unique_ptr转换为shared_ptr。shared_ptr将接管原来归unique_ptr所有的对象。</p>
+<p>在满足unique_ptr要求的条件时，也可使用auto_ptr，但unique_ptr是更好的选择。如果你的编译器没有unique_ptr，可考虑使用Boost库提供的scoped_ptr，它与unique_ptr类似。</p>
+<h3 id="varidic-template">varidic template</h3>
+<p>模版参数可变</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">void</span> <span class="nf">print</span><span class="p">(){}</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="p">,</span> <span class="k">typename</span><span class="p">...</span> <span class="n">Types</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">print</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">firstArg</span><span class="p">,</span> <span class="k">const</span> <span class="n">Types</span><span class="o">&amp;</span><span class="p">...</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">firstArg</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+  <span class="n">print</span><span class="p">(</span><span class="n">args</span><span class="p">...);</span><span class="c1">// 当参数为0 的时候， 调用上面的空函数
+</span><span class="c1"></span><span class="p">}</span>
+
+<span class="n">print</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s">&#34;a&#34;</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="space-in-template-expression-nullptrauto">space in Template Expression, nullptr，auto</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span> <span class="o">&gt;</span> <span class="o">&gt;</span>  <span class="c1">// 旧版
+</span><span class="c1"></span><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span> <span class="o">&gt;&gt;</span>	<span class="c1">// c11新版
+</span><span class="c1"></span>  
+<span class="kt">void</span> <span class="n">foo</span><span class="p">(</span><span class="kt">int</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">foo</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">);</span> 
+<span class="n">foo</span><span class="p">(</span><span class="nb">NULL</span><span class="p">)</span> <span class="c1">// foo1? foo2 ? 旧版有冲突
+</span><span class="c1"></span><span class="p">(</span><span class="nb">NULL</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">true</span>
+<span class="n">nullptr</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span> <span class="c1">//c11 解决方案
+</span><span class="c1"></span>        
+<span class="k">auto</span> <span class="n">i</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="uniform-initiazation">Uniform Initiazation</h3>
+<p>初始化统一可以用大括号，在变量的后面直接用!!!  (强)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="n">values</span><span class="p">[]</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">};</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">};</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">str</span><span class="p">{</span><span class="s">&#34;df&#34;</span><span class="p">,</span><span class="s">&#34;df&#34;</span><span class="p">};</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="initializer_list">initializer_list</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">p</span><span class="p">{};</span>  <span class="c1">//0
+</span><span class="c1"></span><span class="kt">int</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>   <span class="c1">//no
+</span><span class="c1"></span><span class="kt">int</span> <span class="o">*</span><span class="n">q</span><span class="p">{};</span>	  <span class="c1">//nullptr
+</span><span class="c1"></span>    
+<span class="kt">void</span> <span class="nf">print</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">){</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span><span class="p">;}</span>
+<span class="kt">void</span> <span class="nf">print</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">initializer_list</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vals</span><span class="p">){</span>
+    <span class="n">for_each</span><span class="p">(</span><span class="n">vals</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">vals</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">print</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="n">print</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">45</span><span class="p">});</span>
+    
+<span class="n">class</span> <span class="n">P</span><span class="p">{</span>
+    <span class="n">P</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">){}</span>
+    <span class="n">P</span><span class="p">(</span><span class="n">initializer_list</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">intlist</span><span class="p">){}</span>
+    <span class="kt">void</span> <span class="n">operator</span><span class="o">=</span><span class="p">(</span><span class="n">initializer_list</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">il</span><span class="p">){}</span>
+<span class="p">};</span>
+
+<span class="n">P</span> <span class="nf">p</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span> 		<span class="c1">// 第一个构造函数
+</span><span class="c1"></span><span class="n">P</span> <span class="n">p</span><span class="p">{</span><span class="mi">3</span><span class="p">};</span>			<span class="c1">// 第二个
+</span><span class="c1"></span><span class="n">P</span> <span class="n">P</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">};</span>
+<span class="n">P</span> <span class="n">P</span><span class="o">=</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">};</span>		<span class="c1">// 第三个
+</span><span class="c1"></span>
+<span class="n">min</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">34</span><span class="p">,</span><span class="mi">4</span><span class="p">})</span>
+<span class="n">max</span><span class="p">({</span><span class="n">string</span><span class="p">(</span><span class="s">&#34;dsf&#34;</span><span class="p">),</span><span class="n">string</span><span class="p">(</span><span class="s">&#34;fsda&#34;</span><span class="p">)});</span> <span class="c1">// 强
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="explict-for-actors-taking-more-than-one-argument">explict for actors taking more than one argument</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="n">class</span> <span class="n">C</span><span class="p">{</span>
+   <span class="n">explict</span> <span class="n">C</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">){}</span>
+<span class="p">};</span>
+<span class="n">C</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//error  1 -&gt; C not explict
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="for">for</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>      <span class="mi">1</span><span class="p">,</span>      <span class="mi">2</span><span class="p">,</span>      <span class="mi">3</span>  <span class="p">};</span>
+  <span class="c1">//* -----------------------------------
+</span><span class="c1"></span>  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;auto &amp;&amp; foreach</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+  <span class="k">for</span> <span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span> <span class="nl">i</span> <span class="p">:</span> <span class="n">a</span><span class="p">)</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>  <span class="c1">//取地址
+</span><span class="c1"></span>  <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">i</span> <span class="p">:</span> <span class="n">a</span><span class="p">)</span> <span class="p">{</span>        <span class="c1">//取值
+</span><span class="c1"></span>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="c1">//! 尽量用 取值， 不然有拷贝会慢一点
+</span><span class="c1"></span>
+  <span class="cm">/*
+</span><span class="cm">  template&lt;class InputIterator, class Function&gt;
+</span><span class="cm">  Function for_each(InputIterator first, InputIterator last, Function fn){
+</span><span class="cm">      while (first!=last) {
+</span><span class="cm">        fn (*first);
+</span><span class="cm">        ++first;
+</span><span class="cm">      }
+</span><span class="cm">      return fn;      // or, since C++11: return move(fn);
+</span><span class="cm">  }
+</span><span class="cm">  */</span>
+  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+  <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">foreach</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">5</span><span class="p">);</span>
+  <span class="n">for_each</span><span class="p">(</span><span class="n">foreach</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">foreach</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="p">[](</span><span class="kt">int</span> <span class="n">a</span><span class="p">)</span> <span class="p">{</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span><span class="p">;</span> <span class="p">});</span>
+  <span class="k">struct</span> <span class="n">Sum</span> <span class="p">{</span>  <span class="c1">//仿函数
+</span><span class="c1"></span>    <span class="kt">int</span> <span class="n">sum</span><span class="p">;</span>
+    <span class="kt">void</span> <span class="nf">operator</span><span class="p">()(</span><span class="kt">int</span> <span class="n">val</span><span class="p">)</span> <span class="p">{</span> <span class="n">sum</span> <span class="o">+=</span> <span class="n">val</span><span class="p">;</span> <span class="p">}</span>
+  <span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="defalut-delete">=defalut, =delete</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="n">class</span> <span class="n">B</span><span class="p">{</span>
+    <span class="n">B</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">)</span> <span class="o">:</span> <span class="n">a</span><span class="p">(</span><span class="n">a</span><span class="p">){}</span> <span class="c1">// 写了后没有构造函数
+</span><span class="c1"></span>    <span class="n">B</span><span class="p">(</span><span class="k">const</span> <span class="n">B</span><span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="n">delete</span><span class="p">;</span> <span class="c1">//不给拷贝构造
+</span><span class="c1"></span>    <span class="n">B</span><span class="o">&amp;</span> <span class="n">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">B</span><span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="n">delete</span><span class="p">;</span> <span class="c1">//不给拷贝构造
+</span><span class="c1"></span>    <span class="nl">private</span><span class="p">:</span> 
+    	<span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// 也可以 放到private ，去friend中调用
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="alias-template">alias template</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="n">template</span><span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+<span class="n">using</span> <span class="n">vec</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vint</span> <span class="c1">// 无法带参数！！！！！
+</span><span class="c1"></span>    
+<span class="n">vec</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">arr</span><span class="p">;</span>
+<span class="n">vint</span> <span class="n">arr</span><span class="p">;</span>
+    
+    
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="decltype">decltype</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="k">auto</span> <span class="n">t</span> <span class="o">=</span> <span class="p">[](){}</span>
+
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">decltype</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="p">[]{</span> <span class="n">cou</span> <span class="o">&lt;&lt;</span><span class="s">&#34;heloo&#34;</span><span class="p">;}</span> 	<span class="c1">//函数
+</span><span class="c1"></span><span class="p">[]{</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;world&#34;</span><span class="p">;}();</span>	<span class="c1">//
+</span><span class="c1"></span>    
+<span class="kt">int</span> <span class="n">x</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">y</span><span class="p">;</span>
+<span class="k">auto</span> <span class="n">q</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">y</span><span class="p">]{};</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="左值和右值">左值和右值</h2>
+<h3 id="简单的定义">简单的定义</h3>
+<p><em>左值 (lvalue, locator value)</em> 表示了一个占据内存中某个可识别的位置（也就是一个地址）的对象。</p>
+<p><em>右值 (rvalue)</em> 则使用排除法来定义。一个表达式不是 <em>左值</em> 就是 <em>右值</em> 。 那么，右值是一个 <em>不</em> 表示内存中某个可识别位置的对象的表达式。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="n">globalvar</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="o">&amp;</span> <span class="n">foo</span><span class="p">(){</span>
+    <span class="k">return</span> <span class="n">globalvar</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
+    <span class="n">foo</span><span class="p">()</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="右值引用">右值引用</h3>
+<h2 id="标准库">标准库</h2>
+<h3 id="array">array</h3>
+<p>将数组封装成模版类， 没有构造函数和析构函数， 模拟出数组！</p>
+<h3 id="tuple">tuple</h3>
+<p>使用模版继承实现</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="k">auto</span> <span class="n">tu</span> <span class="o">=</span> <span class="n">make_tuple</span><span class="p">(</span><span class="mi">22</span><span class="p">,</span><span class="mi">44</span><span class="p">,</span><span class="s">&#34;dsjfk&#34;</span><span class="p">);</span>
+<span class="n">tuple_size</span><span class="o">&lt;&gt;::</span><span class="n">value</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Firefly</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2017-11-21
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/cxx/">CXX</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/notepad/cxx/stl-%E7%9A%84%E4%BD%BF%E7%94%A8/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">STL 使用</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/notepad/java/javanote/java-basic-study/target/classes/basic/collection/readme/">
+            <span class="next-text nav-default"></span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="http://github.com/fierygit" class="iconfont icon-github" title="github"></a>
+  <a href="http://fireflying.top/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>Firefly</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

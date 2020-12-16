@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>设计模式 on Firefly</title>
+    <link>http://fireflying.top/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+    <description>Recent content in 设计模式 on Firefly</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 01 Oct 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://fireflying.top/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Java设计模式</title>
+      <link>http://fireflying.top/post/notepad/read/design_pattern/</link>
+      <pubDate>Tue, 01 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/read/design_pattern/</guid>
+      <description>设计模式 笔记说明： 这是一节专业选修课，上课没怎么听， 弥补一下错过的东西， 给大部分的设计模式写了一个demo， 很多细节都在里面，代码地址： github/fierygit, 一</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>多线程 on Firefly</title>
+    <link>http://fireflying.top/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</link>
+    <description>Recent content in 多线程 on Firefly</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 27 May 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://fireflying.top/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>java 并发与实战</title>
+      <link>http://fireflying.top/post/notepad/java/java%E5%B9%B6%E5%8F%91/</link>
+      <pubDate>Sun, 27 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/java/java%E5%B9%B6%E5%8F%91/</guid>
+      <description>java 并发与实战 基础知识 线程的安全性 安全的线程满足条件： 不在线程之间共享变量 将变量置为不可变变量 访问变量时使用同步 原子性： 1 value = value + 1； 在 cpu 执行</description>
+    </item>
+    
+  </channel>
+</rss>

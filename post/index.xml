@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Firefly</title>
+    <link>http://fireflying.top/post/</link>
+    <description>Recent content in Posts on Firefly</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 03 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://fireflying.top/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DDIA</title>
+      <link>http://fireflying.top/post/notepad/read/ddia.mm/</link>
+      <pubDate>Thu, 03 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/read/ddia.mm/</guid>
+      <description>数据密集型应用学习笔记 第1章 当今许多应用大多是数据数据密集（data-intensive）而不是计算密集型（compute-intensiv</description>
+    </item>
+    
+    <item>
+      <title>Tomcat 学习笔记</title>
+      <link>http://fireflying.top/post/notepad/read/tomcat/</link>
+      <pubDate>Wed, 04 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/read/tomcat/</guid>
+      <description>Tomcat connector connector 在解析完了http 协议之后会调用 containner 的 invoke 方法！ 1 connector.getContainer().invoke(request, response); 接下来看是 container 容器的 invoke 方法 1 2 3 4 public void invoke(Request request, Response response) throws IOException, ServletException { pipeline.invoke(request, response); } 下面看容器的实现方法！ Servlet servlet</description>
+    </item>
+    
+    <item>
+      <title>limter</title>
+      <link>http://fireflying.top/post/notepad/algorithm/limter/readme/</link>
+      <pubDate>Sat, 01 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/limter/readme/</guid>
+      <description>漏桶算法 生动形象，容易理解， 往桶里加水的速度大于漏水的速度就超速了， 桶大小表示最大速度大小 缺点： 只能匀速处理， 不能并发处理， 虽然可以一下往桶</description>
+    </item>
+    
+    <item>
+      <title>java 结合总结</title>
+      <link>http://fireflying.top/post/notepad/java/javanote/java-basic-study/src/main/java/basic/collection/readme/</link>
+      <pubDate>Thu, 23 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/java/javanote/java-basic-study/src/main/java/basic/collection/readme/</guid>
+      <description>集合总结 copy from zengsiyan Java对事物的体现都是以对象的形式，为了方便对多个对象的操作，就要对对象进行存储（内存上的存储）。 然而使用数组存储对象存在一</description>
+    </item>
+    
+    <item>
+      <title>tinhttpd</title>
+      <link>http://fireflying.top/post/notepad/read/tinhttpd/</link>
+      <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/read/tinhttpd/</guid>
+      <description>tinhttpd https://www.cnblogs.com/nengm1988/p/7816618.html 不断创建线程接受连接， 并解析http，解析完了之后，创建多个进程处理，每个子进程处理然后发送给父进程， 这里把处理和回复解耦， 处理的子进程</description>
+    </item>
+    
+    <item>
+      <title>大数运算</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/tree/</link>
+      <pubDate>Mon, 06 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/tree/</guid>
+      <description>[toc] 树 面试题 04.06. 后继者 设计一个算法，找出二叉搜索树中指定节点的“下一个”节点（也即中序后继）。 1 2 3 4 5 6 7 8 9 TreeNode* inorderSuccessor(TreeNode* root, TreeNode* p) { TreeNode * ans =nullptr; while(root){ cout &amp;lt;&amp;lt; root-&amp;gt;val &amp;lt;&amp;lt; endl;</description>
+    </item>
+    
+    <item>
+      <title>图</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/%E5%9B%BE%E8%AE%BA%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Sat, 28 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/%E5%9B%BE%E8%AE%BA%E6%80%BB%E7%BB%93/</guid>
+      <description>图论总结 [toc] 算法这东西，容易忘记， 捡起来很快， 但也要时间， 因此，做一些简短的记录！ 图是什么？ 树可以存线， 图可以存树，树是一种无环图， 线是最简单</description>
+    </item>
+    
+    <item>
+      <title>计网总结</title>
+      <link>http://fireflying.top/post/notepad/network/%E8%AE%A1%E7%BD%91%E5%A4%A7%E7%BA%B2/</link>
+      <pubDate>Sat, 28 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/network/%E8%AE%A1%E7%BD%91%E5%A4%A7%E7%BA%B2/</guid>
+      <description>计网总结 javaguide 上的总结的很好，直接拿来充博客用！ 来自： https://snailclimb.gitee.io/javaguide/#/docs/</description>
+    </item>
+    
+    <item>
+      <title>并查集</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/unionfind/</link>
+      <pubDate>Sat, 14 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/unionfind/</guid>
+      <description>200. 岛屿数量 给你一个由 &#39;1&#39;（陆地）和 &#39;0&#39;（水）组成的的二维网格，请你计算网格中岛屿的数量。 岛屿总是被水包围，并且每座岛屿只能由水平方向或竖</description>
+    </item>
+    
+    <item>
+      <title>tcp学习笔记</title>
+      <link>http://fireflying.top/post/notepad/network/%E8%AE%A1%E7%BD%91%E6%9D%82%E5%BD%95/</link>
+      <pubDate>Fri, 28 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/network/%E8%AE%A1%E7%BD%91%E6%9D%82%E5%BD%95/</guid>
+      <description>tcp学习笔记 TCP 连续发 10 个包， 客户端会收到什么消息？ ip 3.1 环回地址必须是1 2 7 . 0 . 0 . 1吗？ 1 不，任何网络 I D 为1 2 7 的A类地址都是可行的，</description>
+    </item>
+    
+    <item>
+      <title>回溯</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/backtracking/</link>
+      <pubDate>Fri, 28 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/backtracking/</guid>
+      <description>Backtracking 面试题 08.04. 幂集 幂集。编写一种方法，返回某集合的所有子集。集合中不包含重复的元素。 说明：解集不能包含重复的子集。 示例: 1 2 3 4 5 6 7 8 9 10 11 12</description>
+    </item>
+    
+    <item>
+      <title>面试算法题</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/interview/</link>
+      <pubDate>Fri, 28 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/interview/</guid>
+      <description>常见面试题 面试题 04.10. 检查子树 检查子树。你有两棵非常大的二叉树：T1，有几万个节点；T2，有几万个节点。设计一个算法，判断 T2 是否为 T1 的子树。 如果</description>
+    </item>
+    
+    <item>
+      <title>字符串</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/string/</link>
+      <pubDate>Mon, 24 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/string/</guid>
+      <description>string处理 [toc] 字符串hash 字符串可以看做是一个n进制的表示方式： 1 ABC = A * 26^2 + B * 26^1 + C * 26^0; 这就简单地转成 10 进制了， 然后在 取余， 让它在</description>
+    </item>
+    
+    <item>
+      <title>贪心算法</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/greedy/</link>
+      <pubDate>Tue, 28 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/greedy/</guid>
+      <description>贪心算法 贪心方法的一般策略 问题的一般特征：问题的解是由n个输入的、满足某些事先给定的条件的子集组成。 ​ 1）一般方法 ​ 根据题意，选取一种度量标</description>
+    </item>
+    
+    <item>
+      <title>Leetcode100</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/leetcode100/</link>
+      <pubDate>Wed, 08 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/leetcode100/</guid>
+      <description>leetcode100 练习 来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/add-two-numbers 著</description>
+    </item>
+    
+    <item>
+      <title>ACM_exercise</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/hnu_acm/</link>
+      <pubDate>Sat, 28 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/hnu_acm/</guid>
+      <description>HNU ACM dp 1. Longest Ordered Subsequence Problem description A numeric sequence of ai is ordered if a1 &amp;lt; a2 &amp;lt; &amp;hellip; &amp;lt; aN. Let the subsequence of the given numeric sequence (a1, a2, &amp;hellip;, aN) be any sequence (ai1, ai2, &amp;hellip;, aiK), where 1 &amp;lt;= i1 &amp;lt; i2 &amp;lt; &amp;hellip; &amp;lt; iK &amp;lt;= N. For example, sequence (1, 7, 3, 5, 9, 4, 8) has ordered subsequences, e. g.,</description>
+    </item>
+    
+    <item>
+      <title>DP</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/dp/</link>
+      <pubDate>Sat, 28 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/dp/</guid>
+      <description>DP 题目汇总 记录一些遇到过的dp问题 DP(Dynamic Programming) 一种解决最优化问题的算法思想。 要求： 重叠子问题 &amp;amp;&amp;amp; 最优子结构 递归： 记忆化搜索 递推： 自底向上 [toc] 比特位计数 给</description>
+    </item>
+    
+    <item>
+      <title>Test</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/exercise100/</link>
+      <pubDate>Sat, 28 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/exercise100/</guid>
+      <description>1 2 3 4 5 6 7 8 9 10 11 12 13 static int hashFunction( char *key) { int temp = 0; int i = 0; while (key[i] != &amp;#39;\0&amp;#39;) { temp = ((temp &amp;lt;&amp;lt; SHIFT) + key[i]) % MAXTABLESIZE; ++i; } return temp; } 101.删除排序数组中的重复项 给定一个排序数组，</description>
+    </item>
+    
+    <item>
+      <title>分治法</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/%E5%88%86%E6%94%AF%E6%B3%95/</link>
+      <pubDate>Sat, 28 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/%E5%88%86%E6%94%AF%E6%B3%95/</guid>
+      <description>分治法 一个大的问题分解为一些小的问题来求解 归并排序 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 void mergeSort(int* num, int le, int ri) { if (le &amp;gt;= ri) return; int mid = le + ((ri - le) &amp;gt;&amp;gt; 1); mergeSort(num, le, mid); mergeSort(num,</description>
+    </item>
+    
+    <item>
+      <title>大数运算</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/%E5%A4%A7%E6%95%B0%E8%BF%90%E7%AE%97/</link>
+      <pubDate>Sat, 28 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/%E5%A4%A7%E6%95%B0%E8%BF%90%E7%AE%97/</guid>
+      <description>大数运算 [toc] 大数加法 1 2 3 4 5 6 7 intput: 123456789012345678901234567890 123456789012345678901234567890 123456789012345678901234567890 0 output: 370370367037037036703703703670 大数乘法</description>
+    </item>
+    
+    <item>
+      <title>排序</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/sorting/</link>
+      <pubDate>Sat, 28 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/sorting/</guid>
+      <description>排序算法 [toc] insertSort 将数插到正确的地方 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 void insertSort(int *num, int le, int ri) { for (int i = le; i &amp;lt;= ri; i++) { int index = -1; for (int j = 0; j &amp;lt; i; j++) { if (num[j] &amp;gt; num[i]) { index = j;</description>
+    </item>
+    
+    <item>
+      <title>easy_c</title>
+      <link>http://fireflying.top/post/notepad/compiling/easy_c/</link>
+      <pubDate>Tue, 05 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/compiling/easy_c/</guid>
+      <description>easy_c 实现目标 实现一门基于 x86 平台的编译器， 链接基于GNU as， 功能实现加减乘除， 函数调用， if 语句和while循环，，输出整数值和字符串，不实现指</description>
+    </item>
+    
+    <item>
+      <title>x86 汇编器编程</title>
+      <link>http://fireflying.top/post/notepad/compiling/x86-%E6%B1%87%E7%BC%96%E5%99%A8%E7%BC%96%E7%A8%8B/</link>
+      <pubDate>Tue, 05 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/compiling/x86-%E6%B1%87%E7%BC%96%E5%99%A8%E7%BC%96%E7%A8%8B/</guid>
+      <description>x86 汇编器编程 基于x86 实现编译器首先得了解x86 平台的指令调度， 以下是一些我在实现编译器过程中用到的基础知识！ 大部分内容参考了 青木的自制编译</description>
+    </item>
+    
+    <item>
+      <title>Wolrd In C</title>
+      <link>http://fireflying.top/post/notepad/cxx/c_notepad/</link>
+      <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/cxx/c_notepad/</guid>
+      <description>c / c++ note c / c++ 遇到的bug 或者小技巧集 [TOC] typedef 和 #define 每一个例子都看懂 == 入门c 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 //定义新的类型 typedef int*</description>
+    </item>
+    
+    <item>
+      <title>ssh配置公钥</title>
+      <link>http://fireflying.top/post/notepad/others/ssh%E9%85%8D%E7%BD%AE%E5%85%AC%E9%92%A5/</link>
+      <pubDate>Sun, 27 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/others/ssh%E9%85%8D%E7%BD%AE%E5%85%AC%E9%92%A5/</guid>
+      <description>ssh的使用 背景 ssh连接服务器是经常要操作的步骤，可当每次都要手动输入 ssh user@ip ，然后加上密码连接可谓是及其地麻烦，虽然有xs的记录密码，但当要</description>
+    </item>
+    
+    <item>
+      <title>ffmpeg</title>
+      <link>http://fireflying.top/post/notepad/others/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86%E8%BD%AF%E4%BB%B6ffmpeg/</link>
+      <pubDate>Tue, 22 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/others/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86%E8%BD%AF%E4%BB%B6ffmpeg/</guid>
+      <description>ffmpeg 转载 ffmpeg的使用方式： ffmpeg [options] [[infile options] -i infile]&amp;hellip; {[outfile options] outfile}&amp;hellip; 常用参数说明： 主要参数： -i 设定输入流 -f 设定输出格式 -ss 开始时间 视频参数： -b 设定视频流量，默认为</description>
+    </item>
+    
+    <item>
+      <title>树莓派入坑之旅</title>
+      <link>http://fireflying.top/post/notepad/others/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Thu, 17 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/others/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%BD%BF%E7%94%A8/</guid>
+      <description>树莓派使用 树莓派的安装 1、安装Win32DiskImager-0.9.5-install.exe到电脑上。 解压2019-06-20-rasp</description>
+    </item>
+    
+    <item>
+      <title>Java设计模式</title>
+      <link>http://fireflying.top/post/notepad/read/design_pattern/</link>
+      <pubDate>Tue, 01 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/read/design_pattern/</guid>
+      <description>设计模式 笔记说明： 这是一节专业选修课，上课没怎么听， 弥补一下错过的东西， 给大部分的设计模式写了一个demo， 很多细节都在里面，代码地址： github/fierygit, 一</description>
+    </item>
+    
+    <item>
+      <title>服务器自动拉取git脚本</title>
+      <link>http://fireflying.top/post/notepad/others/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%87%AA%E5%8A%A8%E6%8B%89%E5%8F%96git%E8%84%9A%E6%9C%AC/</link>
+      <pubDate>Tue, 01 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/others/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%87%AA%E5%8A%A8%E6%8B%89%E5%8F%96git%E8%84%9A%E6%9C%AC/</guid>
+      <description>linux 自动运行脚本代码 背景 Blog每次提交到git的时候，都要上服务器拉取一下，而且每次执行相同的操作，这种机械的操作机器是最擅长的，于是乎，上</description>
+    </item>
+    
+    <item>
+      <title>git使用</title>
+      <link>http://fireflying.top/post/notepad/tools/git/</link>
+      <pubDate>Sat, 28 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/tools/git/</guid>
+      <description>Git常用操作，一文打尽 创建版本库 git clone url 克隆远程版本库 git init 初始化本地版本库 配置 git config &amp;ndash;global user.name &amp;lsquo;chengcp&amp;rsquo; 配置global级别的用户名 git config &amp;ndash;global user.email &amp;lsquo;1326895569@qq.com&amp;rsquo; 配置globa</description>
+    </item>
+    
+    <item>
+      <title>windows的脚本命令一件部署后端服务</title>
+      <link>http://fireflying.top/post/notepad/others/windows%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2%E5%90%8E%E7%AB%AF/</link>
+      <pubDate>Wed, 11 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/others/windows%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2%E5%90%8E%E7%AB%AF/</guid>
+      <description>windows的脚本命令一件部署后端服务 实习一个月了，其中有许多有意思的东西希望能记住一些小技巧，今天想记录的是，花了一个下午才研究通透的一</description>
+    </item>
+    
+    <item>
+      <title>matlab基础语法</title>
+      <link>http://fireflying.top/post/notepad/others/matlab%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</link>
+      <pubDate>Thu, 22 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/others/matlab%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</guid>
+      <description>matlab基础语法 disp显示结果 clc用来清除命令窗口的显示内容 clear用来清除工作空间里的数据内容 Who、whos命令用来在命令窗口</description>
+    </item>
+    
+    <item>
+      <title>spring-boot</title>
+      <link>http://fireflying.top/post/notepad/java/javanote/notes/spring-boot%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Sat, 13 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/java/javanote/notes/spring-boot%E7%AC%94%E8%AE%B0/</guid>
+      <description>一、Spring Boot 入门 1、Spring Boot 简介 简化Spring应用开发的一个框架； 整个Spring技术栈的一个大整合； J2EE开发的一站式解决</description>
+    </item>
+    
+    <item>
+      <title>操作系统学习笔记</title>
+      <link>http://fireflying.top/post/notepad/os/os/</link>
+      <pubDate>Mon, 01 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/os/os/</guid>
+      <description>操作系统复习指南 1.CPU 调度算法 了解CPU 调度算法，如先到先服务、最短作业优先、轮转、多级反馈队列等调度算法， 以及掌握多处理器调度的特殊性。 T~周</description>
+    </item>
+    
+    <item>
+      <title>dubbo</title>
+      <link>http://fireflying.top/post/notepad/read/dubbo/</link>
+      <pubDate>Wed, 01 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/read/dubbo/</guid>
+      <description>dubbo [toc] RPC 基础概念 基础概念： 响应时间(RT) 响应时间是指系统对请求作出响应的时间。直观上看，这个指标与人对软件性能的主观感受是非常一致的，因为它</description>
+    </item>
+    
+    <item>
+      <title>计算机网络学习笔记</title>
+      <link>http://fireflying.top/post/notepad/network/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Wed, 01 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/network/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+      <description>运输层 TCP: 提供可靠的数据传输服务 UDP： 不能保证数据的可靠传输 多路复用与多路分解 运输层负责将数据包发给 进程， 其中要到多路复用和多路分解 TCP：</description>
+    </item>
+    
+    <item>
+      <title>语言特性</title>
+      <link>http://fireflying.top/post/notepad/read/%E5%8A%A8%E6%80%81%E6%80%A7%E4%B8%8E%E9%9D%99%E6%80%81%E6%80%A7%E5%BC%BA%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%BC%B1%E7%B1%BB%E5%9E%8B/</link>
+      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/read/%E5%8A%A8%E6%80%81%E6%80%A7%E4%B8%8E%E9%9D%99%E6%80%81%E6%80%A7%E5%BC%BA%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%BC%B1%E7%B1%BB%E5%9E%8B/</guid>
+      <description>语言特性 关于语言特性的定义总是弄混，写篇博客记录一下！ 彻底理清！ 强类型与弱类型 强类型： 每个变量和对象都必须声明类型，在编译时确定好类型了，执</description>
+    </item>
+    
+    <item>
+      <title>maven</title>
+      <link>http://fireflying.top/post/notepad/tools/maven/</link>
+      <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/tools/maven/</guid>
+      <description>maven 以下的命令会按顺序执行，后面命令会调用前面的命令 1 mvn clean 把编译好的类清除掉， 因为每个开发环境不同 1 mvn compile 编译主要的类 1 mvn test 编译测试的类 1 mvn package 把</description>
+    </item>
+    
+    <item>
+      <title>不备案建站</title>
+      <link>http://fireflying.top/post/notepad/others/%E7%BB%95%E8%BF%87%E7%BD%91%E7%AB%99%E5%A4%87%E6%A1%88%E5%BB%BA%E7%AB%99/</link>
+      <pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/others/%E7%BB%95%E8%BF%87%E7%BD%91%E7%AB%99%E5%A4%87%E6%A1%88%E5%BB%BA%E7%AB%99/</guid>
+      <description>背景 这个Blog建好的时候， 每次打开查看我写的都要输入一串数字ip，浏览器有记录还好，要是没有记录，真的是太麻烦了，鬼才能记住这么一长串数字</description>
+    </item>
+    
+    <item>
+      <title>Wolrd In Java</title>
+      <link>http://fireflying.top/post/notepad/java/wolrd_in_java/</link>
+      <pubDate>Sun, 28 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/java/wolrd_in_java/</guid>
+      <description>深入理解Java 有空就记录一点小内容！！ Java接口与抽象类的区别 Java提供和支持创建抽象类和接口。它们的实现有共同点，不同点在于： 接口中</description>
+    </item>
+    
+    <item>
+      <title>docker</title>
+      <link>http://fireflying.top/post/notepad/tools/docker/</link>
+      <pubDate>Fri, 28 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/tools/docker/</guid>
+      <description>docker的使用步骤： 安装 Docker 去Docker仓库找到这个软件对应的镜像 使用Docker运行这个镜像，这个镜像就会生成一个Docker容器 对容</description>
+    </item>
+    
+    <item>
+      <title>java 并发与实战</title>
+      <link>http://fireflying.top/post/notepad/java/java%E5%B9%B6%E5%8F%91/</link>
+      <pubDate>Sun, 27 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/java/java%E5%B9%B6%E5%8F%91/</guid>
+      <description>java 并发与实战 基础知识 线程的安全性 安全的线程满足条件： 不在线程之间共享变量 将变量置为不可变变量 访问变量时使用同步 原子性： 1 value = value + 1； 在 cpu 执行</description>
+    </item>
+    
+    <item>
+      <title>JVM</title>
+      <link>http://fireflying.top/post/notepad/java/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3jvm/</link>
+      <pubDate>Sun, 27 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/java/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3jvm/</guid>
+      <description>JVM i do not love java at all! 内存机制 运行时数据区域 程序计数器 线程私有，执行native方法时为空！ 不会OutOfMemoryError！ java虚拟机栈</description>
+    </item>
+    
+    <item>
+      <title>conda</title>
+      <link>http://fireflying.top/post/notepad/tools/conda/</link>
+      <pubDate>Wed, 28 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/tools/conda/</guid>
+      <description>更换清华源 1 2 3 4 5 6 7 8 9 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/ conda config --append channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/fastai/ conda config --append channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/ conda config --append channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda/ # 搜索时显示通道地址 conda config --set show_channel_urls yes 1 conda env list 1 conda activate py37 1 2 3</description>
+    </item>
+    
+    <item>
+      <title>STL 使用</title>
+      <link>http://fireflying.top/post/notepad/cxx/stl-%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Thu, 01 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/cxx/stl-%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>本文来自CSDN博客，转载请标明出处：http://blog.csdn.net/ciahi/archive/2009/08/09/44291</description>
+    </item>
+    
+    <item>
+      <title>cplusplus</title>
+      <link>http://fireflying.top/post/notepad/cxx/cplusplus/</link>
+      <pubDate>Tue, 21 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/cxx/cplusplus/</guid>
+      <description>[toc] c11的语言特性 .h 头文件可以不加 1 2 #include &amp;lt;vector&amp;gt;#include &amp;lt;vector.h&amp;gt; function, bind 关于std::function 的用法： 其实就可以理解成函数指针 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://fireflying.top/post/notepad/java/javanote/java-basic-study/target/classes/basic/collection/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/java/javanote/java-basic-study/target/classes/basic/collection/readme/</guid>
+      <description>集合总结 copy from zengsiyan Java对事物的体现都是以对象的形式，为了方便对多个对象的操作，就要对对象进行存储（内存上的存储）。 然而使用数组存储对象存在一</description>
+    </item>
+    
+  </channel>
+</rss>

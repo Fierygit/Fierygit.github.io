@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Wolrd In C - Firefly</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Firefly" /><meta name="description" content="c / c&#43;&#43; note c / c&#43;&#43; 遇到的bug 或者小技巧集 [TOC] typedef 和 #define 每一个例子都看懂 == 入门c 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 //定义新的类型 typedef int*" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
+
+
+<link rel="canonical" href="http://fireflying.top/post/notepad/cxx/c_notepad/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Wolrd In C" />
+<meta property="og:description" content="c / c&#43;&#43; note c / c&#43;&#43; 遇到的bug 或者小技巧集 [TOC] typedef 和 #define 每一个例子都看懂 == 入门c 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 //定义新的类型 typedef int*" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fireflying.top/post/notepad/cxx/c_notepad/" />
+<meta property="article:published_time" content="2019-11-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-11-02T00:00:00+00:00" />
+<meta itemprop="name" content="Wolrd In C">
+<meta itemprop="description" content="c / c&#43;&#43; note c / c&#43;&#43; 遇到的bug 或者小技巧集 [TOC] typedef 和 #define 每一个例子都看懂 == 入门c 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 //定义新的类型 typedef int*">
+<meta itemprop="datePublished" content="2019-11-02T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-11-02T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1960">
+
+
+
+<meta itemprop="keywords" content="CXX," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Wolrd In C"/>
+<meta name="twitter:description" content="c / c&#43;&#43; note c / c&#43;&#43; 遇到的bug 或者小技巧集 [TOC] typedef 和 #define 每一个例子都看懂 == 入门c 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 //定义新的类型 typedef int*"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Firefly</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Firefly</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Wolrd In C</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-11-02 </span>
+        <div class="post-category">
+            <a href="/categories/cxx/"> CXX </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#center-c--c-notecenter"><center> c / c++ note</center></a>
+      <ul>
+        <li><a href="#typedef-和-define">typedef 和 #define</a></li>
+        <li><a href="#位运算">位运算</a></li>
+        <li><a href="#memset赋值无穷大">memset赋值无穷大</a></li>
+        <li><a href="#格式化标准输入输出">格式化标准输入输出</a></li>
+        <li><a href="#struct-初始化的一个小细节">struct 初始化的一个小细节</a></li>
+        <li><a href="#map的一个小细节">map的一个小细节</a></li>
+        <li><a href="#操作系统的-堆和栈">操作系统的 堆和栈</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h1 id="center-c--c-notecenter"><center> c / c++ note</center></h1>
+<p>c / c++ 遇到的bug 或者小技巧集</p>
+<p>[TOC]</p>
+<h2 id="typedef-和-define">typedef 和 #define</h2>
+<p>每一个例子都看懂 == 入门c</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="c1">//定义新的类型
+</span><span class="c1"></span><span class="k">typedef</span>  <span class="kt">int</span><span class="o">*</span> <span class="n">t1</span><span class="p">;</span>
+<span class="c1">//预处理， 替换
+</span><span class="c1"></span><span class="cp">#define t2  int*
+</span><span class="cp"></span>
+<span class="n">t1</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span> <span class="c1">//等价于  int *a, *b;
+</span><span class="c1"></span><span class="n">t2</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">;</span>  <span class="c1">//等价于  int *a, b;
+</span><span class="c1"></span>
+<span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kt">int</span> <span class="k">const</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">//等价于 const int b = 10;*************
+</span><span class="c1"></span>
+<span class="c1">//这两种写法是一样的，  定义 指针常量, t1 相当于一个新的类型, 如b的定义
+</span><span class="c1"></span><span class="n">t1</span> <span class="k">const</span> <span class="n">p1</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
+<span class="k">const</span> <span class="n">t1</span> <span class="n">p1</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
+<span class="o">*</span><span class="n">t1</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>    <span class="c1">//可改变量
+</span><span class="c1"></span><span class="n">t1</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">;</span> <span class="c1">//错误
+</span><span class="c1"></span>
+<span class="k">const</span> <span class="n">t1</span> <span class="o">*</span><span class="n">p5</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">p1</span><span class="p">;</span> <span class="c1">// 指向  新类型的指针， 这个指针不可变
+</span><span class="c1"></span><span class="n">p1</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">;</span> 			<span class="c1">// 错误
+</span><span class="c1"></span>
+<span class="k">const</span> <span class="n">t1</span> <span class="o">*</span> <span class="k">const</span> <span class="n">p5</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">p1</span><span class="p">;</span> <span class="c1">// 这个指针不可变, 而且指针指向的指针的对应的值不可变
+</span><span class="c1"></span><span class="o">**</span><span class="n">p1</span> <span class="o">=</span> <span class="mi">11</span> <span class="c1">// 错误
+</span><span class="c1"></span>
+<span class="k">const</span> <span class="n">t2</span> <span class="n">p2</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
+<span class="c1">//等价于 const int * p2 = &amp;a;
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="位运算">位运算</h2>
+<p>~ 用于数字或者整形变量之前，表示对该数取反操作，其规则是~0=1, ~1=0, 如二进制0101 0101取反后就是1010 1010</p>
+<p>测试得到： -a - 1  ==  ~a</p>
+<ul>
+<li>判断 2 的 乘方：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="n">n</span> <span class="o">&amp;</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>输出二进制 1 的个数:</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">int cnt = 0;
+while(n) n &amp;= n-1, ++cnt
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="memset赋值无穷大">memset赋值无穷大</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="kt">int</span> <span class="n">G</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+
+<span class="n">memset</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mh">0x3f</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">G</span><span class="p">));</span>   <span class="c1">//  输出这个1061109567,给数据赋值无穷大的方法
+</span></code></pre></td></tr></table>
+</div>
+</div><p>memset 是按照一个字节来赋值的， 因此memset 会执行  sizeof（int） * 10 也就是40次的赋值，因此，</p>
+<p><code>G[0] = 0x3f3f3f3f</code> .</p>
+<p>为什么要选择 0x3f3f3f3f 作为无穷大？  因为这个数相加还是在 int 的范围之内， 无穷大相加还是无穷大， 而且这个数方便写, 连续4个 3f！</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="mh">0x3f3f3f3f</span> 	<span class="o">&lt;&lt;</span> <span class="s">&#34;</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="mh">0x3f3f3f3f</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="mh">0x7fffffff</span> 	<span class="o">&lt;&lt;</span> <span class="s">&#34;</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">~</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">31</span><span class="p">)</span> 		<span class="o">&lt;&lt;</span> <span class="s">&#34;</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="mi">1061109567</span>
+<span class="mi">2122219134</span>
+<span class="mi">2147483647</span>
+<span class="mi">2147483647</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="格式化标准输入输出">格式化标准输入输出</h2>
+<p>cout.setf(ios::left);   //左对齐 右对齐相同</p>
+<p>cout.width(3);    //宽度为3</p>
+<h2 id="struct-初始化的一个小细节">struct 初始化的一个小细节</h2>
+<p>2019-11-2 
+1.今天写实验定义了一个这样的结构体，然后赋值：</p>
+<p><img src="https://raw.githubusercontent.com/Fierygit/picbed/master/c1.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Fierygit/picbed/master/c2.jpg" alt=""></p>
+<p>debug了半天， 一个一个输出，终于找到错误的源头，原来是。。。。。。string和struct有冲突，什么原因呢？</p>
+<p>经查，  malloc/free和new/delete</p>
+<hr>
+<ul>
+<li>new会先调用operator new函数，申请足够的内存（通常底层使用malloc实现）。然后调用类型的构造函数，初始化成员变量，最后返回自定义类型指针。delete先调用析构函数，然后调用operator delete函数释放内存（通常底层使用free实现）。</li>
+</ul>
+<hr>
+<ul>
+<li>malloc/free是库函数，只能动态的申请和释放内存，无法强制要求其做自定义类型对象构造和析构工作。</li>
+</ul>
+<hr>
+<p>所以解决的方案是： <code>TreeNode *temp = new TreeNode;</code></p>
+<p>struct 是c里面的， 而string 类是 c++的，所以当在用c++的时候，写c语言就要考虑一下兼容问题。</p>
+<h2 id="map的一个小细节">map的一个小细节</h2>
+<p>当创建一个map的时候，map是没有预分配内存的，当map一个没有的key的时候，就会默认创建这个对象，并且map的size加一！</p>
+<p>看一个例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;map&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="n">map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">map1</span><span class="p">;</span>
+    <span class="n">map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">map2</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;out1-----------</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;map1.size(): &#34;</span> <span class="o">&lt;&lt;</span>  <span class="n">map1</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;</span><span class="se">\t</span><span class="s">&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span>  <span class="p">;</span> 
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;map2.size(): &#34;</span> <span class="o">&lt;&lt;</span>  <span class="n">map2</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;</span><span class="se">\t</span><span class="s">&#34;</span>  <span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;</span><span class="se">\n</span><span class="s"> out2-----------</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span><span class="s">&#34;map1[a]: &#34;</span> <span class="o">&lt;&lt;</span>  <span class="n">map1</span><span class="p">[</span><span class="s">&#34;a&#34;</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span><span class="s">&#34;map2[a]: &#34;</span> <span class="o">&lt;&lt;</span>  <span class="n">map2</span><span class="p">[</span><span class="s">&#34;a&#34;</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">map2</span><span class="p">[</span><span class="s">&#34;a&#34;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#34;&#34;</span><span class="p">)</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;empty string!!!!&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;map1.size(): &#34;</span> <span class="o">&lt;&lt;</span>  <span class="n">map1</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;</span><span class="se">\t</span><span class="s">&#34;</span>  <span class="o">&lt;&lt;</span> <span class="n">endl</span> <span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;map2.size(): &#34;</span> <span class="o">&lt;&lt;</span>  <span class="n">map2</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;</span><span class="se">\t</span><span class="s">&#34;</span>  <span class="o">&lt;&lt;</span> <span class="n">endl</span> <span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="n">out1</span><span class="o">-----------</span>
+<span class="n">map1</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">:</span> <span class="mi">0</span>
+<span class="n">map2</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">:</span> <span class="mi">0</span>
+ <span class="n">out2</span><span class="o">-----------</span>
+<span class="n">map1</span><span class="p">[</span><span class="n">a</span><span class="p">]</span><span class="o">:</span> <span class="mi">0</span>
+<span class="n">map2</span><span class="p">[</span><span class="n">a</span><span class="p">]</span><span class="o">:</span>
+<span class="n">empty</span> <span class="n">string</span><span class="o">!!!!</span>
+<span class="n">map1</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">:</span> <span class="mi">1</span>
+<span class="n">map2</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">:</span> <span class="mi">1</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>当写一些需要用到map的代码的时候，就要注意了， 可能要花掉你半天的时间去debug这个小问题！！！</p>
+<h2 id="操作系统的-堆和栈">操作系统的 堆和栈</h2>
+<p>学操作系统的时候，系统分配内存会分配 堆和栈</p>
+<p>有一个我纠结了很久的问题，堆是一个二叉树实现的，而分配内存的堆是一个线性的地址，这两者有什么关联呢？</p>
+<p>结论，数据结构没有学好！！  找个时间马一个heap</p>
+<p>栈和堆都可以用二叉树实现， 堆栈就是栈， 堆插入一个元素二叉树放到最后面，如果删除了父节点，就要调整二叉树， 而栈只能在二叉树尾部删除和操作，没有其它操作，所以堆栈的含义：堆的后面多了一个限定词， 把范围限定的更小了！！ 但栈一般直接使用数组就好了，查看网上的说法：栈是一种受限制的堆。</p>
+<p>查看数据结构的书本，发现这样一句话，我还画了出来 ： 学生们经常把堆的逻辑表示与利用基于数组的完全二叉树的物理实现相混淆。二者并非同义，虽然堆的一般实现方法是使用数组，但是从逻辑的角度来看，堆实际上是一种树结构。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="err">全局初始化区</span>
+<span class="kt">char</span> <span class="o">*</span><span class="n">p1</span><span class="p">;</span> <span class="err">全局未初始化区</span>
+<span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="kt">int</span> <span class="n">b</span><span class="p">;</span> <span class="err">栈</span>
+<span class="kt">char</span> <span class="n">s</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&#34;abc&#34;</span><span class="p">;</span> <span class="err">栈</span>
+<span class="kt">char</span> <span class="o">*</span><span class="n">p2</span><span class="p">;</span> <span class="err">栈</span>
+<span class="kt">char</span> <span class="o">*</span><span class="n">p3</span> <span class="o">=</span> <span class="s">&#34;123456&#34;</span><span class="p">;</span> <span class="mi">123456</span><span class="err">\</span><span class="mi">0</span><span class="err">在常量区，</span><span class="n">p3在栈上</span><span class="err">。</span>
+<span class="k">static</span> <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span><span class="mi">0</span><span class="err">；</span> <span class="err">全局（静态）初始化区</span>
+<span class="n">p1</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="err">分配得来得</span><span class="mi">10</span><span class="err">和</span><span class="mi">20</span><span class="err">字节的区域就在堆区。</span>
+<span class="n">strcpy</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="s">&#34;123456&#34;</span><span class="p">);</span> <span class="mi">123456</span><span class="err">\</span><span class="mi">0</span><span class="err">放在常量区，编译器可能会将它与</span><span class="n">p3所指向的</span>
+<span class="s">&#34;123456&#34;</span><span class="err">优化成一个</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">e</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;addr: %p</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;addr: %p</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;addr: %p</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;addr: %p</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">d</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;addr: %p</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">e</span><span class="p">);</span>
+  <span class="kt">int</span> <span class="o">*</span><span class="n">a1</span><span class="p">,</span> <span class="o">*</span><span class="n">b1</span><span class="p">,</span> <span class="o">*</span><span class="n">c1</span><span class="p">,</span> <span class="o">*</span><span class="n">d1</span><span class="p">,</span> <span class="o">*</span><span class="n">e1</span><span class="p">;</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">&#34;</span><span class="se">\n</span><span class="s">-----------------</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+
+  <span class="n">a1</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+  <span class="n">b1</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+  <span class="n">c1</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+  <span class="n">d1</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+  <span class="n">e1</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+
+  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;addr: %p</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a1</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;addr: %p</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">b1</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;addr: %p</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">c1</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;addr: %p</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">d1</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&#34;addr: %p</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">e1</span><span class="p">);</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="err">输出</span>
+<span class="nl">addr</span><span class="p">:</span> <span class="mf">0061FF</span><span class="mi">1</span><span class="n">C</span>
+<span class="nl">addr</span><span class="p">:</span> <span class="mf">0061FF</span><span class="mi">18</span>
+<span class="nl">addr</span><span class="p">:</span> <span class="mf">0061FF</span><span class="mi">14</span>
+<span class="nl">addr</span><span class="p">:</span> <span class="mf">0061FF</span><span class="mi">10</span>
+<span class="nl">addr</span><span class="p">:</span> <span class="mf">0061FF</span><span class="mi">0</span><span class="n">C</span>
+<span class="o">-----------------</span>
+<span class="nl">addr</span><span class="p">:</span> <span class="mf">0061FF</span><span class="mi">08</span>
+<span class="nl">addr</span><span class="p">:</span> <span class="mf">0061FF</span><span class="mo">04</span>
+<span class="nl">addr</span><span class="p">:</span> <span class="mf">0061FF</span><span class="mo">00</span>
+<span class="nl">addr</span><span class="p">:</span> <span class="mf">0061F</span><span class="n">EFC</span>
+<span class="nl">addr</span><span class="p">:</span> <span class="mf">0061F</span><span class="n">EF8</span>
+<span class="err">可以看出</span>  <span class="n">heap</span> <span class="err">是</span> <span class="err">从减小的，</span>  <span class="n">stack是增大的</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>for(int i = 0, siz = a.size(); i &lt; siz; i++)  //for循环可以有有四个值</p>
+<p>​      有时也可以两个值       for( ; a &lt; b; ++a);</p>
+<p>return cout &laquo; &quot; &quot; &laquo; endl,0;      //可以在return 后面输出</p>
+<p>在for循环里 ++i 比 i++ 的效率高 <a href="https://blog.csdn.net/FireflyNo1/article/details/82809624">详情请点击</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Firefly</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-11-02
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/cxx/">CXX</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/notepad/compiling/x86-%E6%B1%87%E7%BC%96%E5%99%A8%E7%BC%96%E7%A8%8B/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">x86 汇编器编程</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/notepad/others/ssh%E9%85%8D%E7%BD%AE%E5%85%AC%E9%92%A5/">
+            <span class="next-text nav-default">ssh配置公钥</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="http://github.com/fierygit" class="iconfont icon-github" title="github"></a>
+  <a href="http://fireflying.top/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>Firefly</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

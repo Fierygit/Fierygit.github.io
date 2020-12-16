@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Tomcat 学习笔记 - Firefly</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Firefly" /><meta name="description" content="Tomcat connector connector 在解析完了http 协议之后会调用 containner 的 invoke 方法！ 1 connector.getContainer().invoke(request, response); 接下来看是 container 容器的 invoke 方法 1 2 3 4 public void invoke(Request request, Response response) throws IOException, ServletException { pipeline.invoke(request, response); } 下面看容器的实现方法！ Servlet servlet" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
+
+
+<link rel="canonical" href="http://fireflying.top/notepad/read/tomcat/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Tomcat 学习笔记" />
+<meta property="og:description" content="Tomcat connector connector 在解析完了http 协议之后会调用 containner 的 invoke 方法！ 1 connector.getContainer().invoke(request, response); 接下来看是 container 容器的 invoke 方法 1 2 3 4 public void invoke(Request request, Response response) throws IOException, ServletException { pipeline.invoke(request, response); } 下面看容器的实现方法！ Servlet servlet" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fireflying.top/notepad/read/tomcat/" />
+
+<meta itemprop="name" content="Tomcat 学习笔记">
+<meta itemprop="description" content="Tomcat connector connector 在解析完了http 协议之后会调用 containner 的 invoke 方法！ 1 connector.getContainer().invoke(request, response); 接下来看是 container 容器的 invoke 方法 1 2 3 4 public void invoke(Request request, Response response) throws IOException, ServletException { pipeline.invoke(request, response); } 下面看容器的实现方法！ Servlet servlet">
+
+<meta itemprop="wordCount" content="2530">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Tomcat 学习笔记"/>
+<meta name="twitter:description" content="Tomcat connector connector 在解析完了http 协议之后会调用 containner 的 invoke 方法！ 1 connector.getContainer().invoke(request, response); 接下来看是 container 容器的 invoke 方法 1 2 3 4 public void invoke(Request request, Response response) throws IOException, ServletException { pipeline.invoke(request, response); } 下面看容器的实现方法！ Servlet servlet"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Firefly</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/notepad">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/notepad/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Firefly</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/notepad">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/notepad/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <h2 id="tomcat">Tomcat</h2>
+<h3 id="connector">connector</h3>
+<p>connector 在解析完了http 协议之后会调用 containner 的 invoke 方法！</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">connector</span><span class="o">.</span><span class="na">getContainer</span><span class="o">().</span><span class="na">invoke</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">response</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>接下来看是 container 容器的 invoke 方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">invoke</span><span class="o">(</span><span class="n">Request</span> <span class="n">request</span><span class="o">,</span> <span class="n">Response</span> <span class="n">response</span><span class="o">)</span>
+    <span class="kd">throws</span> <span class="n">IOException</span><span class="o">,</span> <span class="n">ServletException</span> <span class="o">{</span>
+    <span class="n">pipeline</span><span class="o">.</span><span class="na">invoke</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">response</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>下面看容器的实现方法！</p>
+<h3 id="servlet">Servlet</h3>
+<p>servlet 容器是用来处理请求servlet 资源，并为Web 客户端填充response 对象的模块。
+servlet 容器是org.apache.catalina.Container 接口的实例。</p>
+<h4 id="container-接口">Container 接口</h4>
+<p>在Tomcat 中，共有4 种类型的容器，分别是： Engine 、Host 、Context 和Wrapper</p>
+<ul>
+<li>Engine, 表示整个Catalina servlet 引擎</li>
+<li>Host: 表示包含有一个或多个Context 容器的虚拟主机</li>
+<li>Context: 表示一个Web 应用程序。一个Contex t 可以有多个Wrapper</li>
+<li>Wrapper: 表示一个独立的servlet</li>
+</ul>
+<p>Tomcat 中的servlet 容器必须要实现org.apache.catalina.Container 接口。</p>
+<h4 id="管道任务">管道任务</h4>
+<p>管道包含该servlet 容器将要调用的任务。一个阀表示一个具体的执行任务。在servlet 容器
+的管道中，有一个基础阀，但是，可以添加任意数量的阀。阀的数量指的是额外添加的阀数量，
+即，不包括基础阀。</p>
+<p>Tomcat 中使用内部类来实现遍历管道， 引人接口org.apache.catalina.ValveContext。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SimplePipeline</span> <span class="kd">implements</span> <span class="n">Pipeline</span><span class="o">,</span> <span class="n">Lifecycle</span> <span class="o">{</span>
+  <span class="c1">// The basic Valve (if any) associated with this Pipeline.
+</span><span class="c1"></span>  <span class="kd">protected</span> <span class="n">Valve</span> <span class="n">basic</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+  <span class="c1">// The Container with which this Pipeline is associated.
+</span><span class="c1"></span>  <span class="kd">protected</span> <span class="n">Container</span> <span class="n">container</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+  <span class="c1">// the array of Valves
+</span><span class="c1"></span>  <span class="kd">protected</span> <span class="n">Valve</span> <span class="n">valves</span><span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Valve</span><span class="o">[</span><span class="n">0</span><span class="o">];</span>
+
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">invoke</span><span class="o">(</span><span class="n">Request</span> <span class="n">request</span><span class="o">,</span> <span class="n">Response</span> <span class="n">response</span><span class="o">)</span>
+    <span class="kd">throws</span> <span class="n">IOException</span><span class="o">,</span> <span class="n">ServletException</span> <span class="o">{</span>
+    <span class="c1">// Invoke the first Valve in this pipeline for this request
+</span><span class="c1"></span>   <span class="o">(</span><span class="k">new</span> <span class="n">StandardPipelineValveContext</span><span class="o">()).</span><span class="na">invokeNext</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">response</span><span class="o">);</span>
+  <span class="o">}</span>
+  <span class="c1">// this class is copied from org.apache.catalina.core.StandardPipeline class&#39;s
+</span><span class="c1"></span>  <span class="c1">// StandardPipelineValveContext inner class.
+</span><span class="c1"></span>  <span class="kd">protected</span> <span class="kd">class</span> <span class="nc">StandardPipelineValveContext</span> <span class="kd">implements</span> <span class="n">ValveContext</span> <span class="o">{</span>
+    <span class="kd">protected</span> <span class="kt">int</span> <span class="n">stage</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getInfo</span><span class="o">()</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">invokeNext</span><span class="o">(</span><span class="n">Request</span> <span class="n">request</span><span class="o">,</span> <span class="n">Response</span> <span class="n">response</span><span class="o">)</span>
+      <span class="kd">throws</span> <span class="n">IOException</span><span class="o">,</span> <span class="n">ServletException</span> <span class="o">{</span>
+      <span class="kt">int</span> <span class="n">subscript</span> <span class="o">=</span> <span class="n">st把把age</span><span class="o">;</span>
+      <span class="n">stage</span> <span class="o">=</span> <span class="n">stage</span> <span class="o">+</span> <span class="n">1</span><span class="o">;</span>
+      <span class="c1">// Invoke the requested Valve for the current request thread
+</span><span class="c1"></span>      <span class="k">if</span> <span class="o">(</span><span class="n">subscript</span> <span class="o">&lt;</span> <span class="n">valves</span><span class="o">.</span><span class="na">length</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">valves</span><span class="o">[</span><span class="n">subscript</span><span class="o">].</span><span class="na">invoke</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">response</span><span class="o">,</span> <span class="k">this</span><span class="o">);</span>
+      <span class="o">}</span>
+      <span class="k">else</span> <span class="k">if</span> <span class="o">((</span><span class="n">subscript</span> <span class="o">==</span> <span class="n">valves</span><span class="o">.</span><span class="na">length</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="o">(</span><span class="n">basic</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">))</span> <span class="o">{</span>
+        <span class="n">basic</span><span class="o">.</span><span class="na">invoke</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">response</span><span class="o">,</span> <span class="k">this</span><span class="o">);</span>
+      <span class="o">}</span>
+      <span class="k">else</span> <span class="o">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="n">ServletException</span><span class="o">(</span><span class="s">&#34;No valve&#34;</span><span class="o">);</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+  <span class="o">}</span> <span class="c1">// end of inner class
+</span><span class="c1"></span><span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>stage 会不断增加，调用所有的value，每个 value调用 invokeNext 即可</p>
+<p>先看看各个接口：</p>
+<h5 id="pipline">Pipline</h5>
+<p>对于 Pipeline 接口，首先要提到的一个方法是invoke() 方法， servlet 容器调用invoke(）方法
+来开始调用管道中的阀和基础阀。通过调用Pipeline 接口的addValve(）方法，可以向管道中添加
+新的阀，同样，也可以调用removeValve(）方法从管道中删除某个阀。最后，调用setBasic(）方法
+将基础阀设置到管道中，调用其getBasic(）方法则可以获取基础阀。基础阀是最后调用的阀，负
+责处理request 对象及其对应的response 对象。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">javax.servlet.ServletException</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nf">Pipeline</span> <span class="o">(</span>
+    <span class="kd">public</span> <span class="n">Valve</span> <span class="nf">getBasic</span><span class="o">();</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setBasic</span><span class="o">(</span><span class="n">Valve</span> <span class="n">valve</span><span class="o">);</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">addVa</span> <span class="n">l</span> <span class="nf">ve</span><span class="o">(</span><span class="n">Valve</span> <span class="n">val</span> <span class="n">ve</span><span class="o">);</span>
+    <span class="kd">public</span> <span class="n">Valve</span> <span class="o">[</span> <span class="n">J</span> <span class="n">get</span> <span class="nf">Valves</span> <span class="o">()</span> <span class="o">;</span>
+    <span class="kd">public</span> <span class="n">voi</span> <span class="n">d</span> <span class="nf">invoke</span><span class="o">(</span><span class="n">Request</span> <span class="n">request</span><span class="o">,</span> <span class="n">Response</span> <span class="n">response</span><span class="o">)</span>
+                  <span class="kd">throws</span> <span class="n">IOException</span><span class="o">,</span> <span class="n">ServletException</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">removeValve</span><span class="o">(</span><span class="n">Valve</span> <span class="n">valve</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="value">Value</h5>
+<p>阀是Valve 接口的实例，用来处理接收到的请求。该接口有两个方法， invoke(）方法和  getlnfo(）方法。invoke(）方法已经在前面讨论过了， getlnfo(）方法返回阀的实现信息。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">org.apache.catalina</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.ServletException</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Valve</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getInfo</span><span class="o">();</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">invoke</span><span class="o">(</span><span class="n">Request</span> <span class="n">request</span><span class="o">,</span> <span class="n">Response</span> <span class="n">response</span><span class="o">,</span>
+                       <span class="n">ValveContext</span> <span class="n">context</span><span class="o">)</span>
+        <span class="kd">throws</span> <span class="n">IOException</span><span class="o">,</span> <span class="n">ServletException</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="valvecontext">ValveContext</h5>
+<p>该接口有两个方法， invokeNext(）和getlnfo(）。invokeNext(）方法已经在前面讨论过了,getlnfo(）方法会返回ValveContext 的实现信息。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">ValveContext</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getlnfo</span><span class="o">()</span> <span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">invokeNext</span><span class="o">(</span><span class="n">Request</span> <span class="n">request</span><span class="o">,</span> <span class="n">Response</span> <span class="n">r</span> <span class="n">esponse</span><span class="o">)</span>
+	 <span class="kd">throws</span> <span class="n">IOException</span><span class="o">,</span> <span class="n">ServletException</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="contained">Contained</h5>
+<p>阀可以选择是否实现org.apache.catalina.Contained 接口，该接口的实现类可以通过接口中的
+方法至多与一个servlet 容器相关联。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">org.apache.catalina</span> <span class="o">;</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Contained</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="n">Container</span> <span class="nf">getContainer</span> <span class="o">();</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setContainer</span> <span class="o">(</span><span class="n">Container</span> <span class="n">container</span><span class="o">)</span> <span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="wrapper">Wrapper</h4>
+<p>Wrapper 级的servlet 容器是一个org.apache. catalina.Wrapper 接口的实例，<strong>表示一个独立的servlet 定义</strong>。</p>
+<p>Wrapper 接口继承自Container 接口，又添加了一些额外的方法。</p>
+<p>Wrapper 接口的实现类要负责管理其基础servlet 类的servlet 生命周期，即调用servlet 的init(）、service(）、destroy(）等方法。由千Wrapper 已经是最低级的servlet 容器了，因此不能再向其中添加子容器。若是Wrapper 的addChild(）方法被调用，则抛出IllegalArgumantException 异常。</p>
+<p>Wrapper 接口中比较重要的方法是load(） 和allocate(）方法。allocate(）方法会分配一个已
+经初始化的servlet 实例， 而且 allocate(）方法还要考虑下该servlet 类是否实现了javax .servlet.
+SingleThreadModel 接口。load(）方法载人并初始化servlet 类。</p>
+<p><img src="https://raw.githubusercontent.com/Fierygit/picbed/master/20201214204829.png" alt=""></p>
+<h3 id="loader">Loader</h3>
+<h3 id="lifecycle">Lifecycle</h3>
+<h4 id="lifecycle接口">lifecycle接口</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> * Common interface for component life cycle methods.  Catalina components
+</span><span class="cm"> * may, but are not required to, implement this interface (as well as the
+</span><span class="cm"> * appropriate interface(s) for the functionality they support) in order to
+</span><span class="cm"> * provide a consistent mechanism to start and stop the component.
+</span><span class="cm"> *
+</span><span class="cm"> * @author Craig R. McClanahan
+</span><span class="cm"> * @version $Revision: 1.6 $ $Date: 2002/06/09 02:10:50 $
+</span><span class="cm"> */</span>
+
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Lifecycle</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">START_EVENT</span> <span class="o">=</span> <span class="s">&#34;start&#34;</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">BEFORE_START_EVENT</span> <span class="o">=</span> <span class="s">&#34;before_start&#34;</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">AFTER_START_EVENT</span> <span class="o">=</span> <span class="s">&#34;after_start&#34;</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">STOP_EVENT</span> <span class="o">=</span> <span class="s">&#34;stop&#34;</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">BEFORE_STOP_EVENT</span> <span class="o">=</span> <span class="s">&#34;before_stop&#34;</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">AFTER_STOP_EVENT</span> <span class="o">=</span> <span class="s">&#34;after_stop&#34;</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addLifecycleListener</span><span class="o">(</span><span class="n">LifecycleListener</span> <span class="n">listener</span><span class="o">);</span>
+    <span class="kd">public</span> <span class="n">LifecycleListener</span><span class="o">[]</span> <span class="nf">findLifecycleListeners</span><span class="o">();</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">removeLifecycleListener</span><span class="o">(</span><span class="n">LifecycleListener</span> <span class="n">listener</span><span class="o">);</span>
+
+
+    <span class="cm">/**
+</span><span class="cm">     * Prepare for the beginning of active use of the public methods of this
+</span><span class="cm">     * component.  This method should be called before any of the public
+</span><span class="cm">     * methods of this component are utilized.  It should also send a
+</span><span class="cm">     * LifecycleEvent of type START_EVENT to any registered listeners.
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">LifecycleException</span><span class="o">;</span>
+
+
+    <span class="cm">/**
+</span><span class="cm">     * Gracefully terminate the active use of the public methods of this
+</span><span class="cm">     * component.  This method should be the last one called on a given
+</span><span class="cm">     * instance of this component.  It should also send a LifecycleEvent
+</span><span class="cm">     * of type STOP_EVENT to any registered listeners.
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">stop</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">LifecycleException</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>为了一致性启动与停止</p>
+<h4 id="lifecycleevent接口">LifecycleEvent接口</h4>
+<p>生命周期的事件监听器是org.apache.catalina.LifecycleListener 接口的实例</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> * General event for notifying listeners of significant changes on a component
+</span><span class="cm"> * that implements the Lifecycle interface.  In particular, this will be useful
+</span><span class="cm"> * on Containers, where these events replace the ContextInterceptor concept in
+</span><span class="cm"> * Tomcat 3.x.
+</span><span class="cm"> *
+</span><span class="cm"> * @author Craig R. McClanahan
+</span><span class="cm"> * @version $Revision: 1.3 $ $Date: 2001/07/22 20:13:30 $
+</span><span class="cm"> */</span>
+
+<span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">LifecycleEvent</span>   <span class="kd">extends</span> <span class="n">EventObject</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="nf">LifecycleEvent</span><span class="o">(</span><span class="n">Lifecycle</span> <span class="n">lifecycle</span><span class="o">,</span> <span class="n">String</span> <span class="n">type</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">(</span><span class="n">lifecycle</span><span class="o">,</span> <span class="n">type</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="nf">LifecycleEvent</span><span class="o">(</span><span class="n">Lifecycle</span> <span class="n">lifecycle</span><span class="o">,</span> <span class="n">String</span> <span class="n">type</span><span class="o">,</span> <span class="n">Object</span> <span class="n">data</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">lifecycle</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">lifecycle</span> <span class="o">=</span> <span class="n">lifecycle</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">type</span> <span class="o">=</span> <span class="n">type</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">data</span> <span class="o">=</span> <span class="n">data</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="n">Object</span> <span class="n">data</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">Lifecycle</span> <span class="n">lifecycle</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">type</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">Object</span> <span class="nf">getData</span><span class="o">()</span> <span class="o">{</span>        <span class="k">return</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">data</span><span class="o">);</span>    <span class="o">}</span>
+    <span class="kd">public</span> <span class="n">Lifecycle</span> <span class="nf">getLifecycle</span><span class="o">()</span> <span class="o">{</span>        <span class="k">return</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">lifecycle</span><span class="o">);</span>    <span class="o">}</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getType</span><span class="o">()</span> <span class="o">{</span>        <span class="k">return</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">type</span><span class="o">);</span>    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="lifecyclelistener-接口">LifecycleListener 接口</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> * Interface defining a listener for significant events (including &#34;component
+</span><span class="cm"> * start&#34; and &#34;component stop&#34; generated by a component that implements the
+</span><span class="cm"> * Lifecycle interface.
+</span><span class="cm"> * @author Craig R. McClanahan
+</span><span class="cm"> * @version $Revision: 1.3 $ $Date: 2001/07/22 20:13:30 $
+</span><span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">LifecycleListener</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">lifecycleEvent</span><span class="o">(</span><span class="n">LifecycleEvent</span> <span class="n">event</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://raw.githubusercontent.com/Fierygit/picbed/master/20201214212139.png" alt=""></p>
+<p>调用链</p>
+<p>1、bootstrap</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">((Lifecycle) connector).start();
+((Lifecycle) context).start();
+</code></pre></td></tr></table>
+</div>
+</div><p>2、调用 listener， 递归调用子容器的</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">// Notify our interested LifecycleListeners
+lifecycle.fireLifecycleEvent(BEFORE_START_EVENT, null);
+started = true;
+try {
+// Start our subordinate components, if any
+if ((loader != null) &amp;&amp; (loader instanceof Lifecycle))
+((Lifecycle) loader).start();
+// Start our child containers, if any
+Container children[] = findChildren();
+for (int i = 0; i &lt; children.length; i++) {
+if (children[i] instanceof Lifecycle)
+((Lifecycle) children[i]).start();
+}
+// Start the Valves in our pipeline (including the basic),
+// if any
+if (pipeline instanceof Lifecycle)
+((Lifecycle) pipeline).start();
+// Notify our interested LifecycleListeners
+lifecycle.fireLifecycleEvent(START_EVENT, null);
+</code></pre></td></tr></table>
+</div>
+</div><p>3、 listenersupport 中回调实现的监听器</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">fireLifecycleEvent</span><span class="o">(</span><span class="n">String</span> <span class="n">type</span><span class="o">,</span> <span class="n">Object</span> <span class="n">data</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">LifecycleEvent</span> <span class="n">event</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LifecycleEvent</span><span class="o">(</span><span class="n">lifecycle</span><span class="o">,</span> <span class="n">type</span><span class="o">,</span> <span class="n">data</span><span class="o">);</span>
+    <span class="n">LifecycleListener</span> <span class="n">interested</span><span class="o">[]</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="kd">synchronized</span> <span class="o">(</span><span class="n">listeners</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">interested</span> <span class="o">=</span> <span class="o">(</span><span class="n">LifecycleListener</span><span class="o">[])</span> <span class="n">listeners</span><span class="o">.</span><span class="na">clone</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">interested</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+        <span class="n">interested</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">lifecycleEvent</span><span class="o">(</span><span class="n">event</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+  </div>
+</article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="http://github.com/fierygit" class="iconfont icon-github" title="github"></a>
+  <a href="http://fireflying.top/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>Firefly</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>工具 on Firefly</title>
+    <link>http://fireflying.top/categories/%E5%B7%A5%E5%85%B7/</link>
+    <description>Recent content in 工具 on Firefly</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 22 Oct 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://fireflying.top/categories/%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ffmpeg</title>
+      <link>http://fireflying.top/post/notepad/others/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86%E8%BD%AF%E4%BB%B6ffmpeg/</link>
+      <pubDate>Tue, 22 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/others/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86%E8%BD%AF%E4%BB%B6ffmpeg/</guid>
+      <description>ffmpeg 转载 ffmpeg的使用方式： ffmpeg [options] [[infile options] -i infile]&amp;hellip; {[outfile options] outfile}&amp;hellip; 常用参数说明： 主要参数： -i 设定输入流 -f 设定输出格式 -ss 开始时间 视频参数： -b 设定视频流量，默认为</description>
+    </item>
+    
+    <item>
+      <title>git使用</title>
+      <link>http://fireflying.top/post/notepad/tools/git/</link>
+      <pubDate>Sat, 28 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/tools/git/</guid>
+      <description>Git常用操作，一文打尽 创建版本库 git clone url 克隆远程版本库 git init 初始化本地版本库 配置 git config &amp;ndash;global user.name &amp;lsquo;chengcp&amp;rsquo; 配置global级别的用户名 git config &amp;ndash;global user.email &amp;lsquo;1326895569@qq.com&amp;rsquo; 配置globa</description>
+    </item>
+    
+    <item>
+      <title>maven</title>
+      <link>http://fireflying.top/post/notepad/tools/maven/</link>
+      <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/tools/maven/</guid>
+      <description>maven 以下的命令会按顺序执行，后面命令会调用前面的命令 1 mvn clean 把编译好的类清除掉， 因为每个开发环境不同 1 mvn compile 编译主要的类 1 mvn test 编译测试的类 1 mvn package 把</description>
+    </item>
+    
+    <item>
+      <title>docker</title>
+      <link>http://fireflying.top/post/notepad/tools/docker/</link>
+      <pubDate>Fri, 28 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/tools/docker/</guid>
+      <description>docker的使用步骤： 安装 Docker 去Docker仓库找到这个软件对应的镜像 使用Docker运行这个镜像，这个镜像就会生成一个Docker容器 对容</description>
+    </item>
+    
+    <item>
+      <title>conda</title>
+      <link>http://fireflying.top/post/notepad/tools/conda/</link>
+      <pubDate>Wed, 28 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/tools/conda/</guid>
+      <description>更换清华源 1 2 3 4 5 6 7 8 9 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/ conda config --append channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/fastai/ conda config --append channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/ conda config --append channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda/ # 搜索时显示通道地址 conda config --set show_channel_urls yes 1 conda env list 1 conda activate py37 1 2 3</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>贪心 on Firefly</title>
+    <link>http://fireflying.top/tags/%E8%B4%AA%E5%BF%83/</link>
+    <description>Recent content in 贪心 on Firefly</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 28 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://fireflying.top/tags/%E8%B4%AA%E5%BF%83/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>贪心算法</title>
+      <link>http://fireflying.top/post/notepad/algorithm/exercise/greedy/</link>
+      <pubDate>Tue, 28 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/algorithm/exercise/greedy/</guid>
+      <description>贪心算法 贪心方法的一般策略 问题的一般特征：问题的解是由n个输入的、满足某些事先给定的条件的子集组成。 ​ 1）一般方法 ​ 根据题意，选取一种度量标</description>
+    </item>
+    
+  </channel>
+</rss>

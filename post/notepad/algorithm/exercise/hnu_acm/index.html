@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>ACM_exercise - Firefly</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Firefly" /><meta name="description" content="HNU ACM dp 1. Longest Ordered Subsequence Problem description A numeric sequence of ai is ordered if a1 &amp;lt; a2 &amp;lt; &amp;hellip; &amp;lt; aN. Let the subsequence of the given numeric sequence (a1, a2, &amp;hellip;, aN) be any sequence (ai1, ai2, &amp;hellip;, aiK), where 1 &amp;lt;= i1 &amp;lt; i2 &amp;lt; &amp;hellip; &amp;lt; iK &amp;lt;= N. For example, sequence (1, 7, 3, 5, 9, 4, 8) has ordered subsequences, e. g.," /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
+
+
+<link rel="canonical" href="http://fireflying.top/post/notepad/algorithm/exercise/hnu_acm/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="ACM_exercise" />
+<meta property="og:description" content="HNU ACM dp 1. Longest Ordered Subsequence Problem description A numeric sequence of ai is ordered if a1 &lt; a2 &lt; &hellip; &lt; aN. Let the subsequence of the given numeric sequence (a1, a2, &hellip;, aN) be any sequence (ai1, ai2, &hellip;, aiK), where 1 &lt;= i1 &lt; i2 &lt; &hellip; &lt; iK &lt;= N. For example, sequence (1, 7, 3, 5, 9, 4, 8) has ordered subsequences, e. g.," />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fireflying.top/post/notepad/algorithm/exercise/hnu_acm/" />
+<meta property="article:published_time" content="2019-12-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-12-28T00:00:00+00:00" />
+<meta itemprop="name" content="ACM_exercise">
+<meta itemprop="description" content="HNU ACM dp 1. Longest Ordered Subsequence Problem description A numeric sequence of ai is ordered if a1 &lt; a2 &lt; &hellip; &lt; aN. Let the subsequence of the given numeric sequence (a1, a2, &hellip;, aN) be any sequence (ai1, ai2, &hellip;, aiK), where 1 &lt;= i1 &lt; i2 &lt; &hellip; &lt; iK &lt;= N. For example, sequence (1, 7, 3, 5, 9, 4, 8) has ordered subsequences, e. g.,">
+<meta itemprop="datePublished" content="2019-12-28T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-12-28T00:00:00+00:00" />
+<meta itemprop="wordCount" content="569">
+
+
+
+<meta itemprop="keywords" content="算法," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ACM_exercise"/>
+<meta name="twitter:description" content="HNU ACM dp 1. Longest Ordered Subsequence Problem description A numeric sequence of ai is ordered if a1 &lt; a2 &lt; &hellip; &lt; aN. Let the subsequence of the given numeric sequence (a1, a2, &hellip;, aN) be any sequence (ai1, ai2, &hellip;, aiK), where 1 &lt;= i1 &lt; i2 &lt; &hellip; &lt; iK &lt;= N. For example, sequence (1, 7, 3, 5, 9, 4, 8) has ordered subsequences, e. g.,"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Firefly</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Firefly</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">ACM_exercise</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-12-28 </span>
+        <div class="post-category">
+            <a href="/categories/%E7%AE%97%E6%B3%95/"> 算法 </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#hnu-acm">HNU ACM</a>
+      <ul>
+        <li><a href="#dp">dp</a>
+          <ul>
+            <li><a href="#1-longest-ordered-subsequence">1. Longest Ordered Subsequence</a></li>
+            <li><a href="#2dissatisfying-lift">2.<strong>Dissatisfying Lift</strong></a></li>
+            <li><a href="#3">3.</a></li>
+          </ul>
+        </li>
+        <li><a href="#贪心">贪心</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h1 id="hnu-acm">HNU ACM</h1>
+<h2 id="dp">dp</h2>
+<h3 id="1-longest-ordered-subsequence">1. Longest Ordered Subsequence</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Problem description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A numeric sequence of <em>ai</em> is ordered if <em>a1</em> &lt; <em>a2</em> &lt; &hellip; &lt; <em>aN</em>. Let the subsequence of the given numeric sequence (<em>a1</em>, <em>a2</em>, &hellip;, <em>aN</em>) be any sequence (<em>ai1</em>, <em>ai2</em>, &hellip;, <em>aiK</em>), where 1 &lt;= <em>i1</em> &lt; <em>i2</em> &lt; &hellip; &lt; <em>iK</em> &lt;= <em>N</em>. For example, sequence (1, 7, 3, 5, 9, 4, 8) has ordered subsequences, e. g., (1, 7), (3, 4, 8) and many others. All longest ordered subsequences are of length 4, e. g., (1, 3, 5, 8).  Your program, when given the numeric sequence, must find the length of its longest ordered subsequence.</td>
+</tr>
+<tr>
+<td><strong>Input</strong></td>
+</tr>
+<tr>
+<td>The first line of input contains the length of sequence N. The second line contains the elements of sequence - N integers in the range from 0 to 10000 each, separated by spaces. 1 &lt;= N &lt;= 1000</td>
+</tr>
+<tr>
+<td><strong>Output</strong></td>
+</tr>
+<tr>
+<td>Output must contain a single integer - the length of the longest ordered subsequence of the given sequence.</td>
+</tr>
+<tr>
+<td><strong>Sample Input</strong></td>
+</tr>
+<tr>
+<td>7</td>
+</tr>
+<tr>
+<td>1 7 3 5 9 4 8</td>
+</tr>
+<tr>
+<td><strong>Sample Output</strong></td>
+</tr>
+<tr>
+<td><code>4 </code></td>
+</tr>
+<tr>
+<td><strong>Problem Source</strong></td>
+</tr>
+<tr>
+<td>HNU Contest</td>
+</tr>
+</tbody>
+</table>
+<p>思路：</p>
+<p>dp[i] : 表示以第 i 个字符结尾的最长子上升子序列！</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c++" data-lang="c++"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp">
+</span><span class="cp"></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">len</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">maxn</span> <span class="o">=</span> <span class="mi">1000</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="n">maxn</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">dp</span><span class="p">[</span><span class="n">maxn</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> 
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">len</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">tmp</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>   <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>  <span class="c1">// 对于第 i 个 zifu
+</span><span class="c1"></span>        <span class="n">tmp</span>  <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">i</span><span class="p">;</span> <span class="n">j</span> <span class="o">++</span><span class="p">){</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">tmp</span> <span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+        <span class="n">ans</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="n">ans</span><span class="p">);</span>       
+    <span class="p">}</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">ans</span> <span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="2dissatisfying-lift">2.<strong>Dissatisfying Lift</strong></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Problem description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>There&rsquo;s a building with M floors. The amounts of tenants of every floor are K1, K2, K3, &hellip;, Km. One day all the tenants went home together and they took the same lift (suppose the lift was large enough). Because of some reason the lift could only stop on one floor and the tenants must go upstairs or downstairs to their houses. Every tenant went up N floors would make the dissatisfied degree rise N * a + 0.5 * N * (N - 1) degrees, and every tenant went down N floors would make the dissatisfied degree rise N * b + 0.5 * N * (N - 1) degrees. Your task is to tell which floor the lift should stop, in order to make the dissatisfied degree as low as possible.</td>
+</tr>
+<tr>
+<td><strong>Input</strong></td>
+</tr>
+<tr>
+<td>The first line of the input contains a single integer T (1 &lt;= T &lt;= 20), the number of test cases. Then T cases follow. The first line of each test contains M (1 &lt;= M &lt;= 10000), a and b (0 &lt;= a, b &lt;= 100). The second line contains K1, K2, K3, &hellip;, Km(0 &lt;= Ki &lt;= 20, i = 1..M).</td>
+</tr>
+<tr>
+<td><strong>Output</strong></td>
+</tr>
+<tr>
+<td>For each test case, print a line containing a single integer, indicating which floor the lift should stop.</td>
+</tr>
+<tr>
+<td><strong>Sample Input</strong></td>
+</tr>
+<tr>
+<td>1</td>
+</tr>
+<tr>
+<td>5 3 2</td>
+</tr>
+<tr>
+<td>1 1 1 1 1</td>
+</tr>
+<tr>
+<td><strong>Sample Output</strong></td>
+</tr>
+<tr>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><strong>Judge Tips</strong></td>
+</tr>
+<tr>
+<td>Dynamic Programming</td>
+</tr>
+<tr>
+<td><strong>Problem Source</strong></td>
+</tr>
+<tr>
+<td>POJ Monthly</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3">3.</h3>
+<h2 id="贪心">贪心</h2>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Firefly</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-12-28
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/notepad/algorithm/exercise/leetcode100/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Leetcode100</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/notepad/algorithm/exercise/dp/">
+            <span class="next-text nav-default">DP</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="http://github.com/fierygit" class="iconfont icon-github" title="github"></a>
+  <a href="http://fireflying.top/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>Firefly</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
