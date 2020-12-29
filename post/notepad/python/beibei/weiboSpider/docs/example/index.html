@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title> - Firefly</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Firefly" /><meta name="description" content="实例 以爬取迪丽热巴的微博为例，我们需要修改config.json文件，文件内容如下： 1 2 3 4 5 6 7 8 9 10 { &amp;#34;user_id_list&amp;#34;: [&amp;#34;1669879400&amp;#34;], &amp;#34;filter&amp;#34;: 1, &amp;#34;since_date&amp;#34;: &amp;#34;1900-01-01&amp;#34;, &amp;#34;end_date&amp;#34;: &amp;#34;now&amp;#34;, &amp;#34;write_mode&amp;#34;: [&amp;#34;csv&amp;#34;, &amp;#34;txt&amp;#34;, &amp;#34;json&amp;#34;], &amp;#34;pic_download&amp;#34;: 1, &amp;#34;video_download&amp;#34;: 1, &amp;#34;cookie&amp;#34;:" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
+
+
+<link rel="canonical" href="http://fireflying.top/post/notepad/python/beibei/weibospider/docs/example/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="" />
+<meta property="og:description" content="实例 以爬取迪丽热巴的微博为例，我们需要修改config.json文件，文件内容如下： 1 2 3 4 5 6 7 8 9 10 { &#34;user_id_list&#34;: [&#34;1669879400&#34;], &#34;filter&#34;: 1, &#34;since_date&#34;: &#34;1900-01-01&#34;, &#34;end_date&#34;: &#34;now&#34;, &#34;write_mode&#34;: [&#34;csv&#34;, &#34;txt&#34;, &#34;json&#34;], &#34;pic_download&#34;: 1, &#34;video_download&#34;: 1, &#34;cookie&#34;:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fireflying.top/post/notepad/python/beibei/weibospider/docs/example/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="实例 以爬取迪丽热巴的微博为例，我们需要修改config.json文件，文件内容如下： 1 2 3 4 5 6 7 8 9 10 { &#34;user_id_list&#34;: [&#34;1669879400&#34;], &#34;filter&#34;: 1, &#34;since_date&#34;: &#34;1900-01-01&#34;, &#34;end_date&#34;: &#34;now&#34;, &#34;write_mode&#34;: [&#34;csv&#34;, &#34;txt&#34;, &#34;json&#34;], &#34;pic_download&#34;: 1, &#34;video_download&#34;: 1, &#34;cookie&#34;:">
+
+<meta itemprop="wordCount" content="2174">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="实例 以爬取迪丽热巴的微博为例，我们需要修改config.json文件，文件内容如下： 1 2 3 4 5 6 7 8 9 10 { &#34;user_id_list&#34;: [&#34;1669879400&#34;], &#34;filter&#34;: 1, &#34;since_date&#34;: &#34;1900-01-01&#34;, &#34;end_date&#34;: &#34;now&#34;, &#34;write_mode&#34;: [&#34;csv&#34;, &#34;txt&#34;, &#34;json&#34;], &#34;pic_download&#34;: 1, &#34;video_download&#34;: 1, &#34;cookie&#34;:"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Firefly</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Firefly</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title"></h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 0001-01-01 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#实例">实例</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="实例">实例</h2>
+<p>以爬取迪丽热巴的微博为例，我们需要修改<strong>config.json</strong>文件，文件内容如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">{
+    &#34;user_id_list&#34;: [&#34;1669879400&#34;],
+    &#34;filter&#34;: 1,
+    &#34;since_date&#34;: &#34;1900-01-01&#34;,
+    &#34;end_date&#34;: &#34;now&#34;,
+    &#34;write_mode&#34;: [&#34;csv&#34;, &#34;txt&#34;, &#34;json&#34;],
+    &#34;pic_download&#34;: 1,
+    &#34;video_download&#34;: 1,
+    &#34;cookie&#34;: &#34;your cookie&#34;
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>对于上述参数的含义以及取值范围，这里仅作简单介绍，详细信息见<a href="https://github.com/dataabc/weiboSpider/blob/master/docs/settings.md">程序设置</a>。</p>
+<blockquote>
+<p><strong>user_id_list</strong>代表我们要爬取的微博用户的user_id，可以是一个或多个，也可以是文件路径，微博用户Dear-迪丽热巴的user_id为1669879400，具体如何获取user_id见<a href="https://github.com/dataabc/weiboSpider/blob/master/docs/userid.md">如何获取user_id</a>；<br><strong>filter</strong>的值为1代表爬取全部原创微博，值为0代表爬取全部微博（原创+转发）；<br><strong>since_date</strong>代表我们要爬取since_date日期之后发布的微博，因为我要爬迪丽热巴的全部原创微博，所以since_date设置了一个非常早的值；<br><strong>end_date</strong>代表我们要爬取end_date日期之前发布的微博，since_date配合end_date，表示我们要爬取发布日期在since_date和end_date之间的微博，包含边界，如果end_date值为&quot;now&quot;，表示爬取发布日期从since_date到现在的微博；<br><strong>write_mode</strong>代表结果文件的保存类型，我想要把结果写入txt文件、csv文件和json文件，所以它的值为[&ldquo;csv&rdquo;, &ldquo;txt&rdquo;, &ldquo;json&rdquo;]，如果你想写入数据库，具体设置见<a href="https://github.com/dataabc/weiboSpider/blob/master/docs/settings.md#%E8%AE%BE%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%AF%E9%80%89">设置数据库</a>；<br><strong>pic_download</strong>值为1代表下载微博中的图片，值为0代表不下载；<br><strong>video_download</strong>值为1代表下载微博中的视频，值为0代表不下载；<br><strong>cookie</strong>是爬虫微博的cookie，具体如何获取cookie见<a href="https://github.com/dataabc/weiboSpider/blob/master/docs/cookie.md">cookie文档</a>，获取cookie后把&quot;your cookie&quot;替换成真实的cookie值即可。<br></p>
+</blockquote>
+<p>cookie修改完成后在weiboSpider目录下运行如下命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ python3 -m weibo_spider
+</code></pre></td></tr></table>
+</div>
+</div><p>程序会自动生成一个weibo文件夹，我们以后爬取的所有微博都被存储在这里。然后程序在该文件夹下生成一个名为&quot;Dear-迪丽热巴&quot;的文件夹，迪丽热巴的所有微博爬取结果都在这里。&ldquo;Dear-迪丽热巴&quot;文件夹里包含一个csv文件、一个txt文件、一个json文件、一个img文件夹和一个video文件夹，img文件夹用来存储下载到的图片，video文件夹用来存储下载到的视频。如果你设置了保存数据库功能，这些信息也会保存在数据库里，数据库设置见<a href="https://github.com/dataabc/weiboSpider/blob/master/docs/settings.md#%E8%AE%BE%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%AF%E9%80%89">设置数据库</a>部分。<br>
+<br>
+<strong>csv结果文件如下所示：</strong>
+<img src="https://picture.cognize.me/cognize/github/weibospider/weibo_csv.png" alt=""><em>1669879400.csv</em><br>
+<br>
+<strong>txt结果文件如下所示：</strong>
+<img src="https://picture.cognize.me/cognize/github/weibospider/weibo_txt.png" alt=""><em>1669879400.txt</em><br>
+<br>
+json文件包含迪丽热巴的用户信息和上千条微博信息，内容较多。为了表达清晰，这里仅展示两条微博。<br>
+<strong>json结果文件如下所示：</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">{
+    &#34;user&#34;: {
+        &#34;id&#34;: &#34;1669879400&#34;,
+        &#34;nickname&#34;: &#34;Dear-迪丽热巴&#34;,
+        &#34;gender&#34;: &#34;女&#34;,
+        &#34;location&#34;: &#34;上海&#34;,
+        &#34;birthday&#34;: &#34;双子座&#34;,
+        &#34;description&#34;: &#34;一只喜欢默默表演的小透明。工作联系jaywalk@jaywalk.com.cn 🍒&#34;,
+        &#34;verified_reason&#34;: &#34;嘉行传媒签约演员&#34;,
+        &#34;talent&#34;: &#34;&#34;,
+        &#34;education&#34;: &#34;上海戏剧学院&#34;,
+        &#34;work&#34;: &#34;嘉行传媒 &#34;,
+        &#34;weibo_num&#34;: 1121,
+        &#34;following&#34;: 250,
+        &#34;followers&#34;: 66395910
+    },
+    &#34;weibo&#34;: [
+        {
+            &#34;id&#34;: &#34;IonM9ryMy&#34;,
+            &#34;content&#34;: &#34;2019#微博之夜#盛典即将开启，以微博之力，让世界更美。1月11日，不见不散@微博之夜  原图 &#34;,
+            &#34;original_pictures&#34;: &#34;http://wx1.sinaimg.cn/large/63885668ly1gao0a01kfzj20ku112k98.jpg&#34;,
+            &#34;video_url&#34;: &#34;无&#34;,
+            &#34;publish_place&#34;: &#34;无&#34;,
+            &#34;publish_time&#34;: &#34;2020-01-07 14:59&#34;,
+            &#34;publish_tool&#34;: &#34;无&#34;,
+            &#34;up_num&#34;: 239242,
+            &#34;retweet_num&#34;: 71914,
+            &#34;comment_num&#34;: 55916
+        },
+        {
+            &#34;id&#34;: &#34;InB4Df73X&#34;,
+            &#34;content&#34;: &#34;#happyNEOyear#都到了2020，还不换点新pose配新装[來] 穿上@adidasneo 迪士尼联名款，让#生来好动#的我们一起玩“新”大发、自拍不重样🤳http://t.cn/AiF7nREj adidasneo的微博视频  &#34;,
+            &#34;original_pictures&#34;: &#34;无&#34;,
+            &#34;video_url&#34;: &#34;http://f.video.weibocdn.com/000pYrGmlx07zPTskBQQ010412008AOY0E010.mp4?label=mp4_hd&amp;template=852x480.25.0&amp;trans_finger=62b30a3f061b162e421008955c73f536&amp;Expires=1578569162&amp;ssig=IV3JEbh3Zu&amp;KID=unistore,video&#34;,
+            &#34;publish_place&#34;: &#34;无&#34;,
+            &#34;publish_time&#34;: &#34;2020-01-02 11:00&#34;,
+            &#34;publish_tool&#34;: &#34;无&#34;,
+            &#34;up_num&#34;: 275419,
+            &#34;retweet_num&#34;: 376734,
+            &#34;comment_num&#34;: 131069
+        }
+    ]
+}
+</code></pre></td></tr></table>
+</div>
+</div><p><em>1669879400.json</em><br>
+<br>
+<strong>下载的图片如下所示：</strong>
+<img src="https://picture.cognize.me/cognize/github/weibospider/img.png" alt=""><em>img文件夹</em><br>
+本次下载了793张图片，大小一共1.21GB，包括她原创微博中的图片和转发微博转发理由中的图片。图片名为yyyymmdd+微博id的形式，若某条微博存在多张图片，则图片名中还会包括它在微博图片中的序号。若某张图片因为网络等原因下载失败，程序则会以“weibo_id:pic_url”的形式将出错微博id和图片url写入同文件夹下的not_downloaded.txt里；<br>
+<br>
+<strong>下载的视频如下所示：</strong>
+<img src="https://picture.cognize.me/cognize/github/weibospider/video.png" alt=""><em>video文件夹</em><br>
+本次下载了70个视频，是她原创微博中的视频，视频名为yyyymmdd+微博id的形式。其中有一个视频因为网络原因下载失败，程序将它的微博id和视频url以“weibo_id:video_url”的形式写到了同文件夹下的not_downloaded.txt里。<br>
+因为我本地没有安装MySQL数据库和MongoDB数据库，所以暂时设置成不写入数据库。如果你想要将爬取结果写入数据库，只需要先安装数据库（MySQL或MongoDB），再安装对应包（pymysql或pymongo），然后将mysql_write或mongodb_write值设置为1即可。写入MySQL需要用户名、密码等配置信息，这些配置如何设置见<a href="https://github.com/dataabc/weiboSpider/blob/master/docs/settings.md#%E8%AE%BE%E7%BD%AE%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%AF%E9%80%89">设置数据库</a>部分。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Firefly</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        0001-01-01
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/notepad/python/beibei/weibospider/docs/cookie/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default"></span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/notepad/python/beibei/weibospider/docs/faq/">
+            <span class="next-text nav-default"></span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="http://github.com/fierygit" class="iconfont icon-github" title="github"></a>
+  <a href="http://fireflying.top/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>Firefly</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

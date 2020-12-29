@@ -1,0 +1,1941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>bash-commands - Firefly</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Firefly" /><meta name="description" content="alias alias命令用于设置别名。通常用于在 Bash 设置文件中，设置别名。 1 alias dockerlogin=&amp;#39;ssh www-data@adnan.local -p2222&amp;#39; awk awk是处理文本文件的一个应用程序，几乎所有 Linux 系统都自带这个程序" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
+
+
+<link rel="canonical" href="http://fireflying.top/post/notepad/docs/bash/bash-commands/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="bash-commands" />
+<meta property="og:description" content="alias alias命令用于设置别名。通常用于在 Bash 设置文件中，设置别名。 1 alias dockerlogin=&#39;ssh www-data@adnan.local -p2222&#39; awk awk是处理文本文件的一个应用程序，几乎所有 Linux 系统都自带这个程序" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fireflying.top/post/notepad/docs/bash/bash-commands/" />
+<meta property="article:published_time" content="2020-12-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-12-29T00:00:00+00:00" />
+<meta itemprop="name" content="bash-commands">
+<meta itemprop="description" content="alias alias命令用于设置别名。通常用于在 Bash 设置文件中，设置别名。 1 alias dockerlogin=&#39;ssh www-data@adnan.local -p2222&#39; awk awk是处理文本文件的一个应用程序，几乎所有 Linux 系统都自带这个程序">
+<meta itemprop="datePublished" content="2020-12-29T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2020-12-29T00:00:00+00:00" />
+<meta itemprop="wordCount" content="7119">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="bash-commands"/>
+<meta name="twitter:description" content="alias alias命令用于设置别名。通常用于在 Bash 设置文件中，设置别名。 1 alias dockerlogin=&#39;ssh www-data@adnan.local -p2222&#39; awk awk是处理文本文件的一个应用程序，几乎所有 Linux 系统都自带这个程序"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Firefly</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Firefly</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">bash-commands</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-12-29 </span>
+        <div class="post-category">
+            <a href="/categories/bash/"> bash </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#alias">alias</a></li>
+    <li><a href="#awk">awk</a>
+      <ul>
+        <li><a href="#基本用法">基本用法</a></li>
+        <li><a href="#变量">变量</a></li>
+        <li><a href="#函数">函数</a></li>
+        <li><a href="#条件">条件</a></li>
+        <li><a href="#if-语句">if 语句</a></li>
+        <li><a href="#参考链接">参考链接</a></li>
+      </ul>
+    </li>
+    <li><a href="#cal">cal</a></li>
+    <li><a href="#cat">cat</a></li>
+    <li><a href="#clear">clear</a></li>
+    <li><a href="#cp-命令">cp 命令</a>
+      <ul>
+        <li><a href="#参数">参数</a></li>
+      </ul>
+    </li>
+    <li><a href="#cut">cut</a></li>
+    <li><a href="#date">date</a></li>
+    <li><a href="#dd">dd</a>
+      <ul>
+        <li><a href="#复制磁盘">复制磁盘</a></li>
+        <li><a href="#清除数据">清除数据</a></li>
+        <li><a href="#监控进展">监控进展</a></li>
+        <li><a href="#参考链接-1">参考链接</a></li>
+      </ul>
+    </li>
+    <li><a href="#df">df</a></li>
+    <li><a href="#du">du</a></li>
+    <li><a href="#egrep">egrep</a></li>
+    <li><a href="#export">export</a></li>
+    <li><a href="#file">file</a></li>
+    <li><a href="#find">find</a></li>
+    <li><a href="#fmt">fmt</a></li>
+    <li><a href="#grep">grep</a>
+      <ul>
+        <li><a href="#参数-1">参数</a></li>
+      </ul>
+    </li>
+    <li><a href="#gunzip">gunzip</a></li>
+    <li><a href="#gzcat">gzcat</a></li>
+    <li><a href="#gzip">gzip</a></li>
+    <li><a href="#killall">killall</a></li>
+    <li><a href="#kill">kill</a></li>
+    <li><a href="#last">last</a></li>
+    <li><a href="#lpq">lpq</a></li>
+    <li><a href="#lpr">lpr</a></li>
+    <li><a href="#ls">ls</a>
+      <ul>
+        <li><a href="#参数-2">参数</a></li>
+      </ul>
+    </li>
+    <li><a href="#nl">nl</a></li>
+    <li><a href="#ps">ps</a>
+      <ul>
+        <li><a href="#参数-3">参数</a></li>
+      </ul>
+    </li>
+    <li><a href="#scp">scp</a>
+      <ul>
+        <li><a href="#基本用法-1">基本用法</a></li>
+        <li><a href="#参数-4">参数</a></li>
+      </ul>
+    </li>
+    <li><a href="#sed">sed</a></li>
+    <li><a href="#sort">sort</a>
+      <ul>
+        <li><a href="#参数-5">参数</a></li>
+      </ul>
+    </li>
+    <li><a href="#tr">tr</a></li>
+    <li><a href="#uname">uname</a></li>
+    <li><a href="#uniq">uniq</a>
+      <ul>
+        <li><a href="#参数-6">参数</a></li>
+      </ul>
+    </li>
+    <li><a href="#uptime">uptime</a></li>
+    <li><a href="#wc">wc</a></li>
+    <li><a href="#whereis">whereis</a></li>
+    <li><a href="#which">which</a></li>
+    <li><a href="#who">who</a>
+      <ul>
+        <li><a href="#参数-7">参数</a></li>
+      </ul>
+    </li>
+    <li><a href="#w">w</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h1 id="alias">alias</h1>
+<p><code>alias</code>命令用于设置别名。通常用于在 Bash 设置文件中，设置别名。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">alias</span> <span class="nv">dockerlogin</span><span class="o">=</span><span class="s1">&#39;ssh www-data@adnan.local -p2222&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="awk">awk</h1>
+<p><a href="https://en.wikipedia.org/wiki/AWK"><code>awk</code></a>是处理文本文件的一个应用程序，几乎所有 Linux 系统都自带这个程序。</p>
+<p>它依次处理文件的每一行，并读取里面的每一个字段。对于日志、CSV 那样的每行格式相同的文本文件，<code>awk</code>可能是最方便的工具。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201811/bg2018110702.jpg" alt=""></p>
+<p><code>awk</code>其实不仅仅是工具软件，还是一种编程语言。不过，这里只介绍它的命令行用法，对于大多数场合，应该足够用了。</p>
+<h2 id="基本用法">基本用法</h2>
+<p><code>awk</code>的基本用法就是下面的形式。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 格式</span>
+$ awk 动作 文件名
+
+<span class="c1"># 示例</span>
+$ awk <span class="s1">&#39;{print $0}&#39;</span> demo.txt
+</code></pre></td></tr></table>
+</div>
+</div><p>上面示例中，<code>demo.txt</code>是<code>awk</code>所要处理的文本文件。前面单引号内部有一个大括号，里面就是每一行的处理动作<code>print $0</code>。其中，<code>print</code>是打印命令，<code>$0</code>代表当前行，因此上面命令的执行结果，就是把每一行原样打印出来。</p>
+<p>下面，我们先用标准输入（stdin）演示上面这个例子。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">echo</span> <span class="s1">&#39;this is a test&#39;</span> <span class="p">|</span> awk <span class="s1">&#39;{print $0}&#39;</span>
+this is a <span class="nb">test</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>上面代码中，<code>print $0</code>就是把标准输入<code>this is a test</code>，重新打印了一遍。</p>
+<p><code>awk</code>会根据空格和制表符，将每一行分成若干字段，依次用<code>$1</code>、<code>$2</code>、<code>$3</code>代表第一个字段、第二个字段、第三个字段等等。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">echo</span> <span class="s1">&#39;this is a test&#39;</span> <span class="p">|</span> awk <span class="s1">&#39;{print $3}&#39;</span>
+a
+</code></pre></td></tr></table>
+</div>
+</div><p>上面代码中，<code>$3</code>代表<code>this is a test</code>的第三个字段<code>a</code>。</p>
+<p>下面，为了便于举例，我们把<code>/etc/passwd</code>文件保存成<code>demo.txt</code>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root❌0:0:root:/root:/usr/bin/zsh
+daemon❌1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin❌2:2:bin:/bin:/usr/sbin/nologin
+sys❌3:3:sys:/dev:/usr/sbin/nologin
+sync❌4:65534:sync:/bin:/bin/sync
+</code></pre></td></tr></table>
+</div>
+</div><p>这个文件的字段分隔符是冒号（<code>:</code>），所以要用<code>-F</code>参数指定分隔符为冒号。然后，才能提取到它的第一个字段。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ awk -F <span class="s1">&#39;:&#39;</span> <span class="s1">&#39;{ print $1 }&#39;</span> demo.txt
+root
+daemon
+bin
+sys
+sync
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="变量">变量</h2>
+<p>除了<code>$ + 数字</code>表示某个字段，<code>awk</code>还提供其他一些变量。</p>
+<p>变量<code>NF</code>表示当前行有多少个字段，因此<code>$NF</code>就代表最后一个字段。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">echo</span> <span class="s1">&#39;this is a test&#39;</span> <span class="p">|</span> awk <span class="s1">&#39;{print $NF}&#39;</span>
+<span class="nb">test</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>$(NF-1)</code>代表倒数第二个字段。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ awk -F &#39;:&#39; &#39;{print $1, $(NF-1)}&#39; demo.txt
+root /root
+daemon /usr/sbin
+bin /bin
+sys /dev
+sync /bin
+</code></pre></td></tr></table>
+</div>
+</div><p>上面代码中，<code>print</code>命令里面的逗号，表示输出的时候，两个部分之间使用空格分隔。</p>
+<p>变量<code>NR</code>表示当前处理的是第几行。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ awk -F <span class="s1">&#39;:&#39;</span> <span class="s1">&#39;{print NR &#34;) &#34; $1}&#39;</span> demo.txt
+1<span class="o">)</span> root
+2<span class="o">)</span> daemon
+3<span class="o">)</span> bin
+4<span class="o">)</span> sys
+5<span class="o">)</span> sync
+</code></pre></td></tr></table>
+</div>
+</div><p>上面代码中，<code>print</code>命令里面，如果原样输出字符，要放在双引号里面。</p>
+<p><code>awk</code>的其他内置变量如下。</p>
+<blockquote>
+<ul>
+<li><code>FILENAME</code>：当前文件名</li>
+<li><code>FS</code>：字段分隔符，默认是空格和制表符。</li>
+<li><code>RS</code>：行分隔符，用于分割每一行，默认是换行符。</li>
+<li><code>OFS</code>：输出字段的分隔符，用于打印时分隔字段，默认为空格。</li>
+<li><code>ORS</code>：输出记录的分隔符，用于打印时分隔记录，默认为换行符。</li>
+<li><code>OFMT</code>：数字输出的格式，默认为<code>％.6g</code>。</li>
+</ul>
+</blockquote>
+<h2 id="函数">函数</h2>
+<p><code>awk</code>还提供了一些内置函数，方便对原始数据的处理。</p>
+<p>函数<code>toupper()</code>用于将字符转为大写。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ awk -F <span class="s1">&#39;:&#39;</span> <span class="s1">&#39;{ print toupper($1) }&#39;</span> demo.txt
+ROOT
+DAEMON
+BIN
+SYS
+SYNC
+</code></pre></td></tr></table>
+</div>
+</div><p>上面代码中，第一个字段输出时都变成了大写。</p>
+<p>其他常用函数如下。</p>
+<blockquote>
+<ul>
+<li><code>tolower()</code>：字符转为小写。</li>
+<li><code>length()</code>：返回字符串长度。</li>
+<li><code>substr()</code>：返回子字符串。</li>
+<li><code>sin()</code>：正弦。</li>
+<li><code>cos()</code>：余弦。</li>
+<li><code>sqrt()</code>：平方根。</li>
+<li><code>rand()</code>：随机数。</li>
+</ul>
+</blockquote>
+<p><code>awk</code>内置函数的完整列表，可以查看<a href="https://www.gnu.org/software/gawk/manual/html_node/Built_002din.html#Built_002din">手册</a>。</p>
+<h2 id="条件">条件</h2>
+<p><code>awk</code>允许指定输出条件，只输出符合条件的行。</p>
+<p>输出条件要写在动作的前面。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ awk <span class="s1">&#39;条件 动作&#39;</span> 文件名
+</code></pre></td></tr></table>
+</div>
+</div><p>请看下面的例子。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ awk -F <span class="s1">&#39;:&#39;</span> <span class="s1">&#39;/usr/ {print $1}&#39;</span> demo.txt
+root
+daemon
+bin
+sys
+</code></pre></td></tr></table>
+</div>
+</div><p>上面代码中，<code>print</code>命令前面是一个正则表达式，只输出包含<code>usr</code>的行。</p>
+<p>下面的例子只输出奇数行，以及输出第三行以后的行。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 输出奇数行</span>
+$ awk -F <span class="s1">&#39;:&#39;</span> <span class="s1">&#39;NR % 2 == 1 {print $1}&#39;</span> demo.txt
+root
+bin
+sync
+
+<span class="c1"># 输出第三行以后的行</span>
+$ awk -F <span class="s1">&#39;:&#39;</span> <span class="s1">&#39;NR &gt;3 {print $1}&#39;</span> demo.txt
+sys
+sync
+</code></pre></td></tr></table>
+</div>
+</div><p>下面的例子输出第一个字段等于指定值的行。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ awk -F <span class="s1">&#39;:&#39;</span> <span class="s1">&#39;$1 == &#34;root&#34; {print $1}&#39;</span> demo.txt
+root
+
+$ awk -F <span class="s1">&#39;:&#39;</span> <span class="s1">&#39;$1 == &#34;root&#34; || $1 == &#34;bin&#34; {print $1}&#39;</span> demo.txt
+root
+bin
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="if-语句">if 语句</h2>
+<p><code>awk</code>提供了<code>if</code>结构，用于编写复杂的条件。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ awk -F <span class="s1">&#39;:&#39;</span> <span class="s1">&#39;{if ($1 &gt; &#34;m&#34;) print $1}&#39;</span> demo.txt
+root
+sys
+sync
+</code></pre></td></tr></table>
+</div>
+</div><p>上面代码输出第一个字段的第一个字符大于<code>m</code>的行。</p>
+<p><code>if</code>结构还可以指定<code>else</code>部分。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ awk -F <span class="s1">&#39;:&#39;</span> <span class="s1">&#39;{if ($1 &gt; &#34;m&#34;) print $1; else print &#34;---&#34;}&#39;</span> demo.txt
+root
+---
+---
+sys
+sync
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="参考链接">参考链接</h2>
+<ul>
+<li><a href="https://gregable.com/2010/09/why-you-should-know-just-little-awk.html">An Awk tutorial by Example</a>, Greg Grothaus</li>
+<li><a href="https://likegeeks.com/awk-command/">30 Examples for Awk Command in Text Processing</a>, Mokhtar Ebrahim</li>
+</ul>
+<h1 id="cal">cal</h1>
+<p><code>cal</code>命令显示本月的日历。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ cal
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="cat">cat</h1>
+<p><code>cat</code>命令用于显示一个文本文件的内容。</p>
+<p><code>cat - &gt;&gt; filename</code>用于向一个现有文件的尾部追加内容。</p>
+<h1 id="clear">clear</h1>
+<p><code>clear</code>命令用来清除当前屏幕的显示，运行后会只留下一个提示符。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ clear
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="cp-命令">cp 命令</h1>
+<p><code>cp</code>命令用于复制文件。</p>
+<h2 id="参数">参数</h2>
+<p><code>-u</code>参数只复制那些目标目录里面还不存在的文件，以及那些虽然存在、但是比源目录对应文件更陈旧的文件。</p>
+<h1 id="cut">cut</h1>
+<p><code>cut</code>命令用于在命令行输出文本文件的指定位置的内容。</p>
+<p>它的使用格式如下。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ cut OPTION <span class="o">[</span>FILE<span class="o">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>如果没有指定文件名，将读取标准输入。</p>
+<p><code>-b</code>参数用来指定读取的字节。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 输出前三个字节</span>
+$ cut file1.txt -b1,2,3
+
+<span class="c1"># 输出前十个字节</span>
+$ cut file1.txt -b1-10
+
+<span class="c1"># 输出从第5个字节开始的所有字节</span>
+$ cut file1.txt -b5-
+
+<span class="c1"># 输出前5个字节</span>
+$ cut file1.txt -b-5
+</code></pre></td></tr></table>
+</div>
+</div><p><code>-c</code>参数用来指定读取的字符，用法与<code>-b</code>一样。有的字符是多字节字符，这时候就应该用<code>-c</code>代替<code>-b</code>。</p>
+<p><code>-d</code>参数用来指定分隔符，默认分隔符为制表符。</p>
+<p><code>-f</code>参数用来指定字段。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 指定每一行的分隔符为逗号，</span>
+<span class="c1"># 输出第一和第三个字段</span>
+$ cut file1.txt -d, -f1,3
+
+<span class="c1"># 输出第一、第二、第四和第五个字段</span>
+$ cut -f 1-2,4-5 data.txt
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="date">date</h1>
+<p><code>date</code>命令显示当前的日期和时间。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ date
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="dd">dd</h1>
+<p><code>dd</code>命令用于复制磁盘或文件系统。</p>
+<h2 id="复制磁盘">复制磁盘</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ dd <span class="k">if</span><span class="o">=</span>/dev/sda <span class="nv">of</span><span class="o">=</span>/dev/sdb
+</code></pre></td></tr></table>
+</div>
+</div><p>上面命令表示将<code>/dev/sda</code>磁盘复制到<code>/dev/sdb</code>设备。参数<code>if</code>表示来源地，<code>of</code>表示目的地。</p>
+<p>除了复制，<code>dd</code>还允许将磁盘做成一个镜像文件。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ dd <span class="k">if</span><span class="o">=</span>/dev/sda <span class="nv">of</span><span class="o">=</span>/home/username/sdadisk.img
+</code></pre></td></tr></table>
+</div>
+</div><p><code>dd</code>还可以复制单个分区。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ dd <span class="k">if</span><span class="o">=</span>/dev/sda2 <span class="nv">of</span><span class="o">=</span>/home/username/partition2.img <span class="nv">bs</span><span class="o">=</span><span class="m">4096</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>上面命令中，参数<code>bs</code>表示单次拷贝的字节数（bytes）。</p>
+<p>要将镜像文件复原，也很简单。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ dd <span class="k">if</span><span class="o">=</span>sdadisk.img <span class="nv">of</span><span class="o">=</span>/dev/sdb
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="清除数据">清除数据</h2>
+<p><code>dd</code>也可以用于清除磁盘数据。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 磁盘数据写满 0</span>
+$ dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>/dev/sda1
+
+<span class="c1"># 磁盘数据写满随机字符</span>
+$ dd <span class="k">if</span><span class="o">=</span>/dev/urandom <span class="nv">of</span><span class="o">=</span>/dev/sda1
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="监控进展">监控进展</h2>
+<p>磁盘的复制通常需要很久，为了监控进展，可以使用 Pipe Viewer 工具软件。如果没有安装这个软件，可以使用下面的命令安装。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo apt install pv
+</code></pre></td></tr></table>
+</div>
+</div><p>然后，来源地和目的地之间插入广告，就可以看到进展了。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ dd <span class="k">if</span><span class="o">=</span>/dev/urandom <span class="p">|</span> pv <span class="p">|</span> dd <span class="nv">of</span><span class="o">=</span>/dev/sda1
+4,14MB 0:00:05 <span class="o">[</span> 98kB/s<span class="o">]</span> <span class="o">[</span>      &lt;<span class="o">=</span>&gt;                  <span class="o">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="参考链接-1">参考链接</h2>
+<ul>
+<li>David Clinton, <a href="https://opensource.com/article/18/7/how-use-dd-linux">How to use dd in Linux without destroying your disk</a></li>
+</ul>
+<h1 id="df">df</h1>
+<p><code>df</code>命令显示磁盘信息。</p>
+<h1 id="du">du</h1>
+<p><code>du</code>命令显示某个文件或目录的磁盘使用量。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ du filename
+</code></pre></td></tr></table>
+</div>
+</div><p><code>-h</code>参数将返回的大小显示为人类可读的格式，即显示单位为 K、M、G 等。</p>
+<p><code>-s</code>参数表示总结（summarize）。</p>
+<p><code>-x</code>参数表示不显示不在当前分区的目录，通常会忽略<code>/dev</code>、<code>/proc</code>、<code>/sys</code>等目录。</p>
+<p><code>-c</code>参数表示显示当前目录总共占用的空间大小。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 显示根目录下各级目录占用的空间大小</span>
+$ sudo du -shxc /*
+</code></pre></td></tr></table>
+</div>
+</div><p><code>--exclude</code>参数用于排除某些目录或文件。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo du -shxc /* --exclude<span class="o">=</span>proc
+$ sudo du -sh --exclude<span class="o">=</span>*.iso
+</code></pre></td></tr></table>
+</div>
+</div><p><code>--max-depth</code>参数用于设定目录大小统计到第几层。如果设为<code>-–max-depth=0</code>，那么等同于<code>-s</code>参数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo du /home/ -hc --max-depth<span class="o">=</span><span class="m">2</span>
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="egrep">egrep</h1>
+<p><code>egrep</code>命令用于显示匹配正则模式的行，与<code>grep -E</code>命令等价。</p>
+<p>下面是<code>example.txt</code>文件的内容。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">Lorem ipsum
+dolor sit amet, 
+consetetur
+sadipscing elitr,
+sed diam nonumy
+eirmod tempor
+invidunt ut labore
+et dolore magna
+aliquyam erat, sed
+diam voluptua. At
+vero eos et
+accusam et justo
+duo dolores et ea
+rebum. Stet clita
+kasd gubergren,
+no sea takimata
+sanctus est Lorem
+ipsum dolor sit
+amet.
+</code></pre></td></tr></table>
+</div>
+</div><p><code>egrep</code>命令显示包括<code>Lorem</code>或<code>dolor</code>的行。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ egrep <span class="s1">&#39;(Lorem|dolor)&#39;</span> example.txt
+<span class="c1"># 或者</span>
+$ grep -E <span class="s1">&#39;(Lorem|dolor)&#39;</span> example.txt
+Lorem ipsum
+dolor sit amet,
+et dolore magna
+duo dolores et ea
+sanctus est Lorem
+ipsum dolor sit
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="export">export</h1>
+<p><code>export</code>命令用于向子Shell输出变量。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">hotellogs</span><span class="o">=</span><span class="s2">&#34;/workspace/hotel-api/storage/logs&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>然后执行下面的命令，新建一个子 Shell。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ bash
+$ <span class="nb">cd</span> hotellogs
+</code></pre></td></tr></table>
+</div>
+</div><p>上面命令的执行结果会进入<code>hotellogs</code>变量指向的目录。</p>
+<p><code>export</code>命令还可以显示所有环境变量。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span>
+<span class="nv">SHELL</span><span class="o">=</span>/bin/zsh
+<span class="nv">AWS_HOME</span><span class="o">=</span>/Users/adnanadnan/.aws
+<span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8
+<span class="nv">LC_CTYPE</span><span class="o">=</span>en_US.UTF-8
+<span class="nv">LESS</span><span class="o">=</span>-R
+</code></pre></td></tr></table>
+</div>
+</div><p>如果想查看单个变量，使用<code>echo $VARIABLE_NAME</code>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">echo</span> <span class="nv">$SHELL</span>
+/usr/bin/zsh
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="file">file</h1>
+<p><code>file</code>命令用来查看某个文件的类型。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ file index.html
+ index.html: HTML document, ASCII text
+</code></pre></td></tr></table>
+</div>
+</div><p>file 工具可以对所给的文件输出一行简短的介绍，它用文件后缀、头部信息和一些其他的线索来判断文件。你在检查一堆你不熟悉的文件时使用 find 非常方便：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ find -exec file <span class="o">{}</span> <span class="se">\;</span>
+.:            directory
+./hanoi:      Perl script, ASCII text executable
+./.hanoi.swp: Vim swap file, version 7.3
+./factorial:  Perl script, ASCII text executable
+./bits.c:     C source, ASCII text
+./bits:       ELF 32-bit LSB executable, Intel 80386, version ...
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="find">find</h1>
+<p><code>find</code>命令用于寻找文件，会包括当前目录的所有下级目录。</p>
+<p>如果不带任何参数，<code>find</code>文件会列出当前目录的所有文件，甚至还包括相对路径。如果把结果导入 sort 效果更好。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ find <span class="p">|</span> sort
+.
+./Makefile
+./README
+./build
+./client.c
+./client.h
+./common.h
+./project.c
+./server.c
+./server.h
+./tests
+./tests/suite1.pl
+./tests/suite2.pl
+./tests/suite3.pl
+./tests/suite4.pl
+</code></pre></td></tr></table>
+</div>
+</div><p>如果想要 ls -l 样式的列表，只要在 find 后面加上 -ls。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ find -ls
+</code></pre></td></tr></table>
+</div>
+</div><p>find 有它自己的一套复杂的过滤语句。下面列举的是一些最常用的你可以用以获取某些文件列表的过滤器：</p>
+<ul>
+<li>find -name &lsquo;*.c&rsquo; —— 查找符合某 shell 式样式的文件名的文件。用 iname 开启大小写不敏感搜索。</li>
+<li>find -path &lsquo;<em>test</em>&rsquo; —— 查找符合某 shell 式样式的路径的文件。用 ipath 开启大小写不敏感搜索。</li>
+<li>find -mtime -5 —— 查找近五天内编辑过的文件。你也可以用 +5 来查找五天之前编辑过的文件。</li>
+<li>find -newer server.c —— 查找比 server.c 更新的文件。</li>
+<li>find -type d —— 查找所有文件夹。如果想找出所有文件，那就用 -type f；找符号连接就用 -type l。</li>
+</ul>
+<p>要注意，上面提到的这些过滤器都是可以组合使用的，例如找出近两天内编辑过的 C 源码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ find -name <span class="s1">&#39;*.c&#39;</span> -mtime -2
+</code></pre></td></tr></table>
+</div>
+</div><p>默认情况下， find 对搜索结果所采取的动作只是简单地通过标准输出输出一个列表，然而其实还有其他一些有用的后续动作。</p>
+<ul>
+<li>-ls —— 如前文，提供了一种类 ls -l 式的列表。</li>
+<li>-delete —— 删除符合查找条件的文件。</li>
+<li>-exec —— 对搜索结果里的每个文件都运行某个命令， <code>{}</code>会被替换成适当的文件名，并且命令用<code>\;</code>终结。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ find -name <span class="s1">&#39;*.pl&#39;</span> -exec perl -c <span class="o">{}</span> <span class="se">\;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>你也可以使用<code>+</code>作为终止符来对所有结果运行一次命令。我还发现一个我经常使用的小技巧，就是用 find 生成一个文件列表，然后在 Vim 的垂直分窗中编辑：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ find -name <span class="s1">&#39;*.c&#39;</span> -exec vim <span class="o">{}</span> +
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="fmt">fmt</h1>
+<p><code>fmt</code>命令用于对文本指定样式。</p>
+<p>下面是<code>example.txt</code>的内容，是非常长的一行。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+</code></pre></td></tr></table>
+</div>
+</div><p><code>fmt</code>可以将其输出为每行80个字符。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">cat example.txt <span class="p">|</span> fmt -w <span class="m">20</span>
+Lorem ipsum
+dolor sit amet,
+consetetur
+sadipscing elitr,
+sed diam nonumy
+eirmod tempor
+invidunt ut labore
+et dolore magna
+aliquyam erat, sed
+diam voluptua. At
+vero eos et
+accusam et justo
+duo dolores et ea
+rebum. Stet clita
+kasd gubergren,
+no sea takimata
+sanctus est Lorem
+ipsum dolor sit
+amet.
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="grep">grep</h1>
+<p><code>grep</code>命令用于文件内容的搜索，返回所有匹配的行。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ grep pattern filename
+</code></pre></td></tr></table>
+</div>
+</div><p>下面是一个例子。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ grep admin /etc/passwd
+_kadmin_admin:*:218:-2:Kerberos Admin Service:/var/empty:/usr/bin/false
+_kadmin_changepw:*:219:-2:Kerberos Change Password Service:/var/empty:/usr/bin/false
+_krb_kadmin:*:231:-2:Open Directory Kerberos Admin Service:/var/empty:/usr/bin/false
+</code></pre></td></tr></table>
+</div>
+</div><p>一般情况下，应该使用<code>grep -R</code>，递归地找出当前目录下符合<code>someVar</code>的文件。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ grep -FR <span class="s1">&#39;someVar&#39;</span> .
+</code></pre></td></tr></table>
+</div>
+</div><p>別忘了大小不敏感的参数，因为 <code>grep</code> 默认搜索是大小写敏感的。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ grep -iR <span class="s1">&#39;somevar&#39;</span> .
+</code></pre></td></tr></table>
+</div>
+</div><p>也可以用<code>grep -l</code>光打印出符合条件的文件名而非文件内容选段。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ grep -lR <span class="s1">&#39;somevar&#39;</span> .
+</code></pre></td></tr></table>
+</div>
+</div><p>如果你写的脚本或批处理任务需要上面的输出内容，可以使用 <code>while</code> 和 <code>read</code> 来处理文件名中的空格和其他特殊字符：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">grep -lR someVar <span class="p">|</span> <span class="k">while</span> <span class="nv">IFS</span><span class="o">=</span> <span class="nb">read</span> -r file<span class="p">;</span> <span class="k">do</span>
+    head <span class="s2">&#34;</span><span class="nv">$file</span><span class="s2">&#34;</span>
+<span class="k">done</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>如果你在你的项目里使用了版本控制软件，它通常会在 <code>.svn</code>， <code>.git</code>， <code>.hg</code> 目录下包含一些元数据。你也可以很容易地用 <code>grep -v</code> 把这些目录移出搜索范围，当然得用 <code>grep -F</code> 指定一个恰当且确定的字符串，即要移除的目录名：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ grep -R <span class="s1">&#39;someVar&#39;</span> . <span class="p">|</span> grep -vF <span class="s1">&#39;.svn&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>部分版本的 <code>grep</code> 包含了 <code>--exclude</code> 和 <code>--exclude-dir</code> 选项，这看起来更加易读。</p>
+<h2 id="参数-1">参数</h2>
+<p><code>-i</code>参数表示忽略大小写。</p>
+<p><code>-r</code>表示搜索某个目录下面的所有文件。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ grep -r admin /etc/
+</code></pre></td></tr></table>
+</div>
+</div><p><code>-v</code>过滤包含某个词的行，即<code>grep</code>的逆操作。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 显示所有包含 vim，但不包含 grep 的行</span>
+$ ps <span class="p">|</span> grep vim <span class="p">|</span> grep -v grep
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="gunzip">gunzip</h1>
+<p><code>gunzip</code>命令用于解压<code>gzip</code>命令压缩的文件。</p>
+<h1 id="gzcat">gzcat</h1>
+<p><code>gzcat</code>命令用于查看一个<code>gz</code>文件，但并不实际解压它。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ gzcat filename
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="gzip">gzip</h1>
+<p><code>gzip</code>命令用于压缩文件。</p>
+<h1 id="killall">killall</h1>
+<p><code>killall</code>命令终止给定名字的一系列相关进程。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ killall processname
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="kill">kill</h1>
+<p><code>kill</code>命令用户终止指定进程。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">kill</span> PID
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="last">last</h1>
+<p><code>last</code>命令显示用户登录系统的记录。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ last
+</code></pre></td></tr></table>
+</div>
+</div><p><code>last</code>命令后面加上用户名，会显示该用户上次登录的信息。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ last yourUsername
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="lpq">lpq</h1>
+<p><code>lpq</code>命令显示打印机队列。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ lpq
+Rank    Owner   Job     File<span class="o">(</span>s<span class="o">)</span>                         Total Size
+active  adnanad <span class="m">59</span>      demo                            <span class="m">399360</span> bytes
+1st     adnanad <span class="m">60</span>      <span class="o">(</span>stdin<span class="o">)</span>                         <span class="m">0</span> bytes
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="lpr">lpr</h1>
+<p><code>lpr</code>命令用于打印文件。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">lpr filename
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="ls">ls</h1>
+<p><code>ls</code>命令用于列出当前目录里面的文件和子目录。</p>
+<h2 id="参数-2">参数</h2>
+<ul>
+<li>a：列出隐藏文件</li>
+<li>l：以长格式列出文件</li>
+<li>t：按最后编辑日期排序，最新的最先。这在某个大目录里找出最近修改的文件列表时很有用，比如将结果导入（ pipe ） head 或者 sed 10q。或许加上 -l 会效果更好。当然如果你想获取最旧的文件列表，只要加 -r 反转列表即可。</li>
+<li>X：按文件类型分类。这在多语言或多后缀的项目中特别方便，比如头文件和源文件分开，或区分开源文件和生成文件或目录。</li>
+<li>v：按照文件名里的版本号排序。</li>
+<li>S：按文件大小排序。</li>
+<li>R：递归地列举文件。这个选项和 -l 组合使用并将结果导出到 less 效果很好。</li>
+</ul>
+<p>可以把结果导出给类似 vim 的进程。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ ls -XR <span class="p">|</span> vim -
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="nl">nl</h1>
+<p><code>nl</code>命令用于显示行号。</p>
+<p>下面是<code>example.txt</code>文件的内容。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">Lorem ipsum
+dolor sit amet,
+consetetur
+sadipscing elitr,
+sed diam nonumy
+eirmod tempor
+invidunt ut labore
+et dolore magna
+aliquyam erat, sed
+diam voluptua. At
+vero eos et
+accusam et justo
+duo dolores et ea
+rebum. Stet clita
+kasd gubergren,
+no sea takimata
+sanctus est Lorem
+ipsum dolor sit
+amet.
+</code></pre></td></tr></table>
+</div>
+</div><p><code>nl</code>命令让上面这段文本显示行号。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ nl -s<span class="s2">&#34;. &#34;</span> example.txt
+     1. Lorem ipsum
+     2. dolor sit amet,
+     3. consetetur
+     4. sadipscing elitr,
+     5. sed diam nonumy
+     6. eirmod tempor
+     7. invidunt ut labore
+     8. et dolore magna
+     9. aliquyam erat, sed
+    10. diam voluptua. At
+    11. vero eos et
+    12. accusam et justo
+    13. duo dolores et ea
+    14. rebum. Stet clita
+    15. kasd gubergren,
+    16. no sea takimata
+    17. sanctus est Lorem
+    18. ipsum dolor sit
+    19. amet.
+</code></pre></td></tr></table>
+</div>
+</div><p><code>-s</code>参数表示行号的后缀。</p>
+<h1 id="ps">ps</h1>
+<p><code>ps</code>命令列出当前正在执行的进程信息。</p>
+<p>由于进程很多，所以为了快速找到某个进程，一般与<code>grep</code>配合使用。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 找出正在运行 vim 的进程</span>
+$ ps <span class="p">|</span> grep vi
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="参数-3">参数</h2>
+<p><code>-u</code>参数列出指定用户拥有的进程。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ ps -u yourusername
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="scp">scp</h1>
+<h2 id="基本用法-1">基本用法</h2>
+<p><code>scp</code>是 secure copy 的缩写，用来在两台主机之间加密传送文件。它的底层是 SSH 协议，默认端口是22。</p>
+<p>它主要用于以下三种复制操作。</p>
+<ul>
+<li>从本地系统到远程系统。</li>
+<li>从远程系统到本地系统。</li>
+<li>在本地系统的两个远程系统之间。</li>
+</ul>
+<p>使用<code>scp</code>传输数据时，文件和密码都是加密的，不会泄漏敏感信息。</p>
+<p><code>scp</code>的语法类似<code>cp</code>的语法。</p>
+<p>注意，如果传输的文件在本机和远程系统，有相同的名称和位置，<code>scp</code>会在没有警告的情况下覆盖文件。</p>
+<p><strong>（1）本地文件复制到远程系统</strong></p>
+<p>复制本机文件到远程系统的基本语法如下。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 语法</span>
+$ scp SourceFile user@host:directory/TargetFile
+
+<span class="c1"># 示例</span>
+$ scp file.txt remote_username@10.10.0.2:/remote/directory
+</code></pre></td></tr></table>
+</div>
+</div><p>下面是复制整个目录。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 将本机的 documents 目录拷贝到远程主机，</span>
+<span class="c1"># 会在远程主机创建 documents 目录</span>
+$ scp -r documents username@server_ip:/path_to_remote_directory
+
+<span class="c1"># 将本机整个目录拷贝到远程目录下</span>
+$ scp -r localmachine/path_to_the_directory username@server_ip:/path_to_remote_directory/
+
+<span class="c1"># 将本机目录下的所有内容拷贝到远程目录下</span>
+$ scp -r localmachine/path_to_the_directory/* username@server_ip:/path_to_remote_directory/
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>（2）远程文件复制到本地</strong></p>
+<p>从远程主机复制文件到本地的语法如下。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 语法</span>
+$ scp user@host:directory/SourceFile TargetFile
+
+<span class="c1"># 示例</span>
+$ scp remote_username@10.10.0.2:/remote/file.txt /local/directory
+</code></pre></td></tr></table>
+</div>
+</div><p>下面是复制整个目录的例子。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 拷贝一个远程目录到本机目录下</span>
+$ scp -r username@server_ip:/path_to_remote_directory local-machine/path_to_the_directory/
+
+<span class="c1"># 拷贝远程目录下的所有内容，到本机目录下</span>
+$ scp -r username@server_ip:/path_to_remote_directory/* local-machine/path_to_the_directory/
+$ scp -r user@host:directory/SourceFolder TargetFolder
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>（3）两个远程系统之间的复制</strong></p>
+<p>本机发出指令，从远程主机 A 拷贝到远程主机 B 的语法如下。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 语法</span>
+$ scp user@host1:directory/SourceFile user@host2:directory/SourceFile
+
+<span class="c1"># 示例</span>
+$ scp user1@host1.com:/files/file.txt user2@host2.com:/files
+</code></pre></td></tr></table>
+</div>
+</div><p>系统将提示您输入两个远程帐户的密码。数据将直接从一个远程主机传输到另一个远程主机。</p>
+<h2 id="参数-4">参数</h2>
+<p><code>-P</code>用来指定远程主机的 SSH 端口。如果远程主机使用非默认端口22，可以在命令中指定。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ scp -P <span class="m">2222</span> user@host:directory/SourceFile TargetFile
+</code></pre></td></tr></table>
+</div>
+</div><p><code>-p</code>参数用来保留修改时间（modification time）、访问时间（access time）、文件状态（mode）等原始文件的信息。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ scp -C -p ~/test.txt root@192.168.1.3:/some/path/test.txt
+</code></pre></td></tr></table>
+</div>
+</div><p><code>-l</code>参数用来限制传输数据的带宽速率，单位是 Kbit/sec。对于多人分享的带宽，这个参数可以留出一部分带宽供其他人使用。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ scp -l <span class="m">80</span> yourusername@yourserver:/home/yourusername/* .
+</code></pre></td></tr></table>
+</div>
+</div><p>上面代码中，<code>scp</code>命令占用的带宽限制为每秒80K比特位，即每秒10K字节。</p>
+<p><code>-c</code>参数用来指定加密算法。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ scp -c blowfish some_file your_username@remotehost.edu:~
+</code></pre></td></tr></table>
+</div>
+</div><p>上面代码指定加密算法为<code>blowfish</code>。</p>
+<p><code>-C</code>表示是否在传输时压缩文件。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ scp -c blowfish -C local_file your_username@remotehost.edu:~
+</code></pre></td></tr></table>
+</div>
+</div><p><code>-q</code>参数用来关闭显示拷贝的进度条。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ scp -q Label.pdf mrarianto@202.x.x.x:.
+</code></pre></td></tr></table>
+</div>
+</div><p><code>-F</code>参数用来指定 ssh_config 文件。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ scp -F /home/pungki/proxy_ssh_config Label.pdf
+</code></pre></td></tr></table>
+</div>
+</div><p><code>-v</code>参数用来显示详细的输出。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ scp -v ~/test.txt root@192.168.1.3:/root/help2356.txt
+</code></pre></td></tr></table>
+</div>
+</div><p><code>-i</code>参数用来指定密钥。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ scp -vCq -i private_key.pem ~/test.txt root@192.168.1.3:/some/path/test.txt
+</code></pre></td></tr></table>
+</div>
+</div><p><code>-r</code>参数表示是否以递归方式复制目录。</p>
+<h1 id="sed">sed</h1>
+<p><code>sed</code>命令用于对文本进行过滤和变形处理。</p>
+<p>下面是<code>example.txt</code>文件的内容。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">Hello This is a Test <span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span>
+replace all spaces with hyphens
+</code></pre></td></tr></table>
+</div>
+</div><p><code>sed</code>命令将所有的空格换成连词线<code>-</code>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ sed <span class="s1">&#39;s/ /-/g&#39;</span> example.txt
+Hello-This-is-a-Test-1-2-3-4
+</code></pre></td></tr></table>
+</div>
+</div><p>下面的命令将数字换成字母<code>d</code>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ sed <span class="s1">&#39;s/[0-9]/d/g&#39;</span> example.txt
+Hello This is a Test d d d d
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="sort">sort</h1>
+<p><code>sort</code>命令用于文本文件的排序。</p>
+<p>下面是<code>example.txt</code>文件的内容。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">f
+b
+c
+g
+a
+e
+d
+</code></pre></td></tr></table>
+</div>
+</div><p>执行<code>sort</code>命令对其进行排序。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ sort example.txt
+a
+b
+c
+d
+e
+f
+g
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="参数-5">参数</h2>
+<p><code>-R</code>参数表示随机排序。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sort -R example.txt
+b
+d
+a
+c
+g
+e
+f
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="tr">tr</h1>
+<p><code>tr</code>命令用于按照给定模式转换文本。</p>
+<p>下面是<code>example.txt</code>文件的内容。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">Hello World Foo Bar Baz!
+</code></pre></td></tr></table>
+</div>
+</div><p><code>tr</code>命令可以将所有小写字母转换为大写字母。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ cat example.txt <span class="p">|</span> tr <span class="s1">&#39;a-z&#39;</span> <span class="s1">&#39;A-Z&#39;</span>
+HELLO WORLD FOO BAR BAZ!
+</code></pre></td></tr></table>
+</div>
+</div><p><code>tr</code>命令还可以将所有空格转为换行符。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ cat example.txt <span class="p">|</span> tr <span class="s1">&#39; &#39;</span> <span class="s1">&#39;\n&#39;</span>
+Hello
+World
+Foo
+Bar
+Baz!
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="uname">uname</h1>
+<p><code>uname</code>命令用来显示内核信息。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ uname -a
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="uniq">uniq</h1>
+<p><code>uniq</code>用于过滤掉重复的行，该命令只对排序后的文件有效。</p>
+<p>下面是<code>example.txt</code>文件的内容。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">a
+a
+b
+a
+b
+c
+d
+c
+</code></pre></td></tr></table>
+</div>
+</div><p>对该文件进行排序后，再过滤掉重复的行。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ sort example.txt <span class="p">|</span> uniq
+a
+b
+c
+d
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="参数-6">参数</h2>
+<p><code>-c</code>参数会显示每行一共出现了多少次。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sort example.txt <span class="p">|</span> uniq -c
+    <span class="m">3</span> a
+    <span class="m">2</span> b
+    <span class="m">2</span> c
+    <span class="m">1</span> d
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="uptime">uptime</h1>
+<p><code>uptime</code>命令显示本次开机运行的时间。</p>
+<h1 id="wc">wc</h1>
+<p><code>wc</code>命令返回某个文件的行数、词数和字符数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ wc demo.txt
+<span class="m">7459</span>   <span class="m">15915</span>  <span class="m">398400</span> demo.txt
+</code></pre></td></tr></table>
+</div>
+</div><p>上面代码中，<code>7459</code>是行数，<code>15915</code>是词数，<code>398400</code>是字符数。</p>
+<h1 id="whereis">whereis</h1>
+<p><code>whereis</code>用来显示某个命令的位置。如果有多个程序符合条件，会全部列出。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ whereis node
+/usr/bin/node /usr/sbin/node
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="which">which</h1>
+<p><code>which</code>命令根据<code>PATH</code>环境变量指定的顺序，返回最早发现某个命令的位置。即不指定路径时，实际执行的命令的完整路径。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ which node
+/usr/bin/node
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="who">who</h1>
+<p><code>who</code>命令显示已经登录的用户。</p>
+<h2 id="参数-7">参数</h2>
+<p><code>-b</code>参数显示上一次系统启动的时间。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ who -b
+system boot  2017-06-20 17:41
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="w">w</h1>
+<p><code>w</code>命令显示当期谁在线。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Firefly</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2020-12-29
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/notepad/docs/bash/bash-archives/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">bash-archives</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/notepad/read/ddia.mm/">
+            <span class="next-text nav-default">DDIA</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="http://github.com/fierygit" class="iconfont icon-github" title="github"></a>
+  <a href="http://fireflying.top/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>Firefly</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

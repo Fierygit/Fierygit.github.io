@@ -1,0 +1,261 @@
+2020-10-09 17:47:25,216 - WARNING - info_parser.py[:24] - cookie错误或已过期,请按照README中方法重新获取
+2020-10-09 17:49:06,370 - WARNING - info_parser.py[:24] - cookie错误或已过期,请按照README中方法重新获取
+2020-10-09 17:50:03,684 - WARNING - info_parser.py[:24] - cookie错误或已过期,请按照README中方法重新获取
+2020-10-09 17:52:44,902 - WARNING - info_parser.py[:24] - cookie错误或已过期,请按照README中方法重新获取
+2020-10-09 17:55:31,121 - WARNING - info_parser.py[:24] - cookie错误或已过期,请按照README中方法重新获取
+2020-10-09 18:17:12,211 - ERROR - info_parser.py[:56] - list index out of range
+Traceback (most recent call last):
+  File "C:\Users\Firefly\Desktop\beibei\weiboSpider\weibo_spider\parser\info_parser.py", line 40, in extract_user_info
+    "//div[@class='tip'][2]/text()")[0] == u'学习经历':
+IndexError: list index out of range
+2020-10-09 18:17:12,348 - ERROR - index_parser.py[:44] - 'NoneType' object has no attribute 'id'
+Traceback (most recent call last):
+  File "C:\Users\Firefly\Desktop\beibei\weiboSpider\weibo_spider\parser\index_parser.py", line 36, in get_user
+    self.user.id = user_id
+AttributeError: 'NoneType' object has no attribute 'id'
+2020-10-09 18:17:12,587 - ERROR - spider.py[:198] - 'NoneType' object has no attribute 'nickname'
+Traceback (most recent call last):
+  File "C:\Users\Firefly\Desktop\beibei\weiboSpider\weibo_spider\spider.py", line 188, in _get_filepath
+    self.user.nickname)
+AttributeError: 'NoneType' object has no attribute 'nickname'
+2020-10-09 18:17:12,750 - ERROR - spider.py[:198] - 'NoneType' object has no attribute 'nickname'
+Traceback (most recent call last):
+  File "C:\Users\Firefly\Desktop\beibei\weiboSpider\weibo_spider\spider.py", line 188, in _get_filepath
+    self.user.nickname)
+AttributeError: 'NoneType' object has no attribute 'nickname'
+2020-10-09 18:17:12,806 - ERROR - spider.py[:290] - 'NoneType' object has no attribute '__dict__'
+Traceback (most recent call last):
+  File "C:\Users\Firefly\Desktop\beibei\weiboSpider\weibo_spider\spider.py", line 269, in start
+    self.write_user(self.user)
+  File "C:\Users\Firefly\Desktop\beibei\weiboSpider\weibo_spider\spider.py", line 114, in write_user
+    writer.write_user(user)
+  File "C:\Users\Firefly\Desktop\beibei\weiboSpider\weibo_spider\writer\txt_writer.py", line 29, in write_user
+    [v + '：' + str(self.user.__dict__[k]) for k, v in self.user_desc])
+  File "C:\Users\Firefly\Desktop\beibei\weiboSpider\weibo_spider\writer\txt_writer.py", line 29, in <listcomp>
+    [v + '：' + str(self.user.__dict__[k]) for k, v in self.user_desc])
+AttributeError: 'NoneType' object has no attribute '__dict__'
+2020-10-09 19:02:55,136 - ERROR - downloader.py[:39] - HTTPConnectionPool(host='ww1.sinaimg.cn', port=80): Read timed out.
+Traceback (most recent call last):
+  File "C:\app\anaconda\lib\site-packages\urllib3\response.py", line 360, in _error_catcher
+    yield
+  File "C:\app\anaconda\lib\site-packages\urllib3\response.py", line 442, in read
+    data = self._fp.read(amt)
+  File "C:\app\anaconda\lib\http\client.py", line 457, in read
+    n = self.readinto(b)
+  File "C:\app\anaconda\lib\http\client.py", line 501, in readinto
+    n = self.fp.readinto(b)
+  File "C:\app\anaconda\lib\socket.py", line 589, in readinto
+    return self._sock.recv_into(b)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\app\anaconda\lib\site-packages\requests\models.py", line 751, in generate
+    for chunk in self.raw.stream(chunk_size, decode_content=True):
+  File "C:\app\anaconda\lib\site-packages\urllib3\response.py", line 494, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\app\anaconda\lib\site-packages\urllib3\response.py", line 459, in read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+  File "C:\app\anaconda\lib\contextlib.py", line 130, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "C:\app\anaconda\lib\site-packages\urllib3\response.py", line 365, in _error_catcher
+    raise ReadTimeoutError(self._pool, None, 'Read timed out.')
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='ww1.sinaimg.cn', port=80): Read timed out.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Firefly\Desktop\beibei\weiboSpider\weibo_spider\downloader\downloader.py", line 31, in download_one_file
+    downloaded = s.get(url, timeout=(5, 10))
+  File "C:\app\anaconda\lib\site-packages\requests\sessions.py", line 543, in get
+    return self.request('GET', url, **kwargs)
+  File "C:\app\anaconda\lib\site-packages\requests\sessions.py", line 530, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\app\anaconda\lib\site-packages\requests\sessions.py", line 683, in send
+    r.content
+  File "C:\app\anaconda\lib\site-packages\requests\models.py", line 829, in content
+    self._content = b''.join(self.iter_content(CONTENT_CHUNK_SIZE)) or b''
+  File "C:\app\anaconda\lib\site-packages\requests\models.py", line 758, in generate
+    raise ConnectionError(e)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='ww1.sinaimg.cn', port=80): Read timed out.
+2020-10-09 19:36:38,773 - ERROR - downloader.py[:39] - HTTPConnectionPool(host='ww2.sinaimg.cn', port=80): Read timed out.
+Traceback (most recent call last):
+  File "C:\app\anaconda\lib\site-packages\urllib3\response.py", line 360, in _error_catcher
+    yield
+  File "C:\app\anaconda\lib\site-packages\urllib3\response.py", line 442, in read
+    data = self._fp.read(amt)
+  File "C:\app\anaconda\lib\http\client.py", line 457, in read
+    n = self.readinto(b)
+  File "C:\app\anaconda\lib\http\client.py", line 501, in readinto
+    n = self.fp.readinto(b)
+  File "C:\app\anaconda\lib\socket.py", line 589, in readinto
+    return self._sock.recv_into(b)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\app\anaconda\lib\site-packages\requests\models.py", line 751, in generate
+    for chunk in self.raw.stream(chunk_size, decode_content=True):
+  File "C:\app\anaconda\lib\site-packages\urllib3\response.py", line 494, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\app\anaconda\lib\site-packages\urllib3\response.py", line 459, in read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+  File "C:\app\anaconda\lib\contextlib.py", line 130, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "C:\app\anaconda\lib\site-packages\urllib3\response.py", line 365, in _error_catcher
+    raise ReadTimeoutError(self._pool, None, 'Read timed out.')
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='ww2.sinaimg.cn', port=80): Read timed out.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Firefly\Desktop\beibei\weiboSpider\weibo_spider\downloader\downloader.py", line 31, in download_one_file
+    downloaded = s.get(url, timeout=(5, 10))
+  File "C:\app\anaconda\lib\site-packages\requests\sessions.py", line 543, in get
+    return self.request('GET', url, **kwargs)
+  File "C:\app\anaconda\lib\site-packages\requests\sessions.py", line 530, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\app\anaconda\lib\site-packages\requests\sessions.py", line 683, in send
+    r.content
+  File "C:\app\anaconda\lib\site-packages\requests\models.py", line 829, in content
+    self._content = b''.join(self.iter_content(CONTENT_CHUNK_SIZE)) or b''
+  File "C:\app\anaconda\lib\site-packages\requests\models.py", line 758, in generate
+    raise ConnectionError(e)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='ww2.sinaimg.cn', port=80): Read timed out.
+2020-10-09 20:58:01,083 - ERROR - downloader.py[:39] - HTTPConnectionPool(host='ww2.sinaimg.cn', port=80): Read timed out.
+Traceback (most recent call last):
+  File "C:\app\anaconda\lib\site-packages\urllib3\response.py", line 360, in _error_catcher
+    yield
+  File "C:\app\anaconda\lib\site-packages\urllib3\response.py", line 442, in read
+    data = self._fp.read(amt)
+  File "C:\app\anaconda\lib\http\client.py", line 457, in read
+    n = self.readinto(b)
+  File "C:\app\anaconda\lib\http\client.py", line 501, in readinto
+    n = self.fp.readinto(b)
+  File "C:\app\anaconda\lib\socket.py", line 589, in readinto
+    return self._sock.recv_into(b)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\app\anaconda\lib\site-packages\requests\models.py", line 751, in generate
+    for chunk in self.raw.stream(chunk_size, decode_content=True):
+  File "C:\app\anaconda\lib\site-packages\urllib3\response.py", line 494, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\app\anaconda\lib\site-packages\urllib3\response.py", line 459, in read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+  File "C:\app\anaconda\lib\contextlib.py", line 130, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "C:\app\anaconda\lib\site-packages\urllib3\response.py", line 365, in _error_catcher
+    raise ReadTimeoutError(self._pool, None, 'Read timed out.')
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='ww2.sinaimg.cn', port=80): Read timed out.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Firefly\Desktop\beibei\weiboSpider\weibo_spider\downloader\downloader.py", line 31, in download_one_file
+    downloaded = s.get(url, timeout=(5, 10))
+  File "C:\app\anaconda\lib\site-packages\requests\sessions.py", line 543, in get
+    return self.request('GET', url, **kwargs)
+  File "C:\app\anaconda\lib\site-packages\requests\sessions.py", line 530, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\app\anaconda\lib\site-packages\requests\sessions.py", line 683, in send
+    r.content
+  File "C:\app\anaconda\lib\site-packages\requests\models.py", line 829, in content
+    self._content = b''.join(self.iter_content(CONTENT_CHUNK_SIZE)) or b''
+  File "C:\app\anaconda\lib\site-packages\requests\models.py", line 758, in generate
+    raise ConnectionError(e)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='ww2.sinaimg.cn', port=80): Read timed out.
+2020-10-09 21:08:58,013 - ERROR - downloader.py[:39] - HTTPConnectionPool(host='ww4.sinaimg.cn', port=80): Read timed out.
+Traceback (most recent call last):
+  File "C:\app\anaconda\lib\site-packages\urllib3\response.py", line 360, in _error_catcher
+    yield
+  File "C:\app\anaconda\lib\site-packages\urllib3\response.py", line 442, in read
+    data = self._fp.read(amt)
+  File "C:\app\anaconda\lib\http\client.py", line 457, in read
+    n = self.readinto(b)
+  File "C:\app\anaconda\lib\http\client.py", line 501, in readinto
+    n = self.fp.readinto(b)
+  File "C:\app\anaconda\lib\socket.py", line 589, in readinto
+    return self._sock.recv_into(b)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\app\anaconda\lib\site-packages\requests\models.py", line 751, in generate
+    for chunk in self.raw.stream(chunk_size, decode_content=True):
+  File "C:\app\anaconda\lib\site-packages\urllib3\response.py", line 494, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\app\anaconda\lib\site-packages\urllib3\response.py", line 459, in read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+  File "C:\app\anaconda\lib\contextlib.py", line 130, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "C:\app\anaconda\lib\site-packages\urllib3\response.py", line 365, in _error_catcher
+    raise ReadTimeoutError(self._pool, None, 'Read timed out.')
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='ww4.sinaimg.cn', port=80): Read timed out.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Firefly\Desktop\beibei\weiboSpider\weibo_spider\downloader\downloader.py", line 31, in download_one_file
+    downloaded = s.get(url, timeout=(5, 10))
+  File "C:\app\anaconda\lib\site-packages\requests\sessions.py", line 543, in get
+    return self.request('GET', url, **kwargs)
+  File "C:\app\anaconda\lib\site-packages\requests\sessions.py", line 530, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\app\anaconda\lib\site-packages\requests\sessions.py", line 683, in send
+    r.content
+  File "C:\app\anaconda\lib\site-packages\requests\models.py", line 829, in content
+    self._content = b''.join(self.iter_content(CONTENT_CHUNK_SIZE)) or b''
+  File "C:\app\anaconda\lib\site-packages\requests\models.py", line 758, in generate
+    raise ConnectionError(e)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='ww4.sinaimg.cn', port=80): Read timed out.
+2020-10-09 21:10:52,099 - ERROR - downloader.py[:39] - HTTPConnectionPool(host='ww3.sinaimg.cn', port=80): Read timed out.
+Traceback (most recent call last):
+  File "C:\app\anaconda\lib\site-packages\urllib3\response.py", line 360, in _error_catcher
+    yield
+  File "C:\app\anaconda\lib\site-packages\urllib3\response.py", line 442, in read
+    data = self._fp.read(amt)
+  File "C:\app\anaconda\lib\http\client.py", line 457, in read
+    n = self.readinto(b)
+  File "C:\app\anaconda\lib\http\client.py", line 501, in readinto
+    n = self.fp.readinto(b)
+  File "C:\app\anaconda\lib\socket.py", line 589, in readinto
+    return self._sock.recv_into(b)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\app\anaconda\lib\site-packages\requests\models.py", line 751, in generate
+    for chunk in self.raw.stream(chunk_size, decode_content=True):
+  File "C:\app\anaconda\lib\site-packages\urllib3\response.py", line 494, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "C:\app\anaconda\lib\site-packages\urllib3\response.py", line 459, in read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+  File "C:\app\anaconda\lib\contextlib.py", line 130, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "C:\app\anaconda\lib\site-packages\urllib3\response.py", line 365, in _error_catcher
+    raise ReadTimeoutError(self._pool, None, 'Read timed out.')
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='ww3.sinaimg.cn', port=80): Read timed out.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Firefly\Desktop\beibei\weiboSpider\weibo_spider\downloader\downloader.py", line 31, in download_one_file
+    downloaded = s.get(url, timeout=(5, 10))
+  File "C:\app\anaconda\lib\site-packages\requests\sessions.py", line 543, in get
+    return self.request('GET', url, **kwargs)
+  File "C:\app\anaconda\lib\site-packages\requests\sessions.py", line 530, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\app\anaconda\lib\site-packages\requests\sessions.py", line 683, in send
+    r.content
+  File "C:\app\anaconda\lib\site-packages\requests\models.py", line 829, in content
+    self._content = b''.join(self.iter_content(CONTENT_CHUNK_SIZE)) or b''
+  File "C:\app\anaconda\lib\site-packages\requests\models.py", line 758, in generate
+    raise ConnectionError(e)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='ww3.sinaimg.cn', port=80): Read timed out.

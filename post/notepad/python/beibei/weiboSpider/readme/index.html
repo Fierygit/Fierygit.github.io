@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title> - Firefly</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Firefly" /><meta name="description" content="Weibo Spider 本程序可以连续爬取一个或多个新浪微博用户（如胡歌、迪丽热巴、郭碧婷）的数据，并将结果信息写入文件或数据库。写入信息几乎包括用户微博的所有" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.79.0 with theme even" />
+
+
+<link rel="canonical" href="http://fireflying.top/post/notepad/python/beibei/weibospider/readme/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="" />
+<meta property="og:description" content="Weibo Spider 本程序可以连续爬取一个或多个新浪微博用户（如胡歌、迪丽热巴、郭碧婷）的数据，并将结果信息写入文件或数据库。写入信息几乎包括用户微博的所有" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://fireflying.top/post/notepad/python/beibei/weibospider/readme/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Weibo Spider 本程序可以连续爬取一个或多个新浪微博用户（如胡歌、迪丽热巴、郭碧婷）的数据，并将结果信息写入文件或数据库。写入信息几乎包括用户微博的所有">
+
+<meta itemprop="wordCount" content="5797">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Weibo Spider 本程序可以连续爬取一个或多个新浪微博用户（如胡歌、迪丽热巴、郭碧婷）的数据，并将结果信息写入文件或数据库。写入信息几乎包括用户微博的所有"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Firefly</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Firefly</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title"></h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 0001-01-01 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#weibo-spider">Weibo Spider</a>
+      <ul>
+        <li><a href="#内容列表">内容列表</a></li>
+        <li><a href="#获取到的字段">获取到的字段</a></li>
+        <li><a href="#示例">示例</a></li>
+        <li><a href="#运行环境">运行环境</a></li>
+        <li><a href="#使用说明">使用说明</a>
+          <ul>
+            <li><a href="#0版本">0.版本</a></li>
+            <li><a href="#1安装程序">1.安装程序</a></li>
+            <li><a href="#2程序设置">2.程序设置</a></li>
+            <li><a href="#3运行程序">3.运行程序</a></li>
+          </ul>
+        </li>
+        <li><a href="#个性化定制程序可选">个性化定制程序（可选）</a></li>
+        <li><a href="#定期自动爬取微博可选">定期自动爬取微博（可选）</a></li>
+        <li><a href="#如何获取cookie">如何获取cookie</a></li>
+        <li><a href="#如何获取user_id">如何获取user_id</a></li>
+        <li><a href="#常见问题">常见问题</a></li>
+        <li><a href="#相关项目">相关项目</a></li>
+        <li><a href="#贡献">贡献</a></li>
+        <li><a href="#贡献者">贡献者</a></li>
+        <li><a href="#注意事项">注意事项</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p><a href="https://badge.fury.io/py/weibo-spider"><img src="https://github.com/dataabc/weiboSpider/workflows/Python%20application/badge.svg" alt="Build Status"></a>
+<a href="https://badge.fury.io/py/weibo-spider"><img src="https://img.shields.io/pypi/pyversions/weibo-spider" alt="Python"></a>
+<a href="https://badge.fury.io/py/weibo-spider"><img src="https://badge.fury.io/py/weibo-spider.svg" alt="PyPI"></a></p>
+<h1 id="weibo-spider">Weibo Spider</h1>
+<p>本程序可以连续爬取<strong>一个</strong>或<strong>多个</strong>新浪微博用户（如<a href="https://weibo.cn/u/1223178222">胡歌</a>、<a href="https://weibo.cn/u/1669879400">迪丽热巴</a>、<a href="https://weibo.cn/u/1729370543">郭碧婷</a>）的数据，并将结果信息写入<strong>文件</strong>或<strong>数据库</strong>。写入信息几乎包括用户微博的所有数据，包括<strong>用户信息</strong>和<strong>微博信息</strong>两大类。因为内容太多，这里不再赘述，详细内容见<a href="#%E8%8E%B7%E5%8F%96%E5%88%B0%E7%9A%84%E5%AD%97%E6%AE%B5">获取到的字段</a>。如果只需要用户信息，可以通过设置实现只爬取微博用户信息的功能。本程序需设置cookie来获取微博访问权限，后面会讲解<a href="#%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96cookie">如何获取cookie</a>。如果不想设置cookie，可以使用<a href="https://github.com/dataabc/weibo-crawler">免cookie版</a>，二者功能类似。</p>
+<p>具体的写入文件类型如下：</p>
+<ul>
+<li>写入<strong>txt文件</strong>（默认）</li>
+<li>写入<strong>csv文件</strong>（默认）</li>
+<li>写入<strong>json文件</strong>（可选）</li>
+<li>写入<strong>MySQL数据库</strong>（可选）</li>
+<li>写入<strong>MongoDB数据库</strong>（可选）</li>
+<li>写入<strong>SQLite数据库</strong>（可选）</li>
+<li>下载用户<strong>原创</strong>微博中的原始<strong>图片</strong>（可选）</li>
+<li>下载用户<strong>转发</strong>微博中的原始<strong>图片</strong>（<a href="https://github.com/dataabc/weibo-crawler">免cookie版</a>特有）</li>
+<li>下载用户<strong>原创</strong>微博中的<strong>视频</strong>（可选）</li>
+<li>下载用户<strong>转发</strong>微博中的<strong>视频</strong>（<a href="https://github.com/dataabc/weibo-crawler">免cookie版</a>特有）</li>
+<li>下载用户<strong>原创</strong>微博<strong>Live Photo</strong>中的<strong>视频</strong>（<a href="https://github.com/dataabc/weibo-crawler">免cookie版</a>特有）</li>
+<li>下载用户<strong>转发</strong>微博<strong>Live Photo</strong>中的<strong>视频</strong>（<a href="https://github.com/dataabc/weibo-crawler">免cookie版</a>特有）</li>
+</ul>
+<h2 id="内容列表">内容列表</h2>
+<ul>
+<li><a href="#weibo-spider">Weibo Spider</a>
+<ul>
+<li><a href="#%E5%86%85%E5%AE%B9%E5%88%97%E8%A1%A8">内容列表</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E5%88%B0%E7%9A%84%E5%AD%97%E6%AE%B5">获取到的字段</a></li>
+<li><a href="#%E7%A4%BA%E4%BE%8B">示例</a></li>
+<li><a href="#%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83">运行环境</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E">使用说明</a>
+<ul>
+<li><a href="#0%E7%89%88%E6%9C%AC">0.版本</a></li>
+<li><a href="#1%E5%AE%89%E8%A3%85%E7%A8%8B%E5%BA%8F">1.安装程序</a>
+<ul>
+<li><a href="#%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85">源码安装</a></li>
+<li><a href="#pip%E5%AE%89%E8%A3%85">pip安装</a></li>
+</ul>
+</li>
+<li><a href="#2%E7%A8%8B%E5%BA%8F%E8%AE%BE%E7%BD%AE">2.程序设置</a></li>
+<li><a href="#3%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F">3.运行程序</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%AA%E6%80%A7%E5%8C%96%E5%AE%9A%E5%88%B6%E7%A8%8B%E5%BA%8F%E5%8F%AF%E9%80%89">个性化定制程序（可选）</a></li>
+<li><a href="#%E5%AE%9A%E6%9C%9F%E8%87%AA%E5%8A%A8%E7%88%AC%E5%8F%96%E5%BE%AE%E5%8D%9A%E5%8F%AF%E9%80%89">定期自动爬取微博（可选）</a></li>
+<li><a href="#%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96cookie">如何获取cookie</a></li>
+<li><a href="#%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96user_id">如何获取user_id</a></li>
+<li><a href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98">常见问题</a></li>
+<li><a href="#%E7%9B%B8%E5%85%B3%E9%A1%B9%E7%9B%AE">相关项目</a></li>
+<li><a href="#%E8%B4%A1%E7%8C%AE">贡献</a></li>
+<li><a href="#%E8%B4%A1%E7%8C%AE%E8%80%85">贡献者</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">注意事项</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="获取到的字段">获取到的字段</h2>
+<p>本部分为爬取到的字段信息说明，为了与<a href="https://github.com/dataabc/weibo-crawler">免cookie版</a>区分，下面将两者爬取到的信息都列出来。如果是免cookie版所特有的信息，会有免cookie标注，没有标注的为二者共有的信息。</p>
+<p><strong>用户信息</strong></p>
+<ul>
+<li>用户id：微博用户id，如&quot;1669879400&quot;，其实这个字段本来就是已知字段</li>
+<li>昵称：用户昵称，如&quot;Dear-迪丽热巴&quot;</li>
+<li>性别：微博用户性别</li>
+<li>生日：用户出生日期</li>
+<li>所在地：用户所在地</li>
+<li>学习经历：用户上学时学校的名字和时间</li>
+<li>工作经历：用户所属公司名字和时间</li>
+<li>阳光信用（免cookie版）：用户的阳光信用</li>
+<li>微博注册时间（免cookie版）：用户微博注册日期</li>
+<li>微博数：用户的全部微博数（转发微博+原创微博）</li>
+<li>关注数：用户关注的微博数量</li>
+<li>粉丝数：用户的粉丝数</li>
+<li>简介：用户简介</li>
+<li>主页地址（免cookie版）：微博移动版主页url</li>
+<li>头像url（免cookie版）：用户头像url</li>
+<li>高清头像url（免cookie版）：用户高清头像url</li>
+<li>微博等级（免cookie版）：用户微博等级</li>
+<li>会员等级（免cookie版）：微博会员用户等级，普通用户该等级为0</li>
+<li>是否认证（免cookie版）：用户是否认证，为布尔类型</li>
+<li>认证类型（免cookie版）：用户认证类型，如个人认证、企业认证、政府认证等</li>
+<li>认证信息：为认证用户特有，用户信息栏显示的认证信息</li>
+</ul>
+<hr>
+<p><strong>微博信息</strong></p>
+<ul>
+<li>微博id：微博唯一标志</li>
+<li>微博内容：微博正文</li>
+<li>头条文章url：微博中头条文章的url，若微博中不存在头条文章，则值为''</li>
+<li>原始图片url：原创微博图片和转发微博转发理由中图片的url，若某条微博存在多张图片，每个url以英文逗号分隔，若没有图片则值为&quot;无&quot;</li>
+<li>视频url: 微博中的视频url，若微博中没有视频，则值为&quot;无&quot;</li>
+<li>微博发布位置：位置微博中的发布位置</li>
+<li>微博发布时间：微博发布时的时间，精确到分</li>
+<li>点赞数：微博被赞的数量</li>
+<li>转发数：微博被转发的数量</li>
+<li>评论数：微博被评论的数量</li>
+<li>微博发布工具：微博的发布工具，如iPhone客户端、HUAWEI Mate 20 Pro等</li>
+<li>结果文件：保存在当前目录weibo文件夹下以用户昵称为名的文件夹里，名字为&quot;user_id.csv&quot;和&quot;user_id.txt&quot;的形式</li>
+<li>微博图片：原创微博中的图片和转发微博转发理由中的图片，保存在以用户昵称为名的文件夹下的img文件夹里</li>
+<li>微博视频：原创微博中的视频，保存在以用户昵称为名的文件夹下的video文件夹里</li>
+<li>微博bid（免cookie版）：为<a href="https://github.com/dataabc/weibo-crawler">免cookie版</a>所特有，与本程序中的微博id是同一个值</li>
+<li>话题（免cookie版）：微博话题，即两个#中的内容，若存在多个话题，每个url以英文逗号分隔，若没有则值为''</li>
+<li>@用户（免cookie版）：微博@的用户，若存在多个@用户，每个url以英文逗号分隔，若没有则值为''</li>
+<li>原始微博（免cookie版）：为转发微博所特有，是转发微博中那条被转发的微博，存储为字典形式，包含了上述微博信息中的所有内容，如微博id、微博内容等等</li>
+</ul>
+<h2 id="示例">示例</h2>
+<p>如果想要知道程序的具体运行结果，可以查看<a href="https://github.com/dataabc/weiboSpider/blob/master/docs/example.md">示例文档</a>，该文档介绍了爬取<a href="https://weibo.cn/u/1669879400">迪丽热巴微博</a>的例子，并附有部分结果文件截图。</p>
+<h2 id="运行环境">运行环境</h2>
+<ul>
+<li>开发语言：python2/python3</li>
+<li>系统： Windows/Linux/macOS</li>
+</ul>
+<h2 id="使用说明">使用说明</h2>
+<h3 id="0版本">0.版本</h3>
+<p>本程序有两个版本，你现在看到的是python3版，另一个是python2版，python2版位于<a href="https://github.com/dataabc/weiboSpider/tree/python2">python2分支</a>。目前主力开发python3版，包括新功能开发和bug修复；python2版仅支持bug修复。推荐python3用户使用当前版本，推荐python2用户使用<a href="https://github.com/dataabc/weiboSpider/tree/python2">python2版</a>，本使用说明是python3版的使用说明。</p>
+<h3 id="1安装程序">1.安装程序</h3>
+<p>本程序提供两种安装方式，一种是<strong>源码安装</strong>，另一种是<strong>pip安装</strong>，二者功能完全相同。如果你需要修改源码，建议使用第一种方式，否则选哪种安装方式都可以。</p>
+<h4 id="源码安装">源码安装</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ git clone https://github.com/dataabc/weiboSpider.git
+$ <span class="nb">cd</span> weiboSpider
+$ pip install -r requirements.txt
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="pip安装">pip安装</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ python3 -m pip install weibo-spider
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="2程序设置">2.程序设置</h3>
+<p>要了解程序设置，请查看<a href="https://github.com/dataabc/weiboSpider/blob/master/docs/settings.md">程序设置文档</a>。</p>
+<h3 id="3运行程序">3.运行程序</h3>
+<p><strong>源码安装</strong>的用户可以在weiboSpider目录运行如下命令，<strong>pip安装</strong>的用户可以在任意有写权限的目录运行如下命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ python3 -m weibo_spider
+</code></pre></td></tr></table>
+</div>
+</div><p>第一次执行，会自动在当前目录创建config.json配置文件，配置好后执行同样的命令就可以获取微博了。</p>
+<p>如果你已经有config.json文件了，也可以通过config_path参数配置config.json路径，运行程序，命令行如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ python3 -m weibo_spider --config_path<span class="o">=</span><span class="s2">&#34;config.json&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>如果你想指定文件（csv、txt、json、图片、视频）保存路径，可以通过output_dir参数设定。假如你想把文件保存到/home/weibo/目录，可以运行如下命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ python3 -m weibo_spider --output_dir=&#34;/home/weibo/&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>如果你想通过命令行输入user_id，可以使用参数u，可以输入一个或多个user_id，每个user_id以英文逗号分开，如果这些user_id中有重复的user_id，程序会自动去重。命令行如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">$ python3 -m weibo_spider --u=&#34;1669879400,1223178222&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>程序会获取user_id分别为1669879400和1223178222的微博用户的微博，后面会讲<a href="#%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96user_id">如何获取user_id</a>。该方式的所有user_id使用config.json中的since_date和end_date设置，通过修改它们的值可以控制爬取的时间范围。若config.json中的user_id_list是文件路径，每个命令行中的user_id都会自动保存到该文件内，且自动更新since_date；若不是路径，user_id会保存在当前目录的user_id_list.txt内，且自动更新since_date，若当前目录下不存在user_id_list.txt，程序会自动创建它。</p>
+<h2 id="个性化定制程序可选">个性化定制程序（可选）</h2>
+<p>本部分为可选部分，如果不需要个性化定制程序或添加新功能，可以忽略此部分。</p>
+<p>本程序主体代码位于weibo_spider.py文件，程序主体是一个 Spider 类，上述所有功能都是通过在main函数调用 Spider 类实现的，默认的调用代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python">        <span class="n">config</span> <span class="o">=</span> <span class="n">get_config</span><span class="p">()</span>
+        <span class="n">wb</span> <span class="o">=</span> <span class="n">Spider</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="n">wb</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>  <span class="c1"># 爬取微博信息</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>用户可以按照自己的需求调用或修改 Spider 类。通过执行本程序，我们可以得到很多信息。</p>
+<details>
+<summary>点击查看详情</summary>
+<ul>
+<li>wb.user[&lsquo;nickname&rsquo;]：用户昵称；</li>
+<li>wb.user[&lsquo;gender&rsquo;]：用户性别；</li>
+<li>wb.user[&lsquo;location&rsquo;]：用户所在地；</li>
+<li>wb.user[&lsquo;birthday&rsquo;]：用户出生日期；</li>
+<li>wb.user[&lsquo;description&rsquo;]：用户简介；</li>
+<li>wb.user[&lsquo;verified_reason&rsquo;]：用户认证；</li>
+<li>wb.user[&lsquo;talent&rsquo;]：用户标签；</li>
+<li>wb.user[&lsquo;education&rsquo;]：用户学习经历；</li>
+<li>wb.user[&lsquo;work&rsquo;]：用户工作经历；</li>
+<li>wb.user[&lsquo;weibo_num&rsquo;]：微博数；</li>
+<li>wb.user[&lsquo;following&rsquo;]：关注数；</li>
+<li>wb.user[&lsquo;followers&rsquo;]：粉丝数；</li>
+</ul>
+</details>
+<p><strong>wb.weibo</strong>：除不包含上述信息外，wb.weibo包含爬取到的所有微博信息，如<strong>微博id</strong>、<strong>微博正文</strong>、<strong>原始图片url</strong>、<strong>发布位置</strong>、<strong>发布时间</strong>、<strong>发布工具</strong>、<strong>点赞数</strong>、<strong>转发数</strong>、<strong>评论数</strong>等。如果爬的是全部微博(原创+转发)，除上述信息之外，还包含被<strong>转发微博原始图片url</strong>、<strong>是否为原创微博</strong>等。wb.weibo是一个列表，包含了爬取的所有微博信息。wb.weibo[0]为爬取的第一条微博，wb.weibo[1]为爬取的第二条微博，以此类推。当filter=1时，wb.weibo[0]为爬取的第一条<strong>原创</strong>微博，以此类推。wb.weibo[0][&lsquo;id&rsquo;]为第一条微博的id，wb.weibo[0][&lsquo;content&rsquo;]为第一条微博的正文，wb.weibo[0][&lsquo;publish_time&rsquo;]为第一条微博的发布时间，还有其它很多信息不在赘述，大家可以点击下面的&quot;详情&quot;查看具体用法。</p>
+<details>
+<summary>详情</summary>
+<p>若目标微博用户存在微博，则：</p>
+<ul>
+<li>id：存储微博id。如wb.weibo[0][&lsquo;id&rsquo;]为最新一条微博的id；</li>
+<li>content：存储微博正文。如wb.weibo[0][&lsquo;content&rsquo;]为最新一条微博的正文；</li>
+<li>article_url：存储微博中头条文章的url。如wb.weibo[0][&lsquo;article_url&rsquo;]为最新一条微博的头条文章url，若微博中不存在头条文章，则值为''；</li>
+<li>original_pictures：存储原创微博的原始图片url和转发微博转发理由中的图片url。如wb.weibo[0][&lsquo;original_pictures&rsquo;]为最新一条微博的原始图片url，若该条微博有多张图片，则存储多个url，以英文逗号分割；若该微博没有图片，则值为&quot;无&quot;；</li>
+<li>retweet_pictures：存储被转发微博中的原始图片url。当最新微博为原创微博或者为没有图片的转发微博时，则值为&quot;无&quot;，否则为被转发微博的图片url。若有多张图片，则存储多个url，以英文逗号分割；</li>
+<li>publish_place：存储微博的发布位置。如wb.weibo[0][&lsquo;publish_place&rsquo;]为最新一条微博的发布位置，如果该条微博没有位置信息，则值为&quot;无&quot;；</li>
+<li>publish_time：存储微博的发布时间。如wb.weibo[0][&lsquo;publish_time&rsquo;]为最新一条微博的发布时间；</li>
+<li>up_num：存储微博获得的点赞数。如wb.weibo[0][&lsquo;up_num&rsquo;]为最新一条微博获得的点赞数；</li>
+<li>retweet_num：存储微博获得的转发数。如wb.weibo[0][&lsquo;retweet_num&rsquo;]为最新一条微博获得的转发数；</li>
+<li>comment_num：存储微博获得的评论数。如wb.weibo[0][&lsquo;comment_num&rsquo;]为最新一条微博获得的评论数；</li>
+<li>publish_tool：存储微博的发布工具。如wb.weibo[0][&lsquo;publish_tool&rsquo;]为最新一条微博的发布工具。</li>
+</ul>
+</details>
+<h2 id="定期自动爬取微博可选">定期自动爬取微博（可选）</h2>
+<p>要想让程序每个一段时间自动爬取，且爬取的内容为新增加的内容（不包括已经获取的微博），请查看<a href="https://github.com/dataabc/weiboSpider/blob/master/docs/automation.md">定期自动爬取微博</a>。</p>
+<h2 id="如何获取cookie">如何获取cookie</h2>
+<p>要了解获取cookie方法，请查看<a href="https://github.com/dataabc/weiboSpider/blob/master/docs/cookie.md">cookie文档</a>。</p>
+<h2 id="如何获取user_id">如何获取user_id</h2>
+<p>要了解获取user_id方法，请查看<a href="https://github.com/dataabc/weiboSpider/blob/master/docs/userid.md">user_id文档</a>，该文档介绍了如何获取一个及多个微博用户user_id的方法。</p>
+<h2 id="常见问题">常见问题</h2>
+<p>如果运行程序的过程中出现错误，可以查看<a href="https://github.com/dataabc/weiboSpider/blob/master/docs/FAQ.md">常见问题</a>页面，里面包含了最常见的问题及解决方法。如果出现的错误不在常见问题里，您可以通过<a href="https://github.com/dataabc/weiboSpider/issues/new/choose">发issue</a>寻求帮助，我们会很乐意为您解答。</p>
+<h2 id="相关项目">相关项目</h2>
+<ul>
+<li><a href="https://github.com/dataabc/weibo-crawler">weibo-crawler</a> - 功能和本项目完全一样，可以不添加cookie，获取的微博属性更多；</li>
+<li><a href="https://github.com/dataabc/weibo-search">weibo-search</a> - 可以连续获取一个或多个<strong>微博关键词搜索</strong>结果，并将结果写入文件（可选）、数据库（可选）等。所谓微博关键词搜索即：<strong>搜索正文中包含指定关键词的微博</strong>，可以指定搜索的时间范围。对于非常热门的关键词，一天的时间范围，可以获得<strong>1000万</strong>以上的搜索结果，N天的时间范围就可以获得1000万 X N搜索结果。对于大多数关键词，一天产生的相应微博数量应该在1000万条以下，因此可以说该程序可以获得大部分关键词的全部或近似全部的搜索结果。而且该程序可以获得搜索结果的所有信息，本程序获得的微博信息该程序都能获得。</li>
+</ul>
+<h2 id="贡献">贡献</h2>
+<p>欢迎为本项目贡献力量。贡献可以是提交代码，可以是通过issue提建议（如新功能、改进方案等），也可以是通过issue告知我们项目存在哪些bug、缺点等，具体贡献方式见<a href="https://github.com/dataabc/weiboSpider/blob/master/CONTRIBUTING.md">为本项目做贡献</a>。</p>
+<h2 id="贡献者">贡献者</h2>
+<p>感谢所有为本项目贡献力量的朋友，贡献者详情见<a href="https://github.com/dataabc/weiboSpider/blob/master/docs/contributors.md">贡献者</a>页面。</p>
+<h2 id="注意事项">注意事项</h2>
+<p>1.user_id不能为爬虫微博的user_id。因为要爬微博信息，必须先登录到某个微博账号，此账号我们姑且称为爬虫微博。爬虫微博访问自己的页面和访问其他用户的页面，得到的网页格式不同，所以无法爬取自己的微博信息；如果想要爬取爬虫微博内容，可以参考<a href="https://github.com/dataabc/weiboSpider/issues/113">获取自身微博信息</a>；</p>
+<p>2.cookie有期限限制，大约三个月。若提示cookie错误或已过期，需要重新更新cookie。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Firefly</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        0001-01-01
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/notepad/python/beibei/weibospider/docs/userid/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default"></span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="http://github.com/fierygit" class="iconfont icon-github" title="github"></a>
+  <a href="http://fireflying.top/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>Firefly</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

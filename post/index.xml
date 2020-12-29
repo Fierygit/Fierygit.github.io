@@ -6,7 +6,34 @@
     <description>Recent content in Posts on Firefly</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 03 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://fireflying.top/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 29 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://fireflying.top/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>bash</title>
+      <link>http://fireflying.top/post/notepad/docs/bash/bash/</link>
+      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/docs/bash/bash/</guid>
+      <description>Bash 简介 Bash 是 Unix 系统和 Linux 系统的一种 Shell（命令行环境），是目前绝大多数 Linux 发行版的默认 Shell。 Shell 的含义 学习 Bash，首先需要理解 Shell 是什么。</description>
+    </item>
+    
+    <item>
+      <title>bash-archives</title>
+      <link>http://fireflying.top/post/notepad/docs/bash/bash-archives/</link>
+      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/docs/bash/bash-archives/</guid>
+      <description>归档和备份 gzip gzip 程序用来压缩文件，原文件的压缩版（添加gz后缀名）会替代原文件。gunzip 程序用来还原压缩版本。 1 2 $ gzip foo.txt $ gunzip foo.txt.gz gzip的参</description>
+    </item>
+    
+    <item>
+      <title>bash-commands</title>
+      <link>http://fireflying.top/post/notepad/docs/bash/bash-commands/</link>
+      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/docs/bash/bash-commands/</guid>
+      <description>alias alias命令用于设置别名。通常用于在 Bash 设置文件中，设置别名。 1 alias dockerlogin=&amp;#39;ssh www-data@adnan.local -p2222&amp;#39; awk awk是处理文本文件的一个应用程序，几乎所有 Linux 系统都自带这个程序</description>
+    </item>
+    
     <item>
       <title>DDIA</title>
       <link>http://fireflying.top/post/notepad/read/ddia.mm/</link>
@@ -40,6 +67,15 @@
       <pubDate>Thu, 23 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>http://fireflying.top/post/notepad/java/javanote/java-basic-study/src/main/java/basic/collection/readme/</guid>
+      <description>集合总结 copy from zengsiyan Java对事物的体现都是以对象的形式，为了方便对多个对象的操作，就要对对象进行存储（内存上的存储）。 然而使用数组存储对象存在一</description>
+    </item>
+    
+    <item>
+      <title>java 结合总结</title>
+      <link>http://fireflying.top/post/notepad/java/javanote/java-basic-study/target/classes/basic/collection/readme/</link>
+      <pubDate>Thu, 23 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/java/javanote/java-basic-study/target/classes/basic/collection/readme/</guid>
       <description>集合总结 copy from zengsiyan Java对事物的体现都是以对象的形式，为了方便对多个对象的操作，就要对对象进行存储（内存上的存储）。 然而使用数组存储对象存在一</description>
     </item>
     
@@ -423,11 +459,173 @@
     
     <item>
       <title></title>
-      <link>http://fireflying.top/post/notepad/java/javanote/java-basic-study/target/classes/basic/collection/readme/</link>
+      <link>http://fireflying.top/post/notepad/docs/ssh/basic/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://fireflying.top/post/notepad/java/javanote/java-basic-study/target/classes/basic/collection/readme/</guid>
-      <description>集合总结 copy from zengsiyan Java对事物的体现都是以对象的形式，为了方便对多个对象的操作，就要对对象进行存储（内存上的存储）。 然而使用数组存储对象存在一</description>
+      <guid>http://fireflying.top/post/notepad/docs/ssh/basic/</guid>
+      <description>SSH 基本知识 SSH（Secure Shell 的缩写）是一种网络协议，用于加密两台计算机之间的通信，并且支持各种身份验证机制。 实务中，它主要用于保证远程登</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://fireflying.top/post/notepad/docs/ssh/ca/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/docs/ssh/ca/</guid>
+      <description>SSH 证书登录 SSH 是服务器登录工具，一般情况下都采用密码登录或密钥登录。 但是，SSH 还有第三种登录方法，那就是证书登录。某些情况下，它是更合理、更</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://fireflying.top/post/notepad/docs/ssh/client/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/docs/ssh/client/</guid>
+      <description>SSH 客户端 简介 OpenSSH 的客户端是二进制程序 ssh。它在 Linux/Unix 系统的位置是/usr/local/bin/ssh，Windows 系统的位置是\Program</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://fireflying.top/post/notepad/docs/ssh/key/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/docs/ssh/key/</guid>
+      <description>SSH 密钥登录 SSH 默认采用密码登录，这种方法有很多缺点，简单的密码不安全，复杂的密码不容易记忆，每次手动输入也很麻烦。密钥登录是更好的解决方案。 密</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://fireflying.top/post/notepad/docs/ssh/port-forwarding/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/docs/ssh/port-forwarding/</guid>
+      <description>SSH 端口转发 简介 SSH 除了登录服务器，还有一大用途，就是作为加密通信的中介，充当两台服务器之间的通信加密跳板，使得原本不加密的通信变成加密通信。这</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://fireflying.top/post/notepad/docs/ssh/rsync/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/docs/ssh/rsync/</guid>
+      <description>rsync 命令 简介 rsync 是一个常用的 Linux 应用程序，用于文件同步。 它可以在本地计算机与远程计算机之间，或者两个本地目录之间同步文件（但不支持两台远程计算机之</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://fireflying.top/post/notepad/docs/ssh/scp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/docs/ssh/scp/</guid>
+      <description>scp 命令 scp是 SSH 提供的一个客户端程序，用来在两台主机之间加密传送文件（即复制文件）。 简介 scp是 secure copy 的缩写，相当于cp命令 + SSH。它的底层</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://fireflying.top/post/notepad/docs/ssh/server/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/docs/ssh/server/</guid>
+      <description>SSH 服务器 简介 SSH 的架构是服务器/客户端模式，两端运行的软件是不一样的。OpenSSH 的客户端软件是 ssh，服务器软件是 sshd。本章介绍 sshd 的各</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://fireflying.top/post/notepad/docs/ssh/sftp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/docs/ssh/sftp/</guid>
+      <description>sftp 命令 sftp是 SSH 提供的一个客户端应用程序，主要用来安全地访问 FTP。因为 FTP 是不加密协议，很不安全，sftp就相当于将 FTP 放入了 SSH。 下面的</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://fireflying.top/post/notepad/python/beibei/wechat_sprider/told/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/python/beibei/wechat_sprider/told/</guid>
+      <description>10 个饭后小习惯，有两个真不建议你做！ 丁香医生 很多人都说：饭后有些事情千万不能做，如果踩了禁忌雷区，就得和长寿说拜拜了。 真是这样吗？丁香医生把</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://fireflying.top/post/notepad/python/beibei/weibospider/contributing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/python/beibei/weibospider/contributing/</guid>
+      <description>为本项目做贡献 本项目使用Python3编写，感谢大家对项目的支持，也欢迎大家为开源项目做贡献。鉴于大家拥有不同的技能、经验、认知、时间等，每</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://fireflying.top/post/notepad/python/beibei/weibospider/docs/automation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/python/beibei/weibospider/docs/automation/</guid>
+      <description>定期自动爬取微博（可选） 我们爬取了微博以后，很多微博账号又可能发了一些新微博，定期自动爬取微博就是每隔一段时间自动运行程序，自动爬取这段时间</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://fireflying.top/post/notepad/python/beibei/weibospider/docs/contributors/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/python/beibei/weibospider/docs/contributors/</guid>
+      <description>贡献者 感谢所有为本项目作出贡献和将要作出贡献的朋友，感谢对开源事业的支持。大家每贡献一行code都让项目功能更丰富，每提一个建议都让程序更完</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://fireflying.top/post/notepad/python/beibei/weibospider/docs/cookie/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/python/beibei/weibospider/docs/cookie/</guid>
+      <description>如何获取cookie 1.用Chrome打开https://passport.weibo.cn/signin/login； 2.输入微博的用户名</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://fireflying.top/post/notepad/python/beibei/weibospider/docs/example/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/python/beibei/weibospider/docs/example/</guid>
+      <description>实例 以爬取迪丽热巴的微博为例，我们需要修改config.json文件，文件内容如下： 1 2 3 4 5 6 7 8 9 10 { &amp;#34;user_id_list&amp;#34;: [&amp;#34;1669879400&amp;#34;], &amp;#34;filter&amp;#34;: 1, &amp;#34;since_date&amp;#34;: &amp;#34;1900-01-01&amp;#34;, &amp;#34;end_date&amp;#34;: &amp;#34;now&amp;#34;, &amp;#34;write_mode&amp;#34;: [&amp;#34;csv&amp;#34;, &amp;#34;txt&amp;#34;, &amp;#34;json&amp;#34;], &amp;#34;pic_download&amp;#34;: 1, &amp;#34;video_download&amp;#34;: 1, &amp;#34;cookie&amp;#34;:</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://fireflying.top/post/notepad/python/beibei/weibospider/docs/faq/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/python/beibei/weibospider/docs/faq/</guid>
+      <description>常见问题 1.程序运行出错，错误提示中包含“ImportError: cannot import name &amp;lsquo;config_util&amp;rsquo; from &amp;lsquo;main&#39;”，如何解决？ 出现这种错误，说明使用者很</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://fireflying.top/post/notepad/python/beibei/weibospider/docs/settings/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/python/beibei/weibospider/docs/settings/</guid>
+      <description>程序设置 源码下载安装的用户在weiboSpider目录下运行如下命令，pip安装的用户在任意有写权限的目录运行如下命令： 1 $ python3 -m weibo_spider 第一次运行</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://fireflying.top/post/notepad/python/beibei/weibospider/docs/userid/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/python/beibei/weibospider/docs/userid/</guid>
+      <description>如何获取user_id 1.打开网址https://weibo.cn，搜索我们要找的人，如&amp;quot;迪丽热巴&amp;quot;，进入她的主页； 2.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://fireflying.top/post/notepad/python/beibei/weibospider/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/python/beibei/weibospider/readme/</guid>
+      <description>Weibo Spider 本程序可以连续爬取一个或多个新浪微博用户（如胡歌、迪丽热巴、郭碧婷）的数据，并将结果信息写入文件或数据库。写入信息几乎包括用户微博的所有</description>
     </item>
     
   </channel>

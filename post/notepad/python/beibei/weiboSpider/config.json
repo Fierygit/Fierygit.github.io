@@ -1,0 +1,21 @@
+{
+    "user_id_list": ["2838367564"],
+    "filter": 1,
+    "since_date": "2010-01-01",
+    "end_date": "now",
+    "random_wait_pages": [1, 5],
+    "random_wait_seconds": [6, 10],
+    "global_wait": [[1000, 3600], [500, 2000]],
+    "write_mode": ["txt"],
+    "pic_download": 1,
+    "video_download": 0,
+    "cookie": "_T_WM=36729710552; OUTFOX_SEARCH_USER_ID_NCOO=1417830708.8073256; SCF=AryLoaFidN6qRCYtaQdECx-M_ifX39ddRQM-b-lhjjn0Y84NbUwppQEFq82BV-_-3WKjKD3jWFICQBBRV4qHtj4.; SUB=_2A25yhEhjDeRhGeBN7FQV9SnJyjuIHXVRh2grrDV6PUJbktANLUnxkW1NRCBtyQW2UMyA3eFf9VKhdholYm524zNr; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9W5SuX8yENv9TUlp-ozWFw6k5NHD95Qce0McSh-NSK2NWs4Dqcjz9JLLMrLrIPBt; SUHB=0h1JzaGbm3YI-A; SSOLoginState=1602238515; WEIBOCN_FROM=1110006030; MLOGIN=1; M_WEIBOCN_PARAMS=lfid%3D1076031647439613%26luicode%3D20000174%26uicode%3D20000174",
+    "mysql_config": {
+        "host": "localhost",
+        "port": 3306,
+        "user": "root",
+        "password": "123456",
+        "charset": "utf8mb4"
+    },
+    "sqlite_config": "weibo.db"
+}

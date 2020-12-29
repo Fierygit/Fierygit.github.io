@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>bash on Firefly</title>
+    <link>http://fireflying.top/categories/bash/</link>
+    <description>Recent content in bash on Firefly</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 29 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://fireflying.top/categories/bash/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>bash</title>
+      <link>http://fireflying.top/post/notepad/docs/bash/bash/</link>
+      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/docs/bash/bash/</guid>
+      <description>Bash 简介 Bash 是 Unix 系统和 Linux 系统的一种 Shell（命令行环境），是目前绝大多数 Linux 发行版的默认 Shell。 Shell 的含义 学习 Bash，首先需要理解 Shell 是什么。</description>
+    </item>
+    
+    <item>
+      <title>bash-archives</title>
+      <link>http://fireflying.top/post/notepad/docs/bash/bash-archives/</link>
+      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/docs/bash/bash-archives/</guid>
+      <description>归档和备份 gzip gzip 程序用来压缩文件，原文件的压缩版（添加gz后缀名）会替代原文件。gunzip 程序用来还原压缩版本。 1 2 $ gzip foo.txt $ gunzip foo.txt.gz gzip的参</description>
+    </item>
+    
+    <item>
+      <title>bash-commands</title>
+      <link>http://fireflying.top/post/notepad/docs/bash/bash-commands/</link>
+      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/docs/bash/bash-commands/</guid>
+      <description>alias alias命令用于设置别名。通常用于在 Bash 设置文件中，设置别名。 1 alias dockerlogin=&amp;#39;ssh www-data@adnan.local -p2222&amp;#39; awk awk是处理文本文件的一个应用程序，几乎所有 Linux 系统都自带这个程序</description>
+    </item>
+    
+  </channel>
+</rss>

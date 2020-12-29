@@ -17,6 +17,15 @@
     </item>
     
     <item>
+      <title>java 结合总结</title>
+      <link>http://fireflying.top/post/notepad/java/javanote/java-basic-study/target/classes/basic/collection/readme/</link>
+      <pubDate>Thu, 23 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/java/javanote/java-basic-study/target/classes/basic/collection/readme/</guid>
+      <description>集合总结 copy from zengsiyan Java对事物的体现都是以对象的形式，为了方便对多个对象的操作，就要对对象进行存储（内存上的存储）。 然而使用数组存储对象存在一</description>
+    </item>
+    
+    <item>
       <title>Wolrd In Java</title>
       <link>http://fireflying.top/post/notepad/java/wolrd_in_java/</link>
       <pubDate>Sun, 28 Oct 2018 00:00:00 +0000</pubDate>
