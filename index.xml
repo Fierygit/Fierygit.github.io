@@ -13,7 +13,7 @@
       <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>http://fireflying.top/post/notepad/docs/bash/bash/</guid>
-      <description>Bash 简介 Bash 是 Unix 系统和 Linux 系统的一种 Shell（命令行环境），是目前绝大多数 Linux 发行版的默认 Shell。 Shell 的含义 学习 Bash，首先需要理解 Shell 是什么。</description>
+      <description>[toc] 1. Bash 简介 Bash 是 Unix 系统和 Linux 系统的一种 Shell（命令行环境），是目前绝大多数 Linux 发行版的默认 Shell。 Shell 的含义 学习 Bash，首先需要理解 Shell 是什</description>
     </item>
     
     <item>
@@ -626,6 +626,15 @@
       
       <guid>http://fireflying.top/post/notepad/python/beibei/weibospider/readme/</guid>
       <description>Weibo Spider 本程序可以连续爬取一个或多个新浪微博用户（如胡歌、迪丽热巴、郭碧婷）的数据，并将结果信息写入文件或数据库。写入信息几乎包括用户微博的所有</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://fireflying.top/post/notepad/read/mapreduce/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://fireflying.top/post/notepad/read/mapreduce/</guid>
+      <description>摘要 MapReduce是一个编程模型，也是一个处理和生成超大数据集的算法模型的相关实现。用户首先创建一个 Map 函数处理一个基于 key/value pair 的数据集合，输</description>
     </item>
     
   </channel>
